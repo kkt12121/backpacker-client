@@ -1,6 +1,6 @@
 ---
 name: SR Card
-about: SR 공통입니다.
+about: SR 작성 템플릿 입니다.
 title: "[SR] 타이틀"
 labels: ''
 assignees: ''
