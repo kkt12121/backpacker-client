@@ -11,9 +11,10 @@ function App() {
     <div className="App">
       {/* <button onClick={() => dispatch(getStoreData())}>
         아ㅏㅏ아아ㅏㅏ아ㅏ아아
-      </button>
-      {console.log(testReducer)} */}
+      </button> */}
       <MainPage />
+      {console.log(testReducer)}
+
     </div>
   );
 }
