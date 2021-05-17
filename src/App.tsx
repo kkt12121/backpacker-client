@@ -14,6 +14,7 @@ function App() {
       </button> */}
       <MainPage />
       {console.log(testReducer)}
+
     </div>
   );
 }
