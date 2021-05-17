@@ -1,0 +1,51 @@
+@import "./MainSection3.scss";
+
+.mainSection5 {
+  @include mainSection3();
+}
+
+.mainSection5Image {
+  @include mainSection3Image();
+}
+
+.mainSection5Text {
+  p {
+    @include mainSection3pTag();
+  }
+  @include mainSection3Text();
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSection5Text {
+    p {
+      @include mainSection3pTag();
+      font-size: 50%;
+    }
+
+    @include mainSection3Text();
+    font-size: 190%;
+  }
+}
+
+@media screen and (min-width: 501px) and (max-width: 1023px) {
+  .mainSection5Text {
+    p {
+      @include mainSection3pTag();
+      font-size: 50%;
+    }
+
+    @include mainSection3Text();
+    font-size: 90%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .mainSection5Text {
+    p {
+      @include mainSection3pTag();
+      font-size: 60%;
+    }
+    @include mainSection3Text();
+    font-size: 80%;
+  }
+}

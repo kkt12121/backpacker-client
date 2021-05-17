@@ -1,0 +1,94 @@
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  margin: 0;
+}
+
+@mixin mainSection3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin mainSection3Image {
+  width: 50%;
+  animation: fadein 2s;
+  margin-top: 10%;
+  margin-left: 2%;
+}
+
+@mixin mainSection3Text {
+  color: red;
+  font-size: 250%;
+  margin-right: 5%;
+  margin-top: 10%;
+}
+
+@mixin mainSection3pTag {
+  color: blue;
+  font-size: 60%;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.mainSection3 {
+  @include mainSection3();
+}
+
+.mainSection3Image {
+  @include mainSection3Image();
+}
+@keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.mainSection3Text {
+  p {
+    @include mainSection3pTag();
+  }
+  @include mainSection3Text();
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSection3Text {
+    p {
+      @include mainSection3pTag();
+      font-size: 50%;
+    }
+
+    @include mainSection3Text();
+    font-size: 190%;
+  }
+}
+
+@media screen and (min-width: 501px) and (max-width: 1023px) {
+  .mainSection3Text {
+    p {
+      @include mainSection3pTag();
+      font-size: 50%;
+    }
+
+    @include mainSection3Text();
+    font-size: 90%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .mainSection3Text {
+    p {
+      @include mainSection3pTag();
+      font-size: 60%;
+    }
+    @include mainSection3Text();
+    font-size: 80%;
+  }
+}

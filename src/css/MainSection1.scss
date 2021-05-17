@@ -1,0 +1,136 @@
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  margin: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .mainsection1 {
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
+    align-items: center;
+    background-image: url("https://source.unsplash.com/6Mxb_mZ_Q8E");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .section1text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 1px rgb(200, 200, 200), 2px 2px 0px rgb(200, 200, 200);
+    margin-top: 400px;
+    animation: appear 3s 1;
+  }
+  .title1 {
+    font-size: 50px;
+  }
+  .startBtn {
+    font-size: 20px;
+    border: solid;
+    box-shadow: 0px 1px rgb(200, 200, 200), 2px 2px 0px rgb(200, 200, 200);
+    width: fit-content;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+    transition-duration: 1s;
+    &:hover {
+      background-color: rgb(200, 200, 200);
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 1023px) {
+  .mainsection1 {
+    display: flex;
+    flex-direction: column;
+    height: 950px;
+    align-items: center;
+    background-image: url("https://source.unsplash.com/6Mxb_mZ_Q8E");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .section1text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 1px rgb(200, 200, 200), 2px 2px 0px rgb(200, 200, 200);
+    margin-top: 400px;
+    animation: appear 3s 1;
+  }
+  .title1 {
+    font-size: 26px;
+  }
+  .startBtn {
+    border: solid;
+    box-shadow: 0px 1px rgb(200, 200, 200), 2px 2px 0px rgb(200, 200, 200);
+    width: fit-content;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+    transition-duration: 1s;
+    &:hover {
+      background-color: rgb(200, 200, 200);
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .mainsection1 {
+    display: flex;
+    flex-direction: column;
+    height: 812px;
+    align-items: center;
+    background-image: url("https://source.unsplash.com/6Mxb_mZ_Q8E");
+    background-size: cover;
+    background-position: 600px;
+    background-attachment: fixed;
+  }
+  .section1text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 1px rgb(200, 200, 200), 1px 1px 0px rgb(200, 200, 200);
+    margin-top: 200px;
+    animation: appear 3s 1;
+  }
+  .title1 {
+    font-size: 20px;
+  }
+  .startBtn {
+    font-size: 15px;
+    border: solid;
+    box-shadow: 0px 1px rgb(200, 200, 200), 1px 1px 0px rgb(200, 200, 200);
+    width: fit-content;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+    transition-duration: 1s;
+    &:hover {
+      background-color: rgb(200, 200, 200);
+      cursor: pointer;
+    }
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    margin-top: 20%;
+  }
+  100% {
+    opacity: 1;
+  }
+}
