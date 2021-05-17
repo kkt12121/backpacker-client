@@ -1,24 +1,19 @@
+import { getStoreData } from "action/Action";
+import MainPage from "page/MainPage";
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { useSelector, useDispatch } from "react-redux";
+import RootReducer from "reducer";
 
 function App() {
+  let dispatch = useDispatch();
+  const testReducer = useSelector((state) => state);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <button onClick={() => dispatch(getStoreData())}>
+        아ㅏㅏ아아ㅏㅏ아ㅏ아아
+      </button> */}
+      <MainPage />
+      {console.log(testReducer)}
     </div>
   );
 }
