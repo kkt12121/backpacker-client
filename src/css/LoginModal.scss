@@ -1,0 +1,30 @@
+.loginModalOn {
+    width: 30%;
+    height: 55%;
+    border-radius: 10%;
+    position: fixed;
+    left: 35%;
+    top: 20%;
+    z-index: 2;
+    background-color: white;
+    transition: all 0.5s;
+  }
+  .loginModal {
+    @extend .loginModalOn;
+    width: 30%;
+    height: 0%;
+    top: 20%;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+  
+  .loginModalClose {
+    margin-top: 6%;
+    margin-left: 87%;
+    cursor: pointer;
+  }
+  
+  .loginModalClose :hover {
+    color: red;
+  }
+  

@@ -1,0 +1,71 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 8%;
+  color: rgba (0, 0, 0, 1);
+  position: fixed;
+  margin-right: 1%;
+  margin-top: 1%;
+}
+
+.hamburgerStick1 {
+  width: 2rem;
+  height: 0.3rem;
+  margin-bottom: 20%;
+  background-color: white;
+  z-index: 2;
+}
+
+.hamburgerStick2 {
+  width: 2rem;
+  height: 0.3rem;
+  margin-bottom: 20%;
+  background-color: white;
+  transition: all 0.5s;
+  z-index: 2;
+}
+
+.hamburgerStick3 {
+  width: 2rem;
+  height: 0.3rem;
+  margin-bottom: 20%;
+  background-color: white;
+  z-index: 2;
+}
+.navLogo {
+  width: 11%;
+  height: auto;
+  margin-left: 10%;
+}
+.hamburgerMenu {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburgerMenuOn {
+  margin-top: 0.5%;
+  .hamburgerStick1 {
+    @extend .hamburgerStick1;
+    z-index: 2;
+    position: absolute;
+    transition: all 0.5s;
+    transform: rotate(45deg);
+  }
+  .hamburgerStick2 {
+    @extend .hamburgerStick2;
+    z-index: 2;
+    transition: all 0.5s;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .hamburgerStick3 {
+    @extend .hamburgerStick3;
+    z-index: 2;
+    position: absolute;
+    transition: all 0.5s;
+    transform: rotate(-45deg);
+  }
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
