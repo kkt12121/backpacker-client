@@ -1,6 +1,6 @@
-import { getStoreData } from "action/Action";
 import FindUserInfoPage from "page/FindUserInfoPage";
 import LoginPage from "page/LoginPage";
+import Navbar from "component/Navbar";
 import MainPage from "page/MainPage";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,7 +14,7 @@ function App() {
       {/* <button onClick={() => dispatch(getStoreData())}>
         아ㅏㅏ아아ㅏㅏ아ㅏ아아
       </button> */}
-
+      <Navbar />
       <Switch>
         <Route exact path="/">
           <MainPage />
@@ -26,7 +26,6 @@ function App() {
           <FindUserInfoPage />
         </Route>
       </Switch>
-
       {console.log(testReducer)}
     </div>
   );
