@@ -1,11 +1,10 @@
 import React, { ReactElement } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "../css/_slick.scss";
+import "../css/_slick-theme.scss";
 import MainSection3 from "./MainSection3";
 import MainSection4 from "./MainSection4";
 import MainSection5 from "./MainSection5";
-
 interface Props {}
 
 export default function Carousel({}: Props): ReactElement {
