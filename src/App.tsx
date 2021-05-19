@@ -19,6 +19,7 @@ function App() {
           <MainPage />
           <LoginPage />
           <SignUpPage />
+
         </Route>
       </Switch>
       <Switch>
