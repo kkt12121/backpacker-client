@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { isClickAction, isClickCloseAction } from "action/ModalClickAction";
 import { RootState } from "reducer";
 import Modal from "./Modal";
+import { Link } from "react-router-dom";
 interface Props {}
 
 export default function Navbar({}: Props): ReactElement {
@@ -14,10 +15,12 @@ export default function Navbar({}: Props): ReactElement {
   );
   return (
     <nav className="nav">
-      <img
-        className="navLogo"
-        src="http://pngimg.com/uploads/nike/nike_PNG1.png"
-      />
+      <Link to="/">
+        <img
+          className="navLogo"
+          src="http://pngimg.com/uploads/nike/nike_PNG1.png"
+        />
+      </Link>
       <div
         className={isClickReducer ? "hamburgerMenuOn" : "hamburgerMenu"}
         // onClick={() => (isClick ? setisClick(false) : setisClick(true))}

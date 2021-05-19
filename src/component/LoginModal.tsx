@@ -1,4 +1,5 @@
 import { loginModalClickCloseAction } from "action/ModalClickAction";
+import LoginPage from "page/LoginPage";
 import React, { ReactElement } from "react";
 import { IoClose } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +23,7 @@ export default function LoginModal({}: Props): ReactElement {
             dispatch(loginModalClickCloseAction());
           }}
         />
+        <LoginPage />
       </div>
     </>
   );
