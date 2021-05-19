@@ -1,9 +1,11 @@
 import Carousel from "component/Carousel";
+import Footer from "component/Footer";
 import MainSection1 from "component/MainSection1";
 import MainSection2 from "component/MainSection2";
 
 import MainSection6 from "component/MainSection6";
 import MainSection7 from "component/MainSection7";
+import MainSection8 from "component/MainSection8";
 import React, { ReactElement } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "reducer";
@@ -33,6 +35,8 @@ export default function MainPage({}: Props): ReactElement {
       <Carousel />
       <MainSection6></MainSection6>
       <MainSection7></MainSection7>
+      <MainSection8 />
+      <Footer />
     </>
   );
 }
