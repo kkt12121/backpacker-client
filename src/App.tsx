@@ -2,10 +2,9 @@ import FindUserInfoPage from "page/FindUserInfoPage";
 import LoginPage from "page/LoginPage";
 import Navbar from "component/Navbar";
 import MainPage from "page/MainPage";
-import React from "react";
+import SignUpPage from "page/SignUpPage";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Switch } from "react-router";
-
 function App() {
   let dispatch = useDispatch();
   const testReducer = useSelector((state) => state);
@@ -19,6 +18,7 @@ function App() {
         <Route exact path="/">
           <MainPage />
           <LoginPage />
+          <SignUpPage />
         </Route>
       </Switch>
       <Switch>
