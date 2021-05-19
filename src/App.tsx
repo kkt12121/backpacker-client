@@ -1,9 +1,7 @@
-import { getStoreData } from "action/Action";
-import MainPage from "page/MainPage";
 import React from "react";
+import MainPage from "page/MainPage";
+import SignUpPage from "page/SignUpPage";
 import { useSelector, useDispatch } from "react-redux";
-import RootReducer from "reducer";
-
 function App() {
   let dispatch = useDispatch();
   const testReducer = useSelector((state) => state);
@@ -12,9 +10,9 @@ function App() {
       {/* <button onClick={() => dispatch(getStoreData())}>
         아ㅏㅏ아아ㅏㅏ아ㅏ아아
       </button> */}
-      <MainPage />
+      {/* <MainPage /> */}
+      <SignUpPage />
       {console.log(testReducer)}
-
     </div>
   );
 }
