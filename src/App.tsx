@@ -5,6 +5,7 @@ import MainPage from "page/MainPage";
 import SignUpPage from "page/SignUpPage";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Switch } from "react-router";
+import ContentWritePage from "page/ContentWritePage";
 function App() {
   let dispatch = useDispatch();
   const testReducer = useSelector((state) => state);
@@ -20,10 +21,11 @@ function App() {
           <LoginPage />
           <SignUpPage />
         </Route>
-      </Switch>
-      <Switch>
         <Route path="/finduser">
           <FindUserInfoPage />
+        </Route>
+        <Route path="/contentwrite">
+          <ContentWritePage />
         </Route>
       </Switch>
       {console.log(testReducer)}

@@ -23,7 +23,7 @@ export default function LoginModal({}: Props): ReactElement {
             dispatch(loginModalClickCloseAction());
           }}
         />
-        <LoginPage />
+        {loginModalState ? <LoginPage /> : null}
       </div>
     </>
   );

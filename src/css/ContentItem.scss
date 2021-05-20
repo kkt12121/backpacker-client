@@ -1,0 +1,21 @@
+.contentItemBox {
+  display: flex;
+  align-items: center;
+  border: solid 1px;
+  width: 500px;
+  height: 100px;
+}
+
+.contentImage {
+  width: 6rem;
+  height: 6.2rem;
+}
+
+.contentPlace {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.contentPlaceBox {
+  width: 100%;
+}

@@ -1,0 +1,27 @@
+import { mapClose, mapOpen } from "action/ModalClickAction";
+import React, { ReactElement } from "react";
+import { IoClose } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "reducer";
+import "../css/MapModal.scss";
+import ContentMap from "./ContentMap";
+interface Props {}
+
+export default function MapModal({}: Props): ReactElement {
+  const mapClickState = useSelector((state: RootState) => state.MapClick);
+  const dispatch = useDispatch();
+  return (
+    <>
+      <div className={mapClickState ? "mapModalOn" : "mapModal"}>
+        <IoClose
+          size={40}
+          className="mapModalClose"
+          onClick={() => {
+            dispatch(mapClose());
+          }}
+        />
+        {mapClickState ? <ContentMap /> : null}
+      </div>
+    </>
+  );
+}
