@@ -3,6 +3,7 @@ import { LoginModalClick, ModalClickReducer } from "./ModalClickReducer";
 import TestReducer from "./TestReducer";
 import loginReducer from "./LoginReducer";
 import { findEmailReducer, findPwReducer } from "./FindUserInfoReducer";
+import SignupReducer from "./SignupReducer";
 
 const RootReducer = combineReducers({
   TestReducer,
@@ -11,6 +12,7 @@ const RootReducer = combineReducers({
   findPwReducer,
   ModalClickReducer,
   LoginModalClick,
+  SignupReducer,
 });
 
 export default RootReducer;

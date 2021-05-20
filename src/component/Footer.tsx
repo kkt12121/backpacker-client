@@ -1,42 +1,39 @@
 import "../css/Footer.scss";
 //import { Link } from "react-router-dom";
+
 function Footer() {
   return (
-    <footer className="page-footer">
-      <div className="container">
-        <div className="row">
-          <div className="col l6 s12">
-            <h5 className="footerTitle">BACKPACKER</h5>
-          </div>
-          <div className="col l4 offset-l2 s12">
-            <h5 className="footerDeveloper">DEVELOPER</h5>
-            <ul>
-              <li>
-                <a className="grey-text text-lighten-3" href="#!">
-                  Link 1
-                </a>
-              </li>
-              <li>
-                <a className="grey-text text-lighten-3" href="#!">
-                  Link 2
-                </a>
-              </li>
-              <li>
-                <a className="grey-text text-lighten-3" href="#!">
-                  Link 3
-                </a>
-              </li>
-              <li>
-                <a className="grey-text text-lighten-3" href="#!">
-                  Link 4
-                </a>
-              </li>
-            </ul>
-          </div>
+    <footer id="footerContainer">
+      <div className="footerTextArea">
+        <p className="footerText1">Backpacker v.Demo © 2021 </p>
+        <div className="footerText2">
+          Contact
+          <p>
+            <a href="https://github.com/altanis7">Hong@github</a>
+          </p>
+          <p>
+            <a href="https://github.com/codono">Sue@github</a>
+          </p>
+          <p>
+            <a href="https://github.com/junhyok">Son@github</a>
+          </p>
+          <p>
+            <a href="https://github.com/kkt12121">Kim@github</a>
+          </p>
+        </div>
+        <div className="footerText2">
+          About us
+          <p>
+            <a href="https://github.com/codestates/backpacker-client">
+              Repository
+            </a>
+          </p>
         </div>
       </div>
-      <div className="footer-copyright">
-        <div className="container">© 2021 Copyright</div>
+      <div className="footerBtnBox">
+        <a className="socialBtn" href="" target="_blank" rel="noreferrer">
+          <img className="githubBtn" />
+        </a>
       </div>
     </footer>
   );
