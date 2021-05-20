@@ -14,6 +14,7 @@ function App() {
       {/* <button onClick={() => dispatch(getStoreData())}>
         아ㅏㅏ아아ㅏㅏ아ㅏ아아
       </button> */}
+
       <Navbar />
       <Switch>
         <Route exact path="/">

@@ -8,10 +8,16 @@ const MainSection8 = () => {
   };
 
   return (
-    <section>
-      <div className="buttonStart">
-        NOW START
-        {/* <Link to="/">NOW START</Link> */}
+    <section className="mainSection8">
+      <div className="content">
+        <div className="sectionTitle">BACKPACKER</div>
+        <div className="buttonStart">
+          NOW START
+          {/* <Link to="/">NOW START</Link> */}
+        </div>
+      </div>
+      <div className="img">
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=40"></img>
       </div>
       <FaArrowCircleUp
         className="scrollToTopButton"

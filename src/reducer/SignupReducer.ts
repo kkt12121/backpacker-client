@@ -22,6 +22,8 @@ interface signUpAct {
 const SignupReducer = (state = signUpState, action: signUpAct) => {
   switch (action.type) {
     case SignUp:
+      alert("회원가입에 성공하였습니다.");
+
       return {
         ...state,
         email: action.email,
@@ -32,6 +34,7 @@ const SignupReducer = (state = signUpState, action: signUpAct) => {
       };
 
     case SignUp_FAIL:
+      alert("양식에 맞게 회원가입 작성을 해주세요.");
       return {
         ...state,
         email: action.email,
