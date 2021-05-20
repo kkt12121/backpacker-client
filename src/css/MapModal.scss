@@ -1,6 +1,6 @@
-.loginModalOn {
-  width: 400px;
-  height: 370px;
+.mapModalOn {
+  width: 600px;
+  height: 600px;
   border-radius: 10%;
   position: fixed;
   left: 35%;
@@ -9,8 +9,8 @@
   background-color: white;
   transition: all 0.5s;
 }
-.loginModal {
-  @extend .loginModalOn;
+.mapModal {
+  @extend .mapModalOn;
   width: 30%;
   height: 0%;
   top: 20%;
@@ -18,12 +18,12 @@
   transition: all 0.5s;
 }
 
-.loginModalClose {
+.mapModalClose {
   margin-top: 6%;
   margin-left: 87%;
   cursor: pointer;
 }
 
-.loginModalClose :hover {
+.mapModalClose :hover {
   color: red;
 }

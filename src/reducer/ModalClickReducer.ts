@@ -3,12 +3,15 @@ import {
   IS_CLICK_CLOSE,
   LOGIN_MODAL_CLICK,
   LOGIN_MODAL_CLICK_CLOSE,
+  MAP_OPEN,
+  MAP_CLOSE,
 } from "action/ModalClickAction";
 
 let isClick = false;
 
 let loginModalClick = false;
 
+let mapClick = false;
 export const ModalClickReducer = (state = isClick, action: any) => {
   switch (action.type) {
     case IS_CLICK:
@@ -25,6 +28,17 @@ export const LoginModalClick = (state = loginModalClick, action: any) => {
     case LOGIN_MODAL_CLICK:
       return true;
     case LOGIN_MODAL_CLICK_CLOSE:
+      return false;
+    default:
+      return state;
+  }
+};
+
+export const MapClick = (state = mapClick, action: any) => {
+  switch (action.type) {
+    case MAP_OPEN:
+      return true;
+    case MAP_CLOSE:
       return false;
     default:
       return state;
