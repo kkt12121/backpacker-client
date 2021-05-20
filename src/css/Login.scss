@@ -1,0 +1,58 @@
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+}
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}
+.emailInput,
+.passwordInput {
+  width: 280px;
+  height: 50px;
+  padding: 0;
+  padding-left: 20px;
+  border: solid 1px rgb(220, 220, 220);
+  &:hover {
+    border: solid 1px rgb(110, 110, 110);
+  }
+}
+.emailInput {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.goToFind {
+  border: solid 1px rgb(220, 220, 220);
+  width: 280px;
+  height: 40px;
+  line-height: 40px;
+  text-align: end;
+  padding-right: 20px;
+  text-decoration-line: none;
+  font-size: 13px;
+  color: rgb(110, 110, 110);
+  background-color: rgb(220, 220, 220);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  &:hover {
+    font-weight: bold;
+  }
+}
+.loginBtn {
+  width: 300px;
+  height: 50px;
+  margin-top: 20px;
+  border: none;
+  font-weight: bold;
+  font-size: 17px;
+  background-color: rgb(98, 218, 255);
+  color: white;
+  &:hover {
+    background-color: rgb(32, 203, 255);
+    cursor: pointer;
+  }
+}

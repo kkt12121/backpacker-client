@@ -31,7 +31,7 @@ function FindUserInfo() {
     <>
       <div className="findUserInfoBox">
         <h1>회원정보 찾기</h1>
-        <p className="findboxText"> 이메일 찾기 </p>
+        <p className="findBoxText"> 이메일 찾기 </p>
         <div className="findEmailBox">
           {emailState.email ? (
             <div className="yourEmail">
@@ -58,7 +58,7 @@ function FindUserInfo() {
             </>
           )}
         </div>
-        <p className="findboxText"> 패스워드 찾기 </p>
+        <p className="findBoxText"> 패스워드 찾기 </p>
         <div className="findPwBox">
           <input
             className="inputTag"

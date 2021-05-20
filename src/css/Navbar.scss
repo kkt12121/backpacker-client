@@ -1,11 +1,11 @@
 .nav {
   display: flex;
-  justify-content: space-between;
   height: 8%;
   color: rgba (0, 0, 0, 1);
   position: fixed;
-  margin-right: 1%;
-  margin-top: 1%;
+  padding-right: 1%;
+  padding-top: 1%;
+  align-items: center;
 }
 
 .hamburgerStick1 {
@@ -33,18 +33,20 @@
   z-index: 2;
 }
 .navLogo {
-  width: 11%;
+  width: 40%;
   height: auto;
   margin-left: 10%;
+  cursor: pointer;
 }
 .hamburgerMenu {
   display: flex;
+  margin-left: 76%;
   flex-direction: column;
   cursor: pointer;
 }
 
 .hamburgerMenuOn {
-  margin-top: 0.5%;
+  margin-left: 75.2%;
   .hamburgerStick1 {
     @extend .hamburgerStick1;
     z-index: 2;

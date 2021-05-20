@@ -44,12 +44,13 @@ export const findEmailReducer = (
 export const findPwReducer = (state = findPwState, action: findInfoAction) => {
   switch (action.type) {
     case FIND_PASSWORD:
-      alert("이메일 주소로 임시 비밀번호가 전송되었습니다.");
+      alert("이메일 주소로 임시 비밀번호가 전송되었습니다");
       return {
         ...state,
         success: true,
       };
     case FAIL_TO_FIND:
+      alert("입력을 확인하세요");
       return {
         ...state,
         success: false,
