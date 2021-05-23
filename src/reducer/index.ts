@@ -12,6 +12,8 @@ import {
   listBudgetUpdateReducer,
   listCityUpdateReducer,
 } from "./ListFindReducer";
+import filteredListReducer from "./FilteredListReducer";
+
 const RootReducer = combineReducers({
   TestReducer,
   loginReducer,
@@ -23,7 +25,7 @@ const RootReducer = combineReducers({
   SignupReducer,
   listCityUpdateReducer,
   listBudgetUpdateReducer,
-
+  filteredListReducer,
 });
 
 export default RootReducer;
