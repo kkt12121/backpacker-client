@@ -12,6 +12,7 @@ import {
   listBudgetUpdateReducer,
   listCityUpdateReducer,
 } from "./ListFindReducer";
+import filteredListReducer from "./FilteredListReducer";
 import {
   contentItemReducer,
   dayListReducer,
@@ -30,6 +31,7 @@ const RootReducer = combineReducers({
   SignupReducer,
   listCityUpdateReducer,
   listBudgetUpdateReducer,
+  filteredListReducer,
   contentItemReducer,
   priceReducer,
   test,

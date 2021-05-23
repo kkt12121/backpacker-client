@@ -21,7 +21,6 @@ function App() {
       <Switch>
         <Route exact path="/">
           <MainPage />
-          <SignUpPage />
         </Route>
         <Route path="/finduser">
           <FindUserInfoPage />
