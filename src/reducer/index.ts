@@ -3,6 +3,8 @@ import {
   LoginModalClick,
   ModalClickReducer,
   MapClick,
+  InviteClick,
+  ContentItemMapClick,
 } from "./ModalClickReducer";
 import TestReducer from "./TestReducer";
 import loginReducer from "./LoginReducer";
@@ -12,6 +14,7 @@ import {
   listBudgetUpdateReducer,
   listCityUpdateReducer,
 } from "./ListFindReducer";
+
 import filteredListReducer from "./FilteredListReducer";
 import {
   contentItemReducer,
@@ -28,6 +31,8 @@ const RootReducer = combineReducers({
   ModalClickReducer,
   LoginModalClick,
   MapClick,
+  InviteClick,
+  ContentItemMapClick,
   SignupReducer,
   listCityUpdateReducer,
   listBudgetUpdateReducer,

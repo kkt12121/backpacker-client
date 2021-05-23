@@ -48,6 +48,10 @@
   cursor: pointer;
 }
 
-.signupMenu:hover {
+.signupBtn {
+  text-decoration-line: none;
+  color: white;
+}
+.signupBtn:hover {
   color: red;
 }
