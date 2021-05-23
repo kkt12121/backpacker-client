@@ -1,14 +1,24 @@
 import React, { ReactElement } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "reducer";
 import ContentItem from "./ContentItem";
 
-interface Props {}
+interface Props {
+  currentDay: number;
+  planList: Object[][];
+}
 
-export default function ContentItemList({}: Props): ReactElement {
+export default function ContentItemList({
+  currentDay,
+  planList,
+}: Props): ReactElement {
+  const content = useSelector((state: RootState) => state.test);
+
   return (
     <>
-      <ContentItem />
-      <ContentItem />
-      <ContentItem />
+      {planList[currentDay] !== undefined
+        ? planList[currentDay].map((el) => <ContentItem index={el} />)
+        : null}
     </>
   );
 }

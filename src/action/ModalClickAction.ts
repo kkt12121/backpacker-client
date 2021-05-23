@@ -39,3 +39,13 @@ export const mapClose = () => {
     type: MAP_CLOSE,
   };
 };
+
+type clickOpenAction = ReturnType<typeof isClickAction>;
+type clickCloseAction = ReturnType<typeof isClickCloseAction>;
+export type modalClickAction = clickOpenAction | clickCloseAction;
+type loginClickAction = ReturnType<typeof loginModalClickAction>;
+type loginClickCloseAction = ReturnType<typeof loginModalClickCloseAction>;
+export type modalloginAction = loginClickAction | loginClickCloseAction;
+type mapOpenAction = ReturnType<typeof mapOpen>;
+type mapCloseAction = ReturnType<typeof mapClose>;
+export type mapAction = mapOpenAction | mapCloseAction;
