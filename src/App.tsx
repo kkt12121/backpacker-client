@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Route, Switch } from "react-router";
 import ContentWritePage from "page/ContentWritePage";
 import ContentListPage from "page/ContentListPage";
+import EnterContentPage from "page/EnterContentPage";
+import ContentInvite from "component/ContentInvite";
 
 function App() {
   let dispatch = useDispatch();
@@ -17,18 +19,23 @@ function App() {
         아ㅏㅏ아아ㅏㅏ아ㅏ아아
       </button> */}
 
-      <Navbar />
+      {/* <Navbar /> */}
       <Switch>
         <Route exact path="/">
           <MainPage />
           <LoginPage />
-          <SignUpPage />
         </Route>
         <Route path="/finduser">
           <FindUserInfoPage />
         </Route>
         <Route path="/contentwrite">
           <ContentWritePage />
+        </Route>
+        <Route path="/signup">
+          <SignUpPage />
+        </Route>
+        <Route path="/content">
+          <EnterContentPage />
         </Route>
       </Switch>
       <Switch>

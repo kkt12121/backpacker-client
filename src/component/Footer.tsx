@@ -12,7 +12,7 @@ function Footer() {
             <a href="https://github.com/altanis7">Hong@github</a>
           </p>
           <p>
-            <a href="https://github.com/codono">Sue@github</a>
+            <a href="https://github.com/codono">Seo@github</a>
           </p>
           <p>
             <a href="https://github.com/junhyok">Son@github</a>

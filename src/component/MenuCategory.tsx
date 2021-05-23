@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import LoginModal from "./LoginModal";
 import "../css/MenuCategory.scss";
+import { Link } from "react-router-dom";
 interface Props {}
 
 export default function MenuCategory({}: Props): ReactElement {
@@ -31,7 +32,11 @@ export default function MenuCategory({}: Props): ReactElement {
         >
           로그인
         </ul>
-        <ul className="signupMenu">회원가입</ul>
+        <ul className="signupMenu">
+          <Link className="signupBtn" to="/signup">
+            회원가입
+          </Link>
+        </ul>
       </div>
       <LoginModal />
     </>

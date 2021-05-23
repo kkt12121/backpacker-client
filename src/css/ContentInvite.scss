@@ -1,0 +1,53 @@
+.sectionButton {
+  display: flex;
+}
+.input {
+  position: absolute;
+  left: -1000%;
+}
+.input:checked + label {
+  background: #4fbe79;
+}
+.input:checked + label:after {
+  left: calc(100% - 185.5px);
+}
+.label {
+  display: block;
+  width: 150px;
+  height: 40px;
+  background: #d3d3d3;
+  border-radius: 60px;
+  transition: background 0.4s;
+}
+.label:after {
+  content: "";
+  position: absolute;
+  left: 120.5px;
+  top: 33%;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background: #fff;
+  transform: translateY(-50%);
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
+.span {
+  display: none;
+}
+.read {
+  font-weight: bold;
+  margin-left: 15%;
+  margin-right: 5%;
+}
+.readWrite {
+  font-weight: bold;
+}
+.buttonToggle {
+  margin-right: 5%;
+}
+.inputLink {
+  width: 70%;
+  margin-top: 5%;
+  margin-left: 15%;
+}

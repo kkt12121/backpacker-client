@@ -9,6 +9,7 @@ interface Props {}
 
 export default function MapModal({}: Props): ReactElement {
   const mapClickState = useSelector((state: RootState) => state.MapClick);
+  console.log(mapClickState);
   const dispatch = useDispatch();
   return (
     <>

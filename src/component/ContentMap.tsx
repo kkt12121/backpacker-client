@@ -10,7 +10,10 @@ export default function ContentMap({}: Props): ReactElement {
   useEffect(() => {
     const container = document.getElementById("myMap");
     const options = {
-      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+      center: new window.kakao.maps.LatLng(
+        37.624915253753194,
+        127.15122688059974
+      ),
       level: 3,
     };
 
