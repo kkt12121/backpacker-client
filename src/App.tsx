@@ -13,17 +13,16 @@ import ContentInvite from "component/ContentInvite";
 function App() {
   let dispatch = useDispatch();
   const testReducer = useSelector((state) => state);
+
   return (
     <div className="App">
       {/* <button onClick={() => dispatch(getStoreData())}>
         아ㅏㅏ아아ㅏㅏ아ㅏ아아
       </button> */}
-
-      {/* <Navbar /> */}
+      <Navbar />
       <Switch>
         <Route exact path="/">
           <MainPage />
-          <LoginPage />
         </Route>
         <Route path="/finduser">
           <FindUserInfoPage />

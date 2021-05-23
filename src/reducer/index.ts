@@ -14,7 +14,15 @@ import {
   listBudgetUpdateReducer,
   listCityUpdateReducer,
 } from "./ListFindReducer";
-import { searchPlaceReducer } from "./SearchPlaceReducer";
+
+import filteredListReducer from "./FilteredListReducer";
+import {
+  contentItemReducer,
+  dayListReducer,
+  priceReducer,
+  test,
+} from "./ContentWriteReducer";
+
 const RootReducer = combineReducers({
   TestReducer,
   loginReducer,
@@ -28,7 +36,11 @@ const RootReducer = combineReducers({
   SignupReducer,
   listCityUpdateReducer,
   listBudgetUpdateReducer,
-  searchPlaceReducer,
+  filteredListReducer,
+  contentItemReducer,
+  priceReducer,
+  test,
+  dayListReducer,
 });
 
 export default RootReducer;

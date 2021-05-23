@@ -1,4 +1,5 @@
 import ContentWriteArea from "component/ContentWriteArea";
+import ContentWriteAreaHeader from "component/ContentWriteAreaHeader";
 import React, { ReactElement } from "react";
 
 interface Props {}
