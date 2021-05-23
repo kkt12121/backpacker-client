@@ -13,6 +13,12 @@ import {
   listCityUpdateReducer,
 } from "./ListFindReducer";
 import filteredListReducer from "./FilteredListReducer";
+import {
+  contentItemReducer,
+  dayListReducer,
+  priceReducer,
+  test,
+} from "./ContentWriteReducer";
 
 const RootReducer = combineReducers({
   TestReducer,
@@ -26,6 +32,10 @@ const RootReducer = combineReducers({
   listCityUpdateReducer,
   listBudgetUpdateReducer,
   filteredListReducer,
+  contentItemReducer,
+  priceReducer,
+  test,
+  dayListReducer,
 });
 
 export default RootReducer;

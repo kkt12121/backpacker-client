@@ -11,12 +11,12 @@ import ContentListPage from "page/ContentListPage";
 function App() {
   let dispatch = useDispatch();
   const testReducer = useSelector((state) => state);
+
   return (
     <div className="App">
       {/* <button onClick={() => dispatch(getStoreData())}>
         아ㅏㅏ아아ㅏㅏ아ㅏ아아
       </button> */}
-
       <Navbar />
       <Switch>
         <Route exact path="/">
