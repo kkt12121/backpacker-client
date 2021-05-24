@@ -48,6 +48,15 @@ function Login() {
           >
             로그인
           </button>
+          <button
+            onClick={() => {
+              window.location.assign(
+                "https://accounts.google.com/o/oauth2/auth?client_id=790150276040-a80efgd4j9o2qu2ftd49e0esosrpsrho.apps.googleusercontent.com&redirect_uri=https://localhost:4000/mypage&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile"
+              );
+            }}
+          >
+            Google 로그인
+          </button>
         </div>
       </div>
     </>
