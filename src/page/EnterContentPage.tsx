@@ -26,6 +26,7 @@ export default function EnterContentPage() {
           </div>
           <div>
             <button
+              className="btnInvite"
               onClick={() => {
                 inviteClickState
                   ? dispatch(inviteClose())

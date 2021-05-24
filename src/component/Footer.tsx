@@ -9,22 +9,33 @@ function Footer() {
         <div className="footerText2">
           Contact
           <p>
-            <a href="https://github.com/altanis7">Hong@github</a>
+            <a className="linkGithub" href="https://github.com/altanis7">
+              Hong@github
+            </a>
           </p>
           <p>
-            <a href="https://github.com/codono">Seo@github</a>
+            <a className="linkGithub" href="https://github.com/codono">
+              Seo@github
+            </a>
           </p>
           <p>
-            <a href="https://github.com/junhyok">Son@github</a>
+            <a className="linkGithub" href="https://github.com/junhyok">
+              Son@github
+            </a>
           </p>
           <p>
-            <a href="https://github.com/kkt12121">Kim@github</a>
+            <a className="linkGithub" href="https://github.com/kkt12121">
+              Kim@github
+            </a>
           </p>
         </div>
         <div className="footerText2">
           About us
           <p>
-            <a href="https://github.com/codestates/backpacker-client">
+            <a
+              className="linkGithub"
+              href="https://github.com/codestates/backpacker-client"
+            >
               Repository
             </a>
           </p>

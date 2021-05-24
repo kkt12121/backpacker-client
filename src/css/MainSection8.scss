@@ -144,3 +144,10 @@
     right: 3%;
   }
 }
+.btnStart {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: gray;
+  }
+}

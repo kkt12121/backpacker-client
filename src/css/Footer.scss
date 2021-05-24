@@ -50,3 +50,10 @@
   border-radius: 50%;
   padding: 0.7rem;
 }
+.linkGithub {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: gray;
+  }
+}
