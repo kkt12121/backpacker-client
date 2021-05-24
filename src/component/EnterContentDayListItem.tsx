@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import EnterContentList from "./EnterContentList";
+import "../css/EnterContentDayListItem.scss";
 interface Props {}
 
 export default function EnterContentDayListItem({}: Props): ReactElement {
