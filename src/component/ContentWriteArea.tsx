@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { ReactElement, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "reducer";
@@ -22,6 +23,14 @@ export default function ContentWriteArea({}: Props): ReactElement {
   //    <ContentItemList currentDay={currentDay} planList={planList} />
   //    ) : null}
   // })
+
+  // res.data.item[0] 데이터 모음
+  // res.data.item[0].addr1 주소
+  // res.data.item[0].firstimage 사진 주소
+  // res.data.item[0].mapx mapy 위도 경도
+  // res.data.item[0].title 장소이름
+  // res.data.item[0].tel 전화번호
+
   return (
     <>
       <ContentWriteCalendar setcurrentDay={setcurrentDay} />
