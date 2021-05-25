@@ -19,8 +19,8 @@ export default function ContentSearch({
   const dispatch = useDispatch();
 
   const handleaddPlan = async () => {
-    const res = await axios.post("http://localhost:4000/api/detailList", {
-      title: place,
+    const res = await axios.post("http://localhost:4000/api/search", {
+      keyword: place,
       num: 1,
     });
 
@@ -28,14 +28,22 @@ export default function ContentSearch({
     if (copyPlan[currentDay] === undefined) {
       copyPlan[currentDay] = [
         {
-          thumbnail: res.data.item[0].galWebImageUrl,
-          title: res.data.item[0].galTitle,
+          thumbnail: res.data.item[0].firstimage,
+          title: res.data.item[0].title,
+          mapx: res.data.item[0].mapx,
+          mapy: res.data.item[0].mapy,
+          address: res.data.item[0].addr1,
+          tel: res.data.item[0].tel,
         },
       ];
     } else {
       copyPlan[currentDay].push({
-        thumbnail: res.data.item[0].galWebImageUrl,
-        title: res.data.item[0].galTitle,
+        thumbnail: res.data.item[0].firstimage,
+        title: res.data.item[0].title,
+        mapx: res.data.item[0].mapx,
+        mapy: res.data.item[0].mapy,
+        address: res.data.item[0].addr1,
+        tel: res.data.item[0].tel,
       });
     }
     setplanList(copyPlan);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowCircleUp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "../css/MainSection8.scss";
-
 const MainSection8 = () => {
   const handleClick = () => {
     window[`scrollTo`]({ top: 0, behavior: `smooth` });
@@ -12,8 +12,9 @@ const MainSection8 = () => {
       <div className="content">
         <div className="sectionTitle">BACKPACKER</div>
         <div className="buttonStart">
-          NOW START
-          {/* <Link to="/">NOW START</Link> */}
+          <Link className="btnStart" to="listpage">
+            NOW START
+          </Link>
         </div>
       </div>
       <div className="img">
