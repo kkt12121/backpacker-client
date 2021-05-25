@@ -21,6 +21,7 @@ export const getLoginToken =
       );
       console.log("로그인응답", res);
       const token = res.data.accessToken;
+      localStorage.setItem("token", token);
       dispatch({
         email: email,
         password: password,
