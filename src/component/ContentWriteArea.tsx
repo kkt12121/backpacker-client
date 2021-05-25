@@ -8,6 +8,9 @@ import ContentItemList from "./ContentItemList";
 import ContentSearch from "./ContentSearch";
 import ContentWriteAreaHeader from "./ContentWriteAreaHeader";
 import ContentWriteCalendar from "./ContentWriteCalendar";
+import MapItemModal from "./MapItemModal";
+import MapModal from "./MapModal";
+import { createGlobalStyle } from "styled-components";
 import { DropResult } from "react-beautiful-dnd";
 import { reorder } from "./reorder";
 interface Props {}
@@ -17,7 +20,10 @@ export default function ContentWriteArea({}: Props): ReactElement {
   const dayList = useSelector((state: RootState) => state.dayListReducer);
   const [currentDay, setcurrentDay] = useState<number>(0);
   const [planList, setplanList] = useState<Array<Array<Object>>>([[{}]]);
-
+  const mapClickState = useSelector((state: RootState) => state.MapClick);
+  const mapItemClickState = useSelector(
+    (state: RootState) => state.MapItemClick
+  );
   useEffect(() => {
     console.log(planList);
   }, [planList]);
@@ -35,6 +41,15 @@ export default function ContentWriteArea({}: Props): ReactElement {
   // res.data.item[0].mapx mapy 위도 경도
   // res.data.item[0].title 장소이름
   // res.data.item[0].tel 전화번호
+  const Bodytag = createGlobalStyle`
+body {
+  overflow : hidden;
+  height : 100%;
+}
+body*{
+  touch-action : none;
+}
+`;
 
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
@@ -50,6 +65,8 @@ export default function ContentWriteArea({}: Props): ReactElement {
   };
   return (
     <>
+      {mapItemClickState ? <Bodytag /> : null}
+      {mapItemClickState ? <div className="modal"></div> : null}
       <ContentWriteCalendar setcurrentDay={setcurrentDay} />
 
       <section className="contentWriteAreaBox">
@@ -86,6 +103,7 @@ export default function ContentWriteArea({}: Props): ReactElement {
         />
         <button className="writeCompletedButton">작성완료</button>
       </section>
+      {mapClickState ? <MapModal planList={planList} /> : null}
     </>
   );
 }

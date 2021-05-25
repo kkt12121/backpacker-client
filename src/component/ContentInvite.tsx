@@ -32,11 +32,11 @@ function ContentInvite({}: Props): ReactElement {
         </div>
       </div>
       <div className="modalContent">
-        {/* <textarea
+        <textarea
           className="inputLink"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-        /> */}
+        />
         <CopyToClipboard text={inputValue}>
           <button>Copy</button>
         </CopyToClipboard>

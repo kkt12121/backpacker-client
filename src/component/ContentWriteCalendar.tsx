@@ -25,6 +25,7 @@ export default function ContentWriteCalendar({
   const [dayList, setdayList] = useState<[string?] | null>(null);
   const dispatch = useDispatch();
   const mapClickState = useSelector((state: RootState) => state.MapClick);
+
   const state = useSelector((state: RootState) => state);
 
   useEffect(() => {
@@ -65,8 +66,7 @@ body*{
   return (
     <>
       {mapClickState ? <Bodytag /> : null}
-
-      {mapClickState ? <div className="modal"></div> : null}
+      {mapClickState ? <div className="modal"></div> : null}{" "}
       <div className="CalendarBox">
         <ReactDatePicker
           locale="ko"
@@ -123,7 +123,7 @@ body*{
           (Number(endDate?.getTime()) - Number(startDate?.getTime())) / 86400000
         ) + 1
       )}
-      <MapModal />
+      {/* {mapClickState ? <MapModal /> : null} */}
     </>
   );
 }

@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/MapModal.scss";
 import ContentMap from "./ContentMap";
-interface Props {}
-
-export default function MapModal({}: Props): ReactElement {
+interface Props {
+  planList: Object[][];
+}
+export default function MapModal({ planList }: Props): ReactElement {
   const mapClickState = useSelector((state: RootState) => state.MapClick);
   console.log(mapClickState);
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export default function MapModal({}: Props): ReactElement {
             dispatch(mapClose());
           }}
         />
-        {mapClickState ? <ContentMap /> : null}
+        {mapClickState ? <ContentMap planList={planList} /> : null}
       </div>
     </>
   );
