@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentWriteArea.scss";
@@ -8,6 +8,8 @@ import ContentItemList from "./ContentItemList";
 import ContentSearch from "./ContentSearch";
 import ContentWriteAreaHeader from "./ContentWriteAreaHeader";
 import ContentWriteCalendar from "./ContentWriteCalendar";
+import { DropResult } from "react-beautiful-dnd";
+import { reorder } from "./reorder";
 interface Props {}
 
 export default function ContentWriteArea({}: Props): ReactElement {
@@ -16,6 +18,9 @@ export default function ContentWriteArea({}: Props): ReactElement {
   const [currentDay, setcurrentDay] = useState<number>(0);
   const [planList, setplanList] = useState<Array<Array<Object>>>([[{}]]);
 
+  useEffect(() => {
+    console.log(planList);
+  }, [planList]);
   // 날짜 차이 길이의 arr 생성,
   // 그 arr.map
   // arr = [0, 0, 0, 0, 0].map((el) => {
@@ -31,6 +36,18 @@ export default function ContentWriteArea({}: Props): ReactElement {
   // res.data.item[0].title 장소이름
   // res.data.item[0].tel 전화번호
 
+  const onDragEnd = ({ destination, source }: DropResult) => {
+    if (!destination) return;
+
+    const newItems = reorder(
+      planList,
+      source.index,
+      destination.index,
+      currentDay
+    );
+
+    setplanList(newItems);
+  };
   return (
     <>
       <ContentWriteCalendar setcurrentDay={setcurrentDay} />
@@ -43,10 +60,13 @@ export default function ContentWriteArea({}: Props): ReactElement {
               return currentDay === Number(el[0]) ? (
                 <>
                   <h1>데이{currentDay + 1}</h1>
-                  <ContentItemList
-                    currentDay={currentDay}
-                    planList={planList}
-                  />
+                  <div>
+                    <ContentItemList
+                      currentDay={currentDay}
+                      planList={planList}
+                      onDragEnd={onDragEnd}
+                    />
+                  </div>
                 </>
               ) : null;
             })

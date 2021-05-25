@@ -1,38 +1,41 @@
 import React, { ReactElement } from "react";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { IoClose } from "react-icons/io5";
+import { DragDropContext, Draggable } from "react-beautiful-dnd";
 import { useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentItem.scss";
 import ContentPrice from "./ContentPrice";
 interface Props {
-  index: { title?: string; thumbnail?: string };
+  el: any;
+  idx: number;
 }
 
-export default function ContentItem({ index }: Props): ReactElement {
+export default function ContentItem({ el, idx }: Props): ReactElement {
   const content = useSelector((state: RootState) => state.contentItemReducer);
-
-  const dropEvent = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.dataTransfer.getData("text");
-  };
 
   return (
     <>
-      {Object.keys(index).length === 0 ? null : (
-        <>
-          <DndProvider backend={HTML5Backend}>
-            <div className="contentItemBox">
-              <img className="contentImage" src={index.thumbnail} />
-              <div className="contentPlaceBox">
-                <div className="contentPlace"> {index.title}</div>
-                {/* <IoClose size={40} className="deleteItem" onClick={() => {}} /> */}
+      {Object.keys(el).length === 0 ? null : (
+        <Draggable draggableId={el.contentid} index={idx}>
+          {(provided, snapshot) => (
+            <>
+              <div
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                className={snapshot.isDragging ? "droppableList" : ""}
+              >
+                <div className="contentItemBox">
+                  <img className="contentImage" src={el.thumbnail} />
+                  <div className="contentPlaceBox">
+                    <div className="contentPlace"> {el.title}</div>
+                    {/* <IoClose size={40} className="deleteItem" onClick={() => {}} /> */}
+                  </div>
+                </div>
+                <ContentPrice />
               </div>
-            </div>
-            <ContentPrice />
-          </DndProvider>
-        </>
+            </>
+          )}
+        </Draggable>
       )}
     </>
   );
