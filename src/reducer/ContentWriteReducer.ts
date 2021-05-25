@@ -49,7 +49,7 @@ let contentWrite: {
 export let daylist: [(string | undefined)?] | null = null;
 
 export let contentItem: {
-  data: { title?: string; thumbnail?: string }[];
+  data: { title?: string; thumbnail?: string; mapx?: string; mapy?: string }[];
 } = { data: [{}] };
 
 export let contentPrice: {

@@ -5,6 +5,8 @@ import {
   LOGIN_MODAL_CLICK_CLOSE,
   MAP_OPEN,
   MAP_CLOSE,
+  MAP_ITEM_OPEN,
+  MAP_ITEM_CLOSE,
   INVITE_OPEN,
   INVITE_CLOSE,
   CONTENT_ITEM_MAP_OPEN,
@@ -12,7 +14,7 @@ import {
   modalClickAction,
   modalloginAction,
   mapAction,
-
+  mapItemAction,
 } from "action/ModalClickAction";
 
 let isClick = false;
@@ -20,6 +22,8 @@ let isClick = false;
 let loginModalClick = false;
 
 let mapClick = false;
+
+let mapItemClick = false;
 
 let inviteClick = false;
 
@@ -57,6 +61,16 @@ export const MapClick = (state = mapClick, action: mapAction) => {
     case MAP_OPEN:
       return true;
     case MAP_CLOSE:
+      return false;
+    default:
+      return state;
+  }
+};
+export const MapItemClick = (state = mapItemClick, action: mapItemAction) => {
+  switch (action.type) {
+    case MAP_ITEM_OPEN:
+      return true;
+    case MAP_ITEM_CLOSE:
       return false;
     default:
       return state;

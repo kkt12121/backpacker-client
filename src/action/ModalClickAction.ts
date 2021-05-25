@@ -4,6 +4,8 @@ export const LOGIN_MODAL_CLICK = "LOGIN_MODAL_CLICK";
 export const LOGIN_MODAL_CLICK_CLOSE = "LOGIN_MODAL_CLICK_CLOSE";
 export const MAP_OPEN = "MAP_OPEN";
 export const MAP_CLOSE = "MAP_CLOSE";
+export const MAP_ITEM_OPEN = "MAP_ITEM_OPEN";
+export const MAP_ITEM_CLOSE = "MAP_ITEM_CLOSE";
 export const INVITE_OPEN = "INVITE_OPEN";
 export const INVITE_CLOSE = "INVITE_CLOSE";
 export const CONTENT_ITEM_MAP_OPEN = "CONTENT_ITEM_MAP_OPEN";
@@ -42,6 +44,16 @@ export const mapClose = () => {
     type: MAP_CLOSE,
   };
 };
+export const mapItemOpen = () => {
+  return {
+    type: MAP_ITEM_OPEN,
+  };
+};
+export const mapItemClose = () => {
+  return {
+    type: MAP_ITEM_CLOSE,
+  };
+};
 export const inviteOpen = () => {
   return {
     type: INVITE_OPEN,
@@ -72,3 +84,6 @@ export type modalloginAction = loginClickAction | loginClickCloseAction;
 type mapOpenAction = ReturnType<typeof mapOpen>;
 type mapCloseAction = ReturnType<typeof mapClose>;
 export type mapAction = mapOpenAction | mapCloseAction;
+type mapItemOpenAction = ReturnType<typeof mapOpen>;
+type mapItemCloseAction = ReturnType<typeof mapClose>;
+export type mapItemAction = mapItemOpenAction | mapItemCloseAction;

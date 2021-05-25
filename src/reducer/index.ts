@@ -3,6 +3,7 @@ import {
   LoginModalClick,
   ModalClickReducer,
   MapClick,
+  MapItemClick,
   InviteClick,
   ContentItemMapClick,
 } from "./ModalClickReducer";
@@ -31,6 +32,7 @@ const RootReducer = combineReducers({
   ModalClickReducer,
   LoginModalClick,
   MapClick,
+  MapItemClick,
   InviteClick,
   ContentItemMapClick,
   SignupReducer,
