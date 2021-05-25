@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentWriteArea.scss";
@@ -11,7 +11,8 @@ import ContentWriteCalendar from "./ContentWriteCalendar";
 import MapItemModal from "./MapItemModal";
 import MapModal from "./MapModal";
 import { createGlobalStyle } from "styled-components";
-
+import { DropResult } from "react-beautiful-dnd";
+import { reorder } from "./reorder";
 interface Props {}
 
 export default function ContentWriteArea({}: Props): ReactElement {
@@ -23,6 +24,9 @@ export default function ContentWriteArea({}: Props): ReactElement {
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
+  useEffect(() => {
+    console.log(planList);
+  }, [planList]);
   // 날짜 차이 길이의 arr 생성,
   // 그 arr.map
   // arr = [0, 0, 0, 0, 0].map((el) => {
@@ -46,6 +50,19 @@ body*{
   touch-action : none;
 }
 `;
+
+  const onDragEnd = ({ destination, source }: DropResult) => {
+    if (!destination) return;
+
+    const newItems = reorder(
+      planList,
+      source.index,
+      destination.index,
+      currentDay
+    );
+
+    setplanList(newItems);
+  };
   return (
     <>
       {mapItemClickState ? <Bodytag /> : null}
@@ -60,10 +77,13 @@ body*{
               return currentDay === Number(el[0]) ? (
                 <>
                   <h1>데이{currentDay + 1}</h1>
-                  <ContentItemList
-                    currentDay={currentDay}
-                    planList={planList}
-                  />
+                  <div>
+                    <ContentItemList
+                      currentDay={currentDay}
+                      planList={planList}
+                      onDragEnd={onDragEnd}
+                    />
+                  </div>
                 </>
               ) : null;
             })

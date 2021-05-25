@@ -25,9 +25,15 @@ export default function ContentSearch({
     });
 
     let copyPlan: Object[][] = [...planList];
+    if (copyPlan[0].length >= 1) {
+      if (Object.keys(copyPlan[0][0]).length === 0) {
+        copyPlan[0].shift();
+      }
+    }
     if (copyPlan[currentDay] === undefined) {
       copyPlan[currentDay] = [
         {
+          contentid: String(res.data.item[0].contentid),
           thumbnail: res.data.item[0].firstimage,
           title: res.data.item[0].title,
           mapx: res.data.item[0].mapx,
@@ -38,6 +44,7 @@ export default function ContentSearch({
       ];
     } else {
       copyPlan[currentDay].push({
+        contentid: String(res.data.item[0].contentid),
         thumbnail: res.data.item[0].firstimage,
         title: res.data.item[0].title,
         mapx: res.data.item[0].mapx,
