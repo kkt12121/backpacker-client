@@ -1,3 +1,4 @@
+import axios from "axios";
 import Carousel from "component/Carousel";
 import Footer from "component/Footer";
 import MainSection1 from "component/MainSection1";
@@ -22,6 +23,16 @@ body*{
   touch-action : none;
 }
 `;
+const url = new URL(window.location.href);
+const authorizationCode = url.searchParams.get("code");
+// console.log(authorizationCode);
+if (authorizationCode) {
+  axios.post(
+    "https://localhost:4000/user/oauth",
+    { authorizationCode: authorizationCode },
+    { headers: { accept: "application/json" } }
+  );
+}
 
 export default function MainPage({}: Props): ReactElement {
   const isClickReducer = useSelector(

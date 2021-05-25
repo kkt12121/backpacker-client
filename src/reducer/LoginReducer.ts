@@ -18,14 +18,17 @@ interface loginAct {
 const loginReducer = (state = loginState, action: loginAct) => {
   switch (action.type) {
     case GET_LOGIN_TOKEN:
+      window.location.assign("http://localhost:3000/");
       return {
         ...state,
         email: action.email,
         password: action.password,
         accesstoken: action.payload,
+        success: true,
       };
 
     case LOGIN_FAIL:
+      alert("이메일과 비밀번호를 확인해주세요!");
       return {
         ...state,
         email: action.email,
