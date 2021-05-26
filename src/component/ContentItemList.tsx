@@ -2,7 +2,6 @@ import React, { ReactElement, useState } from "react";
 import {
   DragDropContext,
   Droppable,
-  DropResult,
   OnDragEndResponder,
 } from "react-beautiful-dnd";
 import { useSelector } from "react-redux";
@@ -12,18 +11,19 @@ import MapItemModal from "./MapItemModal";
 import MapModal from "./MapModal";
 
 interface Props {
-  currentDay: number;
   planList: Object[][];
   onDragEnd: OnDragEndResponder;
+  setplanList: React.Dispatch<React.SetStateAction<Object[][]>>;
 }
 
 export default function ContentItemList({
-  currentDay,
   planList,
   onDragEnd,
+  setplanList,
 }: Props): ReactElement {
   const content = useSelector((state: RootState) => state.test);
   const mapClickState = useSelector((state: RootState) => state.MapClick);
+  const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
@@ -36,12 +36,19 @@ export default function ContentItemList({
             <div ref={provided.innerRef} {...provided.droppableProps}>
               {planList[currentDay] !== undefined
                 ? planList[currentDay].map((el, idx) => (
-                    <ContentItem el={el} idx={idx} key={Math.random()}  setindex={setIndex} />
+                    <ContentItem
+                      el={el}
+                      idx={idx}
+                      key={Math.random()}
+                      setindex={setIndex}
+                      setplanList={setplanList}
+                      planList={planList}
+                    />
                   ))
                 : null}
-               {mapItemClickState ? (
-        <MapItemModal index={planList[currentDay][index]} />
-      ) : null}
+              {mapItemClickState ? (
+                <MapItemModal index={planList[currentDay][index]} />
+              ) : null}
               {provided.placeholder}
             </div>
           )}

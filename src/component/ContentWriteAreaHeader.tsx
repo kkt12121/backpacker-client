@@ -1,15 +1,8 @@
 import React, { ReactElement } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "reducer";
 import "../css/ContentWriteAreaHeader.scss";
-interface Props {
-  setcurrentDay: React.Dispatch<React.SetStateAction<number>>;
-}
+interface Props {}
 
-export default function ContentWriteAreaHeader({
-  setcurrentDay,
-}: Props): ReactElement {
-  const state = useSelector((state: RootState) => state.test);
+export default function ContentWriteAreaHeader({}: Props): ReactElement {
   return (
     <>
       <div className="contentWriteAreaHeader">
@@ -20,19 +13,6 @@ export default function ContentWriteAreaHeader({
             <span>뚱이</span>
           </div>
         </div>
-        {/* <div className="dayBox">
-          {state.data.map((el) => {
-            return (
-              <button
-                onClick={() => {
-                  setcurrentDay(Number(el.day) - 1);
-                }}
-              >
-                day {el.day}
-              </button>
-            );
-          })}
-        </div> */}
       </div>
     </>
   );
