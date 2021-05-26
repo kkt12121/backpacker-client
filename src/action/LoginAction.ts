@@ -14,9 +14,8 @@ export const getLoginToken =
           password: password,
         },
         {
-          headers: {
-            withCredentials: true,
-          },
+          headers: { "content-type": "application/json" },
+          withCredentials: true,
         }
       );
       console.log("로그인응답", res);
