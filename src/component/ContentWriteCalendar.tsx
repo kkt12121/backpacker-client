@@ -22,7 +22,8 @@ export default function ContentWriteCalendar({}: Props): ReactElement {
   const [dayList, setdayList] = useState<[string?] | null>(null);
   const dispatch = useDispatch();
   const mapClickState = useSelector((state: RootState) => state.MapClick);
-
+  const [divClick, setdivClick] = useState(false);
+  const [divTitle, setdivTitle] = useState("");
   const state = useSelector((state: RootState) => state);
 
   useEffect(() => {
@@ -60,6 +61,17 @@ body*{
 }
 `;
 
+  const handleDivClick = () => {
+    if (divClick) {
+      setdivClick(false);
+    } else {
+      setdivClick(true);
+    }
+  };
+
+  const handleDivTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setdivTitle(e.target.value);
+  };
   return (
     <>
       {mapClickState ? <Bodytag /> : null}
@@ -78,7 +90,24 @@ body*{
           selected={endDate}
           onChange={(date: Date | null) => date && setendDate(date)}
         />
-        <div>무슨무슨 여행</div>
+        <div
+          className={divClick ? "tripTitleOff" : "tripTitle"}
+          onClick={handleDivClick}
+        >
+          {divTitle.length === 0 ? "제목을 입력해주세요" : divTitle}
+        </div>
+        {divClick ? (
+          <>
+            <input onChange={(e) => handleDivTitle(e)} />
+            <button
+              onClick={() => {
+                setdivClick(false);
+              }}
+            >
+              확인
+            </button>
+          </>
+        ) : null}
         <button
           onClick={() => {
             mapClickState ? dispatch(mapClose()) : dispatch(mapOpen());
