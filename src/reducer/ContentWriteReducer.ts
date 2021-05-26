@@ -1,8 +1,10 @@
 import {
   CONTENT_PRICE,
+  CURRENT_DAY,
   DAY_LIST,
   IMAGE_FAIL,
   IMAGE_SUCCESS,
+  PLAN_LIST,
 } from "action/ContentWriteAction";
 let contentWrite: {
   data: {
@@ -46,7 +48,16 @@ let contentWrite: {
   ],
 };
 
+export let currentDay: number = 0;
 export let daylist: [(string | undefined)?] | null = null;
+export let planList: {
+  contentid?: string;
+  thumbnail?: string;
+  title?: string;
+  mapx?: number;
+  mapy?: number;
+  address?: string;
+}[][] = [[{}]];
 
 export let contentItem: {
   data: { title?: string; thumbnail?: string; mapx?: string; mapy?: string }[];
@@ -98,6 +109,28 @@ export const dayListReducer = (state = daylist, action: any) => {
       let copy = [{ ...state }];
       copy = { ...action.payload };
       return copy;
+
+    default:
+      return state;
+  }
+};
+
+export const currentDayReducer = (state = currentDay, action: any) => {
+  switch (action.type) {
+    case CURRENT_DAY:
+      state = action.payload;
+      return state;
+
+    default:
+      return state;
+  }
+};
+
+export const planListReducer = (state = planList, action: any) => {
+  switch (action.type) {
+    case PLAN_LIST:
+      state = action.payload;
+      return state;
 
     default:
       return state;

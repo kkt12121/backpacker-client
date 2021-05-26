@@ -18,3 +18,22 @@
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
+
+.tripTitle:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.tripTitleOff {
+  display: none;
+}
+
+.regionChoice {
+}
+
+.regionListOff {
+  display: none;
+}
+.regionChoice:hover {
+  background-color: red;
+}

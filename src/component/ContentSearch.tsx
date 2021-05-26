@@ -1,9 +1,12 @@
+
 import axios, { AxiosResponse } from "axios";
 import React, { ReactElement, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "reducer";
+
 import "../css/ContentSearch.scss";
 
 interface Props {
-  currentDay: number;
   planList: Object[][];
   setplanList: React.Dispatch<React.SetStateAction<Object[][]>>;
 }
@@ -25,11 +28,15 @@ interface item {
 }
 
 export default function ContentSearch({
-  currentDay,
   planList,
   setplanList,
 }: Props): ReactElement {
+
   const [autoList, setAutoList] = useState<AxiosResponse>();
+  const [place, setplace] = useState<placeState>(null);
+  const currentDay = useSelector((state: RootState) => state.currentDayReducer);
+  const dispatch = useDispatch();
+
 
   const autoComplete = async (keyword: string) => {
     axios.defaults.headers.common["Authorization"] =

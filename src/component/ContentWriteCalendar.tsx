@@ -9,23 +9,21 @@ import { RootState } from "reducer";
 import { mapClose, mapOpen } from "action/ModalClickAction";
 import MapModal from "./MapModal";
 import { createGlobalStyle } from "styled-components";
-import { getDayList } from "action/ContentWriteAction";
+import { getCurrentDay, getDayList } from "action/ContentWriteAction";
+import { currentDay } from "reducer/ContentWriteReducer";
 
-interface Props {
-  setcurrentDay: React.Dispatch<React.SetStateAction<number>>;
-}
+interface Props {}
 
 registerLocale("ko", ko);
-export default function ContentWriteCalendar({
-  setcurrentDay,
-}: Props): ReactElement {
+export default function ContentWriteCalendar({}: Props): ReactElement {
   const [startDate, setstartDate] = useState<Date | null>(new Date());
   const [endDate, setendDate] = useState<Date | null>(new Date());
   const [dayCount, setdayCount] = useState<number | null>(null);
   const [dayList, setdayList] = useState<[string?] | null>(null);
   const dispatch = useDispatch();
   const mapClickState = useSelector((state: RootState) => state.MapClick);
-
+  const [divClick, setdivClick] = useState(false);
+  const [divTitle, setdivTitle] = useState("");
   const state = useSelector((state: RootState) => state);
 
   useEffect(() => {
@@ -63,6 +61,17 @@ body*{
 }
 `;
 
+  const handleDivClick = () => {
+    if (divClick) {
+      setdivClick(false);
+    } else {
+      setdivClick(true);
+    }
+  };
+
+  const handleDivTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setdivTitle(e.target.value);
+  };
   return (
     <>
       {mapClickState ? <Bodytag /> : null}
@@ -81,7 +90,24 @@ body*{
           selected={endDate}
           onChange={(date: Date | null) => date && setendDate(date)}
         />
-        <div>무슨무슨 여행</div>
+        <div
+          className={divClick ? "tripTitleOff" : "tripTitle"}
+          onClick={handleDivClick}
+        >
+          {divTitle.length === 0 ? "제목을 입력해주세요" : divTitle}
+        </div>
+        {divClick ? (
+          <>
+            <input onChange={(e) => handleDivTitle(e)} />
+            <button
+              onClick={() => {
+                setdivClick(false);
+              }}
+            >
+              확인
+            </button>
+          </>
+        ) : null}
         <button
           onClick={() => {
             mapClickState ? dispatch(mapClose()) : dispatch(mapOpen());
@@ -91,26 +117,15 @@ body*{
         </button>
       </div>
       <div className="dayBox">
-        {/* {state.data.map((el) => {
-          return (
-            <button
-              onClick={() => {
-                setcurrentDay(Number(el.day) - 1);
-              }}
-            >
-              day {el.day}
-            </button>
-          );
-        })} */}
         {dayList?.map((el, idx) => {
-          console.log("인덱스", idx);
           return (
             <button
               onClick={() => {
-                setcurrentDay(idx);
+                // setcurrentDay(idx);
+                dispatch(getCurrentDay(idx));
               }}
             >
-              테스트 버튼
+              데이{idx + 1}
             </button>
           );
         })}
