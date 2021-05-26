@@ -1,21 +1,20 @@
-import { getImage } from "action/ContentWriteAction";
 import axios from "axios";
 import React, { ReactElement, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "reducer";
 import "../css/ContentSearch.scss";
 interface Props {
-  currentDay: number;
   planList: Object[][];
   setplanList: React.Dispatch<React.SetStateAction<Object[][]>>;
 }
 
 type placeState = null | string;
 export default function ContentSearch({
-  currentDay,
   planList,
   setplanList,
 }: Props): ReactElement {
   const [place, setplace] = useState<placeState>(null);
+  const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const dispatch = useDispatch();
 
   const handleaddPlan = async () => {

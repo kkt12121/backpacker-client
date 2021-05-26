@@ -19,7 +19,9 @@ import {
 import filteredListReducer from "./FilteredListReducer";
 import {
   contentItemReducer,
+  currentDayReducer,
   dayListReducer,
+  planListReducer,
   priceReducer,
   test,
 } from "./ContentWriteReducer";
@@ -43,6 +45,8 @@ const RootReducer = combineReducers({
   priceReducer,
   test,
   dayListReducer,
+  currentDayReducer,
+  planListReducer,
 });
 
 export default RootReducer;

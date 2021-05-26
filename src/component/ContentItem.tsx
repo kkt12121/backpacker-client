@@ -17,12 +17,16 @@ interface Props {
   setindex?: any;
   el: any;
   idx: number;
+  setplanList: React.Dispatch<React.SetStateAction<Object[][]>>;
+  planList: Object[][];
 }
 
 export default function ContentItem({
   el,
   idx,
   setindex,
+  setplanList,
+  planList,
 }: Props): ReactElement {
   const content = useSelector((state: RootState) => state.contentItemReducer);
   const mapItemClickState = useSelector(
@@ -66,7 +70,11 @@ export default function ContentItem({
                     {/* <IoClose size={40} className="deleteItem" onClick={() => {}} /> */}
                   </div>
                 </div>
-                <ContentPrice />
+                <ContentPrice
+                  index={idx}
+                  setplanList={setplanList}
+                  planList={planList}
+                />
               </div>
             </>
           )}

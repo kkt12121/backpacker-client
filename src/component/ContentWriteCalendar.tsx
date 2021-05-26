@@ -9,16 +9,13 @@ import { RootState } from "reducer";
 import { mapClose, mapOpen } from "action/ModalClickAction";
 import MapModal from "./MapModal";
 import { createGlobalStyle } from "styled-components";
-import { getDayList } from "action/ContentWriteAction";
+import { getCurrentDay, getDayList } from "action/ContentWriteAction";
+import { currentDay } from "reducer/ContentWriteReducer";
 
-interface Props {
-  setcurrentDay: React.Dispatch<React.SetStateAction<number>>;
-}
+interface Props {}
 
 registerLocale("ko", ko);
-export default function ContentWriteCalendar({
-  setcurrentDay,
-}: Props): ReactElement {
+export default function ContentWriteCalendar({}: Props): ReactElement {
   const [startDate, setstartDate] = useState<Date | null>(new Date());
   const [endDate, setendDate] = useState<Date | null>(new Date());
   const [dayCount, setdayCount] = useState<number | null>(null);
@@ -91,26 +88,15 @@ body*{
         </button>
       </div>
       <div className="dayBox">
-        {/* {state.data.map((el) => {
-          return (
-            <button
-              onClick={() => {
-                setcurrentDay(Number(el.day) - 1);
-              }}
-            >
-              day {el.day}
-            </button>
-          );
-        })} */}
         {dayList?.map((el, idx) => {
-          console.log("인덱스", idx);
           return (
             <button
               onClick={() => {
-                setcurrentDay(idx);
+                // setcurrentDay(idx);
+                dispatch(getCurrentDay(idx));
               }}
             >
-              테스트 버튼
+              데이{idx + 1}
             </button>
           );
         })}
