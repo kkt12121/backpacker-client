@@ -24,41 +24,61 @@ function Login() {
 
   return (
     <>
-      <div className="loginBox">
-        <div className="inputSection">
-          <input
-            className="emailInput"
-            placeholder="이메일"
-            onChange={inputEmailHandler}
-          ></input>
-          <input
-            className="passwordInput"
-            placeholder="패스워드"
-            type="password"
-            onChange={inputPwHandler}
-          ></input>
-          <a className="goToFind" href="http://localhost:3000/finduser">
-            이메일 / 패스워드 찾기
-          </a>
-        </div>
-        <div>
-          <button
-            className="loginBtn"
-            onClick={() => {
-              dispatch(getLoginToken(email, password));
-            }}
-          >
-            로그인
-          </button>
-          <button
-            onClick={async () => {
-              window.location.assign(
-                "https://accounts.google.com/o/oauth2/auth?client_id=790150276040-a80efgd4j9o2qu2ftd49e0esosrpsrho.apps.googleusercontent.com&redirect_uri=http://localhost:3000&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile"
-              );
-            }}
-          >
-            Google 로그인
-          </button>
+      <div className="bodyLogin">
+        <div className="loginForm">
+          <div className="formLogin">
+            <div className="formLoginDiv">
+              <input
+                className="formLoginInput"
+                placeholder=" "
+                onChange={inputEmailHandler}
+              ></input>
+              <label htmlFor="" className="formLabelLogin">
+                Email
+              </label>
+            </div>
+            <div className="formLoginDiv">
+              <input
+                className="formLoginInput"
+                placeholder=" "
+                type="password"
+                onChange={inputPwHandler}
+              ></input>
+              <label htmlFor="" className="formLabelLogin">
+                Password
+              </label>
+            </div>
+            <a className="goToFind" href="http://localhost:3000/finduser">
+              이메일 / 패스워드 찾기
+            </a>
+
+            <div>
+              <button
+                className="loginBtn"
+                onClick={() => {
+                  dispatch(getLoginToken(email, password));
+                }}
+              >
+                로그인
+              </button>
+              {/* <a
+                className="loginGoogleBtn"
+                href="https://accounts.google.com/o/oauth2/auth?client_id=790150276040-a80efgd4j9o2qu2ftd49e0esosrpsrho.apps.googleusercontent.com&redirect_uri=http://localhost:3000&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile"
+              >
+                <img src="https://developers.google.cn/identity/images/btn_google_signin_light_normal_web.png?hl=ko"></img>
+              </a> */}
+              <button
+                className="loginGoogleBtn"
+                onClick={async () => {
+                  window.location.assign(
+                    "https://accounts.google.com/o/oauth2/auth?client_id=790150276040-a80efgd4j9o2qu2ftd49e0esosrpsrho.apps.googleusercontent.com&redirect_uri=http://localhost:3000&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile"
+                  );
+                }}
+              >
+                Google 로그인
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </>
