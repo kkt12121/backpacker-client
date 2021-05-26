@@ -2,7 +2,6 @@ import React, { ReactElement, useEffect } from "react";
 import { markerdata } from "./MarkerData";
 interface Props {
   planList: any[][];
-  // index: { title?: string; thumbnail?: string; mapx?: string; mapy?: string };
 }
 declare global {
   interface Window {
