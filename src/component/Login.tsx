@@ -61,22 +61,20 @@ function Login() {
               >
                 로그인
               </button>
-              {/* <a
-                className="loginGoogleBtn"
-                href="https://accounts.google.com/o/oauth2/auth?client_id=790150276040-a80efgd4j9o2qu2ftd49e0esosrpsrho.apps.googleusercontent.com&redirect_uri=http://localhost:3000&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile"
-              >
-                <img src="https://developers.google.cn/identity/images/btn_google_signin_light_normal_web.png?hl=ko"></img>
-              </a> */}
-              <button
-                className="loginGoogleBtn"
-                onClick={async () => {
-                  window.location.assign(
-                    "https://accounts.google.com/o/oauth2/auth?client_id=790150276040-a80efgd4j9o2qu2ftd49e0esosrpsrho.apps.googleusercontent.com&redirect_uri=http://localhost:3000&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile"
-                  );
-                }}
-              >
-                Google 로그인
-              </button>
+              <div id="gSignInWrapper">
+                <div
+                  id="customBtn"
+                  className="customGPlusSignIn"
+                  onClick={async () => {
+                    window.location.assign(
+                      "https://accounts.google.com/o/oauth2/auth?client_id=790150276040-a80efgd4j9o2qu2ftd49e0esosrpsrho.apps.googleusercontent.com&redirect_uri=http://localhost:3000&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile"
+                    );
+                  }}
+                >
+                  <span className="icon"></span>
+                  <span className="buttonText">Google</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

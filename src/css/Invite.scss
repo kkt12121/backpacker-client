@@ -1,0 +1,25 @@
+.invitePageModalOn {
+  width: 400px;
+  height: 200px;
+  position: fixed;
+  margin-top: 18%;
+  margin-left: 40%;
+  background-color: rgb(236, 232, 232);
+  transition: all 0.5s;
+}
+.inviteModal {
+  @extend .invitePageModalOn;
+  width: 30%;
+  height: 0%;
+  top: 20%;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.invitePageModalClose {
+  margin-top: 3%;
+  margin-left: 87%;
+  cursor: pointer;
+}
+.invitePageModalClose :hover {
+  color: red;
+}
