@@ -17,7 +17,7 @@ export const FilteredListAction =
     let filteredList = [];
 
     for (let i = 0; i < data.length; i++) {
-      if (data[i].touristSpot === city && data[i].totalCost <= budget) {
+      if (data[i].touristRegion === city && data[i].totalCost <= budget) {
         filteredList.push(data[i]);
       }
     }
