@@ -24,11 +24,24 @@ function UserInfo() {
   return (
     <>
       <div className="userInfoSection">
-        userinfo
-        <div className="userInfoEmail">이메일 :{userData?.email}</div>
-        <div className="userInfoName">이름 : {userData?.name}</div>
-        <div className="userInfoNickName">닉네임 :{userData?.nickname}</div>
-        <div className="userInfoPhone">폰 : {userData?.phone}</div>
+        <div className="userInfoCard">
+          <div className="userInfoName">
+            <span>이름</span>
+            <div>{userData?.name}</div>
+          </div>
+          <div className="userInfoNickName">
+            <span>닉네임</span>
+            <div>{userData?.nickname}</div>
+          </div>
+          <div className="userInfoEmail">
+            <span>이메일</span>
+            <div>{userData?.email}</div>
+          </div>
+          <div className="userInfoPhone">
+            <span>휴대폰 번호</span>
+            <div>{userData?.phone}</div>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -67,95 +67,111 @@ function ModifyUserInfo() {
   return (
     <>
       <div className="ModifyUserInfoSection">
-        change
-        <div>
-          이름 변경{" "}
-          <input placeholder={userData?.name} onChange={getNameHandler} />
-        </div>
-        <div>
-          닉네임 변경{" "}
-          <input
-            placeholder={userData?.nickname}
-            onChange={getNickNameHandler}
-          />
-          <button
-            onClick={() => {
-              axios
-                .put(
-                  "https://localhost:4000/mypage/userUpdate",
-                  {
-                    nickname: nickName,
-                  },
-                  {
-                    headers: {
-                      authorization: `bearer ${token}`,
+        <div className="ModifyUserInfoCard">
+          <div className="ModifyUserInfoName">
+            <span>이름</span>
+            <div>
+              <input placeholder={userData?.name} onChange={getNameHandler} />
+            </div>
+          </div>
+          <div className="ModifyUserInfoNickName">
+            <span>닉네임</span>
+            <input
+              placeholder={userData?.nickname}
+              onChange={getNickNameHandler}
+            />
+            <button
+              onClick={() => {
+                axios
+                  .put(
+                    "https://localhost:4000/mypage/userUpdate",
+                    {
+                      nickname: nickName,
                     },
-                  }
-                )
-                .then((res) => {
-                  console.log(res);
-                  alert("사용가능한 닉네임입니다!");
-                })
-                .catch((err) => {
-                  console.log(err);
-                  alert("사용중인 닉네임입니다!");
-                });
+                    {
+                      headers: {
+                        authorization: `bearer ${token}`,
+                      },
+                    }
+                  )
+                  .then((res) => {
+                    console.log(res);
+                    alert("사용가능한 닉네임입니다!");
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                    alert("사용중인 닉네임입니다!");
+                  });
+              }}
+            >
+              중복 확인
+            </button>
+          </div>
+          <div className="ModifyUserInfoPw">
+            <span>패스워드 변경</span>
+            <div>
+              <input
+                type="password"
+                placeholder="영문, 숫자 포함 8자 이상"
+                onChange={getPwHandler}
+              />
+            </div>
+            {pwdSwitch ? null : (
+              <div className="checkMsgF">
+                하나 이상의 영문과 숫자를 포함하여 8자 이상이어야 합니다
+              </div>
+            )}
+            {pwdSwitch && pw.length > 7 ? (
+              <div className="checkMsgT">사용 가능한 패스워드입니다</div>
+            ) : null}
+          </div>
+          <div className="ModifyUserInfoPhone">
+            <span>휴대폰 번호 변경</span>
+            <div>
+              <input
+                placeholder="'-'없이 숫자만 입력해주세요"
+                onChange={getPhoneHandler}
+              />
+            </div>
+            {phoneSwitch ? null : (
+              <div className="checkMsgF">휴대폰 번호를 확인해주세요</div>
+            )}
+            {phoneSwitch && (phone.length === 10 || phone.length === 11) ? (
+              <div className="checkMsgT">사용가능한 번호입니다</div>
+            ) : null}
+          </div>
+          <button
+            className="ModifyBtn"
+            onClick={() => {
+              pwdSwitch && phoneSwitch
+                ? axios
+                    .put(
+                      "https://localhost:4000/mypage/userUpdate",
+                      {
+                        name: name,
+                        password: pw,
+                        nickname: nickName,
+                        phone: phone,
+                      },
+                      {
+                        headers: {
+                          authorization: `bearer ${token}`,
+                        },
+                      }
+                    )
+                    .then((res) => {
+                      alert(res.data.message);
+                      window.location.assign("http://localhost:3000/mypage");
+                    })
+                    .catch((err) => {
+                      alert("닉네임 변경 시, 중복을 확인해주세요");
+                    })
+                : alert("입력을 확인해주세요");
             }}
           >
-            중복 확인
+            회원정보 수정
           </button>
         </div>
-        <div>
-          패스워드 변경{" "}
-          <input
-            type="password"
-            placeholder="영문, 숫자 포함 8자 이상"
-            onChange={getPwHandler}
-          />
-          {pwdSwitch ? null : (
-            <div>하나 이상의 영문과 숫자를 포함하여 8자 이상이어야 합니다</div>
-          )}
-          {pwdSwitch && pw.length > 7 ? <div>ok</div> : null}
-        </div>
-        <div>
-          폰 번호 변경{" "}
-          <input
-            placeholder="'-'없이 숫자만 입력해주세요"
-            onChange={getPhoneHandler}
-          />
-          {phoneSwitch ? null : <div>휴대폰 번호를 확인해주세요</div>}
-          {phoneSwitch && (phone.length === 10 || phone.length === 11) ? (
-            <div>ok</div>
-          ) : null}
-        </div>
-        <button
-          onClick={() => {
-            axios
-              .put(
-                "https://localhost:4000/mypage/userUpdate",
-                {
-                  name: name,
-                  password: pw,
-                  nickname: nickName,
-                  phone: phone,
-                },
-                {
-                  headers: {
-                    authorization: `bearer ${token}`,
-                  },
-                }
-              )
-              .then((res) => {
-                alert(res.data.message);
-                window.location.assign("http://localhost:3000/mypage");
-              })
-              .catch((err) => {
-                alert("닉네임 변경 시, 중복을 확인해주세요");
-              });
-          }}
-        >
-          회원정보 수정
-        </button>
       </div>
     </>
   );
