@@ -3,6 +3,7 @@ import logout from "component/Logout";
 import ModifyUserInfo from "component/ModifyUserInfo";
 import UserInfo from "component/UserInfo";
 import { useState } from "react";
+import "../css/Mypage.scss";
 
 function MyPage() {
   const [toggle, setToggle] = useState<boolean>(true);
@@ -16,10 +17,14 @@ function MyPage() {
   };
 
   return (
-    <div>
+    <div className="mypage">
       {toggle ? <UserInfo /> : <ModifyUserInfo />}
-      <button onClick={toggleClickHandler}>정보수정/유저정보</button>
-      <button onClick={logout}>로그아웃</button>
+      <div className="btnBox">
+        <button onClick={toggleClickHandler}>
+          {toggle ? "정보수정" : "유저정보"}
+        </button>
+        <button onClick={logout}>로그아웃</button>
+      </div>
     </div>
   );
 }

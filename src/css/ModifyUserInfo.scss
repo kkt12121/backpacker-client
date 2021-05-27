@@ -1,4 +1,88 @@
 .ModifyUserInfoSection {
-  border: solid;
+  // border: solid;
   padding-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ModifyUserInfoCard {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 370px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+}
+.ModifyUserInfoCard input {
+  width: 100px;
+  height: 20px;
+  border: solid 1px rgb(230, 230, 230);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  &:hover {
+    border: solid 1px black;
+  }
+}
+.ModifyUserInfoName,
+.ModifyUserInfoNickName,
+.ModifyUserInfoPw,
+.ModifyUserInfoPhone {
+  border-bottom: solid 2px rgb(230, 230, 230);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.ModifyUserInfoName div,
+.ModifyUserInfoNickName div,
+.ModifyUserInfoPw div,
+.ModifyUserInfoPhone div {
+  flex-grow: 1;
+}
+.ModifyUserInfoName span,
+.ModifyUserInfoNickName span,
+.ModifyUserInfoPw span,
+.ModifyUserInfoPhone span {
+  width: 120px;
+  font-weight: bold;
+}
+.ModifyUserInfoNickName button {
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  background-color: rgb(188, 203, 255);
+  &:hover {
+    background-color: rgb(147, 171, 255);
+    cursor: pointer;
+  }
+}
+.ModifyUserInfoPw input,
+.ModifyUserInfoPhone input {
+  width: 180px;
+}
+.checkMsgF {
+  color: red;
+  font-size: 12px;
+}
+.checkMsgT {
+  color: rgb(0, 255, 0);
+  font-size: 12px;
+}
+.ModifyBtn {
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  height: 30px;
+  background-color: rgb(188, 203, 255);
+  &:hover {
+    background-color: rgb(147, 171, 255);
+    cursor: pointer;
+  }
 }

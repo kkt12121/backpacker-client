@@ -1,0 +1,27 @@
+.mypage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.btnBox {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btnBox button {
+  width: 360px;
+  height: 70px;
+  margin: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(188, 203, 255);
+  &:hover {
+    background-color: rgb(147, 171, 255);
+    cursor: pointer;
+  }
+}
