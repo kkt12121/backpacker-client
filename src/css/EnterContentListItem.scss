@@ -1,13 +1,29 @@
 .contentNum {
-  margin-left: 3%;
+  width: 100%;
+  padding: 4%;
 }
 .contentImg {
-  margin-left: 4%;
+  width: 100%;
+  padding: 2%;
 }
 .contentPlaceName {
-  margin-left: 8%;
+  width: 100%;
+  padding: 2%;
 }
 .btnContentItemMap {
+  width: 20px;
+  height: 20px;
+  margin-top: 7%;
+  margin-right: 2%;
+  margin-left: 50px;
+  font-weight: bold;
+  padding: 0.2%;
+  border: solid 2px black;
+  border-radius: 100%;
+  background-color: white;
   cursor: pointer;
-  margin-left: 50.5%;
+  &:hover {
+    background-color: blue;
+    color: white;
+  }
 }

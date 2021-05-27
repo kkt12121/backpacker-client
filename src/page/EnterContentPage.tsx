@@ -37,9 +37,15 @@ export default function EnterContentPage() {
             </button>
           </div>
         </section>
-        <section className="contentCarousel">
-          <ContentCarousel />
+        <section className="writeParticipant">
+          <div className="writeParticipantTitle">작성 참여자</div>
+          <div className="participant">1번</div>
+          <div className="participant">2번</div>
+          <div className="participant">3번</div>
         </section>
+        {/* <section className="contentCarousel">
+          <ContentCarousel />
+        </section> */}
         <section>
           <div className="contentBody">
             <EnterContentDayList />

@@ -39,6 +39,11 @@ export default function MenuCategory({}: Props): ReactElement {
                 여행지 리스트
               </Link>
             </ul>
+            <ul className="listMenu">
+              <Link className="listBtn" to="/contentwrite">
+                여행 일정 만들기
+              </Link>
+            </ul>
           </div>
         ) : (
           <div>

@@ -11,7 +11,7 @@ export default function EnterContentDayListItem({}: Props): ReactElement {
           <div className="contentDayFirstSection">Day1</div>
           <div className="contentDaySecondSection">
             <div>2021.05.05</div>
-            <div className="">서울</div>
+            <div className="ContentDayPlaceName">서울</div>
           </div>
         </div>
         <div className="contentBodyList">

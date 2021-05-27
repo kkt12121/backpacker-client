@@ -4,11 +4,14 @@
   //   display: flex;
 }
 .contentTitle {
+  padding: 2%;
+  text-align: center;
   border-color: black;
   border-style: solid;
   font-size: xx-large;
 }
 .contentDate {
+  padding: 0.5%;
   border-style: solid;
   border-color: black;
   float: right;
@@ -40,4 +43,23 @@
 }
 .btnInvite {
   cursor: pointer;
+}
+.writeParticipant {
+  padding: 0.5%;
+  display: flex;
+  width: 900px;
+  margin: 2% auto;
+  border-style: solid;
+  border-color: black;
+}
+.participant {
+  width: 70px;
+  border-radius: 30%;
+  padding: 2%;
+  border-style: solid;
+  border-color: black;
+  margin-left: 2%;
+}
+.writeParticipantTitle {
+  padding: 2%;
 }

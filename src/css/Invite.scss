@@ -6,6 +6,7 @@
   margin-left: 40%;
   background-color: rgb(236, 232, 232);
   transition: all 0.5s;
+  box-shadow: 1px 1px 1px grey;
 }
 .inviteModal {
   @extend .invitePageModalOn;

@@ -1,0 +1,154 @@
+:root {
+  --first-color: #1a73e8;
+  --input-color: #80868b;
+  --border-color: #dadce0;
+
+  --body-font: "Roboto", sans-serif;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.75rem;
+}
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+.bodyLogin {
+  margin: 0;
+  padding: 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+.formTitle {
+  margin: 0;
+  margin-bottom: 6%;
+}
+.loginForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 29vh;
+}
+
+.formInviteLogin {
+  margin-top: 30%;
+  width: 450px;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
+}
+.formLoginDiv {
+  position: relative;
+  height: 48px;
+  margin-bottom: 0.5rem;
+}
+.formLoginInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 1rem;
+  background: none;
+  z-index: 1;
+}
+.formLabelLogin {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: 0 0.25rem;
+  background-color: #fff;
+  color: var(--input-color);
+  font-size: var(--normal-font-size);
+  transition: 0.3s;
+}
+.loginBtn {
+  font-weight: bold;
+  width: 100%;
+  display: block;
+  margin-top: 2%;
+  padding: 0.75rem 2rem;
+  outline: none;
+  border: none;
+  background-color: var(--first-color);
+  color: #fff;
+  font-size: var(--normal-font-size);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 1px 1px 1px grey;
+  &:hover {
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+}
+.formLoginInput:focus + .formLabelLogin {
+  top: -0.5rem;
+  left: 0.8rem;
+  color: var(--first-color);
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  z-index: 10;
+}
+.formLoginInput:not(:placeholder-shown).formLoginInput:not(:focus)
+  + .formLabelLogin {
+  top: -0.5rem;
+  left: 0.8rem;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  z-index: 10;
+}
+.formLoginInput:focus {
+  border: 1.5px solid var(--first-color);
+}
+.goToFind {
+  width: 280px;
+  height: 40px;
+  line-height: 40px;
+  text-align: end;
+  padding-right: 20px;
+  text-decoration-line: none;
+  color: rgb(110, 110, 110);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  &:hover {
+    font-weight: bold;
+  }
+}
+#customBtn {
+  margin-top: 3%;
+  display: inline-block;
+  background: white;
+  color: #444;
+  width: 100%;
+  border-radius: 5px;
+  border: thin solid #888;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+}
+#customBtn:hover {
+  cursor: pointer;
+}
+span.label {
+  font-family: serif;
+  font-weight: normal;
+}
+span.icon {
+  background: url("https://developers-dot-devsite-v2-prod.appspot.com/identity/sign-in/g-normal.png")
+    transparent 5px 50% no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  width: 42px;
+  height: 42px;
+}
+span.buttonTextInvite {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 130px;
+  padding-right: 42px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+}

@@ -50,6 +50,7 @@
   margin-left: 75.2%;
   .hamburgerStick1 {
     @extend .hamburgerStick1;
+    background-color: black;
     z-index: 2;
     position: absolute;
     transition: all 0.5s;
@@ -57,12 +58,14 @@
   }
   .hamburgerStick2 {
     @extend .hamburgerStick2;
+    background-color: black;
     z-index: 2;
     transition: all 0.5s;
     background-color: rgba(0, 0, 0, 0);
   }
   .hamburgerStick3 {
     @extend .hamburgerStick3;
+    background-color: black;
     z-index: 2;
     position: absolute;
     transition: all 0.5s;

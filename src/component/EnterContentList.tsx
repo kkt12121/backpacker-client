@@ -7,8 +7,6 @@ export default function EnterContentList({}: Props): ReactElement {
   return (
     <>
       <EnterContentListItem />
-      <EnterContentListItem />
-      <EnterContentListItem />
     </>
   );
 }
