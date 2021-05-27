@@ -34,7 +34,7 @@ function Footer() {
           <p>
             <a
               className="linkGithub"
-              href="https://github.com/codestates/backpacker-client"
+              href="https://github.com/codestates/backpacker-client/wiki"
             >
               Repository
             </a>

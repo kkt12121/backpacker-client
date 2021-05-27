@@ -30,7 +30,7 @@ export default function EnterContentListItem({}: Props): ReactElement {
                 : dispatch(contentItemMapOpen());
             }}
           >
-            지도
+            M
           </button>
         </div>
         <div className="sectionLine"></div>

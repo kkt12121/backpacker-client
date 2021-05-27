@@ -1,6 +1,8 @@
 import React, { ReactElement } from "react";
 import "../css/ContentPageInvite.scss";
 import { useHistory } from "react-router-dom";
+import Login from "./Login";
+
 interface Props {}
 
 function ContentPageInvite({}: Props): ReactElement {
@@ -16,7 +18,7 @@ function ContentPageInvite({}: Props): ReactElement {
           <button
             className="btnOk"
             onClick={() => {
-              token ? history.push("/content") : history.push("/signup");
+              token ? history.push("/content") : history.push("/login");
             }}
           >
             Ok
