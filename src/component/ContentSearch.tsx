@@ -36,14 +36,20 @@ export default function ContentSearch({
   const dispatch = useDispatch();
 
   const autoComplete = async (keyword: string) => {
-    axios.defaults.headers.common["Authorization"] =
-      "KakaoAK " + "a7b9cde0b8d1072c338d74a87c1063e4";
-    axios.defaults.headers.post["Content-Type"] =
-      "application/x-www-form-urlencoded";
+    // axios.defaults.headers.common["Authorization"] =
+    //   "KakaoAK " + "a7b9cde0b8d1072c338d74a87c1063e4";
+    // axios.defaults.headers.post["Content-Type"] =
+    //   "application/x-www-form-urlencoded";
 
     await axios
       .get(
-        `https://dapi.kakao.com/v2/local/search/keyword.json?query=${keyword}`
+        `https://dapi.kakao.com/v2/local/search/keyword.json?query=${keyword}`,
+        {
+          headers: {
+            Authorization: "KakaoAK " + "a7b9cde0b8d1072c338d74a87c1063e4",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
       )
       .then((res) => {
         setAutoList(res.data.documents);
