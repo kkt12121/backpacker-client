@@ -126,28 +126,28 @@ export default function ContentSearch({
     if (copyPlan[currentDay] === undefined) {
       copyPlan[currentDay] = [
         {
-          contentid: item.id,
+          contentId: item.id,
           category: item.category_group_code,
           detail: item.place_url,
-          title: item.place_name,
+          place: item.place_name,
           mapx: item.x,
           mapy: item.y,
           address: item.address_name,
           tel: item.phone,
-          image: image,
+          img: image,
         },
       ];
     } else {
       copyPlan[currentDay].push({
-        contentid: item.id,
+        contentId: item.id,
         category: item.category_group_code,
         detail: item.place_url,
-        title: item.place_name,
+        place: item.place_name,
         mapx: item.x,
         mapy: item.y,
         address: item.address_name,
         tel: item.phone,
-        image: image,
+        img: image,
       });
     }
     setplanList(copyPlan);

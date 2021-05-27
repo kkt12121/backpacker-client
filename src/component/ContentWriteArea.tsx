@@ -11,13 +11,20 @@ import { createGlobalStyle } from "styled-components";
 import { DropResult } from "react-beautiful-dnd";
 import { reorder } from "./reorder";
 import { getPlanList } from "action/ContentWriteAction";
+import axios from "axios";
+
 interface Props {}
 
 export default function ContentWriteArea({}: Props): ReactElement {
+  let token = localStorage.getItem("token");
   const [totalCost, settotalCost] = useState(0);
   const state = useSelector((state: RootState) => state);
   const dayList = useSelector((state: RootState) => state.dayListReducer);
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
+  const startDate = useSelector((state: RootState) => state.startDateReducer);
+  const endDate = useSelector((state: RootState) => state.endDateReducer);
+  const title = useSelector((state: RootState) => state.titleReducer);
+  const region = useSelector((state: RootState) => state.regionReducer);
   const [planList, setplanList] = useState<Array<Array<{ price?: number }>>>([
     [{}],
   ]);
@@ -25,6 +32,8 @@ export default function ContentWriteArea({}: Props): ReactElement {
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
+  const schedule = useSelector((state: RootState) => state.planListReducer);
+  const [test, settest] = useState("");
 
   const dispatch = useDispatch();
 
@@ -64,6 +73,11 @@ export default function ContentWriteArea({}: Props): ReactElement {
   useEffect(() => {
     dispatch(getPlanList(planList));
   }, [planList]);
+
+  useEffect(() => {
+    settest(JSON.stringify(planList));
+    console.log("실행유무");
+  }, [planList]);
   // 날짜 차이 길이의 arr 생성,
   // 그 arr.map
   // arr = [0, 0, 0, 0, 0].map((el) => {
@@ -87,6 +101,35 @@ body*{
   touch-action : none;
 }
 `;
+
+  const handleSendBtn = () => {
+    // axios.defaults.headers.common["Authorization"] = `bearer ${token}`;
+    // axios.defaults.headers.post["Content-Type"] = "application/json";
+    axios
+      .post(
+        "https://localhost:4000/content/create",
+        {
+          startDate: startDate,
+          endDate: endDate,
+          totalCost: totalCost,
+          schedule: planList,
+          title: title,
+          touristRegion: region,
+          thumbnail: "없음",
+          touristSpot: "홍대",
+        },
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${token}`,
+          },
+
+          withCredentials: true,
+        }
+      )
+      .then((res) => console.log("완료"))
+      .catch((err) => console.log(err));
+  };
 
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
@@ -129,11 +172,21 @@ body*{
           <div className="totalPrice">총 예상 경비 금액 : {totalCost} 원</div>
         </div>
         <ContentSearch planList={planList} setplanList={setplanList} />
-        <button className="writeCompletedButton">작성완료</button>
+        <button className="writeCompletedButton" onClick={handleSendBtn}>
+          작성완료
+        </button>
       </section>
       {mapClickState ? <MapModal planList={planList} /> : null}
       {console.log(state, "스테이트 확인용")}
       {console.log(totalCost, "금액")}
+      {console.log("토큰", token)}
+      {console.log(startDate, "스타트데이트")}
+      {console.log(endDate, "엔드데이트")}
+      {console.log(title, "타이틀")}
+      {console.log(region, "리전")}
+      {console.log(test, "테스트")}
+      {console.log(planList, "플랜리스트")}
+      {console.log(schedule, "스케쥴")}
     </>
   );
 }

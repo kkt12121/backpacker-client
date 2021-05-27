@@ -13,7 +13,7 @@ export const FilteredListAction =
       }
     );
     const data = res.data.contentList;
-
+    console.log(data);
     let filteredList = [];
 
     for (let i = 0; i < data.length; i++) {

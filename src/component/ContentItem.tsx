@@ -44,7 +44,7 @@ export default function ContentItem({
   return (
     <>
       {Object.keys(el).length === 0 ? null : (
-        <Draggable draggableId={el.contentid} index={idx}>
+        <Draggable draggableId={el.contentId} index={idx}>
           {(provided, snapshot) => (
             <>
               <div
@@ -56,7 +56,7 @@ export default function ContentItem({
                 <div className="contentItemBox">
                   <img className="contentImage" src={el.image} />
                   <div className="contentPlaceBox">
-                    <div className="contentPlace"> {el.title}</div>
+                    <div className="contentPlace"> {el.place}</div>
                     <button
                       id={idNum}
                       onClick={(e) => {
