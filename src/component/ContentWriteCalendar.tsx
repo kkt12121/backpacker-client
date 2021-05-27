@@ -77,28 +77,15 @@ body*{
       {mapClickState ? <Bodytag /> : null}
       {mapClickState ? <div className="modal"></div> : null}{" "}
       <div className="CalendarBox">
-        <ReactDatePicker
-          locale="ko"
-          dateFormat="yyyy/MM/dd/eee요일"
-          selected={startDate}
-          onChange={(date: Date | null) => date && setstartDate(date)}
-        />
-        <ReactDatePicker
-          locale="ko"
-          dateFormat="yyyy/MM/dd/eee요일"
-          minDate={startDate}
-          selected={endDate}
-          onChange={(date: Date | null) => date && setendDate(date)}
-        />
-        <div
+        <h1
           className={divClick ? "tripTitleOff" : "tripTitle"}
           onClick={handleDivClick}
         >
-          {divTitle.length === 0 ? "제목을 입력해주세요" : divTitle}
-        </div>
+          {divTitle.length === 0 ? "여행제목 (Click하여 수정)" : divTitle}
+        </h1>
         {divClick ? (
-          <>
-            <input onChange={(e) => handleDivTitle(e)} />
+          <div className="titleInputBox">
+            <input className="titleInput" onChange={(e) => handleDivTitle(e)} />
             <button
               onClick={() => {
                 setdivClick(false);
@@ -106,9 +93,31 @@ body*{
             >
               확인
             </button>
-          </>
+          </div>
         ) : null}
+        <div className="dateBox">
+          <div className="startDate">
+            출발일
+            <ReactDatePicker
+              locale="ko"
+              dateFormat="yyyy/MM/dd/eee요일"
+              selected={startDate}
+              onChange={(date: Date | null) => date && setstartDate(date)}
+            />
+          </div>
+          <div className="endDate">
+            종료일
+            <ReactDatePicker
+              locale="ko"
+              dateFormat="yyyy/MM/dd/eee요일"
+              minDate={startDate}
+              selected={endDate}
+              onChange={(date: Date | null) => date && setendDate(date)}
+            />
+          </div>
+        </div>
         <button
+          className="totalMapBtn"
           onClick={() => {
             mapClickState ? dispatch(mapClose()) : dispatch(mapOpen());
           }}
@@ -125,7 +134,7 @@ body*{
                 dispatch(getCurrentDay(idx));
               }}
             >
-              데이{idx + 1}
+              Day {idx + 1}
             </button>
           );
         })}

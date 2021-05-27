@@ -1,4 +1,3 @@
-
 import axios, { AxiosResponse } from "axios";
 import React, { ReactElement, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,12 +30,10 @@ export default function ContentSearch({
   planList,
   setplanList,
 }: Props): ReactElement {
-
   const [autoList, setAutoList] = useState<AxiosResponse>();
   const [place, setplace] = useState<placeState>(null);
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const dispatch = useDispatch();
-
 
   const autoComplete = async (keyword: string) => {
     axios.defaults.headers.common["Authorization"] =
@@ -92,28 +89,37 @@ export default function ContentSearch({
   };
   return (
     <div className="contentSearchBox">
-      <input
-        className="contentSearchInput"
-        onChange={(e) => {
-          autoComplete(e.target.value);
-        }}
-      />
-      {Array.isArray(autoList) ? (
-        <ul className="autoList">
-          {autoList.map((item) => {
-            return (
-              <li
-                key={item.id}
-                className="autoItem"
-                onClick={() => handleaddPlan(item)}
-              >
-                <div className="autoItemPlaceName">{item.place_name}</div>
-                <div className="autoItemAddress">{item.address_name}</div>
-              </li>
-            );
-          })}
-        </ul>
-      ) : null}
+      <div className="searchAndAuto">
+        <input
+          className="contentSearchInput"
+          placeholder="예: 경복궁, 가로수길 카페, 신사동 맛집"
+          onChange={(e) => {
+            autoComplete(e.target.value);
+            e.target.value.length === 0
+              ? setAutoList(undefined)
+              : console.log("go");
+          }}
+        />
+        {Array.isArray(autoList) ? (
+          <ul className="autoList">
+            {autoList.map((item) => {
+              return (
+                <li
+                  key={item.id}
+                  className="autoItem"
+                  onClick={() => {
+                    handleaddPlan(item);
+                    setAutoList(undefined);
+                  }}
+                >
+                  <div className="autoItemPlaceName">{item.place_name}</div>
+                  <div className="autoItemAddress">{item.address_name}</div>
+                </li>
+              );
+            })}
+          </ul>
+        ) : null}
+      </div>
       <button
         className="contentSearchButton"
         onClick={() => {
