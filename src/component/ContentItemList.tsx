@@ -32,7 +32,11 @@ export default function ContentItemList({
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable-list">
           {(provided) => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+            <div
+              className="planItemTable"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
               {planList[currentDay] !== undefined
                 ? planList[currentDay].map((el, idx) => (
                     <ContentItem

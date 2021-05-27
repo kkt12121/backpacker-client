@@ -51,7 +51,7 @@ export default function ContentItem({
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                className={snapshot.isDragging ? "droppableList" : ""}
+                className={snapshot.isDragging ? "droppableList" : "planitem"}
               >
                 <div className="contentItemBox">
                   <img className="contentImage" src={el.image} />
@@ -65,7 +65,7 @@ export default function ContentItem({
                           : clickHandler(e);
                       }}
                     >
-                      지도
+                      M
                     </button>
                     {/* <IoClose size={40} className="deleteItem" onClick={() => {}} /> */}
                   </div>

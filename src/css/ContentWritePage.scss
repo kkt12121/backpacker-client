@@ -1,0 +1,385 @@
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  margin: 0;
+}
+// Content write page header start
+.CalendarBox {
+  //   border: solid;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 100px;
+  font-weight: bold;
+}
+.tripTitleOff,
+.tripTitle {
+  text-align: center;
+  color: rgb(0, 19, 58);
+  &:hover {
+    color: blue;
+    background-color: white;
+  }
+}
+.titleInputBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 21.44px;
+  margin-bottom: 21.44px;
+}
+.titleInputBox button {
+  background-color: blue;
+  border: none;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+  font-weight: bold;
+  color: white;
+  width: 60px;
+  &:hover {
+    background-color: rgb(139, 203, 255);
+  }
+}
+.titleInput {
+  border: solid 1px blue;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  font-size: 32px;
+  text-align: center;
+  width: 80%;
+  height: 50px;
+}
+.dateBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.startDate,
+.endDate {
+  margin: 10px;
+  border: none;
+  padding: 1px;
+  padding-left: 20px;
+  height: fit-content;
+  border-radius: 30px;
+  background-color: blue;
+  color: white;
+}
+.startDate input {
+  padding: 10px;
+  margin-left: 10px;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border: solid 1px blue;
+  color: blue;
+  border-radius: 20px;
+  &:hover {
+    color: black;
+    cursor: pointer;
+  }
+}
+.endDate input {
+  padding: 10px;
+  margin-left: 10px;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border: solid 1px blue;
+  color: blue;
+  border-radius: 20px;
+  &:hover {
+    color: black;
+    cursor: pointer;
+  }
+}
+.totalMapBtn {
+  background-color: rgb(0, 140, 255);
+  width: 50px;
+  height: 50px;
+  border: none;
+  font-weight: bold;
+  border-radius: 100%;
+  color: white;
+  position: fixed;
+  right: 5%;
+  bottom: 65%;
+  &:hover {
+    background-color: rgb(0, 116, 211);
+    cursor: pointer;
+  }
+}
+// Content write page header end
+
+// Write area header start
+.dayBox {
+  margin: 0;
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 50px;
+  background-color: blue;
+}
+.dayBox button {
+  width: 80px;
+  height: 30px;
+  border: none;
+  border-radius: 30px;
+  background-color: white;
+  font-weight: bold;
+  color: blue;
+  margin: 5px;
+  &:hover {
+    background-color: rgb(190, 190, 190);
+    cursor: pointer;
+  }
+}
+.contentWriteAreaBox {
+  font-weight: bold;
+  padding: 0;
+  height: fit-content;
+}
+.contentWriteAreaHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  background-color: blue;
+}
+.writerListBox {
+  width: 150px;
+  color: blue;
+  background-color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 5px;
+}
+.regionChoice {
+  width: 100%;
+  padding: 20px;
+  color: white;
+  background-color: blue;
+  &:hover {
+    background-color: black;
+  }
+}
+.regionList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.regionList li {
+  margin: 5px;
+  &:hover {
+    color: blue;
+  }
+}
+// Write area header end
+
+// Write area body start
+.tableOfplan {
+  width: 100%;
+}
+.planItemTable {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.droppableList,
+.planitem {
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: white;
+  width: 70%;
+  margin: 20px;
+  box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+}
+.contentItemBox {
+  border: none;
+  width: 100%;
+  flex-grow: 1;
+}
+.contentImage {
+  width: 80px;
+  height: 80px;
+  margin-left: 20px;
+}
+.contentPlaceBox {
+  display: flex;
+}
+.contentPlace {
+  flex-grow: 1;
+}
+.contentPlaceBox button {
+  width: 20px;
+  height: 20px;
+  margin: 20px;
+  margin-left: 50px;
+  font-weight: bold;
+  padding: 0;
+  border: solid 2px black;
+  border-radius: 100%;
+  background-color: white;
+  &:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+}
+.contentPriceBox {
+  display: flex;
+  width: 50%;
+  border: none;
+}
+.contentPriceInput {
+  border: solid 1px blue;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+}
+.contentPriceBox button {
+  border: solid 1px blue;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  width: 80px;
+  color: white;
+  font-weight: bold;
+  background-color: blue;
+}
+.totalPrice {
+  color: white;
+  border-radius: 30px;
+  padding: 13px;
+  margin-bottom: 30px;
+  background-color: blue;
+  box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+}
+// Write area body end
+
+// Search area start
+.contentSearchBox {
+  //   border: solid;
+  display: flex;
+  width: 70%;
+}
+.searchAndAuto {
+  flex-grow: 1;
+}
+.contentSearchInput {
+  width: 100%;
+  height: 50px;
+  border: solid 3px blue;
+  padding-left: 30px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  //   box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+}
+.autoList {
+  margin: 0;
+  box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+  list-style: none;
+  height: 200px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-left: 10px;
+  padding-left: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.autoList::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+.autoList::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+.autoList::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: blue;
+}
+.autoItem {
+  border-top: solid 1px rgb(220, 220, 220);
+  padding-left: 10px;
+  &:hover {
+    background-color: rgb(214, 240, 255);
+    cursor: pointer;
+  }
+}
+.autoItemPlaceName {
+  font-size: 15px;
+  font-weight: 450;
+  margin: 2px;
+}
+.autoItemAddress {
+  font-weight: lighter;
+  font-size: 13px;
+  margin: 2px;
+  color: rgb(145, 145, 145);
+}
+.contentSearchButton {
+  border: solid 3px blue;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  height: 50px;
+  &:hover {
+    border: rgb(0, 0, 182);
+    background-color: rgb(0, 0, 182);
+    cursor: pointer;
+  }
+}
+.writeCompletedButton {
+  border: none;
+  width: 300px;
+  height: 60px;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 20px;
+  margin-bottom: 100px;
+  color: white;
+  background-color: rgb(111, 0, 255);
+  transition-duration: 0.5s;
+  &:hover {
+    cursor: pointer;
+    animation: MainBtn 2s infinite alternate;
+  }
+}
+@keyframes MainBtn {
+  0% {
+    background: rgb(0, 153, 255);
+  }
+  25% {
+    background: rgb(0, 255, 234);
+  }
+  50% {
+    background: rgb(133, 205, 92);
+  }
+  75% {
+    background: rgb(219, 240, 128);
+  }
+  100% {
+    background: rgb(233, 203, 122);
+  }
+}
