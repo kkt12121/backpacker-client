@@ -21,7 +21,6 @@ export default function ContentItemList({
   onDragEnd,
   setplanList,
 }: Props): ReactElement {
-  const content = useSelector((state: RootState) => state.test);
   const mapClickState = useSelector((state: RootState) => state.MapClick);
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const mapItemClickState = useSelector(

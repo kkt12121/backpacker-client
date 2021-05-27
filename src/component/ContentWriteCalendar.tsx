@@ -9,7 +9,13 @@ import { RootState } from "reducer";
 import { mapClose, mapOpen } from "action/ModalClickAction";
 import MapModal from "./MapModal";
 import { createGlobalStyle } from "styled-components";
-import { getCurrentDay, getDayList } from "action/ContentWriteAction";
+import {
+  getCurrentDay,
+  getDayList,
+  getEndDate,
+  getStartDate,
+  getTitle,
+} from "action/ContentWriteAction";
 import { currentDay } from "reducer/ContentWriteReducer";
 
 interface Props {}
@@ -51,6 +57,19 @@ export default function ContentWriteCalendar({}: Props): ReactElement {
   useEffect(() => {
     dispatch(getDayList(dayList));
   }, [dayList]);
+
+  useEffect(() => {
+    dispatch(getTitle(divTitle));
+  }, [divTitle]);
+
+  useEffect(() => {
+    dispatch(getStartDate(String(startDate)));
+  }, [startDate]);
+
+  useEffect(() => {
+    dispatch(getEndDate(String(endDate)));
+  }, [endDate]);
+
   const Bodytag = createGlobalStyle`
 body {
   overflow : hidden;

@@ -2,51 +2,15 @@ import {
   CONTENT_PRICE,
   CURRENT_DAY,
   DAY_LIST,
+  GET_END_DATE,
+  GET_REGION,
+  GET_START_DATE,
+  GET_TITLE,
   IMAGE_FAIL,
   IMAGE_SUCCESS,
   PLAN_LIST,
 } from "action/ContentWriteAction";
-let contentWrite: {
-  data: {
-    day?: string;
-    testItem?: {
-      title?: string;
-      thumbnail?: string;
-    }[];
-    totalCost?: number;
-  }[];
-} = {
-  data: [
-    {
-      day: "1",
-      testItem: [
-        {
-          title: "경복궁",
-          thumbnail: "http://tong.visitkorea.or.kr/cms2/website/50/976150.jpg",
-        },
-        {
-          title: "독도",
-          thumbnail: "http://tong.visitkorea.or.kr/cms2/website/08/2540408.jpg",
-        },
-      ],
-      totalCost: 50000,
-    },
-    {
-      day: "2",
-      testItem: [
-        {
-          title: "우미관",
-          thumbnail: "http://tong.visitkorea.or.kr/cms2/website/50/976150.jpg",
-        },
-        {
-          title: "울릉도",
-          thumbnail: "http://tong.visitkorea.or.kr/cms2/website/08/2540408.jpg",
-        },
-      ],
-      totalCost: 50000,
-    },
-  ],
-};
+import { totalmem } from "os";
 
 export let currentDay: number = 0;
 export let daylist: [(string | undefined)?] | null = null;
@@ -59,6 +23,10 @@ export let planList: {
   address?: string;
 }[][] = [[{}]];
 
+export let region: string = "";
+export let title: string = "";
+export let startDate: string = "";
+export let endDate: string = "";
 export let contentItem: {
   data: { title?: string; thumbnail?: string; mapx?: string; mapy?: string }[];
 } = { data: [{}] };
@@ -96,13 +64,6 @@ export const priceReducer = (state = contentPrice, action: any) => {
   }
 };
 
-export const test = (state = contentWrite, action: any) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
 export const dayListReducer = (state = daylist, action: any) => {
   switch (action.type) {
     case DAY_LIST:
@@ -129,6 +90,50 @@ export const currentDayReducer = (state = currentDay, action: any) => {
 export const planListReducer = (state = planList, action: any) => {
   switch (action.type) {
     case PLAN_LIST:
+      state = action.payload;
+      return state;
+
+    default:
+      return state;
+  }
+};
+
+export const regionReducer = (state = region, action: any) => {
+  switch (action.type) {
+    case GET_REGION:
+      state = action.payload;
+      return state;
+
+    default:
+      return state;
+  }
+};
+
+export const titleReducer = (state = title, action: any) => {
+  switch (action.type) {
+    case GET_TITLE:
+      state = action.payload;
+      return state;
+
+    default:
+      return state;
+  }
+};
+
+export const startDateReducer = (state = startDate, action: any) => {
+  switch (action.type) {
+    case GET_START_DATE:
+      state = action.payload;
+      return state;
+
+    default:
+      return state;
+  }
+};
+
+export const endDateReducer = (state = endDate, action: any) => {
+  switch (action.type) {
+    case GET_END_DATE:
       state = action.payload;
       return state;
 

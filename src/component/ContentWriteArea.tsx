@@ -1,14 +1,11 @@
-import axios from "axios";
 import React, { ReactElement, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentWriteArea.scss";
-import ContentItem from "./ContentItem";
 import ContentItemList from "./ContentItemList";
 import ContentSearch from "./ContentSearch";
 import ContentWriteAreaHeader from "./ContentWriteAreaHeader";
 import ContentWriteCalendar from "./ContentWriteCalendar";
-import MapItemModal from "./MapItemModal";
 import MapModal from "./MapModal";
 import { createGlobalStyle } from "styled-components";
 import { DropResult } from "react-beautiful-dnd";
@@ -17,7 +14,8 @@ import { getPlanList } from "action/ContentWriteAction";
 interface Props {}
 
 export default function ContentWriteArea({}: Props): ReactElement {
-  const state = useSelector((state: RootState) => state.priceReducer);
+  const [totalCost, settotalCost] = useState(0);
+  const state = useSelector((state: RootState) => state);
   const dayList = useSelector((state: RootState) => state.dayListReducer);
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const [planList, setplanList] = useState<Array<Array<{ price?: number }>>>([
@@ -30,54 +28,39 @@ export default function ContentWriteArea({}: Props): ReactElement {
 
   const dispatch = useDispatch();
 
-  // const handleCost = () => {
-  //   let result = planList.map((el) => {
-  //     if (el !== undefined) {
-  //       return el.reduce((acc, cur): any => {
-  //         return cur.price !== undefined ? acc + cur.price : 0;
-  //       }, 0);
-  //     } else {
-  //       console.log(null);
-  //     }
-  //   });
-  //   if (result) {
-  //     console.log("있으면 얼마", result);
-  //     return result.reduce((acc, cur): number => {
-  //       return acc !== undefined && cur !== undefined ? acc + cur : 0;
-  //     }, 0);
-  //   } else {
-  //     console.log("없으면?", result);
-  //   }
-  // };
-  const handleCost = () => {
-    let priceArray = planList.map((el) => {
-      return el === undefined
-        ? console.log("넘어가")
-        : el.filter((ele) => {
-            return ele.price;
-          });
-    });
-    if (priceArray) {
-      let result = priceArray.map((el) => {
+  useEffect(() => {
+    const handleCost = () => {
+      let priceArray = planList.map((el) => {
         return el === undefined
-          ? console.log("리듀스 넘어가")
-          : el.reduce((acc, cur): any => {
-              return cur.price !== undefined ? acc + cur.price : 0;
-            }, 0);
-      }) as number[];
-      console.log("리절트테스트", result);
-      if (result) {
-        let sum = 0;
-        for (let i = 0; i < result.length; i++) {
-          if (result[i] === undefined) {
-            continue;
-          } else sum = sum + result[i];
+          ? console.log("넘어가")
+          : el.filter((ele) => {
+              return ele.price;
+            });
+      });
+      if (priceArray) {
+        let result = priceArray.map((el) => {
+          return el === undefined
+            ? console.log("리듀스 넘어가")
+            : el.reduce((acc, cur): any => {
+                return cur.price !== undefined ? acc + cur.price : 0;
+              }, 0);
+        }) as number[];
+        console.log("리절트테스트", result);
+        if (result) {
+          let sum = 0;
+          for (let i = 0; i < result.length; i++) {
+            if (result[i] === undefined) {
+              continue;
+            } else sum = sum + result[i];
+          }
+          console.log("결과값", sum);
+          settotalCost(sum);
         }
-        console.log("결과값", sum);
-        return sum;
       }
-    }
-  };
+    };
+    handleCost();
+  }, [planList]);
+
   useEffect(() => {
     dispatch(getPlanList(planList));
   }, [planList]);
@@ -143,14 +126,14 @@ body*{
             })
           : null}
         <div className="totalPriceBox">
-          <div className="totalPrice">
-            총 예상 경비 금액 : {handleCost()} 원
-          </div>
+          <div className="totalPrice">총 예상 경비 금액 : {totalCost} 원</div>
         </div>
         <ContentSearch planList={planList} setplanList={setplanList} />
         <button className="writeCompletedButton">작성완료</button>
       </section>
       {mapClickState ? <MapModal planList={planList} /> : null}
+      {console.log(state, "스테이트 확인용")}
+      {console.log(totalCost, "금액")}
     </>
   );
 }
