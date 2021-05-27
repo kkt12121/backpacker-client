@@ -1,4 +1,5 @@
 import {
+  isClickCloseAction,
   loginModalClickAction,
   loginModalClickCloseAction,
 } from "action/ModalClickAction";
@@ -53,7 +54,13 @@ export default function MenuCategory({}: Props): ReactElement {
               로그인
             </ul>
             <ul className="signupMenu">
-              <Link className="signupBtn" to="/signup">
+              <Link
+                className="signupBtn"
+                to="/signup"
+                onClick={() => {
+                  dispatch(isClickCloseAction());
+                }}
+              >
                 회원가입
               </Link>
             </ul>

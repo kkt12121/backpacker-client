@@ -36,14 +36,20 @@ export default function ContentSearch({
   const dispatch = useDispatch();
 
   const autoComplete = async (keyword: string) => {
-    axios.defaults.headers.common["Authorization"] =
-      "KakaoAK " + "a7b9cde0b8d1072c338d74a87c1063e4";
-    axios.defaults.headers.post["Content-Type"] =
-      "application/x-www-form-urlencoded";
+    // axios.defaults.headers.common["Authorization"] =
+    //   "KakaoAK " + "a7b9cde0b8d1072c338d74a87c1063e4";
+    // axios.defaults.headers.post["Content-Type"] =
+    //   "application/x-www-form-urlencoded";
 
     await axios
       .get(
-        `https://dapi.kakao.com/v2/local/search/keyword.json?query=${keyword}`
+        `https://dapi.kakao.com/v2/local/search/keyword.json?query=${keyword}`,
+        {
+          headers: {
+            Authorization: "KakaoAK " + "a7b9cde0b8d1072c338d74a87c1063e4",
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
       )
       .then((res) => {
         setAutoList(res.data.documents);
@@ -120,28 +126,28 @@ export default function ContentSearch({
     if (copyPlan[currentDay] === undefined) {
       copyPlan[currentDay] = [
         {
-          contentid: item.id,
+          contentId: item.id,
           category: item.category_group_code,
           detail: item.place_url,
-          title: item.place_name,
+          place: item.place_name,
           mapx: item.x,
           mapy: item.y,
           address: item.address_name,
           tel: item.phone,
-          image: image,
+          img: image,
         },
       ];
     } else {
       copyPlan[currentDay].push({
-        contentid: item.id,
+        contentId: item.id,
         category: item.category_group_code,
         detail: item.place_url,
-        title: item.place_name,
+        place: item.place_name,
         mapx: item.x,
         mapy: item.y,
         address: item.address_name,
         tel: item.phone,
-        image: image,
+        img: image,
       });
     }
     setplanList(copyPlan);
