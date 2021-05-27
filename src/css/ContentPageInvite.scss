@@ -1,0 +1,39 @@
+.btnOk {
+  font-weight: bold;
+  width: 20%;
+  font-size: medium;
+  margin-left: 25%;
+  cursor: pointer;
+}
+.btnCancel {
+  font-weight: bold;
+  width: 20%;
+  font-size: medium;
+  margin-left: 10%;
+  cursor: pointer;
+}
+.sectionButton {
+  margin-top: 5%;
+}
+.invitePageHeader {
+  margin-top: 8%;
+  font-weight: bold;
+  margin-left: 7%;
+}
+.invitePageModal {
+  margin: 0 auto;
+  z-index: 3;
+}
+.modalInvite {
+  display: block;
+  position: fixed;
+  z-index: auto;
+  left: 0;
+  top: 0;
+  margin-top: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}

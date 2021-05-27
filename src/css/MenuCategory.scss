@@ -47,11 +47,24 @@
   font-size: 2rem;
   cursor: pointer;
 }
+.listMenu {
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
 
 .signupBtn {
   text-decoration-line: none;
   color: white;
 }
 .signupBtn:hover {
+  color: red;
+}
+
+.listBtn {
+  text-decoration-line: none;
+  color: white;
+}
+.listBtn:hover {
   color: red;
 }

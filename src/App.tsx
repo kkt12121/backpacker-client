@@ -10,6 +10,7 @@ import ContentListPage from "page/ContentListPage";
 import EnterContentPage from "page/EnterContentPage";
 import ContentInvite from "component/ContentInvite";
 import MyPage from "page/Mypage";
+import InvitePage from "page/InvitePage";
 
 function App() {
   let dispatch = useDispatch();
@@ -46,6 +47,11 @@ function App() {
       <Switch>
         <Route path="/mypage">
           <MyPage />
+        </Route>
+      </Switch>
+      <Switch>
+        <Route path="/invite">
+          <InvitePage />
         </Route>
       </Switch>
       {console.log(testReducer)}
