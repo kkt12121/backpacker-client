@@ -21,9 +21,12 @@ import {
   contentItemReducer,
   currentDayReducer,
   dayListReducer,
+  endDateReducer,
   planListReducer,
   priceReducer,
-  test,
+  regionReducer,
+  startDateReducer,
+  titleReducer,
 } from "./ContentWriteReducer";
 
 const RootReducer = combineReducers({
@@ -43,10 +46,13 @@ const RootReducer = combineReducers({
   filteredListReducer,
   contentItemReducer,
   priceReducer,
-  test,
   dayListReducer,
   currentDayReducer,
   planListReducer,
+  regionReducer,
+  endDateReducer,
+  startDateReducer,
+  titleReducer,
 });
 
 export default RootReducer;

@@ -1,10 +1,17 @@
-import React, { ReactElement, useState } from "react";
+import { getRegion } from "action/ContentWriteAction";
+import React, { ReactElement, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import "../css/ContentWriteAreaHeader.scss";
 interface Props {}
 
 export default function ContentWriteAreaHeader({}: Props): ReactElement {
   const [divMouseOver, setdivMouseOver] = useState(false);
   const [region, setregion] = useState("");
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getRegion(region));
+  }, [region]);
   return (
     <>
       <div className="contentWriteAreaHeader">

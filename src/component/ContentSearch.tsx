@@ -1,4 +1,3 @@
-
 import axios, { AxiosResponse } from "axios";
 import React, { ReactElement, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,12 +30,10 @@ export default function ContentSearch({
   planList,
   setplanList,
 }: Props): ReactElement {
-
   const [autoList, setAutoList] = useState<AxiosResponse>();
   const [place, setplace] = useState<placeState>(null);
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const dispatch = useDispatch();
-
 
   const autoComplete = async (keyword: string) => {
     axios.defaults.headers.common["Authorization"] =
@@ -57,6 +54,63 @@ export default function ContentSearch({
   const handleaddPlan = async (item: item) => {
     let copyPlan: Object[][] = [...planList];
     // 첫번째에 쓰레기 데이터로 있던 빈 객체 버리기
+    let image;
+    switch (item.category_group_code) {
+      case "MT1":
+        image = "/image/cart.png";
+        break;
+      case "CS2":
+        image = "/image/convenience-store.png";
+        break;
+      case "PS3":
+        image = "/image/kindergarden-children-and-teacher.png";
+        break;
+      case "SC4":
+        image = "/image/school.png";
+        break;
+      case "AC5":
+        image = "/image/education.png";
+        break;
+      case "PK6":
+        image = "/image/parking.png";
+        break;
+      case "OL7":
+        image = "/image/gas.png";
+        break;
+      case "SW8":
+        image = "/image/seoul-metro-logo.png";
+        break;
+      case "BK9":
+        image = "/image/bank.png";
+        break;
+      case "CT1":
+        image = "/image/happy-children.png";
+        break;
+      case "AG2":
+        image = "/image/broker.png";
+        break;
+      case "PO3":
+        image = "/image/building.png";
+        break;
+      case "AT4":
+        image = "/image/ming-dynasty-tombs.png";
+        break;
+      case "AD5":
+        image = "/image/hotel.png";
+        break;
+      case "FD6":
+        image = "/image/restaurant.png";
+        break;
+      case "CE7":
+        image = "/image/coffee-cup.png";
+        break;
+      case "HP8":
+        image = "/image/pharmacy.png";
+        break;
+      case "PM9":
+        image = "/image/medicine.png";
+        break;
+    }
     if (copyPlan[0].length >= 1) {
       if (Object.keys(copyPlan[0][0]).length === 0) {
         copyPlan[0].shift();
@@ -74,6 +128,7 @@ export default function ContentSearch({
           mapy: item.y,
           address: item.address_name,
           tel: item.phone,
+          image: image,
         },
       ];
     } else {
@@ -86,6 +141,7 @@ export default function ContentSearch({
         mapy: item.y,
         address: item.address_name,
         tel: item.phone,
+        image: image,
       });
     }
     setplanList(copyPlan);
