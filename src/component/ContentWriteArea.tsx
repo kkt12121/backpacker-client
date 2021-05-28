@@ -178,15 +178,6 @@ body*{
       </section>
       {mapClickState ? <MapModal planList={planList} /> : null}
       {console.log(state, "스테이트 확인용")}
-      {console.log(totalCost, "금액")}
-      {console.log("토큰", token)}
-      {console.log(startDate, "스타트데이트")}
-      {console.log(endDate, "엔드데이트")}
-      {console.log(title, "타이틀")}
-      {console.log(region, "리전")}
-      {console.log(test, "테스트")}
-      {console.log(planList, "플랜리스트")}
-      {console.log(schedule, "스케쥴")}
     </>
   );
 }

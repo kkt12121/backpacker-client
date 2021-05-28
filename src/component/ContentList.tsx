@@ -47,9 +47,14 @@ const ContentList = () => {
                 );
               }}
             >
-              <img className="contentThumbnail" src={el.thumbnail[0]} />
-              <div className="budget">{el.totalCost}원으로 다녀온</div>
-              <div className="condom">{el.touristSpot} 여행</div>
+              <div className="title">{el.title}</div>
+              <div className="scheduleLength">{el.schedule.length}일 간의</div>
+              <div className="budgetAndSpotBox">
+                <div className="budget">
+                  {new Intl.NumberFormat().format(el.totalCost)}원
+                </div>
+                <div className="touristSpot">{el.touristSpot} 여행</div>
+              </div>
             </div>
           </>
         ))}

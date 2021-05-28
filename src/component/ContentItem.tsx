@@ -33,6 +33,7 @@ export default function ContentItem({
     (state: RootState) => state.MapItemClick
   );
   const dispatch = useDispatch();
+  const currentDay = useSelector((state: RootState) => state.currentDayReducer);
 
   const clickHandler = (e: any) => {
     dispatch(mapItemOpen());
@@ -41,6 +42,11 @@ export default function ContentItem({
   };
   const idNum = String(idx);
 
+  const handleDeleteItem = () => {
+    let copy = [...planList];
+    delete copy[currentDay][idx];
+    setplanList(copy);
+  };
   return (
     <>
       {Object.keys(el).length === 0 ? null : (
@@ -59,6 +65,14 @@ export default function ContentItem({
                     <div className="contentPlace"> {el.place}</div>
                     <button
                       id={idNum}
+                      onClick={() => {
+                        window.open(`${el.detail}`, "_blank");
+                      }}
+                    >
+                      i
+                    </button>
+                    <button
+                      id={idNum}
                       onClick={(e) => {
                         mapItemClickState
                           ? dispatch(mapItemClose())
@@ -67,7 +81,11 @@ export default function ContentItem({
                     >
                       M
                     </button>
-                    {/* <IoClose size={40} className="deleteItem" onClick={() => {}} /> */}
+                    <IoClose
+                      size={40}
+                      className="deleteItem"
+                      onClick={handleDeleteItem}
+                    />
                   </div>
                 </div>
                 <ContentPrice

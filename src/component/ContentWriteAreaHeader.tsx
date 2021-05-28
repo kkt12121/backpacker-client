@@ -1,10 +1,12 @@
 import { getRegion } from "action/ContentWriteAction";
+import axios from "axios";
 import React, { ReactElement, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "../css/ContentWriteAreaHeader.scss";
 interface Props {}
 
 export default function ContentWriteAreaHeader({}: Props): ReactElement {
+  let token = localStorage.getItem("token");
   const [divMouseOver, setdivMouseOver] = useState(false);
   const [region, setregion] = useState("");
 
@@ -12,14 +14,31 @@ export default function ContentWriteAreaHeader({}: Props): ReactElement {
   useEffect(() => {
     dispatch(getRegion(region));
   }, [region]);
+
+  const [userData, setUserData] = useState<any>();
+
+  useEffect(() => {
+    const getData = async () => {
+      await axios
+        .get("https://localhost:4000/mypage/userInfo", {
+          headers: {
+            authorization: `bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          setUserData(res.data.userFind);
+        });
+    };
+    getData();
+  }, []);
   return (
     <>
       <div className="contentWriteAreaHeader">
         <div className="writerListBox">
           현재 작성자
           <div className="writerList">
-            <span>징징이</span>
-            <span>뚱이</span>
+            <span>{userData?.nickname}</span>
           </div>
         </div>
       </div>
