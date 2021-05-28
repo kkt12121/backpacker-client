@@ -38,7 +38,15 @@ const ContentList = () => {
         )}
         {page?.map((el) => (
           <>
-            <div key={page?.indexOf(el)} className="contentCard">
+            <div
+              key={page?.indexOf(el)}
+              className="contentCard"
+              onClick={() => {
+                window.location.assign(
+                  `http://localhost:3000/content/${el._id}`
+                );
+              }}
+            >
               <img className="contentThumbnail" src={el.thumbnail[0]} />
               <div className="budget">{el.totalCost}원으로 다녀온</div>
               <div className="condom">{el.touristSpot} 여행</div>

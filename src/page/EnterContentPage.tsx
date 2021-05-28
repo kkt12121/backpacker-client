@@ -1,4 +1,3 @@
-import * as React from "react";
 import ContentCarousel from "component/ContentCarousel";
 import EnterContentDayList from "component/EnterContentDayList";
 import Footer from "component/Footer";
@@ -9,13 +8,44 @@ import { inviteClose, inviteOpen } from "action/ModalClickAction";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import { InviteClick } from "reducer/ModalClickReducer";
+import { ContentAction } from "action/ContentAction";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function EnterContentPage() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  let params = useParams();
+  const test = () => {
+    for (const [key, value] of Object.entries(params)) {
+      console.log(`${key}: ${value}`);
+    }
+  };
+  test();
+  const { id } = useParams<{ id?: string }>();
+  console.log(id);
+  //invite 기능
   const inviteClickState = useSelector((state: RootState) => state.InviteClick);
+  //map 기능
   const contentItemMapClickState = useSelector(
     (state: RootState) => state.ContentItemMapClick
   );
+  //컨텐츠 데이터 불러오기
+  const stateData = useSelector(
+    (state: RootState) => state.ContentReducer.items
+  );
   const dispatch = useDispatch();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await axios.get(`https://localhost:4000/content/`).then((res) => {
+  //       console.log(res);
+  //       setData(res.data.data[0]);
+  //       setLoading(false);
+  //     });
+  //   };
+  //   fetchData();
+  // });
   return (
     <>
       <div className="contentPage">

@@ -54,7 +54,7 @@ export default function ContentItem({
                 className={snapshot.isDragging ? "droppableList" : "planitem"}
               >
                 <div className="contentItemBox">
-                  <img className="contentImage" src={el.image} />
+                  <img className="contentImage" src={el.img} />
                   <div className="contentPlaceBox">
                     <div className="contentPlace"> {el.place}</div>
                     <button
