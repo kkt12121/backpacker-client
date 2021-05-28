@@ -3,13 +3,14 @@ import { FILTER_CHANGE } from "action/FilteredListAction";
 let filteredListState: {
   list?: [
     {
-      callinder: string;
-      day: [string];
-      items: [string];
+      schedule: [any];
+      startDate: string;
       thumbnail: [string];
+      title: string;
       totalCost: number;
+      touristRegion: string;
       touristSpot: string;
-      userinfo: string;
+      userinfo: [string];
       __v: number;
       _id: string;
     }
@@ -20,13 +21,14 @@ interface filteredListAct {
   type: string;
   payload?: [
     {
-      callinder: string;
-      day: [string];
-      items: [string];
+      schedule: [any];
+      startDate: string;
       thumbnail: [string];
+      title: string;
       totalCost: number;
+      touristRegion: string;
       touristSpot: string;
-      userinfo: string;
+      userinfo: [string];
       __v: number;
       _id: string;
     }
