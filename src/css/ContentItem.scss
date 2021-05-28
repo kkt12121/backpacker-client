@@ -23,3 +23,6 @@
 .deleteItem {
   cursor: pointer;
 }
+.deleteItem:hover {
+  color: red;
+}
