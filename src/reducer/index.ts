@@ -28,6 +28,7 @@ import {
   startDateReducer,
   titleReducer,
 } from "./ContentWriteReducer";
+import ContentReducer from "./ContentReducer";
 
 const RootReducer = combineReducers({
   TestReducer,
@@ -53,6 +54,7 @@ const RootReducer = combineReducers({
   endDateReducer,
   startDateReducer,
   titleReducer,
+  ContentReducer,
 });
 
 export default RootReducer;
