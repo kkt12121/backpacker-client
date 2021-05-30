@@ -1,13 +1,20 @@
 import React, { ReactElement } from "react";
 import EnterContentDayListItem from "./EnterContentDayListItem";
-interface Props {}
+interface Props {
+  setindex?: any;
+  setitemorder?: any;
+}
 
-export default function EnterContentDayList({}: Props): ReactElement {
+export default function EnterContentDayList({
+  setindex,
+  setitemorder,
+}: Props): ReactElement {
   return (
     <>
-      <EnterContentDayListItem />
-      <EnterContentDayListItem />
-      <EnterContentDayListItem />
+      <EnterContentDayListItem
+        setindex={setindex}
+        setitemorder={setitemorder}
+      />
     </>
   );
 }

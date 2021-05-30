@@ -15,7 +15,6 @@ import {
   listBudgetUpdateReducer,
   listCityUpdateReducer,
 } from "./ListFindReducer";
-
 import filteredListReducer from "./FilteredListReducer";
 import {
   contentItemReducer,
@@ -29,6 +28,7 @@ import {
   titleReducer,
 } from "./ContentWriteReducer";
 import ContentReducer from "./ContentReducer";
+import ModalContentReducer from "./ModalContentReducer";
 
 const RootReducer = combineReducers({
   TestReducer,
@@ -55,6 +55,7 @@ const RootReducer = combineReducers({
   startDateReducer,
   titleReducer,
   ContentReducer,
+  ModalContentReducer,
 });
 
 export default RootReducer;

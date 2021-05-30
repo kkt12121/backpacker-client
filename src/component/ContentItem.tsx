@@ -7,13 +7,6 @@ import "../css/ContentItem.scss";
 import ContentPrice from "./ContentPrice";
 import { mapItemClose, mapItemOpen } from "action/ModalClickAction";
 interface Props {
-  //   id: number;
-  //   index: {
-  //     title?: string;
-  //     thumbnail?: string;
-  //     mapx?: string;
-  //     mapy?: string;
-  //   };
   setindex?: any;
   el: any;
   idx: number;
