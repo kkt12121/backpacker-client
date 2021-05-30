@@ -48,12 +48,13 @@ const ContentList = () => {
               }}
             >
               <div className="title">{el.title}</div>
-              <div className="scheduleLength">{el.schedule.length}일 간의</div>
               <div className="budgetAndSpotBox">
                 <div className="budget">
                   {new Intl.NumberFormat().format(el.totalCost)}원
                 </div>
-                <div className="touristSpot">{el.touristSpot} 여행</div>
+                <div className="scheduleLength">
+                  {el.schedule.length}일 여행
+                </div>
               </div>
             </div>
           </>
