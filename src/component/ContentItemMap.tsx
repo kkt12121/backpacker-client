@@ -1,23 +1,26 @@
 import React, { ReactElement, useEffect } from "react";
 
-interface Props {}
+interface Props {
+  index: { mapx?: string; mapy?: string };
+}
 declare global {
   interface Window {
     kakao: any;
   }
 }
-function ContentItemMap({}: Props): ReactElement {
+function ContentItemMap({ index }: Props): ReactElement {
   useEffect(() => {
+    console.log(index);
     const container = document.getElementById("myMap");
     const options = {
-      center: new window.kakao.maps.LatLng(37.579938, 126.977081),
+      center: new window.kakao.maps.LatLng(index.mapy, index.mapx),
       level: 3,
     };
 
     let map = new window.kakao.maps.Map(container, options);
 
     //마커가 표시 될 위치
-    let markerPosition = new window.kakao.maps.LatLng(37.579938, 126.977081);
+    let markerPosition = new window.kakao.maps.LatLng(index.mapy, index.mapx);
     // 마커를 생성
     let marker = new window.kakao.maps.Marker({
       position: markerPosition,

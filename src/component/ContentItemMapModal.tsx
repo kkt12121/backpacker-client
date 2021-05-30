@@ -3,11 +3,14 @@ import React, { ReactElement } from "react";
 import { IoClose } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
+import { planList } from "reducer/ContentWriteReducer";
 import "../css/ContentItemMapModal.scss";
 import ContentItemMap from "./ContentItemMap";
-interface Props {}
+interface Props {
+  index: { mapx?: string; mapy?: string };
+}
 
-export default function ContentItemMapModal({}: Props): ReactElement {
+export default function ContentItemMapModal({ index }: Props): ReactElement {
   const mapClickState = useSelector(
     (state: RootState) => state.ContentItemMapClick
   );
@@ -27,7 +30,7 @@ export default function ContentItemMapModal({}: Props): ReactElement {
             dispatch(contentItemMapClose());
           }}
         />
-        {mapClickState ? <ContentItemMap /> : null}
+        <ContentItemMap index={index} />
       </div>
     </>
   );

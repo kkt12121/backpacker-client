@@ -5,8 +5,18 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 interface Props {}
 
 function ContentInvite({}: Props): ReactElement {
-  const [inputValue, setInputValue] = useState("http://localhost:3000/content");
   const [inputText, setInputText] = useState(false);
+  let params = useParams();
+  const test = () => {
+    for (const [key, value] of Object.entries(params)) {
+      console.log(`${key}: ${value}`);
+    }
+  };
+  test();
+  const { id } = useParams<{ id?: string }>();
+  const [inputValue, setInputValue] = useState(
+    `http://localhost:3000/content/${id}`
+  );
   return (
     <>
       <div>
@@ -35,7 +45,7 @@ function ContentInvite({}: Props): ReactElement {
         <textarea
           className="inputLink"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={() => setInputValue(`http://localhost:3000/content/${id}`)}
         />
         <CopyToClipboard text={inputValue}>
           <button>Copy</button>

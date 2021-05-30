@@ -23,7 +23,6 @@ const SignupReducer = (state = signUpState, action: signUpAct) => {
   switch (action.type) {
     case SignUp:
       alert("회원가입에 성공하였습니다.");
-
       return {
         ...state,
         email: action.email,

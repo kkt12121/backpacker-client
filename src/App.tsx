@@ -33,6 +33,9 @@ function App() {
         <Route path="/contentwrite">
           <ContentWritePage />
         </Route>
+        <Route path="/contentwrite/:id">
+          <ContentWritePage />
+        </Route>
         <Route path="/signup">
           <SignUpPage />
         </Route>
