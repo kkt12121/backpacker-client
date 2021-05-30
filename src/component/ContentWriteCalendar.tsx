@@ -17,6 +17,8 @@ import {
   getTitle,
 } from "action/ContentWriteAction";
 import { currentDay } from "reducer/ContentWriteReducer";
+import { Button, Center, Input } from "@chakra-ui/react";
+import { PhoneIcon } from "@chakra-ui/icons";
 
 interface Props {}
 
@@ -96,22 +98,49 @@ body*{
       {mapClickState ? <Bodytag /> : null}
       {mapClickState ? <div className="modal"></div> : null}{" "}
       <div className="CalendarBox">
-        <h1
+        {/* <h1
           className={divClick ? "tripTitleOff" : "tripTitle"}
           onClick={handleDivClick}
         >
           {divTitle.length === 0 ? "여행제목 (Click하여 수정)" : divTitle}
-        </h1>
+        </h1> */}
+
+        {divClick ? null : (
+          <Center
+            className="tripTitle"
+            onClick={handleDivClick}
+            h="100px"
+            color="black"
+            fontSize="30"
+          >
+            {divTitle.length === 0 ? "여행 제목을 입력해주세요 !" : divTitle}
+          </Center>
+        )}
         {divClick ? (
           <div className="titleInputBox">
-            <input className="titleInput" onChange={(e) => handleDivTitle(e)} />
-            <button
+            <Input
+              className="titleInput"
+              variant="filled"
+              size="lg"
+              width="50%"
+              value={divTitle}
+              onChange={(e) => handleDivTitle(e)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  setdivClick(false);
+                }
+              }}
+            />
+            <Button
+              colorScheme="twitter"
+              variant="solid"
+              size="lg"
               onClick={() => {
                 setdivClick(false);
               }}
             >
               확인
-            </button>
+            </Button>
           </div>
         ) : null}
         <div className="dateBox">

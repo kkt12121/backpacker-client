@@ -30,18 +30,18 @@ body,
   margin-top: 21.44px;
   margin-bottom: 21.44px;
 }
-.titleInputBox button {
-  background-color: blue;
-  border: none;
-  border-bottom-right-radius: 30px;
-  border-top-right-radius: 30px;
-  font-weight: bold;
-  color: white;
-  width: 60px;
-  &:hover {
-    background-color: rgb(139, 203, 255);
-  }
-}
+// .titleInputBox button {
+//   background-color: blue;
+//   border: none;
+//   border-bottom-right-radius: 30px;
+//   border-top-right-radius: 30px;
+//   font-weight: bold;
+//   color: white;
+//   width: 60px;
+//   &:hover {
+//     background-color: rgb(139, 203, 255);
+//   }
+// }
 .titleInput {
   border: solid 1px blue;
   border-bottom-left-radius: 30px;
@@ -107,7 +107,7 @@ body,
   font-weight: bold;
   border-radius: 100%;
   color: white;
-  position: fixed;
+  position: absolute;
   right: 5%;
   bottom: 65%;
   &:hover {
@@ -227,22 +227,22 @@ body,
 .contentPlace {
   flex-grow: 1;
 }
-.contentPlaceBox button {
-  width: 20px;
-  height: 20px;
-  margin: 20px;
-  margin-left: 50px;
-  font-weight: bold;
-  padding: 0;
-  border: solid 2px black;
-  border-radius: 100%;
-  background-color: white;
-  &:hover {
-    background-color: black;
-    color: white;
-    cursor: pointer;
-  }
-}
+// .contentPlaceBox button {
+//   width: 20px;
+//   height: 20px;
+//   margin: 20px;
+//   margin-left: 50px;
+//   font-weight: bold;
+//   padding: 0;
+//   border: solid 2px black;
+//   border-radius: 100%;
+//   background-color: white;
+//   &:hover {
+//     background-color: black;
+//     color: white;
+//     cursor: pointer;
+//   }
+// }
 .contentPriceBox {
   display: flex;
   width: 50%;
@@ -253,15 +253,15 @@ body,
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
 }
-.contentPriceBox button {
-  border: solid 1px blue;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  width: 80px;
-  color: white;
-  font-weight: bold;
-  background-color: blue;
-}
+// .contentPriceBox button {
+//   border: solid 1px blue;
+//   border-top-right-radius: 30px;
+//   border-bottom-right-radius: 30px;
+//   width: 80px;
+//   color: white;
+//   font-weight: bold;
+//   background-color: blue;
+// }
 .totalPrice {
   color: white;
   border-radius: 30px;
@@ -281,15 +281,15 @@ body,
 .searchAndAuto {
   flex-grow: 1;
 }
-.contentSearchInput {
-  width: 100%;
-  height: 50px;
-  border: solid 3px blue;
-  padding-left: 30px;
-  border-bottom-left-radius: 20px;
-  border-top-left-radius: 20px;
-  //   box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
-}
+// .contentSearchInput {
+//   width: 100%;
+//   height: 50px;
+//   border: solid 3px blue;
+//   padding-left: 30px;
+//   border-bottom-left-radius: 20px;
+//   border-top-left-radius: 20px;
+//   //   box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+// }
 .autoList {
   margin: 0;
   box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
@@ -335,21 +335,21 @@ body,
   margin: 2px;
   color: rgb(145, 145, 145);
 }
-.contentSearchButton {
-  border: solid 3px blue;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 20px;
-  background-color: blue;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  height: 50px;
-  &:hover {
-    border: rgb(0, 0, 182);
-    background-color: rgb(0, 0, 182);
-    cursor: pointer;
-  }
-}
+// .contentSearchButton {
+//   border: solid 3px blue;
+//   border-bottom-right-radius: 20px;
+//   border-top-right-radius: 20px;
+//   background-color: blue;
+//   color: white;
+//   font-weight: bold;
+//   font-size: 18px;
+//   height: 50px;
+//   &:hover {
+//     border: rgb(0, 0, 182);
+//     background-color: rgb(0, 0, 182);
+//     cursor: pointer;
+//   }
+// }
 .writeCompletedButton {
   border: none;
   width: 300px;

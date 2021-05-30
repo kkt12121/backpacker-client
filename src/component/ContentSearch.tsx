@@ -2,8 +2,11 @@ import axios, { AxiosResponse } from "axios";
 import React, { ReactElement, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
+import { Input } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 import "../css/ContentSearch.scss";
+import { SearchIcon } from "@chakra-ui/icons";
 
 interface Props {
   planList: Object[][];
@@ -34,6 +37,11 @@ export default function ContentSearch({
   const [place, setplace] = useState<placeState>(null);
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const dispatch = useDispatch();
+
+  const textInput = React.useRef<any>();
+  const clearInput = () => {
+    textInput.current.value = "";
+  };
 
   const autoComplete = async (keyword: string) => {
     // axios.defaults.headers.common["Authorization"] =
@@ -118,8 +126,10 @@ export default function ContentSearch({
         break;
     }
     if (copyPlan[0].length >= 1) {
-      if (Object.keys(copyPlan[0][0]).length === 0) {
-        copyPlan[0].shift();
+      if (copyPlan[0][0] !== undefined) {
+        if (Object.keys(copyPlan[0][0]).length === 0) {
+          copyPlan[0].shift();
+        }
       }
     }
     // copyPlan에 item 정보 추가
@@ -155,14 +165,26 @@ export default function ContentSearch({
   return (
     <div className="contentSearchBox">
       <div className="searchAndAuto">
-        <input
+        <Input
+          variant="flushed"
           className="contentSearchInput"
+          ref={textInput}
           placeholder="예: 경복궁, 가로수길 카페, 신사동 맛집"
+          size="lg"
           onChange={(e) => {
             autoComplete(e.target.value);
             e.target.value.length === 0
               ? setAutoList(undefined)
               : console.log("go");
+          }}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              if (Array.isArray(autoList)) {
+                handleaddPlan(autoList[0]);
+                clearInput();
+                setAutoList(undefined);
+              } // 3항 연산자 사용할 경우 어떻게 함수 여러개 호출?
+            }
           }}
         />
         {Array.isArray(autoList) ? (
@@ -174,6 +196,7 @@ export default function ContentSearch({
                   className="autoItem"
                   onClick={() => {
                     handleaddPlan(item);
+                    clearInput();
                     setAutoList(undefined);
                   }}
                 >
@@ -185,15 +208,24 @@ export default function ContentSearch({
           </ul>
         ) : null}
       </div>
-      <button
+
+      {console.log("계획", planList)}
+      <Button
+        leftIcon={<SearchIcon />}
+        colorScheme="facebook"
+        variant="ghost"
+        size="lg"
         className="contentSearchButton"
         onClick={() => {
-          return Array.isArray(autoList) ? handleaddPlan(autoList[0]) : null;
+          if (Array.isArray(autoList)) {
+            handleaddPlan(autoList[0]);
+            clearInput();
+            setAutoList(undefined);
+          } // 3항 연산자 사용할 경우 어떻게 함수 여러개 호출?
         }}
       >
         Search
-      </button>
-      {console.log("계획", planList)}
+      </Button>
     </div>
   );
 }

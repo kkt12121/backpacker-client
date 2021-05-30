@@ -6,6 +6,9 @@ import { RootState } from "reducer";
 import "../css/ContentItem.scss";
 import ContentPrice from "./ContentPrice";
 import { mapItemClose, mapItemOpen } from "action/ModalClickAction";
+import { IconButton, CloseButton } from "@chakra-ui/react";
+import { InfoOutlineIcon, ViewIcon } from "@chakra-ui/icons";
+
 interface Props {
   setindex?: any;
   el: any;
@@ -40,6 +43,7 @@ export default function ContentItem({
     delete copy[currentDay][idx];
     setplanList(copy);
   };
+  // InfoOutlineIcon
   return (
     <>
       {Object.keys(el).length === 0 ? null : (
@@ -56,15 +60,36 @@ export default function ContentItem({
                   <img className="contentImage" src={el.img} />
                   <div className="contentPlaceBox">
                     <div className="contentPlace"> {el.place}</div>
-                    <button
+                    <IconButton
+                      variant="ghost"
+                      colorScheme="black"
+                      aria-label="detailInfo"
+                      fontSize="20px"
+                      icon={<InfoOutlineIcon />}
                       id={idNum}
                       onClick={() => {
                         window.open(`${el.detail}`, "_blank");
                       }}
-                    >
-                      i
-                    </button>
-                    <button
+                    />
+
+                    <IconButton
+                      variant="ghost"
+                      colorScheme="black"
+                      aria-label="mapInfo"
+                      fontSize="20px"
+                      icon={
+                        <ViewIcon
+                          id={idNum}
+                          onClick={(e) => {
+                            mapItemClickState
+                              ? dispatch(mapItemClose())
+                              : clickHandler(e);
+                          }}
+                        />
+                      }
+                    />
+
+                    {/* <button
                       id={idNum}
                       onClick={(e) => {
                         mapItemClickState
@@ -73,12 +98,8 @@ export default function ContentItem({
                       }}
                     >
                       M
-                    </button>
-                    <IoClose
-                      size={40}
-                      className="deleteItem"
-                      onClick={handleDeleteItem}
-                    />
+                    </button> */}
+                    <CloseButton size="lg" onClick={handleDeleteItem} />
                   </div>
                 </div>
                 <ContentPrice
