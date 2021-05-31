@@ -1,6 +1,16 @@
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+} from "@chakra-ui/react";
 
 const MyContent = () => {
   let token = localStorage.getItem("token");
@@ -24,25 +34,73 @@ const MyContent = () => {
         setMyList(res.data.findContent);
       });
   }, []);
-  //   console.log(myList);
+  // console.log(myList);
+  // return (
+  //   <div className="myContentList">
+  //     {page?.map((el: any) => {
+  //       return (
+  //         <div
+  //           key={page.indexOf(el)}
+  //           onClick={() => {
+  //             window.location.assign(`http://localhost:3000/content/${el._id}`);
+  //           }}
+  //           className="myContent"
+  //         >
+  //           <div>
+  //             {el.schedule.length}일 간의 {el.touristRegion} 여행
+  //           </div>
+  //           <div>{el.title}</div>
+  //         </div>
+  //       );
+  //     })}
+  //     {!myList?.length ? null : (
+  //       <ReactPaginate
+  //         pageCount={Math.ceil(Number(myList?.length) / 5)}
+  //         pageRangeDisplayed={3}
+  //         marginPagesDisplayed={3}
+  //         onPageChange={click}
+  //         pageClassName="paginateNum"
+  //         pageLinkClassName="pageIdx"
+  //         containerClassName="paginateContainer"
+  //       ></ReactPaginate>
+  //     )}
+  //   </div>
+  // );
   return (
-    <div className="myContentList">
-      {page?.map((el: any) => {
-        return (
-          <div
-            key={page.indexOf(el)}
-            onClick={() => {
-              window.location.assign(`http://localhost:3000/content/${el._id}`);
-            }}
-            className="myContent"
-          >
-            <div>
-              {el.schedule.length}일 간의 {el.touristRegion} 여행
-            </div>
-            <div>{el.title}</div>
-          </div>
-        );
-      })}
+    <>
+      <Table width="max-content" variant="simple">
+        <TableCaption>{/* {빈 공 간} */}</TableCaption>
+        <Thead>
+          <Tr>
+            <Th>일정 및 장소</Th>
+            <Th>일정 제목</Th>
+            <Th>예산</Th>
+          </Tr>
+        </Thead>
+        <Tbody fontSize="13px">
+          {page?.map((el: any) => {
+            return (
+              <Tr key={page.indexOf(el)} className="myContent">
+                <Td>
+                  {el.schedule.length}일 간의
+                  <br /> {el.touristRegion} 여행
+                </Td>
+                <Td
+                  className="myContentTitle"
+                  onClick={() => {
+                    window.location.assign(
+                      `http://localhost:3000/content/${el._id}`
+                    );
+                  }}
+                >
+                  {el.title}
+                </Td>
+                <Td>{new Intl.NumberFormat().format(el.totalCost)} 원</Td>
+              </Tr>
+            );
+          })}
+        </Tbody>
+      </Table>
       {!myList?.length ? null : (
         <ReactPaginate
           pageCount={Math.ceil(Number(myList?.length) / 5)}
@@ -54,7 +112,7 @@ const MyContent = () => {
           containerClassName="paginateContainer"
         ></ReactPaginate>
       )}
-    </div>
+    </>
   );
 };
 

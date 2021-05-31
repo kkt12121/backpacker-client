@@ -2,6 +2,7 @@ import axios from "axios";
 import logout from "component/Logout";
 import ModifyUserInfo from "component/ModifyUserInfo";
 import MyContent from "component/MyContent";
+import UserDelete from "component/UserDelete";
 import UserInfo from "component/UserInfo";
 import { useState } from "react";
 import "../css/Mypage.scss";
@@ -27,6 +28,7 @@ function MyPage() {
         <button onClick={logout}>로그아웃</button>
       </div>
       <MyContent />
+      <UserDelete />
     </div>
   );
 }
