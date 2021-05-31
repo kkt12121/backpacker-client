@@ -11,13 +11,13 @@ function Login() {
     let newEmail: string = email;
     newEmail = e.target.value;
     setEmail(newEmail);
-    console.log(newEmail);
+    // console.log(newEmail);
   };
   const inputPwHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newPw: string = password;
     newPw = e.target.value;
     setPassword(newPw);
-    console.log(newPw);
+    // console.log(newPw);
   };
 
   const dispatch = useDispatch();
