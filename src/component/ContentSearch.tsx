@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import { Input } from "@chakra-ui/react";
@@ -34,9 +34,27 @@ export default function ContentSearch({
   setplanList,
 }: Props): ReactElement {
   const [autoList, setAutoList] = useState<AxiosResponse>();
-  const [place, setplace] = useState<placeState>(null);
+  const [place, setplace] = useState("");
+  const [getImage, setgetImage] = useState("");
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const dispatch = useDispatch();
+
+  const imageSearch = async (keyword: string) => {
+    const res = await axios.get(
+      `https://dapi.kakao.com/v2/search/image?query=${keyword}`,
+      {
+        headers: {
+          Authorization: "KakaoAK " + "a7b9cde0b8d1072c338d74a87c1063e4",
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+    if (res.data.documents.length !== 0) {
+      setgetImage(res.data.documents[0].thumbnail_url);
+    } else {
+      console.log("뭐임", res);
+    }
+  };
 
   const textInput = React.useRef<any>();
   const clearInput = () => {
@@ -144,7 +162,7 @@ export default function ContentSearch({
           mapy: item.y,
           address: item.address_name,
           tel: item.phone,
-          img: image,
+          img: getImage,
         },
       ];
     } else {
@@ -157,7 +175,7 @@ export default function ContentSearch({
         mapy: item.y,
         address: item.address_name,
         tel: item.phone,
-        img: image,
+        img: getImage,
       });
     }
     setplanList(copyPlan);
@@ -173,6 +191,7 @@ export default function ContentSearch({
           size="lg"
           onChange={(e) => {
             autoComplete(e.target.value);
+            imageSearch(e.target.value);
             e.target.value.length === 0
               ? setAutoList(undefined)
               : console.log("go");
@@ -226,6 +245,7 @@ export default function ContentSearch({
       >
         Search
       </Button>
+      {console.log(getImage)}
     </div>
   );
 }

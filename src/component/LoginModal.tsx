@@ -4,6 +4,7 @@ import React, { ReactElement } from "react";
 import { IoClose } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
+import { CloseButton } from "@chakra-ui/react";
 import "../css/LoginModal.scss";
 
 interface Props {}
@@ -16,8 +17,8 @@ export default function LoginModal({}: Props): ReactElement {
   return (
     <>
       <div className={loginModalState ? "loginModalOn" : "loginModal"}>
-        <IoClose
-          size={40}
+        <CloseButton
+          size="lg"
           className="loginModalClose"
           onClick={() => {
             dispatch(loginModalClickCloseAction());

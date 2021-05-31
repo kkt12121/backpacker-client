@@ -10,6 +10,13 @@ import { IconButton, CloseButton } from "@chakra-ui/react";
 import { InfoOutlineIcon, ViewIcon } from "@chakra-ui/icons";
 
 interface Props {
+  //   id: number;
+  //   index: {
+  //     title?: string;
+  //     thumbnail?: string;
+  //     mapx?: string;
+  //     mapy?: string;
+  //   };
   setindex?: any;
   el: any;
   idx: number;

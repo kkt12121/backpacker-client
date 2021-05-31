@@ -25,9 +25,9 @@ export default function ContentWriteArea({}: Props): ReactElement {
   const endDate = useSelector((state: RootState) => state.endDateReducer);
   const title = useSelector((state: RootState) => state.titleReducer);
   const region = useSelector((state: RootState) => state.regionReducer);
-  const [planList, setplanList] = useState<Array<Array<{ price?: number }>>>([
-    [{}],
-  ]);
+  const [planList, setplanList] = useState<
+    Array<Array<{ price?: number; img?: string }>>
+  >([[{}]]);
   const mapClickState = useSelector((state: RootState) => state.MapClick);
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
@@ -115,8 +115,12 @@ body*{
           schedule: planList,
           title: title,
           touristRegion: region,
-          thumbnail: "없음",
-          touristSpot: "홍대",
+          thumbnail: planList.map((el, idx) => {
+            return el.map((ele) => {
+              return ele.img;
+            });
+          }),
+          touristSpot: "없음",
         },
         {
           headers: {
@@ -178,6 +182,14 @@ body*{
       </section>
       {mapClickState ? <MapModal planList={planList} /> : null}
       {console.log(state, "스테이트 확인용")}
+      {console.log(
+        "이미지 필터 테스트용",
+        planList.map((el, idx) => {
+          return el.map((ele) => {
+            return ele.img;
+          });
+        })
+      )}
     </>
   );
 }
