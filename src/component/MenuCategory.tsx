@@ -31,17 +31,35 @@ export default function MenuCategory({}: Props): ReactElement {
               로그아웃
             </ul>
             <ul className="signupMenu">
-              <Link className="signupBtn" to="/mypage">
+              <Link
+                className="signupBtn"
+                to="/mypage"
+                onClick={() => {
+                  dispatch(isClickCloseAction());
+                }}
+              >
                 마이페이지
               </Link>
             </ul>
             <ul className="listMenu">
-              <Link className="listBtn" to="/listpage">
+              <Link
+                className="listBtn"
+                to="/listpage"
+                onClick={() => {
+                  dispatch(isClickCloseAction());
+                }}
+              >
                 여행지 리스트
               </Link>
             </ul>
             <ul className="listMenu">
-              <Link className="listBtn" to="/contentwrite">
+              <Link
+                className="listBtn"
+                to="/contentwrite"
+                onClick={() => {
+                  dispatch(isClickCloseAction());
+                }}
+              >
                 여행 일정 만들기
               </Link>
             </ul>
@@ -70,7 +88,13 @@ export default function MenuCategory({}: Props): ReactElement {
               </Link>
             </ul>
             <ul className="listMenu">
-              <Link className="listBtn" to="/listpage">
+              <Link
+                className="listBtn"
+                to="/listpage"
+                onClick={() => {
+                  dispatch(isClickCloseAction());
+                }}
+              >
                 여행지 리스트
               </Link>
             </ul>

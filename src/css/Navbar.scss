@@ -1,10 +1,10 @@
 .nav {
   display: flex;
   height: 8%;
-  color: rgba (0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
   position: fixed;
   padding-right: 1%;
-  padding-top: 1%;
   align-items: center;
   z-index: 1;
 }
