@@ -29,19 +29,26 @@ function RangeSliderContent() {
 
   const getRangeHandler = (value: any) => setRange(value);
   return (
-    <Flex justifyContent="center" paddingTop="20px" paddingRight="40px">
+    <Flex
+      justifyContent="center"
+      paddingTop="80px"
+      paddingRight="40px"
+      paddingBottom="40px"
+    >
       <label className="maxBudget">최대 예산</label>
       <NumberInput
         maxW="135px"
         step={50000}
         mr="2rem"
+        border="pink"
+        color="rgb(255, 153, 170)"
         value={new Intl.NumberFormat().format(range) + "원"}
         onChange={getRangeHandler}
       >
         <NumberInputField />
-        <NumberInputStepper>
-          <NumberIncrementStepper />
-          <NumberDecrementStepper />
+        <NumberInputStepper bgColor="pink">
+          <NumberIncrementStepper color="white" />
+          <NumberDecrementStepper color="white" />
         </NumberInputStepper>
       </NumberInput>
       <Slider
@@ -54,9 +61,9 @@ function RangeSliderContent() {
         onChange={getRangeHandler}
       >
         <SliderTrack>
-          <SliderFilledTrack />
+          <SliderFilledTrack bgColor="pink" />
         </SliderTrack>
-        <SliderThumb boxShadow="dark-lg" boxSize="25px" />
+        <SliderThumb bgColor="hotpink" boxShadow="dark-lg" boxSize="25px" />
       </Slider>
     </Flex>
   );
