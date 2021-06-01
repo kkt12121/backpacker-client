@@ -110,7 +110,7 @@ body*{
             className="tripTitle"
             onClick={handleDivClick}
             h="100px"
-            color="black"
+            color="white"
             fontSize="30"
           >
             {divTitle.length === 0 ? "여행 제목을 입력해주세요 !" : divTitle}
@@ -120,8 +120,8 @@ body*{
           <div className="titleInputBox">
             <Input
               className="titleInput"
-              variant="filled"
               size="lg"
+              bgColor="white"
               width="50%"
               value={divTitle}
               onChange={(e) => handleDivTitle(e)}
@@ -132,7 +132,8 @@ body*{
               }}
             />
             <Button
-              colorScheme="twitter"
+              bgColor="hotpink"
+              color="white"
               variant="solid"
               size="lg"
               onClick={() => {
@@ -150,7 +151,13 @@ body*{
               locale="ko"
               dateFormat="yyyy/MM/dd/eee요일"
               selected={startDate}
+              popperModifiers={{
+                preventOverflow: {
+                  enabled: true,
+                },
+              }}
               onChange={(date: Date | null) => date && setstartDate(date)}
+              withPortal
             />
           </div>
           <div className="endDate">
@@ -160,7 +167,13 @@ body*{
               dateFormat="yyyy/MM/dd/eee요일"
               minDate={startDate}
               selected={endDate}
+              popperModifiers={{
+                preventOverflow: {
+                  enabled: true,
+                },
+              }}
               onChange={(date: Date | null) => date && setendDate(date)}
+              withPortal
             />
           </div>
         </div>

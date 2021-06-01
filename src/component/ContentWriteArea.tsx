@@ -162,7 +162,7 @@ body*{
           ? Object.entries(dayList).map((el) => {
               return currentDay === Number(el[0]) ? (
                 <>
-                  <h1>DAY {currentDay + 1}</h1>
+                  <h1 className="forWhen">DAY {currentDay + 1}</h1>
                   <div className="tableOfplan">
                     <ContentItemList
                       planList={planList}

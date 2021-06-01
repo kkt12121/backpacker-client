@@ -37,3 +37,36 @@
 .regionChoice:hover {
   background-color: red;
 }
+.react-datepicker__header {
+  background-color: black;
+}
+.react-datepicker__current-month {
+  color: white;
+}
+.react-datepicker__day-name {
+  color: white;
+}
+.react-datepicker__day-names {
+  background-color: hotpink;
+}
+.react-datepicker__month-container {
+  background-color: black;
+}
+.react-datepicker__day {
+  color: white;
+  &:hover {
+    background-color: hotpink;
+  }
+}
+.react-datepicker__day--selected {
+  background-color: hotpink;
+}
+.react-datepicker__day--outside-month {
+  color: hotpink;
+}
+.react-datepicker__day--disabled {
+  color: black;
+}
+.react-datepicker__navigation {
+  border-left-color: hotpink;
+}

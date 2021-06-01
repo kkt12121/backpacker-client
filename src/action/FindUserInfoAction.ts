@@ -15,7 +15,7 @@ export const emailFinder =
           phone: phone,
         },
         {
-          headers: { withCredentials: true },
+          withCredentials: true,
         }
       );
       const email = res.data.email;
@@ -38,7 +38,7 @@ export const pwFinder = (email: string) => async (dispatch: Dispatch) => {
         email: email,
       },
       {
-        headers: { withCredentials: true },
+        withCredentials: true,
       }
     );
     const createNewPw = res.data.success;

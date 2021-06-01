@@ -230,8 +230,8 @@ export default function ContentSearch({
 
       {console.log("계획", planList)}
       <Button
-        leftIcon={<SearchIcon />}
-        colorScheme="facebook"
+        leftIcon={<SearchIcon color="hotpink" />}
+        color="hotpink"
         variant="ghost"
         size="lg"
         className="contentSearchButton"

@@ -8,8 +8,10 @@ const logout = () => {
       {},
       {
         headers: {
+          "content-type": "application/json",
           authorization: `bearer ${token}`,
         },
+        withCredentials: true,
       }
     )
     .then(() => {

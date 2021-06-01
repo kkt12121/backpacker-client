@@ -30,7 +30,6 @@ function FindUserInfo() {
   return (
     <>
       <div className="findUserInfoBox">
-        <h1>회원정보 찾기</h1>
         <p className="findBoxText"> 이메일 찾기 </p>
         <div className="findEmailBox">
           {emailState.email ? (
@@ -46,7 +45,7 @@ function FindUserInfo() {
               ></input>
               <input
                 className="inputTag"
-                placeholder="전화번호를 입력하세요 예) 010-0000-0000"
+                placeholder="'-' 제외, 전화번호를 입력하세요"
                 onChange={getPhoneHandler}
               ></input>
               <button
