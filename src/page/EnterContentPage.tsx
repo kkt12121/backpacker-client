@@ -13,16 +13,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import { InviteClick } from "reducer/ModalClickReducer";
 import { ContentAction } from "action/ContentAction";
-import { useHistory, useParams } from "react-router";
+import { useHistory } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function EnterContentPage() {
   const [contentData, setContentData] = useState<any>(null);
   const [contentUserData, setContentUserData] = useState<any>(null);
   const [planList, setplanList] = useState<Array<Array<{}>>>([[{}]]);
-  const [loginedUser, setLoginedUser] = useState<any>("");
+  const [loginedUser, setLoginedUser] = useState<any>(null);
   let token = localStorage.getItem("token");
   const history = useHistory();
   const modalContentState = useSelector(
@@ -64,7 +64,7 @@ export default function EnterContentPage() {
           },
         })
         .then((res) => {
-          console.log(res);
+          console.log("로그인된 유저" + res.data.userFind.nickname);
           setLoginedUser(res.data.userFind);
         });
     };
@@ -73,7 +73,16 @@ export default function EnterContentPage() {
   }, []);
 
   //console.log("로그인 유저 정보" + loginedUser);
-
+  //날짜데이터 가공하기
+  function getFormatDate(date: any) {
+    console.log(date);
+    var year = date.getFullYear(); //yyyy
+    var month = 1 + date.getMonth(); //M
+    month = month >= 10 ? month : "0" + month; //month 두자리로 저장
+    var day = date.getDate(); //d
+    day = day >= 10 ? day : "0" + day; //day 두자리로 저장
+    return year + "" + month + "" + day; //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+  }
   //게시물 삭제 함수
   const del = async () => {
     await axios
@@ -102,21 +111,26 @@ export default function EnterContentPage() {
             </div>
           </div>
           <div>
-            <button
-              className="btnInvite"
-              onClick={() => {
-                inviteClickState
-                  ? dispatch(inviteClose())
-                  : dispatch(inviteOpen());
-              }}
-            >
-              INVITE
-            </button>
+            {contentUserData?.map((el: any) => {
+              return el.email === loginedUser?.email ? (
+                <button
+                  className="btnInvite"
+                  onClick={() => {
+                    inviteClickState
+                      ? dispatch(inviteClose())
+                      : dispatch(inviteOpen());
+                  }}
+                >
+                  INVITE
+                </button>
+              ) : null;
+            })}
           </div>
         </section>
         <section className="writeParticipant">
+          {/* {console.log(contentUserData?.map((el: any) => el.nickname))} */}
           <div className="writeParticipantTitle">
-            작성 참여자 : {contentUserData?.nickname}
+            작성 참여자 :{contentUserData?.map((el: any) => el.nickname)}
           </div>
         </section>
         {/* <section className="contentCarousel">
@@ -137,14 +151,16 @@ export default function EnterContentPage() {
               <Link to="/listpage">목록으로</Link>
             </button>
           </div>
-          {contentUserData?.name === loginedUser?.name ? (
-            <div>
-              <button>
-                <Link to={`/contentwrite/${id}`}>수정</Link>
-              </button>
-              <button onClick={del}>삭제</button>
-            </div>
-          ) : null}
+          {contentUserData?.map((el: any) => {
+            return el.email === loginedUser?.email ? (
+              <div>
+                <button>
+                  <Link to={`/contentwrite/?id=${id}`}>수정</Link>
+                </button>
+                <button onClick={del}>삭제</button>
+              </div>
+            ) : null;
+          })}
         </section>
         <Footer></Footer>
       </div>

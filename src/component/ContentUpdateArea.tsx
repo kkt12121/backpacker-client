@@ -5,19 +5,22 @@ import "../css/ContentWriteArea.scss";
 import ContentItemList from "./ContentItemList";
 import ContentSearch from "./ContentSearch";
 import ContentUpdateAreaHeader from "./ContentUpdateAreaHeader";
-import ContentWriteCalendar from "./ContentWriteCalendar";
 import MapModal from "./MapModal";
 import { createGlobalStyle } from "styled-components";
 import { DropResult } from "react-beautiful-dnd";
 import { reorder } from "./reorder";
 import { getPlanList } from "action/ContentWriteAction";
 import axios from "axios";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
+import ContentUpdateCalendar from "./ContentUpdateCalendar";
 
-interface Props {}
+interface Props {
+  id: string;
+}
 
-export default function ContentUpdateArea({}: Props): ReactElement {
+export default function ContentUpdateArea({ id }: Props): ReactElement {
   let token = localStorage.getItem("token");
+  const history = useHistory();
   const [totalCost, settotalCost] = useState(0);
   const state = useSelector((state: RootState) => state);
   const dayList = useSelector((state: RootState) => state.dayListReducer);
@@ -37,16 +40,44 @@ export default function ContentUpdateArea({}: Props): ReactElement {
   );
   const schedule = useSelector((state: RootState) => state.planListReducer);
   const [test, settest] = useState("");
-  let params = useParams();
-  const getId = () => {
-    for (const [key, value] of Object.entries(params)) {
-      console.log(`${key}: ${value}`);
-    }
-  };
-  getId();
-  const { id } = useParams<{ id?: string }>();
+  //params가 안된다.
+  // let params = useParams();
+  // const getId = () => {
+  //   for (const [key, value] of Object.entries(params)) {
+  //     console.log(`${key}: ${value}`);
+  //   }
+  // };
+  // getId();
+  // const { id } = useParams<{ id?: string }>();
 
+  // const params = new URL(window.location.href).searchParams;
+  // console.log("searchParams값" + params);
+  // let id = params.get("id");
   const dispatch = useDispatch();
+
+  //컨텐츠 데이터 받기 (API 요청)
+  // useEffect(() => {
+  console.log("패치데이터 시작");
+  // const fetchData = async () => {
+  //   console.log(`패치데이터 id값+${id}`);
+  //   // await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
+  //   //   console.log(res.data);
+  //   //   setContentData(res.data.contentInfo);
+  //   //   console.log(contentData);
+  //   //   setContentUserData(res.data.userInfo);
+  //   //   setplanList(res.data.itemArr);
+  //   // });
+  //   await fetch(`https://localhost:4000/content/${id}`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       //console.log(res.data);
+  //       setContentData(res.data.contentInfo);
+  //       setContentUserData(res.data.userInfo);
+  //       setplanList(res.data.itemArr);
+  //     });
+  // };
+  // fetchData();
+  // }, []);
 
   useEffect(() => {
     const handleCost = () => {
@@ -78,16 +109,6 @@ export default function ContentUpdateArea({}: Props): ReactElement {
         }
       }
     };
-    const fetchData = async () => {
-      await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
-        console.log(res.data);
-        setContentData(res.data.contentInfo);
-        setContentUserData(res.data.userInfo);
-        setplanList(res.data.itemArr);
-      });
-    };
-
-    fetchData();
     handleCost();
   }, [planList]);
 
@@ -99,20 +120,7 @@ export default function ContentUpdateArea({}: Props): ReactElement {
     settest(JSON.stringify(planList));
     console.log("실행유무");
   }, [planList]);
-  // 날짜 차이 길이의 arr 생성,
-  // 그 arr.map
-  // arr = [0, 0, 0, 0, 0].map((el) => {
-  //    {currentDay === arr.indexOf(el) ? (
-  //    <ContentItemList currentDay={currentDay} planList={planList} />
-  //    ) : null}
-  // })
 
-  // res.data.item[0] 데이터 모음
-  // res.data.item[0].addr1 주소
-  // res.data.item[0].firstimage 사진 주소
-  // res.data.item[0].mapx mapy 위도 경도
-  // res.data.item[0].title 장소이름
-  // res.data.item[0].tel 전화번호
   const Bodytag = createGlobalStyle`
 body {
   overflow : hidden;
@@ -122,12 +130,10 @@ body*{
   touch-action : none;
 }
 `;
-
+  //수정 버튼 기능
   const handleSendBtn = () => {
-    // axios.defaults.headers.common["Authorization"] = `bearer ${token}`;
-    // axios.defaults.headers.post["Content-Type"] = "application/json";
     axios
-      .post(
+      .put(
         `https://localhost:4000/content/${id}/update`,
         {
           startDate: startDate,
@@ -150,6 +156,7 @@ body*{
       )
       .then((res) => console.log("완료"))
       .catch((err) => console.log(err));
+    history.push(`/content/${id}`);
   };
 
   const onDragEnd = ({ destination, source }: DropResult) => {
@@ -168,10 +175,14 @@ body*{
     <>
       {mapItemClickState ? <Bodytag /> : null}
       {mapItemClickState ? <div className="modal"></div> : null}
-      <ContentWriteCalendar />
+      <ContentUpdateCalendar props={contentData} />
 
       <section className="contentWriteAreaBox">
-        <ContentUpdateAreaHeader props={contentUserData} />
+        {console.log(contentUserData)}
+        <ContentUpdateAreaHeader
+          props={contentUserData}
+          content={contentData}
+        />
 
         {dayList !== null
           ? Object.entries(dayList).map((el) => {
@@ -191,9 +202,7 @@ body*{
           : null}
         <div className="totalPriceBox">
           {console.log("contentData입니다" + contentData)}
-          <div className="totalPrice">
-            총 예상 경비 금액 : {contentData.totalCost} 원
-          </div>
+          <div className="totalPrice">총 예상 경비 금액 : {totalCost} 원</div>
         </div>
         <ContentSearch planList={planList} setplanList={setplanList} />
         <button className="writeCompletedButton" onClick={handleSendBtn}>

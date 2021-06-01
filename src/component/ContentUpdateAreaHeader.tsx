@@ -5,10 +5,18 @@ import { useDispatch } from "react-redux";
 import "../css/ContentWriteAreaHeader.scss";
 interface Props {
   props: { email: string; name: string; nickname: string; phone: string };
+  content: {
+    endDate: string;
+    startDate: string;
+    title: string;
+    totalCost: number;
+    touristRegion: string;
+  };
 }
 
 export default function ContentUpdateAreaHeader({
   props,
+  content,
 }: Props): ReactElement {
   let token = localStorage.getItem("token");
   const [divMouseOver, setdivMouseOver] = useState(false);
@@ -42,7 +50,7 @@ export default function ContentUpdateAreaHeader({
         <div className="writerListBox">
           현재 작성자
           <div className="writerList">
-            <span>{props?.nickname}</span>
+            <span>{userData?.nickname}</span>
           </div>
         </div>
       </div>
