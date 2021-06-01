@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../css/MainSection1.scss";
 import GuestTrialModal from "./GuestTrialModal";
-import Venice from "./video/Venice.mp4";
+import main from "./video/main.mp4";
 
 function MainSection1() {
   let token = localStorage.getItem("token");
@@ -23,7 +23,7 @@ function MainSection1() {
           zIndex: -1,
         }}
       >
-        <source src={Venice} type="video/mp4" />
+        <source src={main} type="video/mp4" />
       </video>
       <div className="section1text">
         <h2 className="title1">여행의 시작을 BACKPACKER와 함께하세요</h2>

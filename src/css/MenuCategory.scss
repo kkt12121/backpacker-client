@@ -69,3 +69,13 @@
 .listBtn:hover {
   color: #ff1493;
 }
+
+@media screen and (max-width: 1000px) {
+  .menuCategory {
+    display: none;
+  }
+
+  .menuCategoryOn {
+    display: none;
+  }
+}
