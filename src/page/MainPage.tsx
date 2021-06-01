@@ -27,11 +27,17 @@ const url = new URL(window.location.href);
 const authorizationCode = url.searchParams.get("code");
 // console.log(authorizationCode);
 if (authorizationCode) {
-  axios.post(
-    "https://localhost:4000/user/oauth",
-    { authorizationCode: authorizationCode },
-    { headers: { accept: "application/json" } }
-  );
+  axios
+    .post(
+      "https://localhost:4000/user/oauth",
+      { authorizationCode: authorizationCode },
+      { headers: { accept: "application/json" } }
+    )
+    .then((res) => {
+      console.log(res.data);
+      const token = res.data.accessToken;
+      localStorage.setItem("token", token);
+    });
 }
 
 export default function MainPage({}: Props): ReactElement {

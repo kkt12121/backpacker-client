@@ -47,13 +47,16 @@ const ContentList = () => {
                 );
               }}
             >
-              <div className="title">{el.title}</div>
-              <div className="budgetAndSpotBox">
-                <div className="budget">
-                  {new Intl.NumberFormat().format(el.totalCost)}원
-                </div>
+              <div className="contentThumbnail">
+                <img src={`${el.thumbnail[0][0]}`} />
+              </div>
+              <div className="contentTextbox">
+                <div className="title">{el.title}</div>
                 <div className="scheduleLength">
                   {el.schedule.length}일 여행
+                </div>
+                <div className="budget">
+                  예산 총 {new Intl.NumberFormat().format(el.totalCost)}원
                 </div>
               </div>
             </div>
@@ -64,6 +67,8 @@ const ContentList = () => {
             pageCount={Math.ceil(Number(renderList?.length) / 10)}
             pageRangeDisplayed={3}
             marginPagesDisplayed={3}
+            previousLabel="이전"
+            nextLabel="다음"
             onPageChange={click}
             pageClassName="paginateNum"
             pageLinkClassName="pageIdx"

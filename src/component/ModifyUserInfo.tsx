@@ -71,15 +71,12 @@ function ModifyUserInfo() {
           <div className="ModifyUserInfoName">
             <span>이름</span>
             <div>
-              <input placeholder={userData?.name} onChange={getNameHandler} />
+              <input value={userData?.name} onChange={getNameHandler} />
             </div>
           </div>
           <div className="ModifyUserInfoNickName">
             <span>닉네임</span>
-            <input
-              placeholder={userData?.nickname}
-              onChange={getNickNameHandler}
-            />
+            <input value={userData?.nickname} onChange={getNickNameHandler} />
             <button
               onClick={() => {
                 axios

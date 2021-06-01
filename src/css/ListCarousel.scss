@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   padding-top: 100px;
-  background-color: rgb(144, 188, 253);
+  background-color: black;
   padding-bottom: 50px;
 }
 .slide {
@@ -11,6 +11,10 @@
   opacity: 0.5;
   height: 400px;
   border-radius: 10px;
+  &:hover {
+    transform: scale(0.8);
+    cursor: pointer;
+  }
 }
 .slideWrapper {
   display: flex;
