@@ -13,14 +13,15 @@ body,
   flex-direction: column;
   padding-top: 100px;
   font-weight: bold;
+  background-color: black;
 }
 .tripTitleOff,
 .tripTitle {
   text-align: center;
-  color: rgb(0, 19, 58);
+  color: white;
   &:hover {
-    color: blue;
-    background-color: white;
+    color: hotpink;
+    background-color: black;
   }
 }
 .titleInputBox {
@@ -43,7 +44,7 @@ body,
 //   }
 // }
 .titleInput {
-  border: solid 1px blue;
+  border: solid 1px hotpink;
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
   font-size: 32px;
@@ -62,9 +63,11 @@ body,
   border: none;
   padding: 1px;
   padding-left: 20px;
-  height: fit-content;
+  display: flex;
+  height: 40px;
+  line-height: 40px;
   border-radius: 30px;
-  background-color: blue;
+  background-color: hotpink;
   color: white;
 }
 .startDate input {
@@ -75,11 +78,11 @@ body,
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  border: solid 1px blue;
-  color: blue;
+  border: solid 1px hotpink;
+  color: black;
   border-radius: 20px;
   &:hover {
-    color: black;
+    color: hotpink;
     cursor: pointer;
   }
 }
@@ -91,16 +94,16 @@ body,
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  border: solid 1px blue;
-  color: blue;
+  border: solid 1px hotpink;
+  color: black;
   border-radius: 20px;
   &:hover {
-    color: black;
+    color: hotpink;
     cursor: pointer;
   }
 }
 .totalMapBtn {
-  background-color: rgb(0, 140, 255);
+  background-color: hotpink;
   width: 50px;
   height: 50px;
   border: none;
@@ -109,9 +112,9 @@ body,
   color: white;
   position: absolute;
   right: 5%;
-  bottom: 65%;
+  bottom: 55%;
   &:hover {
-    background-color: rgb(0, 116, 211);
+    background-color: pink;
     cursor: pointer;
   }
 }
@@ -120,14 +123,13 @@ body,
 // Write area header start
 .dayBox {
   margin: 0;
-  margin-top: 100px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   padding-left: 30px;
   padding-right: 30px;
-  padding-top: 50px;
-  background-color: blue;
+  padding-top: 150px;
+  background-color: black;
 }
 .dayBox button {
   width: 80px;
@@ -136,7 +138,7 @@ body,
   border-radius: 30px;
   background-color: white;
   font-weight: bold;
-  color: blue;
+  color: hotpink;
   margin: 5px;
   &:hover {
     background-color: rgb(190, 190, 190);
@@ -155,21 +157,32 @@ body,
   align-items: flex-end;
   padding-right: 10px;
   padding-bottom: 20px;
-  background-color: blue;
+  background-color: black;
 }
 .writerListBox {
   width: 150px;
-  color: blue;
-  background-color: white;
-  border-radius: 20px;
+  color: white;
+  background-color: hotpink;
+  border-radius: 10px;
   border: none;
+  padding: 0px;
+  padding-top: 5px;
+}
+.writerList {
+  color: black;
+  margin-top: 5px;
   padding: 5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
 }
 .regionChoice {
   width: 100%;
   padding: 20px;
   color: white;
-  background-color: blue;
+  background-color: black;
   &:hover {
     background-color: black;
   }
@@ -182,12 +195,16 @@ body,
 .regionList li {
   margin: 5px;
   &:hover {
-    color: blue;
+    color: hotpink;
   }
 }
 // Write area header end
 
 // Write area body start
+.forWhen {
+  padding: 40px;
+  font-size: 30px;
+}
 .tableOfplan {
   width: 100%;
 }
@@ -208,6 +225,7 @@ body,
   flex-wrap: wrap;
   background-color: white;
   width: 70%;
+  height: 130px;
   margin: 20px;
   box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
 }
@@ -215,17 +233,50 @@ body,
   border: none;
   width: 100%;
   flex-grow: 1;
+  overflow: hidden;
 }
 .contentImage {
-  width: 80px;
-  height: 80px;
-  margin-left: 20px;
+  width: 130px;
+  height: 130px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.contentTextInfoBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 .contentPlaceBox {
   display: flex;
 }
 .contentPlace {
   flex-grow: 1;
+}
+
+@media screen and (min-width: 501px) and (max-width: 1023px) {
+  // .contentImage {
+  //   display: none;
+  // }
+  .contentPlace {
+    flex-grow: 1;
+    font-size: 20px;
+  }
+  .contentPriceBox {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .contentImage {
+    display: none;
+  }
+  .contentPlace {
+    flex-grow: 1;
+    font-size: 18px;
+    line-height: 40px;
+  }
 }
 // .contentPlaceBox button {
 //   width: 20px;
@@ -245,11 +296,11 @@ body,
 // }
 .contentPriceBox {
   display: flex;
-  width: 50%;
+  width: 90%;
   border: none;
 }
 .contentPriceInput {
-  border: solid 1px blue;
+  border: solid 1px hotpink;
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
 }
@@ -267,7 +318,7 @@ body,
   border-radius: 30px;
   padding: 13px;
   margin-bottom: 30px;
-  background-color: blue;
+  background-color: hotpink;
   box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
 }
 // Write area body end
@@ -314,13 +365,13 @@ body,
 .autoList::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: blue;
+  background-color: hotpink;
 }
 .autoItem {
   border-top: solid 1px rgb(220, 220, 220);
   padding-left: 10px;
   &:hover {
-    background-color: rgb(214, 240, 255);
+    background-color: rgb(250, 226, 237);
     cursor: pointer;
   }
 }
@@ -359,7 +410,7 @@ body,
   border-radius: 20px;
   margin-bottom: 100px;
   color: white;
-  background-color: rgb(111, 0, 255);
+  background-color: rgb(255, 147, 201);
   transition-duration: 0.5s;
   &:hover {
     cursor: pointer;
@@ -368,18 +419,28 @@ body,
 }
 @keyframes MainBtn {
   0% {
-    background: rgb(0, 153, 255);
+    background: rgb(255, 0, 140);
+    position: relative;
+    top: 0.3em;
   }
   25% {
-    background: rgb(0, 255, 234);
+    background: rgb(174, 0, 255);
+    position: relative;
+    top: -0.3em;
   }
   50% {
-    background: rgb(133, 205, 92);
+    background: rgb(0, 255, 170);
+    position: relative;
+    top: 0.3em;
   }
   75% {
-    background: rgb(219, 240, 128);
+    background: rgb(255, 230, 0);
+    position: relative;
+    top: -0.3em;
   }
   100% {
-    background: rgb(233, 203, 122);
+    background: rgb(255, 0, 0);
+    position: relative;
+    top: 0.3em;
   }
 }

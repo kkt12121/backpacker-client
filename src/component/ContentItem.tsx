@@ -65,38 +65,39 @@ export default function ContentItem({
               >
                 <div className="contentItemBox">
                   <img className="contentImage" src={el.img} />
-                  <div className="contentPlaceBox">
-                    <div className="contentPlace"> {el.place}</div>
-                    <IconButton
-                      variant="ghost"
-                      colorScheme="black"
-                      aria-label="detailInfo"
-                      fontSize="20px"
-                      icon={<InfoOutlineIcon />}
-                      id={idNum}
-                      onClick={() => {
-                        window.open(`${el.detail}`, "_blank");
-                      }}
-                    />
+                  <div className="contentTextInfoBox">
+                    <div className="contentPlaceBox">
+                      <div className="contentPlace"> {el.place}</div>
+                      <IconButton
+                        variant="ghost"
+                        colorScheme="black"
+                        aria-label="detailInfo"
+                        fontSize="20px"
+                        icon={<InfoOutlineIcon />}
+                        id={idNum}
+                        onClick={() => {
+                          window.open(`${el.detail}`, "_blank");
+                        }}
+                      />
 
-                    <IconButton
-                      variant="ghost"
-                      colorScheme="black"
-                      aria-label="mapInfo"
-                      fontSize="20px"
-                      icon={
-                        <ViewIcon
-                          id={idNum}
-                          onClick={(e) => {
-                            mapItemClickState
-                              ? dispatch(mapItemClose())
-                              : clickHandler(e);
-                          }}
-                        />
-                      }
-                    />
+                      <IconButton
+                        variant="ghost"
+                        colorScheme="black"
+                        aria-label="mapInfo"
+                        fontSize="20px"
+                        icon={
+                          <ViewIcon
+                            id={idNum}
+                            onClick={(e) => {
+                              mapItemClickState
+                                ? dispatch(mapItemClose())
+                                : clickHandler(e);
+                            }}
+                          />
+                        }
+                      />
 
-                    {/* <button
+                      {/* <button
                       id={idNum}
                       onClick={(e) => {
                         mapItemClickState
@@ -106,14 +107,15 @@ export default function ContentItem({
                     >
                       M
                     </button> */}
-                    <CloseButton size="lg" onClick={handleDeleteItem} />
+                      <CloseButton size="lg" onClick={handleDeleteItem} />
+                    </div>
+                    <ContentPrice
+                      index={idx}
+                      setplanList={setplanList}
+                      planList={planList}
+                    />
                   </div>
                 </div>
-                <ContentPrice
-                  index={idx}
-                  setplanList={setplanList}
-                  planList={planList}
-                />
               </div>
             </>
           )}

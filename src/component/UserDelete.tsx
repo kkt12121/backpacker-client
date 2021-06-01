@@ -23,8 +23,10 @@ function UserDelete() {
     axios
       .delete("https://localhost:4000/mypage/userDelete", {
         headers: {
+          "content-type": "application/json",
           authorization: `bearer ${token}`,
         },
+        withCredentials: true,
       })
       .then((res) => {
         localStorage.clear();

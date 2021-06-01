@@ -31,7 +31,7 @@ if (authorizationCode) {
     .post(
       "https://localhost:4000/user/oauth",
       { authorizationCode: authorizationCode },
-      { headers: { accept: "application/json" } }
+      { headers: { accept: "application/json" }, withCredentials: true }
     )
     .then((res) => {
       console.log(res.data);
