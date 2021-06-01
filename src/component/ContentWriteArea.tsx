@@ -12,11 +12,13 @@ import { DropResult } from "react-beautiful-dnd";
 import { reorder } from "./reorder";
 import { getPlanList } from "action/ContentWriteAction";
 import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 
 interface Props {}
 
 export default function ContentWriteArea({}: Props): ReactElement {
   let token = localStorage.getItem("token");
+  const toast = useToast();
   const [totalCost, settotalCost] = useState(0);
   const state = useSelector((state: RootState) => state);
   const dayList = useSelector((state: RootState) => state.dayListReducer);
@@ -176,7 +178,23 @@ body*{
           <div className="totalPrice">총 예상 경비 금액 : {totalCost} 원</div>
         </div>
         <ContentSearch planList={planList} setplanList={setplanList} />
-        <button className="writeCompletedButton" onClick={handleSendBtn}>
+        <button
+          className="writeCompletedButton"
+          onClick={() => {
+            if (token) {
+              handleSendBtn();
+            } else {
+              toast({
+                title: "저장 실패",
+                description: "체험하기는 저장하실 수 없습니다.",
+                position: "top-right",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+              });
+            }
+          }}
+        >
           작성완료
         </button>
       </section>

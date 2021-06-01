@@ -6,14 +6,14 @@
   position: fixed;
   padding-right: 1%;
   align-items: center;
-  z-index: 1;
+  z-index: 5;
 }
 
 .hamburgerStick1 {
   width: 2rem;
   height: 0.3rem;
   margin-bottom: 20%;
-  background-color: blue;
+  background-color: #ff1493;
   z-index: 2;
 }
 
@@ -21,7 +21,7 @@
   width: 2rem;
   height: 0.3rem;
   margin-bottom: 20%;
-  background-color: blue;
+  background-color: #ff1493;
   transition: all 0.5s;
   z-index: 2;
 }
@@ -30,7 +30,7 @@
   width: 2rem;
   height: 0.3rem;
   margin-bottom: 20%;
-  background-color: blue;
+  background-color: #ff1493;
   z-index: 2;
 }
 .navLogo {
@@ -50,7 +50,7 @@
   margin-left: 75.2%;
   .hamburgerStick1 {
     @extend .hamburgerStick1;
-    background-color: black;
+    background-color: #ff1493;
     z-index: 2;
     position: absolute;
     transition: all 0.5s;
@@ -58,14 +58,14 @@
   }
   .hamburgerStick2 {
     @extend .hamburgerStick2;
-    background-color: black;
+    background-color: #ff1493;
     z-index: 2;
     transition: all 0.5s;
     background-color: rgba(0, 0, 0, 0);
   }
   .hamburgerStick3 {
     @extend .hamburgerStick3;
-    background-color: black;
+    background-color: #ff1493;
     z-index: 2;
     position: absolute;
     transition: all 0.5s;
