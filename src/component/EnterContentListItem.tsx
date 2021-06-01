@@ -16,6 +16,7 @@ interface Props {
   index: number;
   props: {
     place: string;
+    img: string;
     mapx: number;
     mapy: number;
     price: number;
@@ -64,6 +65,9 @@ export default function EnterContentListItem({
     <>
       <div>
         <div className="listItem">
+          <div className="contentPlaceName">
+            <img src={props.img}></img>
+          </div>
           <div className="contentPlaceName">{props.place}</div>
           <div>가격 : {props.price}</div>
           <button

@@ -8,8 +8,8 @@ export const getSignup =
   (
     email: string,
     password: string,
-    nickname: string,
     name: string,
+    nickname: string,
     phone: string
   ) =>
   async (dispatch: Dispatch) => {
@@ -19,8 +19,8 @@ export const getSignup =
         {
           email: email,
           password: password,
-          nickname: nickname,
           name: name,
+          nickname: nickname,
           phone: phone,
         },
         {
@@ -34,8 +34,8 @@ export const getSignup =
       dispatch({
         email: email,
         password: password,
-        nickname: nickname,
         name: name,
+        nickname: nickname,
         phone: phone,
         type: SignUp,
       });
@@ -43,8 +43,8 @@ export const getSignup =
       dispatch({
         email: email,
         password: password,
-        nickname: nickname,
         name: name,
+        nickname: nickname,
         phone: phone,
         type: SignUp_FAIL,
       });
