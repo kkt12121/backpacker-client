@@ -1,7 +1,7 @@
 .menuCategory {
   width: 16%;
   height: 100%;
-  background: #1f1ce2;
+  background: black;
   position: fixed;
   top: 0;
   right: -100%;
@@ -40,7 +40,7 @@
 }
 
 .loginMenu:hover {
-  color: red;
+  color: #ff1493;
 }
 
 .signupMenu {
@@ -59,7 +59,7 @@
   color: white;
 }
 .signupBtn:hover {
-  color: red;
+  color: #ff1493;
 }
 
 .listBtn {
@@ -67,5 +67,5 @@
   color: white;
 }
 .listBtn:hover {
-  color: red;
+  color: #ff1493;
 }
