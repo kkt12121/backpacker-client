@@ -14,7 +14,7 @@
 // }
 .body {
   margin: 0;
-  padding: 0;
+  padding: 7%;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
 }
@@ -30,6 +30,7 @@
 }
 
 .form {
+  margin-top: 3%;
   width: 450px;
   padding: 3rem 2rem;
   border-radius: 1rem;
@@ -99,10 +100,12 @@
   border: 1.5px solid var(--first-color);
 }
 .errMessage {
+  display: flex;
   color: red;
   margin-bottom: 1rem;
 }
 .message {
+  display: flex;
   color: green;
   margin-bottom: 1rem;
 }

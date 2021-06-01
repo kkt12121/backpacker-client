@@ -3,8 +3,8 @@ import { SignUp, SignUp_FAIL } from "action/SignupAction";
 let signUpState: {
   email?: string;
   password?: string;
-  nickname?: string;
   name?: string;
+  nickname?: string;
   phone?: string;
   success: boolean;
 } = {
@@ -13,8 +13,8 @@ let signUpState: {
 interface signUpAct {
   email?: string;
   password?: string;
-  nickname?: string;
   name?: string;
+  nickname?: string;
   phone?: string;
   type: string;
 }
@@ -27,19 +27,18 @@ const SignupReducer = (state = signUpState, action: signUpAct) => {
         ...state,
         email: action.email,
         password: action.password,
-        nickname: action.nickname,
         name: action.name,
+        nickname: action.nickname,
         phone: action.phone,
       };
-
     case SignUp_FAIL:
       alert("양식에 맞게 회원가입 작성을 해주세요.");
       return {
         ...state,
         email: action.email,
         password: action.password,
-        nickname: action.nickname,
         name: action.name,
+        nickname: action.nickname,
         phone: action.phone,
         success: false,
       };
