@@ -5,11 +5,12 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 interface Props {}
 
 function ContentInvite({}: Props): ReactElement {
-  const [inputText, setInputText] = useState(false);
+  const [inputText, setInputText] = useState<any>(null);
+  //const [shareWriteText, setshareWriteText] = useState(false);
   let params = useParams();
   const test = () => {
     for (const [key, value] of Object.entries(params)) {
-      console.log(`${key}: ${value}`);
+      // console.log(`${key}: ${value}`);
     }
   };
   test();
@@ -25,9 +26,8 @@ function ContentInvite({}: Props): ReactElement {
           <button
             className="read"
             onClick={() => {
-              setInputText(true);
-              console.log(inputText);
-              // <input value={inputValue} />;
+              console.log("read 버튼");
+              setInputText(`http://localhost:3000/content/${id}`);
             }}
           >
             공유
@@ -38,16 +38,24 @@ function ContentInvite({}: Props): ReactElement {
             <span className="span">선택</span>
           </label>
         </div> */}
-          <button className="readWrite">작성 공유</button>
+          <button
+            className="readWrite"
+            onClick={() => {
+              console.log("readWrite 버튼");
+              setInputText(`http://localhost:3000/invite/${id}`);
+            }}
+          >
+            작성 공유
+          </button>
         </div>
       </div>
       <div className="modalContent">
         <textarea
           className="inputLink"
-          value={inputValue}
+          value={inputText}
           onChange={() => setInputValue(`http://localhost:3000/content/${id}`)}
         />
-        <CopyToClipboard text={inputValue}>
+        <CopyToClipboard text={inputText}>
           <button>Copy</button>
         </CopyToClipboard>
       </div>

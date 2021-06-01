@@ -33,9 +33,6 @@ function App() {
         <Route path="/contentwrite">
           <ContentWritePage />
         </Route>
-        <Route path="/contentwrite/:id">
-          <ContentWritePage />
-        </Route>
         <Route path="/signup">
           <SignUpPage />
         </Route>
@@ -54,7 +51,7 @@ function App() {
         </Route>
       </Switch>
       <Switch>
-        <Route path="/invite">
+        <Route path="/invite/:id">
           <InvitePage />
         </Route>
       </Switch>
