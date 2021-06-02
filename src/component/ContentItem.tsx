@@ -75,6 +75,7 @@ export default function ContentItem({
         }
       });
     });
+
     setplanList(sortPlanList);
   };
   // InfoOutlineIcon

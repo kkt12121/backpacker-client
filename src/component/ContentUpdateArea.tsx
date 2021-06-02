@@ -56,29 +56,31 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
   const dispatch = useDispatch();
 
   //컨텐츠 데이터 받기 (API 요청)
-  // useEffect(() => {
-  console.log("패치데이터 시작");
-  // const fetchData = async () => {
-  //   console.log(`패치데이터 id값+${id}`);
-  //   // await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
-  //   //   console.log(res.data);
-  //   //   setContentData(res.data.contentInfo);
-  //   //   console.log(contentData);
-  //   //   setContentUserData(res.data.userInfo);
-  //   //   setplanList(res.data.itemArr);
-  //   // });
-  //   await fetch(`https://localhost:4000/content/${id}`)
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       //console.log(res.data);
-  //       setContentData(res.data.contentInfo);
-  //       setContentUserData(res.data.userInfo);
-  //       setplanList(res.data.itemArr);
-  //     });
-  // };
-  // fetchData();
-  // }, []);
-
+  useEffect(() => {
+    console.log("패치데이터 시작");
+    const fetchData = async () => {
+      console.log(`패치데이터 id값+${id}`);
+      await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
+        console.log(res.data);
+        setContentData(res.data.contentInfo);
+        console.log(contentData);
+        setContentUserData(res.data.userInfo);
+        setplanList(res.data.itemArr);
+      });
+      //   await fetch(`https://localhost:4000/content/${id}`)
+      //     .then((res) => res.json())
+      //     .then((res) => {
+      //       //console.log(res.data);
+      //       setContentData(res.data.contentInfo);
+      //       setContentUserData(res.data.userInfo);
+      //       setplanList(res.data.itemArr);
+      //     });
+    };
+    fetchData();
+  }, []);
+  useEffect(() => {
+    console.log("컨텐츠 데이터 확인 " + contentData);
+  }, [contentData]);
   useEffect(() => {
     const handleCost = () => {
       let priceArray = planList.map((el) => {
@@ -157,6 +159,7 @@ body*{
       .then((res) => console.log("완료"))
       .catch((err) => console.log(err));
     history.push(`/content/${id}`);
+    window.location.reload();
   };
 
   const onDragEnd = ({ destination, source }: DropResult) => {
@@ -175,7 +178,7 @@ body*{
     <>
       {mapItemClickState ? <Bodytag /> : null}
       {mapItemClickState ? <div className="modal"></div> : null}
-      <ContentUpdateCalendar props={contentData} />
+      {contentData ? <ContentUpdateCalendar props={contentData} /> : null}
 
       <section className="contentWriteAreaBox">
         {console.log(contentUserData)}

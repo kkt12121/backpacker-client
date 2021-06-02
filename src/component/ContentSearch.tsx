@@ -7,6 +7,7 @@ import { Button, ButtonGroup } from "@chakra-ui/react";
 
 import "../css/ContentSearch.scss";
 import { SearchIcon } from "@chakra-ui/icons";
+import { getPlanList } from "action/ContentWriteAction";
 
 interface Props {
   planList: Object[][];
@@ -62,6 +63,9 @@ export default function ContentSearch({
   const clearInput = () => {
     textInput.current.value = "";
   };
+  useEffect(() => {
+    dispatch(getPlanList(planList));
+  }, [planList]);
 
   const autoComplete = async (keyword: string) => {
     // axios.defaults.headers.common["Authorization"] =

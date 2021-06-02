@@ -19,7 +19,7 @@ import {
 import { currentDay } from "reducer/ContentWriteReducer";
 import { Button, Center, Input } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
-
+import { start } from "repl";
 interface Props {
   props: {
     endDate: string;
@@ -32,17 +32,49 @@ interface Props {
 
 registerLocale("ko", ko);
 export default function ContentUpdateCalendar({ props }: Props): ReactElement {
-  const [startDate, setstartDate] = useState<Date | null>(new Date());
-  const [endDate, setendDate] = useState<Date | null>(new Date());
+  // function parse(str: any) {
+  //   var y = str?.substr(0, 4);
+  //   var m = str?.substr(4, 2);
+  //   var d = str?.substr(6, 2);
+  //   return new Date(y, m - 1, d);
+  // }
+  // let dateStart = parse(props?.startDate);
+  // let dateEnd = parse(props?.endDate);
+  // let dateStart = new Date(props?.startDate);
+  // let dateEnd = new Date(props?.endDate);
+  // let newStartDate = new Date(
+  //   dateStart.getTime() + dateStart.getTimezoneOffset() * 60000
+  // );
+  console.log("startDate 초기값" + props?.startDate);
+  console.log("endDate 초기값" + props?.endDate);
+
+  const [startDate, setstartDate] = useState<Date | null>(null);
+  const [endDate, setendDate] = useState<Date | null>(null);
   const [dayCount, setdayCount] = useState<number | null>(null);
   const [dayList, setdayList] = useState<[string?] | null>(null);
   const dispatch = useDispatch();
   const mapClickState = useSelector((state: RootState) => state.MapClick);
   const [divClick, setdivClick] = useState(false);
-  const [divTitle, setdivTitle] = useState("");
+  const [divTitle, setdivTitle] = useState(props?.title);
   const state = useSelector((state: RootState) => state);
 
+  // async function onLoad() {
+  //   setstartDate(dateStart);
+  //   etendDate(dateEnd);
+  // }
+  // onLoad();
   useEffect(() => {
+    if (props?.startDate) {
+      console.log("props가 있다.");
+      setstartDate(new Date(props?.startDate));
+      setendDate(new Date(props?.endDate));
+    } else {
+      console.log("props가 없다.");
+      console.log("props 값" + props);
+    }
+  }, []);
+  useEffect(() => {
+    // console.log("startDate" + newStartDate + "///// endDate" + dateEnd);
     setdayCount(
       Math.ceil(
         (Number(endDate?.getTime()) - Number(startDate?.getTime())) / 86400000
@@ -101,6 +133,7 @@ body*{
   const handleDivTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setdivTitle(e.target.value);
   };
+
   return (
     <>
       {mapClickState ? <Bodytag /> : null}
@@ -118,12 +151,10 @@ body*{
             className="tripTitle"
             onClick={handleDivClick}
             h="100px"
-            color="black"
+            color="white"
             fontSize="30"
           >
-            {divTitle.length === 0
-              ? "여행 제목을 입력해주세요(수정) !"
-              : divTitle}
+            {divTitle.length === 0 ? props?.title : divTitle}
           </Center>
         )}
         {divClick ? (
@@ -133,7 +164,7 @@ body*{
               variant="filled"
               size="lg"
               width="50%"
-              value={props?.title}
+              value={divTitle.length === 0 || "" ? props?.title : divTitle}
               onChange={(e) => handleDivTitle(e)}
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
@@ -159,6 +190,7 @@ body*{
             <ReactDatePicker
               locale="ko"
               dateFormat="yyyy/MM/dd/eee요일"
+              // value={props?.startDate}
               selected={startDate}
               onChange={(date: Date | null) => date && setstartDate(date)}
             />
@@ -168,6 +200,7 @@ body*{
             <ReactDatePicker
               locale="ko"
               dateFormat="yyyy/MM/dd/eee요일"
+              // value={props?.endDate}
               minDate={startDate}
               selected={endDate}
               onChange={(date: Date | null) => date && setendDate(date)}
@@ -197,15 +230,17 @@ body*{
           );
         })}
       </div>
-      {console.log("시작날", startDate)}
-      {console.log("끝나는날", endDate)}
+    </>
+  );
+}
+{
+  /* {console.log("시작날", dateStart)}
+      {console.log("끝나는날", props?.endDate)}
       {console.log(
         "차이",
         Math.ceil(
-          (Number(endDate?.getTime()) - Number(startDate?.getTime())) / 86400000
+          (Number(dateEnd?.getTime()) - Number(dateStart?.getTime())) / 86400000
         ) + 1
       )}
-      {/* {mapClickState ? <MapModal /> : null} */}
-    </>
-  );
+      {mapClickState ? <MapModal /> : null} */
 }
