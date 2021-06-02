@@ -81,6 +81,8 @@ body,
   border: solid 1px hotpink;
   color: black;
   border-radius: 20px;
+  position: relative;
+  top: -0.1em;
   &:hover {
     color: hotpink;
     cursor: pointer;
@@ -97,6 +99,8 @@ body,
   border: solid 1px hotpink;
   color: black;
   border-radius: 20px;
+  position: relative;
+  top: -0.1em;
   &:hover {
     color: hotpink;
     cursor: pointer;
@@ -179,8 +183,9 @@ body,
   flex-direction: column;
 }
 .regionChoice {
-  width: 100%;
-  padding: 20px;
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+  padding-left: 20px;
   color: white;
   background-color: black;
   &:hover {
@@ -193,6 +198,7 @@ body,
   list-style: none;
 }
 .regionList li {
+  font-size: 1rem;
   margin: 5px;
   &:hover {
     color: hotpink;

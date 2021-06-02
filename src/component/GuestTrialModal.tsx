@@ -40,7 +40,7 @@ export default function GuestTrialModal({}: Props): ReactElement {
   return (
     <>
       <button className="startBtn" onClick={onOpen}>
-        여행 시작하기
+        NOW START
       </button>
 
       <Modal isOpen={isOpen} onClose={onClose}>

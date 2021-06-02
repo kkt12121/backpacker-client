@@ -5,26 +5,51 @@ import { RootState } from "reducer";
 
 import "../css/ContentPrice.scss";
 import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+} from "@chakra-ui/react";
+import {
   Button,
   CloseButton,
+  IconButton,
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  useToast,
 } from "@chakra-ui/react";
-import { CheckIcon, WarningTwoIcon } from "@chakra-ui/icons";
+import { CheckIcon, QuestionIcon, WarningTwoIcon } from "@chakra-ui/icons";
 import {
   Alert,
   AlertIcon,
   AlertTitle,
   AlertDescription,
 } from "@chakra-ui/react";
+import axios from "axios";
+import styled from "styled-components";
 interface Props {
   index: number;
   setplanList: React.Dispatch<React.SetStateAction<Object[][]>>;
   planList: any;
 }
 
+const ColorRed = styled.span`
+  color: red;
+`;
+
+const ColorGreen = styled.span`
+  color: Green;
+`;
+
+const ColorBlue = styled.span`
+  color: Blue;
+`;
 export default function ContentPrice({
   index,
   setplanList,
@@ -33,10 +58,13 @@ export default function ContentPrice({
   const dispatch = useDispatch();
   type priceState = null | number;
   const [price, setprice] = useState<priceState>(null);
+  const [averageCost, setaverageCost] = useState(0);
   const [invalidPrice, setinvalidPrice] = useState(false);
   const state = useSelector((state: RootState) => state.priceReducer);
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const [priceClick, setpriceClick] = useState(false);
+  const toast = useToast();
+
   const handlePrice = () => {
     let copy = [...planList];
     let result = { ...copy[currentDay][index], price: price };
@@ -65,6 +93,16 @@ export default function ContentPrice({
       setpriceClick(false);
     }
   }, [planList]);
+
+  useEffect(() => {
+    if (planList[currentDay][index].place !== undefined) {
+      axios
+        .post("https://localhost:4000/content//itemAc", {
+          place: planList[currentDay][index].place,
+        })
+        .then((res) => setaverageCost(res.data.averageCost));
+    }
+  }, [planList]);
   return (
     <>
       <div className="contentPriceBox">
@@ -73,10 +111,58 @@ export default function ContentPrice({
           onClick={handlePriceClick}
         >
           {"price" in planList[currentDay][index]
-            ? planList[currentDay][index].price
+            ? new Intl.NumberFormat().format(planList[currentDay][index].price)
             : null}{" "}
           원
         </div>
+        <Popover>
+          <PopoverTrigger>
+            <IconButton
+              variant="ghost"
+              colorScheme="black"
+              aria-label="costInfo"
+              fontSize="20px"
+              icon={<QuestionIcon />}
+              onClick={() => {}}
+            />
+          </PopoverTrigger>
+          <PopoverContent>
+            <PopoverArrow />
+            <PopoverCloseButton />
+            {/* <PopoverHeader>Confirmation!</PopoverHeader> */}
+            <PopoverBody textAlign="center">
+              {averageCost > planList[currentDay][index].price ? (
+                <>
+                  <ColorBlue>{planList[currentDay][index].place}</ColorBlue>에
+                  대한 <br /> 평균 경비 금액이 <br />
+                  {new Intl.NumberFormat().format(
+                    averageCost - planList[currentDay][index].price
+                  )}
+                  원이 <ColorGreen>적습니다! 😎</ColorGreen>
+                </>
+              ) : averageCost === 0 ? (
+                <>
+                  <ColorBlue>{planList[currentDay][index].place}</ColorBlue>에
+                  대한 <br />
+                  평균 경비 금액이
+                  <br />
+                  아직 없습니다! 😂
+                </>
+              ) : (
+                <>
+                  <ColorBlue>{planList[currentDay][index].place}</ColorBlue>에
+                  대한 <br />
+                  평균 경비 금액이 <br />
+                  {new Intl.NumberFormat().format(
+                    planList[currentDay][index].price - averageCost
+                  )}
+                  원이 <ColorRed>많습니다! 😭</ColorRed>
+                </>
+              )}
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+
         {priceClick ? null : (
           <>
             {/* <input
@@ -102,14 +188,26 @@ export default function ContentPrice({
                 focusBorderColor={isNaN(price as any) ? "crimson" : "blue.500"}
                 variant="flushed"
                 textAlign="center"
-                placeholder="예상 경비 금액 : 10조원"
+                placeholder={
+                  averageCost === 0
+                    ? `다른 이용자들이 아직 이곳을 방문하지 않았습니다!`
+                    : `총 예상 경비 금액 : ${new Intl.NumberFormat().format(
+                        averageCost
+                      )} 원`
+                }
                 onChange={(e) => setprice(Number(e.target.value))}
                 onKeyPress={(e) => {
                   if (e.key === "Enter") {
                     if (isNaN(price as any)) {
-                      setinvalidPrice(true);
+                      toast({
+                        title: "저장 실패",
+                        description: "금액을 정확하게 숫자만 입력해주세요!",
+                        position: "top-right",
+                        status: "error",
+                        duration: 5000,
+                        isClosable: true,
+                      });
                     } else {
-                      setinvalidPrice(false);
                       handlePrice();
                     }
                   }
@@ -130,9 +228,15 @@ export default function ContentPrice({
               variant="ghost"
               onClick={() => {
                 if (isNaN(price as any)) {
-                  setinvalidPrice(true);
+                  toast({
+                    title: "저장 실패",
+                    description: "금액을 정확하게 입력해주세요!",
+                    position: "top-right",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                  });
                 } else {
-                  setinvalidPrice(false);
                   handlePrice();
                 }
               }}
@@ -143,18 +247,6 @@ export default function ContentPrice({
         )}
       </div>
       {console.log("11111", planList[currentDay][index].price)}
-      {invalidPrice ? (
-        <Alert
-          status="error"
-          w="700px"
-          borderRadius="10px"
-          justifyContent="center"
-          marginBottom="10px"
-        >
-          <AlertIcon />
-          금액을 올바르게 입력해주세요.
-        </Alert>
-      ) : null}
     </>
   );
 }

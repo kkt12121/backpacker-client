@@ -20,15 +20,18 @@ function MyPage() {
 
   return (
     <div className="mypage">
-      {toggle ? <UserInfo /> : <ModifyUserInfo />}
-      <div className="btnBox">
-        <button onClick={toggleClickHandler}>
-          {toggle ? "정보수정" : "유저정보"}
-        </button>
-        <button onClick={logout}>로그아웃</button>
+      <div>
+        {toggle ? <UserInfo /> : <ModifyUserInfo />}
+        <div className="btnBox">
+          <button onClick={toggleClickHandler}>
+            {toggle ? "정보수정" : "유저정보"}
+          </button>
+          <button onClick={logout}>로그아웃</button>
+          <UserDelete />
+        </div>
       </div>
+
       <MyContent />
-      <UserDelete />
     </div>
   );
 }

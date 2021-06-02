@@ -10,50 +10,6 @@ body,
   .mainsection1 {
     display: flex;
     flex-direction: column;
-    height: 1000px;
-    align-items: center;
-    // background-image: url("https://source.unsplash.com/6Mxb_mZ_Q8E");
-    // background-size: cover;
-    // background-position: center;
-    // background-attachment: fixed;
-  }
-  .section1text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-    text-shadow: 0px 1px rgb(200, 200, 200), 2px 2px 0px rgb(200, 200, 200);
-    margin-top: 400px;
-    animation: appear 3s 1;
-  }
-  .title1 {
-    font-size: 50px;
-  }
-  .startBtn {
-    font-size: 20px;
-    font-weight: bold;
-    text-shadow: 0px 1px rgb(200, 200, 200), 2px 2px 0px rgb(200, 200, 200);
-    border: solid;
-    box-shadow: 0px 1px rgb(200, 200, 200), 2px 2px 0px rgb(200, 200, 200);
-    width: fit-content;
-    padding: 7px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 10px;
-    text-decoration: none;
-    color: white;
-    transition-duration: 1s;
-    &:hover {
-      background-color: rgb(200, 200, 200);
-      cursor: pointer;
-    }
-  }
-}
-@media screen and (min-width: 501px) and (max-width: 1023px) {
-  .mainsection1 {
-    display: flex;
-    flex-direction: column;
     height: 950px;
     align-items: center;
     // background-image: url("https://source.unsplash.com/6Mxb_mZ_Q8E");
@@ -67,7 +23,43 @@ body,
     align-items: center;
     color: white;
     font-weight: bold;
-    text-shadow: 0px 1px rgb(200, 200, 200), 2px 2px 0px rgb(200, 200, 200);
+    margin-top: 400px;
+    animation: appear 3s 1;
+  }
+  .title1 {
+    font-size: 50px;
+  }
+  .startBtn {
+    font-size: 20px;
+    font-weight: bold;
+    border: solid;
+    width: fit-content;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.3s;
+    &:hover {
+      color: hotpink;
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 1023px) {
+  .mainsection1 {
+    display: flex;
+    flex-direction: column;
+    height: 950px;
+    align-items: center;
+  }
+  .section1text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: bold;
     margin-top: 400px;
     animation: appear 3s 1;
   }
@@ -76,7 +68,6 @@ body,
   }
   .startBtn {
     border: solid;
-    box-shadow: 0px 1px rgb(200, 200, 200), 2px 2px 0px rgb(200, 200, 200);
     width: fit-content;
     padding: 7px;
     padding-left: 15px;
@@ -84,9 +75,9 @@ body,
     margin-top: 10px;
     text-decoration: none;
     color: white;
-    transition-duration: 1s;
+    transition-duration: 0.3s;
     &:hover {
-      background-color: rgb(200, 200, 200);
+      color: hotpink;
       cursor: pointer;
     }
   }
@@ -97,10 +88,6 @@ body,
     flex-direction: column;
     height: 812px;
     align-items: center;
-    // background-image: url("https://source.unsplash.com/6Mxb_mZ_Q8E");
-    // background-size: cover;
-    // background-position: 600px;
-    // background-attachment: fixed;
   }
   .section1text {
     display: flex;
@@ -108,7 +95,6 @@ body,
     align-items: center;
     color: white;
     font-weight: bold;
-    text-shadow: 0px 1px rgb(200, 200, 200), 1px 1px 0px rgb(200, 200, 200);
     margin-top: 200px;
     animation: appear 3s 1;
   }
@@ -118,7 +104,6 @@ body,
   .startBtn {
     font-size: 15px;
     border: solid;
-    box-shadow: 0px 1px rgb(200, 200, 200), 1px 1px 0px rgb(200, 200, 200);
     width: fit-content;
     padding: 7px;
     padding-left: 15px;
@@ -126,9 +111,9 @@ body,
     margin-top: 10px;
     text-decoration: none;
     color: white;
-    transition-duration: 1s;
+    transition-duration: 0.3s;
     &:hover {
-      background-color: rgb(200, 200, 200);
+      color: hotpink;
       cursor: pointer;
     }
   }

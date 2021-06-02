@@ -40,7 +40,8 @@ export default function ContentSearch({
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const dispatch = useDispatch();
 
-  const imageSearch = async (keyword: string) => {
+  useEffect(() => {}, [autoList]);
+  const imageSearch = async (keyword: string, item: item) => {
     const res = await axios.get(
       `https://dapi.kakao.com/v2/search/image?query=${keyword}`,
       {
@@ -51,7 +52,8 @@ export default function ContentSearch({
       }
     );
     if (res.data.documents.length !== 0) {
-      setgetImage(res.data.documents[0].thumbnail_url);
+      handleaddPlan(item, res.data.documents[0].thumbnail_url);
+      // setgetImage(res.data.documents[0].thumbnail_url);
     } else {
       console.log("뭐임", res);
     }
@@ -87,7 +89,7 @@ export default function ContentSearch({
       });
   };
 
-  const handleaddPlan = async (item: item) => {
+  const handleaddPlan = async (item: item, imageurl: string) => {
     let copyPlan: Object[][] = [...planList];
     // 첫번째에 쓰레기 데이터로 있던 빈 객체 버리기
     let image;
@@ -166,7 +168,7 @@ export default function ContentSearch({
           mapy: item.y,
           address: item.address_name,
           tel: item.phone,
-          img: getImage,
+          img: imageurl,
         },
       ];
     } else {
@@ -179,7 +181,7 @@ export default function ContentSearch({
         mapy: item.y,
         address: item.address_name,
         tel: item.phone,
-        img: getImage,
+        img: imageurl,
       });
     }
     setplanList(copyPlan);
@@ -195,7 +197,7 @@ export default function ContentSearch({
           size="lg"
           onChange={(e) => {
             autoComplete(e.target.value);
-            imageSearch(e.target.value);
+            // imageSearch(e.target.value);
             e.target.value.length === 0
               ? setAutoList(undefined)
               : console.log("go");
@@ -203,7 +205,7 @@ export default function ContentSearch({
           onKeyPress={(e) => {
             if (e.key === "Enter") {
               if (Array.isArray(autoList)) {
-                handleaddPlan(autoList[0]);
+                imageSearch(autoList[0].place_name, autoList[0]);
                 clearInput();
                 setAutoList(undefined);
               } // 3항 연산자 사용할 경우 어떻게 함수 여러개 호출?
@@ -218,7 +220,7 @@ export default function ContentSearch({
                   key={item.id}
                   className="autoItem"
                   onClick={() => {
-                    handleaddPlan(item);
+                    imageSearch(item.place_name, item);
                     clearInput();
                     setAutoList(undefined);
                   }}
@@ -241,7 +243,7 @@ export default function ContentSearch({
         className="contentSearchButton"
         onClick={() => {
           if (Array.isArray(autoList)) {
-            handleaddPlan(autoList[0]);
+            imageSearch(autoList[0].place_name, autoList[0]);
             clearInput();
             setAutoList(undefined);
           } // 3항 연산자 사용할 경우 어떻게 함수 여러개 호출?

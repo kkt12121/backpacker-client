@@ -7,7 +7,29 @@ import "../css/ContentItem.scss";
 import ContentPrice from "./ContentPrice";
 import { mapItemClose, mapItemOpen } from "action/ModalClickAction";
 import { IconButton, CloseButton } from "@chakra-ui/react";
-import { InfoOutlineIcon, ViewIcon } from "@chakra-ui/icons";
+import { InfoOutlineIcon, PhoneIcon, ViewIcon } from "@chakra-ui/icons";
+import styled from "styled-components";
+import { Icon } from "@chakra-ui/react";
+import { CgPhone } from "react-icons/cg";
+import { FaMapMarkedAlt, FaMapMarkerAlt } from "react-icons/fa";
+
+const AddressTelContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Address = styled.p`
+  font-size: 18px;
+  color: #9a9a9a;
+`;
+
+const Tel = styled.p`
+  margin-left: 10px;
+  font-size: 12px;
+  color: #9a9a9a;
+`;
 
 interface Props {
   //   id: number;
@@ -38,13 +60,10 @@ export default function ContentItem({
   const dispatch = useDispatch();
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
 
-  const clickHandler = (e: any) => {
+  const clickHandler = () => {
     dispatch(mapItemOpen());
-    setindex(e.target.id);
-    console.log("e.target.id값" + e.target.id);
+    setindex(idx);
   };
-  const idNum = String(idx);
-
   const handleDeleteItem = () => {
     let copy = [...planList];
     delete copy[currentDay][idx];
@@ -76,14 +95,41 @@ export default function ContentItem({
                   <img className="contentImage" src={el.img} />
                   <div className="contentTextInfoBox">
                     <div className="contentPlaceBox">
-                      <div className="contentPlace"> {el.place}</div>
+                      <div className="contentPlace">
+                        {" "}
+                        {el.place}
+                        <AddressTelContainer>
+                          <Address>
+                            {" "}
+                            <Icon
+                              as={FaMapMarkedAlt}
+                              w={5}
+                              h={9}
+                              style={{ marginRight: "6px" }}
+                            />
+                            {el.address}
+                          </Address>
+                          <Tel>
+                            {" "}
+                            <Icon
+                              as={CgPhone}
+                              w={6}
+                              h={5}
+                              style={{ marginRight: "3px" }}
+                            />
+                            {el.tel}
+                          </Tel>
+                        </AddressTelContainer>
+                      </div>
+
+                      {/* <p>{el.tel}</p> */}
                       <IconButton
                         variant="ghost"
                         colorScheme="black"
                         aria-label="detailInfo"
-                        fontSize="20px"
+                        fontSize="30px"
+                        className="detailIcon"
                         icon={<InfoOutlineIcon />}
-                        id={idNum}
                         onClick={() => {
                           window.open(`${el.detail}`, "_blank");
                         }}
@@ -93,29 +139,29 @@ export default function ContentItem({
                         variant="ghost"
                         colorScheme="black"
                         aria-label="mapInfo"
-                        fontSize="20px"
+                        fontSize="30px"
+                        className="mapIcon"
                         icon={
-                          <ViewIcon
-                            id={idNum}
-                            onClick={(e) => {
+                          <FaMapMarkerAlt
+                            onClick={() => {
                               mapItemClickState
                                 ? dispatch(mapItemClose())
-                                : clickHandler(e);
+                                : clickHandler();
                             }}
                           />
                         }
                       />
 
                       {/* <button
-                      id={idNum}
-                      onClick={(e) => {
-                        mapItemClickState
-                          ? dispatch(mapItemClose())
-                          : clickHandler(e);
-                      }}
-                    >
-                      M
-                    </button> */}
+                        id={idNum}
+                        onClick={(e) => {
+                          mapItemClickState
+                            ? dispatch(mapItemClose())
+                            : clickHandler(e);
+                        }}
+                      >
+                        M
+                      </button> */}
                       <CloseButton size="lg" onClick={handleDeleteItem} />
                     </div>
                     <ContentPrice
