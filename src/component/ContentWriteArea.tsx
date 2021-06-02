@@ -13,6 +13,7 @@ import { reorder } from "./reorder";
 import { getPlanList } from "action/ContentWriteAction";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
 
 interface Props {}
 
@@ -34,10 +35,9 @@ export default function ContentWriteArea({}: Props): ReactElement {
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
-  const schedule = useSelector((state: RootState) => state.planListReducer);
-  const [test, settest] = useState("");
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     const handleCost = () => {
@@ -76,10 +76,6 @@ export default function ContentWriteArea({}: Props): ReactElement {
     dispatch(getPlanList(planList));
   }, [planList]);
 
-  useEffect(() => {
-    settest(JSON.stringify(planList));
-    console.log("실행유무");
-  }, [planList]);
   // 날짜 차이 길이의 arr 생성,
   // 그 arr.map
   // arr = [0, 0, 0, 0, 0].map((el) => {
@@ -104,10 +100,10 @@ body*{
 }
 `;
 
-  const handleSendBtn = () => {
+  const handleSendBtn = async () => {
     // axios.defaults.headers.common["Authorization"] = `bearer ${token}`;
     // axios.defaults.headers.post["Content-Type"] = "application/json";
-    axios
+    await axios
       .post(
         "https://localhost:4000/content/create",
         {
@@ -133,7 +129,10 @@ body*{
           withCredentials: true,
         }
       )
-      .then((res) => console.log("완료"))
+      .then((res) => {
+        history.push(`/content/${res.data.id}`);
+        window.location.reload();
+      })
       .catch((err) => console.log(err));
   };
 
@@ -175,14 +174,45 @@ body*{
             })
           : null}
         <div className="totalPriceBox">
-          <div className="totalPrice">총 예상 경비 금액 : {totalCost} 원</div>
+          <div className="totalPrice">
+            총 예상 경비 금액 : {new Intl.NumberFormat().format(totalCost)} 원
+          </div>
         </div>
         <ContentSearch planList={planList} setplanList={setplanList} />
         <button
           className="writeCompletedButton"
           onClick={() => {
             if (token) {
-              handleSendBtn();
+              if (title.length === 0) {
+                toast({
+                  title: "저장 실패",
+                  description: "여행 제목을 입력해주세요!",
+                  position: "top-right",
+                  status: "error",
+                  duration: 5000,
+                  isClosable: true,
+                });
+              } else if (region.length === 0) {
+                toast({
+                  title: "저장 실패",
+                  description: "여행 지역을 선택해주세요!",
+                  position: "top-right",
+                  status: "error",
+                  duration: 5000,
+                  isClosable: true,
+                });
+              } else if (Object.entries(planList[0][0]).length === 0) {
+                toast({
+                  title: "저장 실패",
+                  description: "일정을 한개라도 작성해주세요!",
+                  position: "top-right",
+                  status: "error",
+                  duration: 5000,
+                  isClosable: true,
+                });
+              } else {
+                handleSendBtn();
+              }
             } else {
               toast({
                 title: "저장 실패",
@@ -208,6 +238,7 @@ body*{
           });
         })
       )}
+      {console.log(planList, "라이트에어리아")}
     </>
   );
 }
