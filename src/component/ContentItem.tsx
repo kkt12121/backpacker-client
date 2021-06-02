@@ -48,7 +48,16 @@ export default function ContentItem({
   const handleDeleteItem = () => {
     let copy = [...planList];
     delete copy[currentDay][idx];
-    setplanList(copy);
+
+    const sortPlanList = copy.map((el) => {
+      return el.filter((ele) => {
+        if (ele !== undefined) {
+          return ele;
+        }
+      });
+    });
+
+    setplanList(sortPlanList);
   };
   // InfoOutlineIcon
   return (

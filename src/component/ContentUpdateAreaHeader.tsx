@@ -63,7 +63,7 @@ export default function ContentUpdateAreaHeader({
           setdivMouseOver(true);
         }}
       >
-        {region.length === 0 ? "지역을 선택해주세요" : region}
+        {region.length === 0 ? content?.touristRegion : region}
         <ul className={divMouseOver ? "regionList" : "regionListOff"}>
           <li
             onClick={() => {
