@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../css/ModifyUserInfo.scss";
+import { useToast } from "@chakra-ui/react";
 
 function ModifyUserInfo() {
   let token = localStorage.getItem("token");
@@ -11,6 +12,7 @@ function ModifyUserInfo() {
   const [phone, setPhone] = useState<string>("");
   const [pwdSwitch, setPwdSwitch] = useState<boolean>(true);
   const [phoneSwitch, setPhoneSwitch] = useState<boolean>(true);
+  const toast = useToast();
 
   useEffect(() => {
     const getData = async () => {
@@ -71,12 +73,15 @@ function ModifyUserInfo() {
           <div className="ModifyUserInfoName">
             <span>이름</span>
             <div>
-              <input value={userData?.name} onChange={getNameHandler} />
+              <input placeholder={userData?.name} onChange={getNameHandler} />
             </div>
           </div>
           <div className="ModifyUserInfoNickName">
             <span>닉네임</span>
-            <input value={userData?.nickname} onChange={getNickNameHandler} />
+            <input
+              placeholder={userData?.nickname}
+              onChange={getNickNameHandler}
+            />
             <button
               onClick={() => {
                 axios
@@ -93,15 +98,32 @@ function ModifyUserInfo() {
                   )
                   .then((res) => {
                     console.log(res);
-                    alert("사용가능한 닉네임입니다!");
+                    toast({
+                      title: "사용 가능한 닉네임입니다.",
+                      description: "회원님의 닉네임 변경이 완료되었습니다.",
+                      status: "success",
+                      duration: 5000,
+                      isClosable: true,
+                      position: "top-right",
+                    });
+                    // alert("사용가능한 닉네임입니다!");
                   })
                   .catch((err) => {
                     console.log(err);
-                    alert("사용중인 닉네임입니다!");
+                    toast({
+                      title: "사용중인 닉네임입니다!",
+                      description:
+                        "다른 사용자가 이미 사용중인 닉네임입니다. 다른 닉네임을 사용해주세요.",
+                      status: "error",
+                      duration: 5000,
+                      isClosable: true,
+                      position: "top-right",
+                    });
+                    // alert("사용중인 닉네임입니다!");
                   });
               }}
             >
-              중복 확인
+              닉네임 변경
             </button>
           </div>
           <div className="ModifyUserInfoPw">
@@ -147,7 +169,6 @@ function ModifyUserInfo() {
                       {
                         name: name,
                         password: pw,
-                        nickname: nickName,
                         phone: phone,
                       },
                       {
@@ -157,13 +178,30 @@ function ModifyUserInfo() {
                       }
                     )
                     .then((res) => {
-                      alert(res.data.message);
+                      // alert(res.data.message);
                       window.location.assign("http://localhost:3000/mypage");
                     })
                     .catch((err) => {
-                      alert("닉네임 변경 시, 중복을 확인해주세요");
+                      // alert("입력을 확인해주세요");
+                      toast({
+                        title: "입력을 확인해주세요",
+                        description:
+                          "잘못된 입력이 있습니다. 잘못된 것은 없는지 확인해주세요.",
+                        status: "error",
+                        duration: 5000,
+                        isClosable: true,
+                        position: "top-right",
+                      });
                     })
-                : alert("입력을 확인해주세요");
+                : toast({
+                    title: "입력을 확인해주세요",
+                    description:
+                      "잘못된 입력이 있습니다. 잘못된 것은 없는지 확인해주세요.",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                    position: "top-right",
+                  });
             }}
           >
             회원정보 수정

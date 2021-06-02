@@ -11,9 +11,11 @@ function MainSection2() {
     Aos.init({ duration: 3000 });
   }, []);
   return (
-    <section data-aos="fade-right" className="mainsection2">
-      <h2 className="section2text">예산에 맞게 여행계획을 만들어보세요</h2>
-      <div className="newcontentgif">
+    <section className="mainsection2">
+      <h2 data-aos="fade-right" className="section2text">
+        예산에 맞게 여행계획을 만들어보세요
+      </h2>
+      <div data-aos="fade-right" className="newcontentgif">
         <img src="https://media1.tenor.com/images/2724b55c365d0b4e995c8796606e5e80/tenor.gif?itemid=14625359"></img>
       </div>
     </section>

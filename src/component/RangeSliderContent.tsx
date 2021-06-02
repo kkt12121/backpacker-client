@@ -1,5 +1,5 @@
 import { listBudgetFind } from "action/ListFindAction";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "../css/RangeSliderContent.scss";
 import {
@@ -20,12 +20,6 @@ function RangeSliderContent() {
   useEffect(() => {
     dispatch(listBudgetFind(range));
   }, [range]);
-
-  // const getRangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   let newRange: number = range;
-  //   newRange = Number(e.target.value);
-  //   setRange(newRange);
-  // };
 
   const getRangeHandler = (value: any) => setRange(value);
   return (
@@ -66,21 +60,6 @@ function RangeSliderContent() {
         <SliderThumb bgColor="hotpink" boxShadow="dark-lg" boxSize="25px" />
       </Slider>
     </Flex>
-  );
-
-  return (
-    <div className="rangeSlider">
-      <input
-        type="range"
-        min="0"
-        max="1000000"
-        step="50000"
-        defaultValue="1000000"
-        onChange={getRangeHandler}
-        className="slideInput"
-      ></input>
-      0원 ~ {new Intl.NumberFormat().format(range)}원 여행정보
-    </div>
   );
 }
 

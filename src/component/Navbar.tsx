@@ -13,6 +13,9 @@ import Modal from "./Modal";
 import { Link } from "react-router-dom";
 import logout from "./Logout";
 import classNames from "classnames";
+import logo from "./video/logo.png";
+import { Text } from "@chakra-ui/layout";
+
 interface Props {}
 
 export default function Navbar({}: Props): ReactElement {
@@ -26,11 +29,19 @@ export default function Navbar({}: Props): ReactElement {
   );
   return (
     <nav className="nav">
-      <Link to="/">
-        <img
-          className="navLogo"
-          src="http://pngimg.com/uploads/nike/nike_PNG1.png"
-        />
+      <Link className="logoBox" to="/">
+        <div className="navLogo">
+          <img className="logoImg" src={logo} />
+          <Text
+            className="logoName"
+            bgGradient="linear(to-l, #7928CA,#FF0080)"
+            bgClip="text"
+            fontWeight="bold"
+            fontFamily="monospace"
+          >
+            BACKPACKER
+          </Text>
+        </div>
       </Link>
       <ol className="mobileOl">
         {token ? (

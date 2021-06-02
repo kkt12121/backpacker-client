@@ -81,6 +81,8 @@ body,
   border: solid 1px hotpink;
   color: black;
   border-radius: 20px;
+  position: relative;
+  top: -0.1em;
   &:hover {
     color: hotpink;
     cursor: pointer;
@@ -97,6 +99,8 @@ body,
   border: solid 1px hotpink;
   color: black;
   border-radius: 20px;
+  position: relative;
+  top: -0.1em;
   &:hover {
     color: hotpink;
     cursor: pointer;
