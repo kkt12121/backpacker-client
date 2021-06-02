@@ -30,7 +30,7 @@ function MainSection1() {
 
         {token ? (
           <Link className="startBtn" to="contentwrite">
-            여행 시작하기
+            NOW START
           </Link>
         ) : (
           <GuestTrialModal />

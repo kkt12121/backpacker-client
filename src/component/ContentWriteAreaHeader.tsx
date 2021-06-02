@@ -48,6 +48,7 @@ export default function ContentWriteAreaHeader({}: Props): ReactElement {
         <div className="writerListBox">
           현재 작성자
           <div className="writerList">
+            {token ? null : <span>체험자</span>}
             <span>{userData?.nickname}</span>
           </div>
         </div>
