@@ -41,7 +41,7 @@ function ContentPageInvite({}: Props): ReactElement {
     console.log("서버로 넘어가는 토큰" + token);
     console.log(`${id}`);
     axios.put(
-      `https://localhost:4000/content/invite/${id}`,
+      `https://localhost:4000/content/${id}/invite`,
       {}, //request.body를 넣어야한다.
       {
         headers: {
