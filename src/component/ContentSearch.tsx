@@ -236,8 +236,8 @@ export default function ContentSearch({
 
       {console.log("계획", planList)}
       <Button
-        leftIcon={<SearchIcon color="hotpink" />}
-        color="hotpink"
+        leftIcon={<SearchIcon color="#ff1493" />}
+        color="#ff1493"
         variant="ghost"
         size="lg"
         className="contentSearchButton"

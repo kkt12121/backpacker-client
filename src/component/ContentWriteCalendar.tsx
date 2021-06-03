@@ -107,7 +107,7 @@ body*{
 
         {divClick ? null : (
           <Center
-            className="tripTitle"
+            className={divTitle.length === 0 ? "tripTitle" : "completedTitle"}
             onClick={handleDivClick}
             h="100px"
             color="white"
@@ -132,7 +132,7 @@ body*{
               }}
             />
             <Button
-              bgColor="hotpink"
+              bgColor="#ff1493"
               color="white"
               variant="solid"
               size="lg"

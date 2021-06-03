@@ -57,7 +57,7 @@ function RangeSliderContent() {
         <SliderTrack>
           <SliderFilledTrack bgColor="pink" />
         </SliderTrack>
-        <SliderThumb bgColor="hotpink" boxShadow="dark-lg" boxSize="25px" />
+        <SliderThumb bgColor="#ff1493" boxShadow="dark-lg" boxSize="25px" />
       </Slider>
     </Flex>
   );

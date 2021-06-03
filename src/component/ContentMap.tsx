@@ -1,4 +1,8 @@
 import { ReactElement, useEffect } from "react";
+import { CloseButton } from "@chakra-ui/react";
+import { mapClose } from "action/ModalClickAction";
+import { useDispatch } from "react-redux";
+
 interface Props {
   planList: any[][];
 }
@@ -8,6 +12,8 @@ declare global {
   }
 }
 export default function ContentMap({ planList }: Props): ReactElement {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const container = document.getElementById("myMap");
     const options = {
@@ -24,6 +30,7 @@ export default function ContentMap({ planList }: Props): ReactElement {
     map.addControl(mapTypeControl, window.kakao.maps.ControlPosition.TOPRIGHT);
     let zoomControl = new window.kakao.maps.ZoomControl();
     map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
+    let bounds = new window.kakao.maps.LatLngBounds();
     planList.map((el) => {
       el.map((e) => {
         console.log("mapx는 " + e.mapx);
@@ -35,10 +42,14 @@ export default function ContentMap({ planList }: Props): ReactElement {
           position: new window.kakao.maps.LatLng(e.mapy, e.mapx),
           //마커에 hover시 나타날 title
         });
+
+        bounds.extend(new window.kakao.maps.LatLng(e.mapy, e.mapx));
       });
     });
 
-    let bounds = new window.kakao.maps.LatLngBounds();
+    if (!isNaN(bounds.ha)) {
+      map.setBounds(bounds);
+    }
   }, [planList]);
   return (
     <div
@@ -48,6 +59,13 @@ export default function ContentMap({ planList }: Props): ReactElement {
         height: "100%",
         borderRadius: "10px",
       }}
-    ></div>
+    >
+      <CloseButton
+        style={{ position: "relative", zIndex: 3 }}
+        onClick={() => {
+          dispatch(mapClose());
+        }}
+      />
+    </div>
   );
 }

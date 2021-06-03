@@ -1,4 +1,7 @@
+import { CloseButton } from "@chakra-ui/react";
+import { mapItemClose } from "action/ModalClickAction";
 import React, { ReactElement, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 interface Props {
   index: { title?: string; thumbnail?: string; mapx?: string; mapy?: string };
@@ -11,6 +14,7 @@ declare global {
 export default function ContentMapItem({ index }: Props): ReactElement {
   console.log("mapx는 " + index.mapx);
   console.log("mapy는 " + index.mapy);
+  const dispatch = useDispatch();
   useEffect(() => {
     const container = document.getElementById("myMap");
     const options = {
@@ -32,11 +36,17 @@ export default function ContentMapItem({ index }: Props): ReactElement {
     <div
       id="myMap"
       style={{
-        width: "500px",
-        height: "500px",
-        marginLeft: "50px",
+        width: "100%",
+        height: "100%",
         borderRadius: "10px",
       }}
-    ></div>
+    >
+      <CloseButton
+        style={{ position: "relative", zIndex: 3 }}
+        onClick={() => {
+          dispatch(mapItemClose());
+        }}
+      />
+    </div>
   );
 }

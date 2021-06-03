@@ -18,10 +18,30 @@
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
+.tripTitle {
+  animation: move 1s infinite alternate;
+}
+
+.completedTitle:hover {
+  cursor: pointer;
+  color: #ff1493;
+}
 
 .tripTitle:hover {
-  background-color: red;
+  color: #ff1493;
   cursor: pointer;
+
+  animation-play-state: paused;
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .tripTitleOff {
@@ -42,7 +62,7 @@
   color: white;
 }
 .react-datepicker__day-names {
-  background-color: hotpink;
+  background-color: #ff1493;
 }
 .react-datepicker__month-container {
   background-color: black;
@@ -50,18 +70,18 @@
 .react-datepicker__day {
   color: white;
   &:hover {
-    background-color: hotpink;
+    background-color: #ff1493;
   }
 }
 .react-datepicker__day--selected {
-  background-color: hotpink;
+  background-color: #ff1493;
 }
 .react-datepicker__day--outside-month {
-  color: hotpink;
+  color: #ff1493;
 }
 .react-datepicker__day--disabled {
   color: black;
 }
 .react-datepicker__navigation {
-  border-left-color: hotpink;
+  border-left-color: #ff1493;
 }
