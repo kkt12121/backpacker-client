@@ -55,7 +55,7 @@
   font-size: 30px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 680px) {
   .logoBox {
     width: 170px;
   }
@@ -199,6 +199,9 @@
     margin-right: 100px;
     cursor: pointer;
   }
+  .logoBox {
+    width: 220px;
+  }
 }
 
 @media screen and (max-width: 680px) {
@@ -262,5 +265,8 @@
     height: auto;
     margin-right: 100px;
     cursor: pointer;
+  }
+  .logoBox {
+    width: 140px;
   }
 }

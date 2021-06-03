@@ -14,6 +14,7 @@ import { getPlanList } from "action/ContentWriteAction";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import ContentMap from "./ContentMap";
 
 interface Props {}
 
@@ -154,81 +155,88 @@ body*{
       {mapItemClickState ? <div className="modal"></div> : null}
       <ContentWriteCalendar />
 
-      <section className="contentWriteAreaBox">
-        <ContentWriteAreaHeader />
-
-        {dayList !== null
-          ? Object.entries(dayList).map((el) => {
-              return currentDay === Number(el[0]) ? (
-                <>
-                  <h1 className="forWhen">DAY {currentDay + 1}</h1>
-                  <div className="tableOfplan">
-                    <ContentItemList
-                      planList={planList}
-                      onDragEnd={onDragEnd}
-                      setplanList={setplanList}
-                    />
-                  </div>
-                </>
-              ) : null;
-            })
-          : null}
-        <div className="totalPriceBox">
-          <div className="totalPrice">
-            총 예상 경비 금액 : {new Intl.NumberFormat().format(totalCost)} 원
+      <ContentWriteAreaHeader />
+      <div className="bigWriteArea">
+        <section className="contentWriteAreaBox">
+          {dayList !== null
+            ? Object.entries(dayList).map((el) => {
+                return currentDay === Number(el[0]) ? (
+                  <>
+                    <h1 className="forWhen">DAY {currentDay + 1}</h1>
+                    <div className="tableOfplan">
+                      <ContentItemList
+                        planList={planList}
+                        onDragEnd={onDragEnd}
+                        setplanList={setplanList}
+                      />
+                    </div>
+                  </>
+                ) : null;
+              })
+            : null}
+          <div className="totalPriceBox">
+            <div className="totalPrice">
+              총 예상 경비 금액 : {new Intl.NumberFormat().format(totalCost)} 원
+            </div>
           </div>
-        </div>
-        <ContentSearch planList={planList} setplanList={setplanList} />
-        <button
-          className="writeCompletedButton"
-          onClick={() => {
-            if (token) {
-              if (title.length === 0) {
-                toast({
-                  title: "저장 실패",
-                  description: "여행 제목을 입력해주세요!",
-                  position: "top-right",
-                  status: "error",
-                  duration: 5000,
-                  isClosable: true,
-                });
-              } else if (region.length === 0) {
-                toast({
-                  title: "저장 실패",
-                  description: "여행 지역을 선택해주세요!",
-                  position: "top-right",
-                  status: "error",
-                  duration: 5000,
-                  isClosable: true,
-                });
-              } else if (Object.entries(planList[0][0]).length === 0) {
-                toast({
-                  title: "저장 실패",
-                  description: "일정을 한개라도 작성해주세요!",
-                  position: "top-right",
-                  status: "error",
-                  duration: 5000,
-                  isClosable: true,
-                });
+          <ContentSearch planList={planList} setplanList={setplanList} />
+          <button
+            className="writeCompletedButton"
+            onClick={() => {
+              if (token) {
+                if (title.length === 0) {
+                  toast({
+                    title: "저장 실패",
+                    description: "여행 제목을 입력해주세요!",
+                    position: "top-right",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                  });
+                } else if (region.length === 0) {
+                  toast({
+                    title: "저장 실패",
+                    description: "여행 지역을 선택해주세요!",
+                    position: "top-right",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                  });
+                } else if (Object.entries(planList[0][0]).length === 0) {
+                  toast({
+                    title: "저장 실패",
+                    description: "일정을 한개라도 작성해주세요!",
+                    position: "top-right",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                  });
+                } else {
+                  handleSendBtn();
+                }
               } else {
-                handleSendBtn();
+                toast({
+                  title: "저장 실패",
+                  description: "체험하기는 저장하실 수 없습니다.",
+                  position: "top-right",
+                  status: "error",
+                  duration: 5000,
+                  isClosable: true,
+                });
               }
-            } else {
-              toast({
-                title: "저장 실패",
-                description: "체험하기는 저장하실 수 없습니다.",
-                position: "top-right",
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-              });
-            }
-          }}
-        >
-          작성완료
-        </button>
-      </section>
-      {mapClickState ? <MapModal planList={planList} /> : null}
+            }}
+          >
+            작성완료
+          </button>
+        </section>
+        {mapClickState ? (
+          <MapModal planList={planList} />
+        ) : (
+          <section className="mapSection">
+            <ContentMap planList={planList} />
+          </section>
+        )}
+      </div>
       {console.log(state, "스테이트 확인용")}
       {console.log(
         "이미지 필터 테스트용",
