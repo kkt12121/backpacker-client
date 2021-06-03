@@ -1,11 +1,12 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import "../css/ContentInvite.scss";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useClipboard, Button, Flex, Input } from "@chakra-ui/react";
 interface Props {}
 
 function ContentInvite({}: Props): ReactElement {
   const [inputText, setInputText] = useState<any>(null);
+  const { hasCopied, onCopy } = useClipboard(inputText);
   //const [shareWriteText, setshareWriteText] = useState(false);
   let params = useParams();
   const test = () => {
@@ -15,13 +16,13 @@ function ContentInvite({}: Props): ReactElement {
   };
   test();
   const { id } = useParams<{ id?: string }>();
-  const [inputValue, setInputValue] = useState(
-    `http://localhost:3000/content/${id}`
-  );
+  // const [inputValue, setInputValue] = useState(
+  //   `http://localhost:3000/content/${id}`
+  // );
   return (
     <>
       <div>
-        <div className="inviteHeader">Invite</div>
+        <div className="inviteHeader">INVITE</div>
         <div className="sectionButton">
           <button
             className="read"
@@ -32,12 +33,6 @@ function ContentInvite({}: Props): ReactElement {
           >
             공유
           </button>
-          {/* <div className="buttonToggle">
-          <input type="checkbox" id="check1" className="input" />
-          <label htmlFor="check1" className="label">
-            <span className="span">선택</span>
-          </label>
-        </div> */}
           <button
             className="readWrite"
             onClick={() => {
@@ -49,17 +44,29 @@ function ContentInvite({}: Props): ReactElement {
           </button>
         </div>
       </div>
-      <div className="modalContent">
-        <textarea
-          className="inputLink"
+      <Flex mb={2}>
+        <Input
           value={inputText}
-          onChange={() => setInputValue(`http://localhost:3000/content/${id}`)}
+          isReadOnly
+          placeholder="공유버튼을 눌러 url을 넣어주세요"
         />
-        <CopyToClipboard text={inputText}>
-          <button>Copy</button>
-        </CopyToClipboard>
-      </div>
+        <Button onClick={onCopy} ml={2}>
+          {hasCopied ? "Copied" : "Copy"}
+        </Button>
+      </Flex>
     </>
   );
 }
 export default ContentInvite;
+
+{
+  /* 토글 버튼 css */
+}
+{
+  /* <div className="buttonToggle">
+          <input type="checkbox" id="check1" className="input" />
+          <label htmlFor="check1" className="label">
+            <span className="span">선택</span>
+          </label>
+        </div> */
+}
