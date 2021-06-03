@@ -17,8 +17,33 @@ import { useHistory } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import { GrCircleInformation } from "react-icons/gr";
+import {
+  Button,
+  ButtonGroup,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  useDisclosure,
+  ModalFooter,
+  useClipboard,
+  Flex,
+  Input,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+} from "@chakra-ui/react";
 
 export default function EnterContentPage() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [contentData, setContentData] = useState<any>(null);
   const [contentUserData, setContentUserData] = useState<any>(null);
   const [planList, setplanList] = useState<Array<Array<{}>>>([[{}]]);
@@ -44,6 +69,8 @@ export default function EnterContentPage() {
   );
   const [index, setIndex] = useState(0);
   const [itemOrder, setItemOrder] = useState(0);
+  const [inputText, setInputText] = useState<any>(null);
+  const { hasCopied, onCopy } = useClipboard(inputText);
   const dispatch = useDispatch();
   useEffect(() => {
     console.log("axios 시작");
@@ -95,6 +122,12 @@ export default function EnterContentPage() {
       <div className="contentPage">
         <section className="contentHeader">
           <div>
+            <div className="contentThumbnailDiv">
+              <img
+                className="contentThumbnail"
+                src={contentData?.thumbnail[0][0]}
+              ></img>
+            </div>
             <div className="contentTitle">{contentData?.title}</div>
             <div className="contentDate">
               여행 기간 : {contentData?.startDate} ~{contentData?.endDate}
@@ -103,16 +136,99 @@ export default function EnterContentPage() {
           <div>
             {contentUserData?.map((el: any) => {
               return el.email === loginedUser?.email ? (
-                <button
-                  className="btnInvite"
-                  onClick={() => {
-                    inviteClickState
-                      ? dispatch(inviteClose())
-                      : dispatch(inviteOpen());
-                  }}
-                >
-                  INVITE
-                </button>
+                <>
+                  <Button
+                    colorScheme="pink"
+                    variant="solid"
+                    className="btnInvite"
+                    onClick={onOpen}
+                    // onClick={() => {
+                    //   inviteClickState
+                    //     ? dispatch(inviteClose())
+                    //     : dispatch(inviteOpen());
+                    // }}
+                  >
+                    INVITE
+                  </Button>
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent mt={200}>
+                      <ModalHeader color="pink.500">
+                        INVITE
+                        <Popover placement="bottom">
+                          <PopoverTrigger>
+                            <Button mr={3} backgroundColor="white">
+                              <GrCircleInformation />
+                            </Button>
+                          </PopoverTrigger>
+                          <PopoverContent mt={200}>
+                            <PopoverHeader fontWeight="semibold">
+                              Invite란?
+                            </PopoverHeader>
+                            <PopoverArrow />
+                            <PopoverCloseButton />
+                            <PopoverBody width={300}>
+                              내용공유 버튼은 다른 회원분들이 해당 여행일정을 볼
+                              수있게 url을 보내줍니다.
+                              <br /> 작성공유 버튼은 다른 회원분들도 해당 일정의
+                              작성자가 되어 수정,삭제할 수 있도록 초대하는 url을
+                              보내줍니다.
+                            </PopoverBody>
+                          </PopoverContent>
+                        </Popover>
+                      </ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        <div>
+                          <div className="sectionButton">
+                            <Button
+                              className="read"
+                              colorScheme="pink"
+                              variant="outline"
+                              onClick={() => {
+                                console.log("read 버튼");
+                                setInputText(
+                                  `http://localhost:3000/content/${id}`
+                                );
+                              }}
+                            >
+                              내용 공유
+                            </Button>
+                            <Button
+                              ml={5}
+                              className="readWrite"
+                              colorScheme="pink"
+                              variant="outline"
+                              onClick={() => {
+                                console.log("readWrite 버튼");
+                                setInputText(
+                                  `http://localhost:3000/invite/${id}`
+                                );
+                              }}
+                            >
+                              작성 공유
+                            </Button>
+                          </div>
+                        </div>
+                        <Flex mb={8} mt={4}>
+                          <Input
+                            value={inputText}
+                            isReadOnly
+                            placeholder="공유버튼을 눌러 url을 넣어주세요"
+                          />
+                          <Button colorScheme="pink" onClick={onCopy} ml={2}>
+                            {hasCopied ? "Copied" : "Copy"}
+                          </Button>
+                        </Flex>
+                      </ModalBody>
+                      {/* <ModalFooter>
+                        <Button colorScheme="blue" mr={160} onClick={onClose}>
+                          Close
+                        </Button>
+                      </ModalFooter> */}
+                    </ModalContent>
+                  </Modal>
+                </>
               ) : null;
             })}
           </div>

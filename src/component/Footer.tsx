@@ -41,7 +41,7 @@ function Footer() {
           </p>
         </div>
       </div>
-      <div className="footerBtnBox">
+      {/* <div className="footerBtnBox">
         <a
           className="socialBtn"
           href="https://github.com/codestates/backpacker-client/wiki"
@@ -53,7 +53,7 @@ function Footer() {
             src="https://img-premium.flaticon.com/png/512/25/25231.png?token=exp=1622541445~hmac=a7b4a47c784a8d95d67315422efa0090"
           />
         </a>
-      </div>
+      </div> */}
     </footer>
   );
 }
