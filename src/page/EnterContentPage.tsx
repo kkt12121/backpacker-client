@@ -40,6 +40,9 @@ import {
   PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
+  Box,
+  Image,
+  Text,
 } from "@chakra-ui/react";
 
 export default function EnterContentPage() {
@@ -72,6 +75,12 @@ export default function EnterContentPage() {
   const [inputText, setInputText] = useState<any>(null);
   const { hasCopied, onCopy } = useClipboard(inputText);
   const dispatch = useDispatch();
+  const property = {
+    imageUrl: "",
+    beds: 3,
+    baths: 2,
+    title: "",
+  };
   useEffect(() => {
     console.log("axios 시작");
     const fetchData = async () => {
@@ -117,23 +126,78 @@ export default function EnterContentPage() {
       });
   };
   return (
-    <>
-      {/* {console.log(contentData)}; */}
+    <section className="page">
       <div className="contentPage">
         <section className="contentHeader">
-          <div>
-            <div className="contentThumbnailDiv">
-              <img
-                className="contentThumbnail"
-                src={contentData?.thumbnail[0][0]}
-              ></img>
+          <Box
+            w="400px"
+            p="7"
+            maxW="full"
+            borderWidth="5px"
+            borderColor="pink"
+            borderRadius="lg"
+            overflow="hidden"
+          >
+            <Image
+              src={contentData?.thumbnail[0][0]}
+              padding={10}
+              width={350}
+            />
+            <Box>
+              <Box
+                fontWeight="semibold"
+                fontSize="xx-large"
+                lineHeight="tight"
+                isTruncated
+              >
+                <Text fontSize="4xl">{contentData?.title}</Text>
+              </Box>
+              <Box mt={5}>
+                <Text fontSize="x-large">
+                  여행 지역 : {contentData?.touristRegion}
+                </Text>
+              </Box>
+              <Box mt={5}>
+                <Text fontSize="x-large">
+                  여행 기간 : <br />
+                  {contentData?.startDate} ~{contentData?.endDate}
+                </Text>
+              </Box>
+              <Box mt={5}>
+                <Text fontSize="x-large">
+                  총 여행 경비 :{" "}
+                  {new Intl.NumberFormat().format(contentData?.totalCost)}원
+                </Text>
+              </Box>
+              <Box mt={8}>
+                <section className="buttonList">
+                  <div>
+                    <Button mr={3}>
+                      <Link to="/listpage">목록으로</Link>
+                    </Button>
+                  </div>
+                  {contentUserData?.map((el: any) => {
+                    return el.email === loginedUser?.email ? (
+                      <div>
+                        <Button mr={3}>
+                          <Link to={`/contentwrite/?id=${id}`}>수정</Link>
+                        </Button>
+                        <Button onClick={del}>삭제</Button>
+                      </div>
+                    ) : null;
+                  })}
+                </section>
+              </Box>
+            </Box>
+          </Box>
+          <section className="writeParticipant">
+            <div className="writeParticipantTitle">
+              <Text fontSize="large">
+                작성 참여자 :{contentUserData?.map((el: any) => el.nickname)}
+              </Text>
             </div>
-            <div className="contentTitle">{contentData?.title}</div>
-            <div className="contentDate">
-              여행 기간 : {contentData?.startDate} ~{contentData?.endDate}
-            </div>
-          </div>
-          <div>
+          </section>
+          <div className="contentInvite">
             {contentUserData?.map((el: any) => {
               return el.email === loginedUser?.email ? (
                 <>
@@ -233,47 +297,22 @@ export default function EnterContentPage() {
             })}
           </div>
         </section>
-        <section className="writeParticipant">
-          {/* {console.log(contentUserData?.map((el: any) => el.nickname))} */}
-          <div className="writeParticipantTitle">
-            작성 참여자 :{contentUserData?.map((el: any) => el.nickname)}
-          </div>
-        </section>
-        {/* <section className="contentCarousel">
-          <ContentCarousel />
-        </section> */}
-        <section>
-          <div className="contentBody">
-            <div>여행 지역 : {contentData?.touristRegion}</div>
+        <section className="contentBody">
+          <div>
+            <Text fontSize="4xl" fontStyle="oblique">
+              TourList
+            </Text>
             <EnterContentDayList
               setindex={setIndex}
               setitemorder={setItemOrder}
             />
           </div>
         </section>
-        <section className="buttonList">
-          <div>
-            <button>
-              <Link to="/listpage">목록으로</Link>
-            </button>
-          </div>
-          {contentUserData?.map((el: any) => {
-            return el.email === loginedUser?.email ? (
-              <div>
-                <button>
-                  <Link to={`/contentwrite/?id=${id}`}>수정</Link>
-                </button>
-                <button onClick={del}>삭제</button>
-              </div>
-            ) : null;
-          })}
-        </section>
-        <Footer></Footer>
       </div>
       {contentItemMapClickState ? (
         <ContentItemMapModal index={planList[itemOrder][index]} /> // 00 00 00
       ) : null}
       {inviteClickState ? <InviteModal /> : null}
-    </>
+    </section>
   );
 }
