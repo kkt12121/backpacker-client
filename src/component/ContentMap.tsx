@@ -1,5 +1,4 @@
-import React, { ReactElement, useEffect } from "react";
-import { markerdata } from "./MarkerData";
+import { ReactElement, useEffect } from "react";
 interface Props {
   planList: any[][];
 }
@@ -13,13 +12,18 @@ export default function ContentMap({ planList }: Props): ReactElement {
     const container = document.getElementById("myMap");
     const options = {
       center: new window.kakao.maps.LatLng(
-        37.624915253753194,
-        127.15122688059974
+        35.564213553753194,
+        128.00169858059974
       ),
-      level: 10,
+      level: 13,
+      draggable: true,
     };
     // {address: "서울특별시 중구 세종대로 99", mapx: 126.9748047119,…}
     let map = new window.kakao.maps.Map(container, options);
+    let mapTypeControl = new window.kakao.maps.MapTypeControl();
+    map.addControl(mapTypeControl, window.kakao.maps.ControlPosition.TOPRIGHT);
+    let zoomControl = new window.kakao.maps.ZoomControl();
+    map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
     planList.map((el) => {
       el.map((e) => {
         console.log("mapx는 " + e.mapx);
@@ -33,14 +37,15 @@ export default function ContentMap({ planList }: Props): ReactElement {
         });
       });
     });
-  }, []);
+
+    let bounds = new window.kakao.maps.LatLngBounds();
+  }, [planList]);
   return (
     <div
       id="myMap"
       style={{
-        width: "500px",
-        height: "500px",
-        marginLeft: "50px",
+        width: "100%",
+        height: "100%",
         borderRadius: "10px",
       }}
     ></div>
