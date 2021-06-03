@@ -13,17 +13,10 @@ export default function MapItemModal({ index }: Props): ReactElement {
     (state: RootState) => state.MapItemClick
   );
   console.log(mapItemClickState);
-  const dispatch = useDispatch();
   return (
     <>
-      <div className={mapItemClickState ? "mapItemModalOn" : "mapItemModal"}>
-        <IoClose
-          size={40}
-          className="mapItemModalClose"
-          onClick={() => {
-            dispatch(mapItemClose());
-          }}
-        />
+      {/* <div className={mapItemClickState ? "mapItemModalOn" : "mapItemModal"}> */}
+      <div className="mapItemModalOn">
         {mapItemClickState ? <ContentMapItem index={index} /> : null}
       </div>
     </>

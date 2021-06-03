@@ -20,7 +20,7 @@ body,
   text-align: center;
   color: white;
   &:hover {
-    color: hotpink;
+    color: #ff1493;
     background-color: black;
   }
 }
@@ -44,7 +44,7 @@ body,
 //   }
 // }
 .titleInput {
-  border: solid 1px hotpink;
+  border: solid 1px #ff1493;
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
   font-size: 32px;
@@ -67,7 +67,7 @@ body,
   height: 40px;
   line-height: 40px;
   border-radius: 30px;
-  background-color: hotpink;
+  background-color: #ff1493;
   color: white;
 }
 .startDate input {
@@ -78,13 +78,13 @@ body,
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  border: solid 1px hotpink;
+  border: solid 1px #ff1493;
   color: black;
   border-radius: 20px;
   position: relative;
   top: -0.1em;
   &:hover {
-    color: hotpink;
+    color: #ff1493;
     cursor: pointer;
   }
 }
@@ -96,13 +96,13 @@ body,
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  border: solid 1px hotpink;
+  border: solid 1px #ff1493;
   color: black;
   border-radius: 20px;
   position: relative;
   top: -0.1em;
   &:hover {
-    color: hotpink;
+    color: #ff1493;
     cursor: pointer;
   }
 }
@@ -112,7 +112,7 @@ body,
   }
 }
 .totalMapBtn {
-  background-color: hotpink;
+  background-color: #ff1493;
   width: 50px;
   height: 50px;
   border: none;
@@ -139,21 +139,24 @@ body,
   padding-right: 30px;
   padding-top: 150px;
   background-color: black;
-}
-.dayBox button {
-  width: 80px;
-  height: 30px;
-  border: none;
-  border-radius: 30px;
-  background-color: white;
-  font-weight: bold;
-  color: hotpink;
-  margin: 5px;
-  &:hover {
-    background-color: rgb(190, 190, 190);
-    cursor: pointer;
+  button {
+    border: 3px solid #ff1493;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 0.2em 0.5em;
+    color: #ff1493;
+    text-transform: uppercase;
+    margin: 5px;
+    &:hover {
+      border: 3px solid white;
+      background-color: white;
+      color: #ff1493;
+
+      cursor: pointer;
+    }
   }
 }
+
 .contentWriteAreaBox {
   font-weight: bold;
   padding: 0;
@@ -172,7 +175,7 @@ body,
 .writerListBox {
   width: 150px;
   color: white;
-  background-color: hotpink;
+  background-color: #ff1493;
   border-radius: 10px;
   border: none;
   padding: 0px;
@@ -232,7 +235,7 @@ body,
   font-size: 1rem;
   margin: 5px;
   &:hover {
-    color: hotpink;
+    color: #ff1493;
   }
 }
 // Write area header end
@@ -320,7 +323,7 @@ body,
   //   display: none;
   // }
   .totalMapBtn {
-    background-color: hotpink;
+    background-color: #ff1493;
     width: 50px;
     height: 50px;
     border: none;
@@ -387,7 +390,7 @@ body,
   border: none;
 }
 .contentPriceInput {
-  border: solid 1px hotpink;
+  border: solid 1px #ff1493;
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
 }
@@ -405,7 +408,7 @@ body,
   border-radius: 30px;
   padding: 13px;
   margin-bottom: 30px;
-  background-color: hotpink;
+  background-color: #ff1493;
   box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
 }
 // Write area body end
@@ -452,7 +455,7 @@ body,
 .autoList::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: hotpink;
+  background-color: #ff1493;
 }
 .autoItem {
   border-top: solid 1px rgb(220, 220, 220);
@@ -497,7 +500,7 @@ body,
   border-radius: 20px;
   margin-bottom: 100px;
   color: white;
-  background-color: rgb(255, 147, 201);
+  background-color: #ff1493;
   transition-duration: 0.5s;
   &:hover {
     cursor: pointer;
