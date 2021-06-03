@@ -15,6 +15,7 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import ContentMap from "./ContentMap";
+import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 
 interface Props {}
 
@@ -36,6 +37,7 @@ export default function ContentWriteArea({}: Props): ReactElement {
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
+  const [openTotalMap, setOpenTotalMap] = useState<boolean>(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -149,6 +151,14 @@ body*{
 
     setplanList(newItems);
   };
+
+  const openTotalMapHandler = () => {
+    if (openTotalMap) {
+      setOpenTotalMap(false);
+    } else {
+      setOpenTotalMap(true);
+    }
+  };
   return (
     <>
       {mapItemClickState ? <Bodytag /> : null}
@@ -229,13 +239,19 @@ body*{
             작성완료
           </button>
         </section>
-        {mapClickState ? (
-          <MapModal planList={planList} />
-        ) : (
+        {mapClickState ? <MapModal planList={planList} /> : null}
+        <button className="openMapSectionBtn" onClick={openTotalMapHandler}>
+          {openTotalMap ? (
+            <ArrowRightIcon color="white" />
+          ) : (
+            <ArrowLeftIcon color="white" className="arrowLIcon" />
+          )}
+        </button>
+        {openTotalMap ? (
           <section className="mapSection">
             <ContentMap planList={planList} />
           </section>
-        )}
+        ) : null}
       </div>
       {console.log(state, "스테이트 확인용")}
       {console.log(

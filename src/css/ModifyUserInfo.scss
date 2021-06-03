@@ -52,14 +52,15 @@
 .ModifyUserInfoNickName button {
   color: white;
   font-weight: bold;
+  font-size: 13px;
   border: none;
   border-radius: 10px;
   margin-bottom: 5px;
   margin-left: 10px;
   width: 80px;
-  background-color: rgb(188, 203, 255);
+  background-color: hotpink;
   &:hover {
-    background-color: rgb(147, 171, 255);
+    background-color: pink;
     cursor: pointer;
   }
 }
@@ -83,9 +84,9 @@
   margin-bottom: 5px;
   margin-left: 10px;
   height: 30px;
-  background-color: rgb(188, 203, 255);
+  background-color: hotpink;
   &:hover {
-    background-color: rgb(147, 171, 255);
+    background-color: pink;
     cursor: pointer;
   }
 }

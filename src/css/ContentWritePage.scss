@@ -208,6 +208,7 @@ body,
   font-size: 1.5rem;
   padding-bottom: 5px;
   padding-left: 20px;
+  font-weight: bold;
   color: white;
   background-color: black;
 }
@@ -242,10 +243,34 @@ body,
   display: flex;
   height: 100%;
 }
+.openMapSectionBtn {
+  width: 50px;
+  height: 60px;
+  background-color: hotpink;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+  position: relative;
+  top: 20%;
+  right: 0%;
+}
+.arrowLIcon {
+  animation: plzClick 0.5s infinite alternate;
+}
+@keyframes plzClick {
+  0% {
+    position: relative;
+    right: 10%;
+  }
+  100% {
+    position: relative;
+    right: -10%;
+  }
+}
 .mapSection {
   width: 40%;
-  // height: 700px;
-  // margin-top: 100px;
+  height: 100%;
+  border-left: solid 5px hotpink;
+  border-bottom: solid 5px hotpink;
 }
 .forWhen {
   padding: 40px;
@@ -348,6 +373,9 @@ body,
   .mapSection {
     display: none;
   }
+  .openMapSectionBtn {
+    display: none;
+  }
 }
 @media screen and (max-width: 500px) {
   .contentImage {
@@ -362,6 +390,9 @@ body,
     display: none;
   }
   .contentPlace .sc-jSFjdj.gNYFqR {
+    display: none;
+  }
+  .openMapSectionBtn {
     display: none;
   }
 }
