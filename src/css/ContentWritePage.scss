@@ -190,14 +190,37 @@ body,
   flex-direction: column;
 }
 .regionChoice {
+  position: relative;
   font-size: 1.5rem;
   font-weight: bold;
   padding-bottom: 5px;
   padding-left: 20px;
   color: white;
+  animation: move 1s infinite alternate;
   background-color: black;
   &:hover {
-    background-color: black;
+    animation-play-state: paused;
+  }
+}
+
+.CompletedRegion {
+  position: relative;
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  color: white;
+  background-color: black;
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+    // top: 0px;
+  }
+
+  100% {
+    opacity: 1;
+    // top: -15px;
   }
 }
 .regionList {

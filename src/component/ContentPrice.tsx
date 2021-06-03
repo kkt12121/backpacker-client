@@ -115,53 +115,55 @@ export default function ContentPrice({
             : null}{" "}
           원
         </div>
-        <Popover>
-          <PopoverTrigger>
-            <IconButton
-              variant="ghost"
-              colorScheme="black"
-              aria-label="costInfo"
-              fontSize="20px"
-              icon={<QuestionIcon />}
-              onClick={() => {}}
-            />
-          </PopoverTrigger>
-          <PopoverContent>
-            <PopoverArrow />
-            <PopoverCloseButton />
-            {/* <PopoverHeader>Confirmation!</PopoverHeader> */}
-            <PopoverBody textAlign="center">
-              {averageCost > planList[currentDay][index].price ? (
-                <>
-                  <ColorBlue>{planList[currentDay][index].place}</ColorBlue>에
-                  대한 <br /> 평균 경비 금액이 <br />
-                  {new Intl.NumberFormat().format(
-                    averageCost - planList[currentDay][index].price
-                  )}
-                  원이 <ColorGreen>적습니다! 😎</ColorGreen>
-                </>
-              ) : averageCost === 0 ? (
-                <>
-                  <ColorBlue>{planList[currentDay][index].place}</ColorBlue>에
-                  대한 <br />
-                  평균 경비 금액이
-                  <br />
-                  아직 없습니다! 😂
-                </>
-              ) : (
-                <>
-                  <ColorBlue>{planList[currentDay][index].place}</ColorBlue>에
-                  대한 <br />
-                  평균 경비 금액이 <br />
-                  {new Intl.NumberFormat().format(
-                    planList[currentDay][index].price - averageCost
-                  )}
-                  원이 <ColorRed>많습니다! 😭</ColorRed>
-                </>
-              )}
-            </PopoverBody>
-          </PopoverContent>
-        </Popover>
+        {priceClick ? (
+          <Popover>
+            <PopoverTrigger>
+              <IconButton
+                variant="ghost"
+                colorScheme="black"
+                aria-label="costInfo"
+                fontSize="20px"
+                icon={<QuestionIcon />}
+                onClick={() => {}}
+              />
+            </PopoverTrigger>
+            <PopoverContent>
+              <PopoverArrow />
+              <PopoverCloseButton />
+              {/* <PopoverHeader>Confirmation!</PopoverHeader> */}
+              <PopoverBody textAlign="center">
+                {averageCost > planList[currentDay][index].price ? (
+                  <>
+                    <ColorBlue>{planList[currentDay][index].place}</ColorBlue>에
+                    대한 <br /> 평균 경비 금액보다 <br />
+                    {new Intl.NumberFormat().format(
+                      averageCost - planList[currentDay][index].price
+                    )}
+                    원이 <ColorGreen>적습니다! 😎</ColorGreen>
+                  </>
+                ) : averageCost === 0 ? (
+                  <>
+                    <ColorBlue>{planList[currentDay][index].place}</ColorBlue>에
+                    대한 <br />
+                    평균 경비 금액이
+                    <br />
+                    아직 없습니다! 😂
+                  </>
+                ) : (
+                  <>
+                    <ColorBlue>{planList[currentDay][index].place}</ColorBlue>에
+                    대한 <br />
+                    평균 경비 금액보다 <br />
+                    {new Intl.NumberFormat().format(
+                      planList[currentDay][index].price - averageCost
+                    )}
+                    원이 <ColorRed>많습니다! 😭</ColorRed>
+                  </>
+                )}
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
+        ) : null}
 
         {priceClick ? null : (
           <>

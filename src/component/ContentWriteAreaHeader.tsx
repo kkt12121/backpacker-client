@@ -55,7 +55,7 @@ export default function ContentWriteAreaHeader({}: Props): ReactElement {
       </div>
       <UlContainer>
         <span
-          className="regionChoice"
+          className={region.length === 0 ? "regionChoice" : "CompletedRegion"}
           onMouseOut={() => {
             setdivMouseOver(false);
           }}
