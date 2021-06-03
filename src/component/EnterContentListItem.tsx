@@ -9,6 +9,9 @@ import { useParams } from "react-router";
 import "../css/EnterContentListItem.scss";
 import axios from "axios";
 import ContentItemMapModal from "./ContentItemMapModal";
+import { InfoOutlineIcon, PhoneIcon, ViewIcon } from "@chakra-ui/icons";
+import { FaMapMarkedAlt, FaMapMarkerAlt } from "react-icons/fa";
+import { IconButton, CloseButton, Text } from "@chakra-ui/react";
 interface Props {
   day?: any;
   firstindex?: any;
@@ -20,6 +23,7 @@ interface Props {
     mapx: number;
     mapy: number;
     price: number;
+    detail: string;
   };
 }
 
@@ -46,11 +50,11 @@ export default function EnterContentListItem({
   };
   test();
   const idNum = String(index);
-  const clickHandler = (e: any) => {
+  const clickHandler = () => {
     dispatch(contentItemMapOpen());
-    setindex(e.target.id);
+    setindex(index);
     firstindex(day);
-    console.log("e.target.id값" + e.target.id); //0
+    // console.log("e.target.id값" + e.target.id); //0
   };
   const { id } = useParams<{ id?: string }>();
   useEffect(() => {
@@ -64,23 +68,57 @@ export default function EnterContentListItem({
   return (
     <>
       <div>
-        <div className="listItem">
-          <div className="contentPlaceName">
+        <div className="contentItemBox">
+          <div className="contentImage">
             <img src={props.img}></img>
           </div>
-          <div className="contentPlaceName">{props.place}</div>
-          <div>가격 : {props.price}</div>
-          <button
-            id={idNum}
-            className="btnContentItemMap"
-            onClick={(e) => {
-              contentMapClickState
-                ? dispatch(contentItemMapClose())
-                : clickHandler(e);
-            }}
-          >
-            M
-          </button>
+          <div className="enterContentTextInfoBox">
+            <div className="placeAndPrice">
+              <div className="contentPlace">
+                <Text fontSize="x-large">{props.place}</Text>
+              </div>
+              <div className="contentPrice">
+                <Text>
+                  비용 : {new Intl.NumberFormat().format(props.price)}원
+                </Text>
+              </div>
+            </div>
+            <IconButton
+              ml={20}
+              variant="ghost"
+              colorScheme="black"
+              aria-label="detailInfo"
+              fontSize="30px"
+              className="detailIcon"
+              icon={<InfoOutlineIcon />}
+              onClick={() => {
+                window.open(`${props.detail}`, "_blank");
+              }}
+            />
+            <IconButton
+              id={idNum}
+              ml={3}
+              colorScheme="white"
+              aria-label="mapInfo"
+              fontSize="30px"
+              className="btnContentItemMap"
+              onClick={() => {
+                contentMapClickState
+                  ? dispatch(contentItemMapClose())
+                  : clickHandler();
+              }}
+            >
+              <FaMapMarkerAlt
+                color="black"
+                className="mapBtn"
+                onClick={() => {
+                  contentMapClickState
+                    ? dispatch(contentItemMapClose())
+                    : clickHandler();
+                }}
+              ></FaMapMarkerAlt>
+            </IconButton>
+          </div>
         </div>
         <div className="sectionLine"></div>
       </div>

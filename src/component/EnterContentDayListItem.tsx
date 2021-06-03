@@ -3,6 +3,7 @@ import EnterContentListItem from "./EnterContentListItem";
 import "../css/EnterContentDayListItem.scss";
 import axios from "axios";
 import { useParams } from "react-router";
+import { Box, Image, Text } from "@chakra-ui/react";
 interface Props {
   setindex?: any;
   setitemorder?: any;
@@ -39,10 +40,18 @@ export default function EnterContentDayListItem({
         ) => (
           <div>
             {el.map((e: any, idx: number) => (
-              <div className="contentDay">
-                <div className="contentBodyTitle">
+              <Box
+                w="800px"
+                p="5"
+                maxW="full"
+                borderWidth="1px"
+                borderColor="pink"
+                borderRadius="lg"
+                overflow="hidden"
+              >
+                <div className="contentDay">
                   <div className="contentDayFirstSection">Day{index + 1}</div>
-                  <>
+                  <div>
                     <div className="contentBodyList">
                       {/* 아이템 하나  */}
                       <EnterContentListItem
@@ -53,9 +62,9 @@ export default function EnterContentDayListItem({
                         index={idx}
                       ></EnterContentListItem>
                     </div>
-                  </>
+                  </div>
                 </div>
-              </div>
+              </Box>
             ))}
           </div>
         )
