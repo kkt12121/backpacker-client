@@ -61,8 +61,8 @@ export default function EnterContentListItem({
     <>
       <div>
         <div className="contentItemBox">
-          <div className="contentImage">
-            <img src={props.img}></img>
+          <div className="contentEnterImage">
+            <img className="ImageContentPlace" src={props.img}></img>
           </div>
           <div className="enterContentTextInfoBox">
             <div className="placeAndPrice">
@@ -76,9 +76,9 @@ export default function EnterContentListItem({
               </div>
             </div>
             <IconButton
-              ml={20}
+              ml={14}
               variant="ghost"
-              colorScheme="black"
+              color="lightskyblue"
               aria-label="detailInfo"
               fontSize="30px"
               className="detailIcon"
@@ -101,7 +101,7 @@ export default function EnterContentListItem({
               }}
             >
               <FaMapMarkerAlt
-                color="black"
+                color="#db7070"
                 className="mapBtn"
                 onClick={() => {
                   contentMapClickState
