@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect } from "react";
 import { CloseButton } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { contentItemMapClose } from "action/ModalClickAction";
+
 interface Props {
   index: { mapx?: string; mapy?: string };
 }

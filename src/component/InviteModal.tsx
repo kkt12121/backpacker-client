@@ -1,5 +1,5 @@
 import { inviteClose } from "action/ModalClickAction";
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { IoClose } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import Slider from "react-slick";
 import "../css/_slick.scss";
 import "../css/_slick-theme.scss";

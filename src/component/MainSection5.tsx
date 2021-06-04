@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import "../css/MainSection5.scss";
 import inviteGif from "./video/contentInvite.gif";
 interface Props {}

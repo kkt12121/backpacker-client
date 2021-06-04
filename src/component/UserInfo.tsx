@@ -1,10 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import "../css/UserInfo.scss";
 function UserInfo() {
   let token = localStorage.getItem("token");
-  const dispatch = useDispatch();
   const [userData, setUserData] = useState<any>();
 
   useEffect(() => {
@@ -16,7 +14,7 @@ function UserInfo() {
           },
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setUserData(res.data.userFind);
         });
     };

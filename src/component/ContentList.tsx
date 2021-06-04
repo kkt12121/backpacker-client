@@ -19,7 +19,7 @@ const ContentList = () => {
   }, [filteringOption.city, filteringOption.budget]);
 
   let renderList = stateData.filteredListReducer.list;
-  console.log("render", renderList);
+  // console.log("render", renderList);
 
   const [lastnum, setLastnum] = useState(10);
   let page = renderList?.slice(lastnum - 10, lastnum);

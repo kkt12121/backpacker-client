@@ -27,78 +27,78 @@ function UserSignup() {
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     newEmail = e.target.value;
     if (!regExp.test(newEmail)) {
-      console.log("이메일을 형식에 맞춰 올바르게 입력해주세요");
+      // console.log("이메일을 형식에 맞춰 올바르게 입력해주세요");
       setemailSwitch(false);
     } else {
       setemailSwitch(true);
       setEmail(newEmail);
     }
-    console.log(newEmail);
+    // console.log(newEmail);
   };
   const inputPwHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newPw: string = password;
     var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/; //  8 ~ 10자 영문, 숫자 조합
     newPw = e.target.value;
     if (!regExp.test(newPw)) {
-      console.log("비밀번호를 올바르게 입력해주세요");
+      // console.log("비밀번호를 올바르게 입력해주세요");
       setpwdSwitch(false);
     } else {
       setpwdSwitch(true);
       setPassword(newPw);
     }
-    console.log(newPw);
+    // console.log(newPw);
   };
   const inputPwCheckHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newPwCheck: string = passwordCheck;
     newPwCheck = e.target.value;
     if (password.localeCompare(newPwCheck) != 0) {
       //TypeScript는 equals로 문자열 비교를 할 수 없다. .localeCompare() 사용해서 문제 해결.
-      console.log("비밀번호가 일치하지 않습니다.");
+      // console.log("비밀번호가 일치하지 않습니다.");
       setpwdCheckSwitch(false);
     } else {
       setpwdCheckSwitch(true);
       setPasswordCheck(newPwCheck);
     }
-    console.log(newPwCheck);
+    // console.log(newPwCheck);
   };
   const inputNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newName: string = name;
     var regExp = /^[가-힣]{2,4}$/;
     newName = e.target.value;
     if (!regExp.test(newName)) {
-      console.log("이름을 한글 2~4자로 사용해주세요");
+      // console.log("이름을 한글 2~4자로 사용해주세요");
       setnameSwitch(false);
     } else {
       setnameSwitch(true);
       setName(newName);
     }
-    console.log(newName);
+    // console.log(newName);
   };
   const inputNicknameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newNickname: string = nickname;
     var regExp = /^[가-힣]{2,6}$/;
     newNickname = e.target.value;
     if (!regExp.test(newNickname)) {
-      console.log("닉네임을 한글 2~6자로 사용해주세요");
+      // console.log("닉네임을 한글 2~6자로 사용해주세요");
       setnicknameSwitch(false);
     } else {
       setnicknameSwitch(true);
       setNickname(newNickname);
     }
-    console.log(newNickname);
+    // console.log(newNickname);
   };
   const inputPhoneHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newPhone: string = phone;
     var regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
     newPhone = e.target.value;
     if (!regExp.test(newPhone)) {
-      console.log("전화번호 형식에 맞지 않습니다.");
+      // console.log("전화번호 형식에 맞지 않습니다.");
       setphoneSwitch(false);
     } else {
       setphoneSwitch(true);
       setPhone(newPhone);
     }
-    console.log(newPhone);
+    // console.log(newPhone);
   };
   return (
     <div className="body">

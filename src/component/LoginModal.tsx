@@ -1,6 +1,6 @@
 import { loginModalClickCloseAction } from "action/ModalClickAction";
 import LoginPage from "page/LoginPage";
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import { CloseButton } from "@chakra-ui/react";

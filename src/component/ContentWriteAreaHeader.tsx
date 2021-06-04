@@ -1,6 +1,6 @@
 import { getRegion } from "action/ContentWriteAction";
 import axios from "axios";
-import React, { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "../css/ContentWriteAreaHeader.scss";
 import styled from "styled-components";
@@ -35,7 +35,7 @@ export default function ContentWriteAreaHeader(): ReactElement {
           },
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setUserData(res.data.userFind);
         });
     };

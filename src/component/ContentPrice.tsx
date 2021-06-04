@@ -235,7 +235,7 @@ export default function ContentPrice({
           </>
         )}
       </div>
-      {console.log("11111", planList[currentDay][index].price)}
+      {/* {console.log("11111", planList[currentDay][index].price)} */}
     </>
   );
 }

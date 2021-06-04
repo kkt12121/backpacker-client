@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import "../css/Navbar.scss";
 import MenuCategory from "./MenuCategory";
 import { useDispatch, useSelector } from "react-redux";

@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import { ReactElement, useState } from "react";
 import { useParams } from "react-router";
 import "../css/ContentInvite.scss";
 import { useClipboard, Button, Flex, Input } from "@chakra-ui/react";
@@ -20,7 +20,7 @@ function ContentInvite(): ReactElement {
           <button
             className="read"
             onClick={() => {
-              console.log("read 버튼");
+              // console.log("read 버튼");
               setInputText(`http://localhost:3000/content/${id}`);
             }}
           >
@@ -29,7 +29,7 @@ function ContentInvite(): ReactElement {
           <button
             className="readWrite"
             onClick={() => {
-              console.log("readWrite 버튼");
+              // console.log("readWrite 버튼");
               setInputText(`http://localhost:3000/invite/${id}`);
             }}
           >

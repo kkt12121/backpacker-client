@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentWriteArea.scss";
@@ -50,13 +50,13 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
 
   //컨텐츠 데이터 받기 (API 요청)
   useEffect(() => {
-    console.log("패치데이터 시작");
+    // console.log("패치데이터 시작");
     const fetchData = async () => {
-      console.log(`패치데이터 id값+${id}`);
+      // console.log(`패치데이터 id값+${id}`);
       await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setContentData(res.data.contentInfo);
-        console.log(contentData);
+        // console.log(contentData);
         setContentUserData(res.data.userInfo);
         setplanList(res.data.itemArr);
       });
@@ -83,7 +83,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
                 return cur.price !== undefined ? acc + cur.price : 0;
               }, 0);
         }) as number[];
-        console.log("리절트테스트", result);
+        // console.log("리절트테스트", result);
         if (result) {
           let sum = 0;
           for (let i = 0; i < result.length; i++) {
@@ -91,7 +91,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
               continue;
             } else sum = sum + result[i];
           }
-          console.log("결과값", sum);
+          // console.log("결과값", sum);
           settotalCost(sum);
         }
       }
@@ -170,7 +170,6 @@ body*{
       {mapItemClickState ? <Bodytag /> : null}
       {mapItemClickState ? <div className="modal"></div> : null}
       {contentData ? <ContentUpdateCalendar props={contentData} /> : null}
-
       {console.log(contentUserData)}
       <ContentUpdateAreaHeader props={contentUserData} content={contentData} />
       <div className="bigWriteArea">

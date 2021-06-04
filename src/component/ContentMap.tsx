@@ -33,8 +33,8 @@ export default function ContentMap({ planList }: Props): ReactElement {
     let bounds = new window.kakao.maps.LatLngBounds();
     planList.map((el) => {
       el.map((e) => {
-        console.log("mapx는 " + e.mapx);
-        console.log("mapy는 " + e.mapy);
+        // console.log("mapx는 " + e.mapx);
+        // console.log("mapy는 " + e.mapy);
         new window.kakao.maps.Marker({
           //마커가 표시 될 지도
           map: map,

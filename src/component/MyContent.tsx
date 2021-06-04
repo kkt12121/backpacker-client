@@ -1,16 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-} from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tfoot, Tr, Th, Td } from "@chakra-ui/react";
 
 const MyContent = () => {
   let token = localStorage.getItem("token");

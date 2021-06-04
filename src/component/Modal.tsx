@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import "../css/Modal.scss";
 import { IoClose } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import "../css/MainSection3.scss";
 import selectRegion from "./video/contentList.gif";
 interface Props {}

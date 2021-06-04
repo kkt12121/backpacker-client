@@ -7,7 +7,7 @@ import MainSection2 from "component/MainSection2";
 import MainSection6 from "component/MainSection6";
 import MainSection7 from "component/MainSection7";
 import MainSection8 from "component/MainSection8";
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "reducer";
 import { createGlobalStyle } from "styled-components";
@@ -32,7 +32,7 @@ if (authorizationCode) {
       { headers: { accept: "application/json" }, withCredentials: true }
     )
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       const token = res.data.accessToken;
       localStorage.setItem("token", token);
     });

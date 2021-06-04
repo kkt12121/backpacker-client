@@ -5,9 +5,9 @@ export const reorder = <T>(
   currentDay: number
 ): T[][] => {
   const result = [...list];
-  console.log("뭔지 봐봐", result);
+  // console.log("뭔지 봐봐", result);
   const [removed] = result[currentDay].splice(startIndex, 1);
-  console.log("이거는", removed);
+  // console.log("이거는", removed);
   result[currentDay].splice(endIndex, 0, removed);
 
   return result;
