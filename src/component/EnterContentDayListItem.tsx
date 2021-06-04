@@ -14,7 +14,14 @@ export default function EnterContentDayListItem({
   setitemorder,
 }: Props): ReactElement {
   const [contentItemData, setContentItemData] = useState<any>(null);
-
+  const [dayState, setDayState] = useState<any>(null);
+  let params = useParams();
+  const test = () => {
+    for (const [key, value] of Object.entries(params)) {
+      //console.log(`${key}: ${value}`);
+    }
+  };
+  test();
   const { id } = useParams<{ id?: string }>();
   useEffect(() => {
     const fetchData = async () => {
@@ -35,16 +42,49 @@ export default function EnterContentDayListItem({
           <div>
             {el.map((e: any, idx: number) => (
               <Box
-                w="800px"
+                w="850px"
                 p="5"
+                mb={10}
                 maxW="full"
-                borderWidth="1px"
-                borderColor="pink"
-                borderRadius="lg"
+                padding={0}
+                borderBottomWidth="3px"
+                borderBottomStyle="solid"
+                borderBottomColor="pink.100"
                 overflow="hidden"
               >
                 <div className="contentDay">
-                  <div className="contentDayFirstSection">Day{index + 1}</div>
+                  <div className="contentDayFirstSection">
+                    {index % 2 === 0 ? (
+                      <Text
+                        fontSize="7xl"
+                        fontStyle="italic"
+                        mr="20"
+                        color="pink"
+                        fontWeight="bold"
+                      >
+                        Day{index + 1 + "."}
+                      </Text>
+                    ) : (
+                      <Text
+                        fontSize="7xl"
+                        fontStyle="italic"
+                        mr="20"
+                        color="gray.400"
+                        fontWeight="bold"
+                      >
+                        Day{index + 1 + "."}
+                      </Text>
+                    )}
+                    <Text
+                      fontSize="7xl"
+                      fontStyle="italic"
+                      mr="20"
+                      color="pink"
+                      fontWeight="bold"
+                    >
+                      Day{index + 1 + "."}
+                    </Text>
+                  </div>
                   <div>
                     <div className="contentBodyList">
                       {/* 아이템 하나  */}

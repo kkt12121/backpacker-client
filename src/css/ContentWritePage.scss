@@ -205,6 +205,19 @@ body,
     animation-play-state: paused;
   }
 }
+.regionUdateChoice {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  color: white;
+  animation: move 1s infinite alternate;
+  background-color: black;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
 
 .CompletedRegion {
   position: relative;

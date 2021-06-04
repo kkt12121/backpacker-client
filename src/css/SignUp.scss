@@ -7,15 +7,12 @@
   --normal-font-size: 1rem;
   --small-font-size: 0.75rem;
 }
-//*,
-// ::before,
-// ::after {
-//   box-sizing: border-box;
-// }
 .body {
+  display: flex;
   margin: 0;
-  padding: 7%;
   font-family: var(--body-font);
+  justify-content: center;
+  align-items: center;
   font-size: var(--normal-font-size);
 }
 .formTitle {
@@ -77,9 +74,7 @@
   border-radius: 0.5rem;
   cursor: pointer;
   transition: 0.3s;
-  &:hover {
-    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
-  }
+  align-items: center;
 }
 .formInput:focus + .formLabel {
   top: -0.5rem;

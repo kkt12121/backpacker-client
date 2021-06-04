@@ -4,7 +4,6 @@
 }
 .contentImg {
   width: 100%;
-  padding: 2%;
 }
 .contentPlaceName {
   font-size: 2rem;
@@ -30,6 +29,7 @@
 }
 .contentDay {
   display: flex;
+  height: 130px;
 }
 .enterContentTextInfoBox {
   width: 100%;
@@ -40,11 +40,27 @@
   overflow: hidden;
 }
 .placeAndPrice {
-  width: 350px;
+  width: 280px;
 }
 .contentPrice {
   text-align: center;
 }
 .btnContentItemMap:hover {
   color: #ff1493;
+}
+.ImageContentPlace {
+  border-radius: 10px;
+  margin-top: 17px;
+}
+.contentEnterItemBox {
+  display: flex;
+  align-items: center;
+  border: solid 1px;
+  width: 500px;
+  height: 100px;
+  transition: all 5s;
+}
+.contentEnterImage {
+  width: 6rem;
+  height: 6.2rem;
 }

@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { FcCheckmark } from "react-icons/fc";
 import { FcHighPriority } from "react-icons/fc";
 import "../css/SignUp.scss";
+import { Text, Button, Image } from "@chakra-ui/react";
+
 function UserSignup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -102,7 +104,11 @@ function UserSignup() {
     <div className="body">
       <div className="signUpForm">
         <div className="form">
-          <h1 className="formTitle">회원가입</h1>
+          <h1 className="formTitle">
+            <Text fontWeight="bold" fontSize="2xl" fontStyle="italic">
+              회원가입
+            </Text>
+          </h1>
           <div className="formDiv">
             <input
               className="formInput"
@@ -248,14 +254,16 @@ function UserSignup() {
               알맞은 형식입니다.
             </div>
           ) : null}
-          <button
+          <Button
+            colorScheme="blue"
+            ml="40%"
             className="signUpBtn"
             onClick={() =>
               dispatch(getSignup(email, password, name, nickname, phone))
             }
           >
             등록
-          </button>
+          </Button>
         </div>{" "}
         {/* //form */}
       </div>{" "}
