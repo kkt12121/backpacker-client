@@ -1,4 +1,3 @@
-import React from "react";
 import { FaArrowCircleUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../css/MainSection8.scss";

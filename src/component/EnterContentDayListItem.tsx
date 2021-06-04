@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useEffect } from "react";
+import { ReactElement, useState, useEffect } from "react";
 import EnterContentListItem from "./EnterContentListItem";
 import "../css/EnterContentDayListItem.scss";
 import axios from "axios";

@@ -34,13 +34,13 @@ function ModifyUserInfo() {
     let newName: string = name;
     newName = e.target.value;
     setName(newName);
-    console.log(newName);
+    // console.log(newName);
   };
   const getNickNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newNickName: string = nickName;
     newNickName = e.target.value;
     setNickName(newNickName);
-    console.log(newNickName);
+    // console.log(newNickName);
   };
   const getPwHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newPw: string = pw;
@@ -58,7 +58,7 @@ function ModifyUserInfo() {
     let regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
     newPhone = e.target.value;
     if (!regExp.test(newPhone)) {
-      console.log("전화번호 형식에 맞지 않습니다.");
+      // console.log("전화번호 형식에 맞지 않습니다.");
       setPhoneSwitch(false);
     } else {
       setPhoneSwitch(true);
@@ -97,7 +97,7 @@ function ModifyUserInfo() {
                     }
                   )
                   .then((res) => {
-                    console.log(res);
+                    // console.log(res);
                     toast({
                       title: "사용 가능한 닉네임입니다.",
                       description: "회원님의 닉네임 변경이 완료되었습니다.",

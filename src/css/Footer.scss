@@ -1,62 +1,113 @@
-#footerContainer {
+@mixin footerContainer {
   padding-left: 50px;
   padding-right: 50px;
-  display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: row;
   flex-direction: row;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  height: 26vh;
+  height: 350px;
   width: 100%;
-  font-size: 1.3em;
-  z-index: 3;
   background-color: rgb(0, 0, 0);
 }
-.footerTitle {
+@mixin footerTitle {
   font-size: 2.3rem;
+  flex-grow: 1;
 }
-.footerTextArea {
+@mixin footerTextArea {
   display: flex;
+  width: 100%;
   padding-top: 30px;
 }
-.footerText1 {
+@mixin footerText1 {
   font-size: 1.8rem;
   font-weight: bolder;
   color: #ff1493;
-  margin-right: 5%;
+  padding: 10px;
+  flex-grow: 1;
 }
-.footerText2 {
-  margin-left: 5%;
+@mixin footerText2 {
   font-size: 1.3rem;
   font-weight: 500;
   color: #ff1493;
+  padding: 10px;
+  flex-grow: 1;
 }
-.footerBtnBox {
-  margin-top: 142px;
-  height: 100px;
-  display: -webkit-flex;
-  display: flex;
-  border-radius: 20%;
-  background-color: #ff1493;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-end;
-  align-items: flex-end;
-  padding: 15px 40px;
-  margin-left: 0 auto;
-}
-.githubBtn {
-  width: 70px;
-  height: 70px;
-  padding: 2%;
-  border-radius: 50%;
-  padding: 0.7rem;
-}
-.linkGithub {
+@mixin linkGithub {
   text-decoration: none;
   color: #ff1493;
   &:hover {
     color: gray;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #footerContainer {
+    @include footerContainer();
+  }
+  .footerTitle {
+    @include footerTitle();
+  }
+  .footerTextArea {
+    @include footerTextArea();
+  }
+  .footerText1 {
+    @include footerText1();
+  }
+  .footerText2 {
+    @include footerText2();
+  }
+  .linkGithub {
+    @include linkGithub();
+  }
+}
+@media screen and (min-width: 570px) and (max-width: 767px) {
+  #footerContainer {
+    @include footerContainer();
+    height: 240px;
+  }
+  .footerTitle {
+    @include footerTitle();
+    transform: scale(0.7);
+  }
+  .footerTextArea {
+    @include footerTextArea();
+  }
+  .footerText1 {
+    @include footerText1();
+    transform: scale(0.7);
+  }
+  .footerText2 {
+    @include footerText2();
+    transform: scale(0.7);
+  }
+  .linkGithub {
+    @include linkGithub();
+    transform: scale(0.7);
+  }
+}
+@media screen and (max-width: 569px) {
+  #footerContainer {
+    @include footerContainer();
+    height: 200px;
+    padding: 10px;
+  }
+  .footerTitle {
+    @include footerTitle();
+    font-size: 15px;
+  }
+  .footerTextArea {
+    @include footerTextArea();
+    width: 100%;
+    overflow: hidden;
+  }
+  .footerText1 {
+    @include footerText1();
+    font-size: 20px;
+  }
+  .footerText2 {
+    @include footerText2();
+    font-size: 13px;
+  }
+  .linkGithub {
+    @include linkGithub();
+    transform: scale(0.7);
   }
 }

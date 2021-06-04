@@ -1,4 +1,3 @@
-import React from "react";
 import "../css/MainSection7.scss";
 function MainSection7() {
   return (

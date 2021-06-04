@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 
 interface Props {
   index: { mapx?: string; mapy?: string };

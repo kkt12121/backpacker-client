@@ -3,7 +3,7 @@ import {
   loginModalClickAction,
   loginModalClickCloseAction,
 } from "action/ModalClickAction";
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import LoginModal from "./LoginModal";

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
 import { useSelector } from "react-redux";
 import { RootState } from "reducer";
@@ -10,7 +10,7 @@ interface Props {
 }
 export default function MapModal({ planList }: Props): ReactElement {
   const mapClickState = useSelector((state: RootState) => state.MapClick);
-  console.log(mapClickState);
+  // console.log(mapClickState);
 
   return (
     <>

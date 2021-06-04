@@ -39,7 +39,7 @@ export default function ContentSearch({
   const toast = useToast();
 
   const imageSearch = async (keyword: string, item: item) => {
-    console.log("imageSearch");
+    // console.log("imageSearch");
     const res = await axios.get(
       `https://dapi.kakao.com/v2/search/image?query=${keyword}`,
       {
@@ -53,7 +53,7 @@ export default function ContentSearch({
       handleaddPlan(item, res.data.documents[0].thumbnail_url);
       // setgetImage(res.data.documents[0].thumbnail_url);
     } else {
-      console.log("뭐임", res);
+      // console.log("뭐임", res);
     }
   };
 
@@ -83,7 +83,7 @@ export default function ContentSearch({
       )
       .then((res) => {
         setAutoList(res.data.documents);
-        console.log(res.data);
+        // console.log(res.data);
       });
   };
 
@@ -186,7 +186,7 @@ export default function ContentSearch({
         ) : null}
       </div>
 
-      {console.log("계획", planList)}
+      {/* {console.log("계획", planList)} */}
       <Button
         leftIcon={<SearchIcon color="#ff1493" />}
         color="#ff1493"

@@ -13,7 +13,6 @@ import { Link, useParams } from "react-router-dom";
 import { GrCircleInformation } from "react-icons/gr";
 import {
   Button,
-  ButtonGroup,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -21,7 +20,6 @@ import {
   ModalCloseButton,
   ModalBody,
   useDisclosure,
-  ModalFooter,
   useClipboard,
   Flex,
   Input,
@@ -30,7 +28,6 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverBody,
-  PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
   Box,

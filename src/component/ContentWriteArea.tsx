@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useEffect, useState } from "react";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentWriteArea.scss";
@@ -21,7 +21,7 @@ export default function ContentWriteArea(): ReactElement {
   let token = localStorage.getItem("token");
   const toast = useToast();
   const [totalCost, settotalCost] = useState(0);
-  const state = useSelector((state: RootState) => state);
+  // const state = useSelector((state: RootState) => state);
   const dayList = useSelector((state: RootState) => state.dayListReducer);
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const startDate = useSelector((state: RootState) => state.startDateReducer);
@@ -66,7 +66,7 @@ export default function ContentWriteArea(): ReactElement {
               continue;
             } else sum = sum + result[i];
           }
-          console.log("결과값", sum);
+          // console.log("결과값", sum);
           settotalCost(sum);
         }
       }
@@ -257,7 +257,7 @@ body*{
           </section>
         ) : null}
       </div>
-      {console.log(state, "스테이트 확인용")}
+      {/* {console.log(state, "스테이트 확인용")} */}
     </>
   );
 }

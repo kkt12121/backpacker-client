@@ -40,8 +40,8 @@ export default function ContentUpdateCalendar({ props }: Props): ReactElement {
   // let newStartDate = new Date(
   //   dateStart.getTime() + dateStart.getTimezoneOffset() * 60000
   // );
-  console.log("startDate 초기값" + props?.startDate);
-  console.log("endDate 초기값" + props?.endDate);
+  // console.log("startDate 초기값" + props?.startDate);
+  // console.log("endDate 초기값" + props?.endDate);
 
   const [startDate, setstartDate] = useState<Date | null>(null);
   const [endDate, setendDate] = useState<Date | null>(null);
@@ -59,12 +59,12 @@ export default function ContentUpdateCalendar({ props }: Props): ReactElement {
   // onLoad();
   useEffect(() => {
     if (props?.startDate) {
-      console.log("props가 있다.");
+      // console.log("props가 있다.");
       setstartDate(new Date(props?.startDate));
       setendDate(new Date(props?.endDate));
     } else {
-      console.log("props가 없다.");
-      console.log("props 값" + props);
+      // console.log("props가 없다.");
+      // console.log("props 값" + props);
     }
   });
   useEffect(() => {
@@ -74,7 +74,7 @@ export default function ContentUpdateCalendar({ props }: Props): ReactElement {
         (Number(endDate?.getTime()) - Number(startDate?.getTime())) / 86400000
       ) + 1
     );
-    console.log("됐냐?");
+    // console.log("됐냐?");
   }, [startDate, endDate]);
 
   useEffect(() => {

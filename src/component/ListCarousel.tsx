@@ -1,5 +1,5 @@
 import { listCityFind } from "action/ListFindAction";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Slider from "react-slick";
 import "../css/ListCarousel.scss";
@@ -10,7 +10,7 @@ const ListCarousel = () => {
 
   useEffect(() => {
     dispatch(listCityFind(citys[cityIdx].name));
-    console.log(citys[cityIdx].name);
+    // console.log(citys[cityIdx].name);
   }, [cityIdx]);
 
   const settings = {

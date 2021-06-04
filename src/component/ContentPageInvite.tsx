@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import "../css/ContentPageInvite.scss";
 import { useHistory, useParams } from "react-router-dom";
 
@@ -9,13 +9,13 @@ function ContentPageInvite(): ReactElement {
   const history = useHistory();
   let token = localStorage.getItem("token");
   const [contentUserData, setContentUserData] = useState<any>(null);
-  let params = useParams();
-  const test = () => {
-    for (const [key, value] of Object.entries(params)) {
-      console.log(`${key}: ${value}`);
-    }
-  };
-  test();
+  // let params = useParams();
+  // const test = () => {
+  //   for (const [key, value] of Object.entries(params)) {
+  //     console.log(`${key}: ${value}`);
+  //   }
+  // };
+  // test();
   const { id } = useParams<{ id?: string }>();
   useEffect(() => {
     console.log("axios 시작");

@@ -33,7 +33,7 @@ export default function ContentWriteCalendar(): ReactElement {
         (Number(endDate?.getTime()) - Number(startDate?.getTime())) / 86400000
       ) + 1
     );
-    console.log("됐냐?");
+    // console.log("됐냐?");
   }, [startDate, endDate]);
 
   useEffect(() => {
@@ -193,14 +193,14 @@ body*{
           );
         })}
       </div>
-      {console.log("시작날", startDate)}
+      {/* {console.log("시작날", startDate)}
       {console.log("끝나는날", endDate)}
       {console.log(
         "차이",
         Math.ceil(
           (Number(endDate?.getTime()) - Number(startDate?.getTime())) / 86400000
         ) + 1
-      )}
+      )} */}
       {/* {mapClickState ? <MapModal /> : null} */}
     </>
   );
