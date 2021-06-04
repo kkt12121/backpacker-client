@@ -16,7 +16,6 @@ import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router";
 import ContentMap from "./ContentMap";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
-import ContentUpdateCalendar from "./ContentUpdateCalendar";
 interface Props {
   id: string;
 }
