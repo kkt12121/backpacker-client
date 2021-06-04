@@ -1,7 +1,6 @@
-import { mapItemClose, mapItemOpen } from "action/ModalClickAction";
 import React, { ReactElement } from "react";
-import { IoClose } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/MapItemModal.scss";
 import ContentMapItem from "./ContentMapItem";

@@ -1,18 +1,11 @@
-import ContentCarousel from "component/ContentCarousel";
 import EnterContentDayList from "component/EnterContentDayList";
-import Footer from "component/Footer";
+
 import ContentItemMapModal from "../component/ContentItemMapModal";
 import InviteModal from "component/InviteModal";
 import "../css/EnterContentPage.scss";
-import {
-  contentItemMapOpen,
-  inviteClose,
-  inviteOpen,
-} from "action/ModalClickAction";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useSelector } from "react-redux";
 import { RootState } from "reducer";
-import { InviteClick } from "reducer/ModalClickReducer";
-import { ContentAction } from "action/ContentAction";
 import { useHistory } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -43,6 +36,7 @@ import {
   Box,
   Image,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 
 export default function EnterContentPage() {
@@ -53,10 +47,8 @@ export default function EnterContentPage() {
   const [loginedUser, setLoginedUser] = useState<any>(null);
   let token = localStorage.getItem("token");
   const history = useHistory();
-  const modalContentState = useSelector(
-    (state: RootState) => state.ModalContentReducer
-  );
   let params = useParams();
+  const toast = useToast();
   const test = () => {
     for (const [key, value] of Object.entries(params)) {
       console.log(`${key}: ${value}`);
@@ -74,7 +66,6 @@ export default function EnterContentPage() {
   const [itemOrder, setItemOrder] = useState(0);
   const [inputText, setInputText] = useState<any>(null);
   const { hasCopied, onCopy } = useClipboard(inputText);
-  const dispatch = useDispatch();
   const property = {
     imageUrl: "",
     beds: 3,
@@ -121,7 +112,14 @@ export default function EnterContentPage() {
         withCredentials: true,
       })
       .then((res) => {
-        alert("게시물을 삭제했습니다");
+        toast({
+          title: "게시물 삭제",
+          description: "게시물이 삭제 되었습니다.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top-right",
+        });
         history.push("/listpage");
       });
   };

@@ -10,7 +10,6 @@ import {
   IMAGE_SUCCESS,
   PLAN_LIST,
 } from "action/ContentWriteAction";
-import { totalmem } from "os";
 
 export let currentDay: number = 0;
 export let daylist: [(string | undefined)?] | null = null;

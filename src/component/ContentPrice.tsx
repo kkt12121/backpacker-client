@@ -1,6 +1,5 @@
-import { getPrice } from "action/ContentWriteAction";
 import React, { ReactElement, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "reducer";
 
 import "../css/ContentPrice.scss";
@@ -8,15 +7,12 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverHeader,
   PopoverBody,
-  PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
 } from "@chakra-ui/react";
 import {
   Button,
-  CloseButton,
   IconButton,
   Input,
   InputGroup,
@@ -25,12 +21,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { CheckIcon, QuestionIcon, WarningTwoIcon } from "@chakra-ui/icons";
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from "@chakra-ui/react";
 import axios from "axios";
 import styled from "styled-components";
 interface Props {
@@ -55,12 +45,9 @@ export default function ContentPrice({
   setplanList,
   planList,
 }: Props): ReactElement {
-  const dispatch = useDispatch();
   type priceState = null | number;
   const [price, setprice] = useState<priceState>(null);
   const [averageCost, setaverageCost] = useState(0);
-  const [invalidPrice, setinvalidPrice] = useState(false);
-  const state = useSelector((state: RootState) => state.priceReducer);
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const [priceClick, setpriceClick] = useState(false);
   const toast = useToast();
@@ -97,7 +84,7 @@ export default function ContentPrice({
   useEffect(() => {
     if (planList[currentDay][index].place !== undefined) {
       axios
-        .post("https://localhost:4000/content//itemAc", {
+        .post("https://localhost:4000/content/itemAc", {
           place: planList[currentDay][index].place,
         })
         .then((res) => setaverageCost(res.data.averageCost));

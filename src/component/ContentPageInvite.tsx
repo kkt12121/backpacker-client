@@ -1,12 +1,11 @@
 import React, { ReactElement } from "react";
 import "../css/ContentPageInvite.scss";
 import { useHistory, useParams } from "react-router-dom";
-import Login from "./Login";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
-interface Props {}
 
-function ContentPageInvite({}: Props): ReactElement {
+function ContentPageInvite(): ReactElement {
   const history = useHistory();
   let token = localStorage.getItem("token");
   const [contentUserData, setContentUserData] = useState<any>(null);
@@ -35,7 +34,7 @@ function ContentPageInvite({}: Props): ReactElement {
         });
     };
     fetchData();
-  }, []);
+  });
 
   const handleSendBtn = () => {
     console.log("서버로 넘어가는 토큰" + token);

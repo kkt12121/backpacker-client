@@ -11,7 +11,7 @@ import { DropResult } from "react-beautiful-dnd";
 import { reorder } from "./reorder";
 import { getPlanList } from "action/ContentWriteAction";
 import axios from "axios";
-import { useHistory, useParams } from "react-router";
+import { useHistory } from "react-router";
 import ContentUpdateCalendar from "./ContentUpdateCalendar";
 
 interface Props {
@@ -38,8 +38,6 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
-  const schedule = useSelector((state: RootState) => state.planListReducer);
-  const [test, settest] = useState("");
   //params가 안된다.
   // let params = useParams();
   // const getId = () => {
@@ -77,7 +75,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
       //     });
     };
     fetchData();
-  }, []);
+  });
   useEffect(() => {
     console.log("컨텐츠 데이터 확인 " + contentData);
   }, [contentData]);
@@ -116,11 +114,6 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
 
   useEffect(() => {
     dispatch(getPlanList(planList));
-  }, [planList]);
-
-  useEffect(() => {
-    settest(JSON.stringify(planList));
-    console.log("실행유무");
   }, [planList]);
 
   const Bodytag = createGlobalStyle`
