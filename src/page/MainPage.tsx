@@ -12,8 +12,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "reducer";
 import { createGlobalStyle } from "styled-components";
 
-interface Props {}
-
 const Bodytag = createGlobalStyle`
 body {
   overflow : hidden;
@@ -40,7 +38,7 @@ if (authorizationCode) {
     });
 }
 
-export default function MainPage({}: Props): ReactElement {
+export default function MainPage(): ReactElement {
   const isClickReducer = useSelector(
     (state: RootState) => state.ModalClickReducer
   );

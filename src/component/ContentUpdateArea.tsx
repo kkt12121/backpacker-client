@@ -16,6 +16,7 @@ import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router";
 import ContentMap from "./ContentMap";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
+import ContentUpdateCalendar from "./ContentUpdateCalendar";
 interface Props {
   id: string;
 }
@@ -44,6 +45,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
   const schedule = useSelector((state: RootState) => state.planListReducer);
   const [test, settest] = useState("");
   const [openTotalMap, setOpenTotalMap] = useState<boolean>(false);
+
   const dispatch = useDispatch();
 
   //컨텐츠 데이터 받기 (API 요청)
@@ -60,7 +62,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
       });
     };
     fetchData();
-  }, []);
+  });
   useEffect(() => {
     console.log("컨텐츠 데이터 확인 " + contentData);
   }, [contentData]);
@@ -99,11 +101,6 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
 
   useEffect(() => {
     dispatch(getPlanList(planList));
-  }, [planList]);
-
-  useEffect(() => {
-    settest(JSON.stringify(planList));
-    console.log("실행유무");
   }, [planList]);
 
   const Bodytag = createGlobalStyle`

@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentWriteArea.scss";
@@ -17,9 +17,7 @@ import { useHistory } from "react-router-dom";
 import ContentMap from "./ContentMap";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 
-interface Props {}
-
-export default function ContentWriteArea({}: Props): ReactElement {
+export default function ContentWriteArea(): ReactElement {
   let token = localStorage.getItem("token");
   const toast = useToast();
   const [totalCost, settotalCost] = useState(0);
@@ -44,6 +42,7 @@ export default function ContentWriteArea({}: Props): ReactElement {
 
   useEffect(() => {
     const handleCost = () => {
+      console.log("handleCost");
       let priceArray = planList.map((el) => {
         return el === undefined
           ? console.log("넘어가")
@@ -139,18 +138,22 @@ body*{
       .catch((err) => console.log(err));
   };
 
-  const onDragEnd = ({ destination, source }: DropResult) => {
-    if (!destination) return;
+  const onDragEnd = useCallback(
+    ({ destination, source }: DropResult) => {
+      console.log("onDragEnd");
+      if (!destination) return;
 
-    const newItems = reorder(
-      planList,
-      source.index,
-      destination.index,
-      currentDay
-    );
+      const newItems = reorder(
+        planList,
+        source.index,
+        destination.index,
+        currentDay
+      );
 
-    setplanList(newItems);
-  };
+      setplanList(newItems);
+    },
+    [planList]
+  );
 
   const openTotalMapHandler = () => {
     if (openTotalMap) {
@@ -169,7 +172,7 @@ body*{
       <div className="bigWriteArea">
         <section className="contentWriteAreaBox">
           {dayList !== null
-            ? Object.entries(dayList).map((el) => {
+            ? Object.entries(dayList).map((el, idx) => {
                 return currentDay === Number(el[0]) ? (
                   <>
                     <h1 className="forWhen">DAY {currentDay + 1}</h1>
@@ -178,6 +181,7 @@ body*{
                         planList={planList}
                         onDragEnd={onDragEnd}
                         setplanList={setplanList}
+                        key={idx}
                       />
                     </div>
                   </>
@@ -254,15 +258,6 @@ body*{
         ) : null}
       </div>
       {console.log(state, "스테이트 확인용")}
-      {console.log(
-        "이미지 필터 테스트용",
-        planList.map((el, idx) => {
-          return el.map((ele) => {
-            return ele.img;
-          });
-        })
-      )}
-      {console.log(planList, "라이트에어리아")}
     </>
   );
 }

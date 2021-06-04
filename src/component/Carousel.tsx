@@ -5,9 +5,8 @@ import "../css/_slick-theme.scss";
 import MainSection3 from "./MainSection3";
 import MainSection4 from "./MainSection4";
 import MainSection5 from "./MainSection5";
-interface Props {}
 
-export default function Carousel({}: Props): ReactElement {
+export default function Carousel(): ReactElement {
   let settings = {
     autoplay: true,
     autoplaySpeed: 3000,
@@ -16,6 +15,8 @@ export default function Carousel({}: Props): ReactElement {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    swipeToSlide: true,
+    arrows: false,
   };
   return (
     <>

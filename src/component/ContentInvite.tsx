@@ -1,20 +1,13 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { useParams } from "react-router";
 import "../css/ContentInvite.scss";
 import { useClipboard, Button, Flex, Input } from "@chakra-ui/react";
-interface Props {}
 
-function ContentInvite({}: Props): ReactElement {
+function ContentInvite(): ReactElement {
   const [inputText, setInputText] = useState<any>(null);
   const { hasCopied, onCopy } = useClipboard(inputText);
   //const [shareWriteText, setshareWriteText] = useState(false);
-  let params = useParams();
-  const test = () => {
-    for (const [key, value] of Object.entries(params)) {
-      // console.log(`${key}: ${value}`);
-    }
-  };
-  test();
+
   const { id } = useParams<{ id?: string }>();
   // const [inputValue, setInputValue] = useState(
   //   `http://localhost:3000/content/${id}`
@@ -59,14 +52,11 @@ function ContentInvite({}: Props): ReactElement {
 }
 export default ContentInvite;
 
-{
-  /* 토글 버튼 css */
-}
-{
-  /* <div className="buttonToggle">
+/* 토글 버튼 css */
+
+/* <div className="buttonToggle">
           <input type="checkbox" id="check1" className="input" />
           <label htmlFor="check1" className="label">
             <span className="span">선택</span>
           </label>
         </div> */
-}

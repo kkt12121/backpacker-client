@@ -1,4 +1,3 @@
-import axios from "axios";
 import logout from "component/Logout";
 import ModifyUserInfo from "component/ModifyUserInfo";
 import MyContent from "component/MyContent";

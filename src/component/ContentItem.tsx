@@ -1,13 +1,12 @@
 import React, { ReactElement } from "react";
-import { IoClose } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { DragDropContext, Draggable } from "react-beautiful-dnd";
+import { Draggable } from "react-beautiful-dnd";
 import { RootState } from "reducer";
 import "../css/ContentItem.scss";
 import ContentPrice from "./ContentPrice";
 import { mapItemClose, mapItemOpen } from "action/ModalClickAction";
 import { IconButton, CloseButton } from "@chakra-ui/react";
-import { InfoOutlineIcon, PhoneIcon, ViewIcon } from "@chakra-ui/icons";
+import { InfoOutlineIcon } from "@chakra-ui/icons";
 import styled from "styled-components";
 import { Icon } from "@chakra-ui/react";
 import { CgPhone } from "react-icons/cg";
@@ -53,7 +52,6 @@ export default function ContentItem({
   setplanList,
   planList,
 }: Props): ReactElement {
-  const content = useSelector((state: RootState) => state.contentItemReducer);
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
@@ -65,6 +63,7 @@ export default function ContentItem({
     setindex(idx);
   };
   const handleDeleteItem = () => {
+    console.log("handleDeleteItem");
     let copy = [...planList];
     delete copy[currentDay][idx];
 
@@ -98,7 +97,7 @@ export default function ContentItem({
                       <div className="contentPlace">
                         {" "}
                         {el.place}
-                        <AddressTelContainer>
+                        <AddressTelContainer id="addressAndTel">
                           <Address>
                             {" "}
                             <Icon

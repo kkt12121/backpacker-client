@@ -3,7 +3,7 @@ import EnterContentListItem from "./EnterContentListItem";
 import "../css/EnterContentDayListItem.scss";
 import axios from "axios";
 import { useParams } from "react-router";
-import { Box, Image, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 interface Props {
   setindex?: any;
   setitemorder?: any;
@@ -30,7 +30,7 @@ export default function EnterContentDayListItem({
       });
     };
     fetchData();
-  }, []);
+  });
   return (
     <>
       {/* 전체 리스트 */}

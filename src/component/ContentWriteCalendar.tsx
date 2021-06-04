@@ -3,11 +3,9 @@ import ReactDatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../css/ContentWriteCalendar.scss";
 import ko from "date-fns/locale/ko";
-import ContentMap from "./ContentMap";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import { mapClose, mapOpen } from "action/ModalClickAction";
-import MapModal from "./MapModal";
 import { createGlobalStyle } from "styled-components";
 import {
   getCurrentDay,
@@ -16,14 +14,10 @@ import {
   getStartDate,
   getTitle,
 } from "action/ContentWriteAction";
-import { currentDay } from "reducer/ContentWriteReducer";
 import { Button, Center, Input } from "@chakra-ui/react";
-import { PhoneIcon } from "@chakra-ui/icons";
-
-interface Props {}
 
 registerLocale("ko", ko);
-export default function ContentWriteCalendar({}: Props): ReactElement {
+export default function ContentWriteCalendar(): ReactElement {
   const [startDate, setstartDate] = useState<Date | null>(new Date());
   const [endDate, setendDate] = useState<Date | null>(new Date());
   const [dayCount, setdayCount] = useState<number | null>(null);
@@ -32,7 +26,6 @@ export default function ContentWriteCalendar({}: Props): ReactElement {
   const mapClickState = useSelector((state: RootState) => state.MapClick);
   const [divClick, setdivClick] = useState(false);
   const [divTitle, setdivTitle] = useState("");
-  const state = useSelector((state: RootState) => state);
 
   useEffect(() => {
     setdayCount(
