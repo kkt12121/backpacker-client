@@ -4,8 +4,16 @@
     align-items: center;
     vertical-align: middle;
     height: 700px;
-    background-color: rgb(250, 246, 246);
+    // background-color: rgb(250, 246, 246);
     overflow: hidden;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.7)
+      ),
+      url("../component/video/section6.png");
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: left bottom;
   }
   .mainSection6Title {
     width: 55%;

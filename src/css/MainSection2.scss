@@ -1,16 +1,28 @@
+.mainsection2 {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url("../component/video/section2.png");
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: left;
+}
+
 @media screen and (min-width: 1024px) {
   .mainsection2 {
     display: flex;
     align-items: center;
     vertical-align: middle;
     height: 1000px;
-    background-color: rgb(250, 246, 246);
+    // background-color: rgb(250, 246, 246);
     overflow: hidden;
   }
   .section2text {
     width: 55%;
+    color: black;
     text-align: center;
-    margin-bottom: 400px;
+    margin-bottom: 10%;
     font-size: 40px;
     font-weight: bold;
   }
