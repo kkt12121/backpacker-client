@@ -3,7 +3,7 @@ import EnterContentListItem from "./EnterContentListItem";
 import "../css/EnterContentDayListItem.scss";
 import axios from "axios";
 import { useParams } from "react-router";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 interface Props {
   setindex?: any;
   setitemorder?: any;
