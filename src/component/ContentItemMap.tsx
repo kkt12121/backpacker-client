@@ -1,5 +1,7 @@
 import React, { ReactElement, useEffect } from "react";
-
+import { CloseButton } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
+import { contentItemMapClose } from "action/ModalClickAction";
 interface Props {
   index: { mapx?: string; mapy?: string };
 }
@@ -9,6 +11,7 @@ declare global {
   }
 }
 function ContentItemMap({ index }: Props): ReactElement {
+  const dispatch = useDispatch();
   useEffect(() => {
     console.log(index);
     const container = document.getElementById("myMap");
@@ -37,7 +40,14 @@ function ContentItemMap({ index }: Props): ReactElement {
         marginLeft: "50px",
         borderRadius: "10px",
       }}
-    ></div>
+    >
+      <CloseButton
+        style={{ position: "relative", zIndex: 3 }}
+        onClick={() => {
+          dispatch(contentItemMapClose());
+        }}
+      />
+    </div>
   );
 }
 export default ContentItemMap;

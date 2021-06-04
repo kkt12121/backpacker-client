@@ -27,16 +27,15 @@
   display: flex;
   margin: 2% auto;
 }
-.writeParticipantTitle {
-}
+
 .page {
   height: 100%;
 }
 .contentPage {
   display: flex;
   flex-direction: unset;
-  font-weight: bold;
-  padding: 10%;
+  // font-weight: bold;
+  padding: 7.2%;
   align-content: center;
   margin-left: 6%;
 }
@@ -44,6 +43,7 @@
   margin-left: 10%;
   width: 100%;
 }
-.contentHeader {
-  margin-left: 10%;
+.contentCardBorder {
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(65, 63, 64, 0.2);
 }

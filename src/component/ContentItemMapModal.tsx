@@ -18,19 +18,20 @@ export default function ContentItemMapModal({ index }: Props): ReactElement {
   const dispatch = useDispatch();
   return (
     <>
-      <div
+      {/* <div
         className={
           mapClickState ? "contentItemMapModalOn" : "contentItemMapModal"
         }
-      >
-        <IoClose
+      > */}
+      {/* <IoClose
           size={40}
           className="contentItemMapModalClose"
           onClick={() => {
             dispatch(contentItemMapClose());
           }}
-        />
-        <ContentItemMap index={index} />
+        /> */}
+      <div className="contentItemMapModalOn">
+        {mapClickState ? <ContentItemMap index={index} /> : null}
       </div>
     </>
   );

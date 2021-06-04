@@ -148,7 +148,7 @@ body*{
 
         {divClick ? null : (
           <Center
-            className="tripTitle"
+            className="tripUpdateTitle"
             onClick={handleDivClick}
             h="100px"
             color="white"

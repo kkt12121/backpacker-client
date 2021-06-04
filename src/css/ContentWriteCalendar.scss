@@ -34,6 +34,13 @@
   animation-play-state: paused;
 }
 
+.tripUpdateTitle:hover {
+  color: #ff1493;
+  cursor: pointer;
+
+  animation-play-state: paused;
+}
+
 @keyframes move {
   0% {
     opacity: 0;
