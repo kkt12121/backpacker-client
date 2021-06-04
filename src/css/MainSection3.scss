@@ -6,6 +6,14 @@
   align-items: center;
   line-height: 100%;
   justify-content: space-between;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url("../component/video/section3.png");
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-position: right bottom;
 }
 
 @mixin mainSection3Image {
@@ -26,6 +34,9 @@
   text-align: center;
   padding-top: 10%;
   padding-bottom: 10%;
+  p {
+    color: black;
+  }
 }
 
 @mixin mainSection3pTag {

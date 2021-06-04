@@ -3,6 +3,14 @@
   justify-content: center;
   align-items: center;
   font-family: system-ui;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url("../component/video/section7.png");
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: right bottom;
 }
 
 @media screen and (min-width: 1024px) {
