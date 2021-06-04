@@ -8,10 +8,9 @@ import { RootState } from "reducer";
 import { useParams } from "react-router";
 import "../css/EnterContentListItem.scss";
 import axios from "axios";
-import ContentItemMapModal from "./ContentItemMapModal";
-import { InfoOutlineIcon, PhoneIcon, ViewIcon } from "@chakra-ui/icons";
-import { FaMapMarkedAlt, FaMapMarkerAlt } from "react-icons/fa";
-import { IconButton, CloseButton, Text } from "@chakra-ui/react";
+import { InfoOutlineIcon } from "@chakra-ui/icons";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { IconButton, Text } from "@chakra-ui/react";
 interface Props {
   day?: any;
   firstindex?: any;
@@ -38,17 +37,10 @@ export default function EnterContentListItem({
     (state: RootState) => state.ContentItemMapClick
   );
   //map 기능
-  const contentItemMapClickState = useSelector(
-    (state: RootState) => state.ContentItemMapClick
-  );
+
   const dispatch = useDispatch();
   const [contentItemData, setContentItemData] = useState<any>(null);
-  let params = useParams();
-  const test = () => {
-    for (const [key, value] of Object.entries(params)) {
-    }
-  };
-  test();
+
   const idNum = String(index);
   const clickHandler = () => {
     dispatch(contentItemMapOpen());

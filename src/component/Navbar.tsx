@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import "../css/Navbar.scss";
 import MenuCategory from "./MenuCategory";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,16 +9,13 @@ import {
   loginModalClickCloseAction,
 } from "action/ModalClickAction";
 import { RootState } from "reducer";
-import Modal from "./Modal";
 import { Link } from "react-router-dom";
 import logout from "./Logout";
 import classNames from "classnames";
 import logo from "./video/logo.png";
 import { Text } from "@chakra-ui/layout";
 
-interface Props {}
-
-export default function Navbar({}: Props): ReactElement {
+export default function Navbar(): ReactElement {
   let token = localStorage.getItem("token");
   let dispatch = useDispatch();
   const loginModalState = useSelector(
@@ -83,7 +80,7 @@ export default function Navbar({}: Props): ReactElement {
                   dispatch(isClickCloseAction());
                 }}
               >
-                여행 일정 만들기
+                일정 작성
               </Link>
               <div className={classNames("mobileLine", "planLine")}></div>
             </ul>

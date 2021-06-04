@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "reducer";
 import ContentItem from "./ContentItem";
 import MapItemModal from "./MapItemModal";
-import MapModal from "./MapModal";
 
 interface Props {
   planList: Object[][];
@@ -21,7 +20,6 @@ export default function ContentItemList({
   onDragEnd,
   setplanList,
 }: Props): ReactElement {
-  const mapClickState = useSelector((state: RootState) => state.MapClick);
   const currentDay = useSelector((state: RootState) => state.currentDayReducer);
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick

@@ -10,9 +10,8 @@ import LoginModal from "./LoginModal";
 import "../css/MenuCategory.scss";
 import { Link } from "react-router-dom";
 import logout from "./Logout";
-interface Props {}
 
-export default function MenuCategory({}: Props): ReactElement {
+export default function MenuCategory(): ReactElement {
   const isClickReducer = useSelector(
     (state: RootState) => state.ModalClickReducer
   );
@@ -60,7 +59,7 @@ export default function MenuCategory({}: Props): ReactElement {
                   dispatch(isClickCloseAction());
                 }}
               >
-                여행 일정 만들기
+                일정 작성
               </Link>
             </ul>
           </div>

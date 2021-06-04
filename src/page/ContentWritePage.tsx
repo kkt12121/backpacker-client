@@ -1,13 +1,9 @@
 import ContentWriteArea from "component/ContentWriteArea";
-import ContentWriteAreaHeader from "component/ContentWriteAreaHeader";
-import React, { ReactElement, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { ReactElement } from "react";
 import "../css/ContentWritePage.scss";
 import ContentUpdateArea from "component/ContentUpdateArea";
 
-interface Props {}
-
-export default function ContentWritePage({}: Props): ReactElement {
+export default function ContentWritePage(): ReactElement {
   const params = new URL(window.location.href).searchParams;
   console.log("searchParams값" + params);
   let id = params.get("id");

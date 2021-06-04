@@ -27,7 +27,7 @@ function ContentItemMap({ index }: Props): ReactElement {
     });
     // 마커를 지도 위에 표시
     marker.setMap(map);
-  }, []);
+  });
   return (
     <div
       id="myMap"

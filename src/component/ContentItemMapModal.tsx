@@ -1,9 +1,8 @@
-import { contentItemMapClose, mapOpen } from "action/ModalClickAction";
+import { contentItemMapClose } from "action/ModalClickAction";
 import React, { ReactElement } from "react";
 import { IoClose } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
-import { planList } from "reducer/ContentWriteReducer";
 import "../css/ContentItemMapModal.scss";
 import ContentItemMap from "./ContentItemMap";
 interface Props {

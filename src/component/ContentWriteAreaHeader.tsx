@@ -13,9 +13,8 @@ const UlContainer = styled.div`
     width: fit-content;
   }
 `;
-interface Props {}
 
-export default function ContentWriteAreaHeader({}: Props): ReactElement {
+export default function ContentWriteAreaHeader(): ReactElement {
   let token = localStorage.getItem("token");
   const [divMouseOver, setdivMouseOver] = useState(false);
   const [region, setregion] = useState("");

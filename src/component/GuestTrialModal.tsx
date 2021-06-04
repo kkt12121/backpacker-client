@@ -28,9 +28,7 @@ const ColorRed = styled.span`
   color: red;
 `;
 
-interface Props {}
-
-export default function GuestTrialModal({}: Props): ReactElement {
+export default function GuestTrialModal(): ReactElement {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const loginModalState = useSelector(
     (state: RootState) => state.LoginModalClick

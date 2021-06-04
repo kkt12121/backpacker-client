@@ -3,7 +3,7 @@ import EnterContentListItem from "./EnterContentListItem";
 import "../css/EnterContentDayListItem.scss";
 import axios from "axios";
 import { useParams } from "react-router";
-import { Box, Image, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 interface Props {
   setindex?: any;
   setitemorder?: any;
@@ -14,13 +14,7 @@ export default function EnterContentDayListItem({
   setitemorder,
 }: Props): ReactElement {
   const [contentItemData, setContentItemData] = useState<any>(null);
-  let params = useParams();
-  const test = () => {
-    for (const [key, value] of Object.entries(params)) {
-      //console.log(`${key}: ${value}`);
-    }
-  };
-  test();
+
   const { id } = useParams<{ id?: string }>();
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +23,7 @@ export default function EnterContentDayListItem({
       });
     };
     fetchData();
-  }, []);
+  });
   return (
     <>
       {/* 전체 리스트 */}
