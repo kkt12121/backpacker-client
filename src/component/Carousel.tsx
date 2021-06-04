@@ -16,6 +16,8 @@ export default function Carousel({}: Props): ReactElement {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    swipeToSlide: true,
+    arrows: false,
   };
   return (
     <>

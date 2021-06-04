@@ -333,7 +333,7 @@ body,
   margin-right: 10px;
 }
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
-  .contentPlace .sc-jSFjdj.gNYFqR {
+  #addressAndTel {
     display: none;
   }
   .contentPlace {
@@ -370,7 +370,7 @@ body,
   .contentPriceBox {
     width: 400px;
   }
-  .contentPlace .sc-jSFjdj.gNYFqR {
+  #addressAndTel {
     display: none;
   }
   .mapSection {
@@ -392,7 +392,7 @@ body,
   .mapSection {
     display: none;
   }
-  .contentPlace .sc-jSFjdj.gNYFqR {
+  #addressAndTel {
     display: none;
   }
   .openMapSectionBtn {
