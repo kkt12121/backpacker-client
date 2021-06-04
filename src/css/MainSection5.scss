@@ -19,11 +19,9 @@
   .mainSection5Text {
     p {
       @include mainSection3pTag();
-      font-size: 50%;
     }
 
     @include mainSection3Text();
-    font-size: 190%;
   }
 }
 
@@ -31,11 +29,23 @@
   .mainSection5Text {
     p {
       @include mainSection3pTag();
-      font-size: 50%;
+      font-size: 15px;
     }
 
     @include mainSection3Text();
-    font-size: 90%;
+    font-size: 25px;
+    width: 100%;
+  }
+  .mainSection5 {
+    @include mainSection3();
+    flex-direction: column;
+    align-items: center;
+  }
+  .mainSection5Image {
+    @include mainSection3Image();
+    width: fit-content;
+    height: fit-content;
+    width: 100%;
   }
 }
 
@@ -47,5 +57,15 @@
     }
     @include mainSection3Text();
     font-size: 80%;
+    width: 100%;
+  }
+  .mainSection5 {
+    flex-direction: column;
+  }
+  .mainSection5Image {
+    @include mainSection3Image();
+    width: fit-content;
+    height: fit-content;
+    width: 100%;
   }
 }

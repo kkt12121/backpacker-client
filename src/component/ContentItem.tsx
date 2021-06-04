@@ -98,7 +98,7 @@ export default function ContentItem({
                       <div className="contentPlace">
                         {" "}
                         {el.place}
-                        <AddressTelContainer>
+                        <AddressTelContainer id="addressAndTel">
                           <Address>
                             {" "}
                             <Icon
