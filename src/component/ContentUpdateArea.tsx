@@ -13,6 +13,8 @@ import { getPlanList } from "action/ContentWriteAction";
 import axios from "axios";
 import { useHistory } from "react-router";
 import ContentUpdateCalendar from "./ContentUpdateCalendar";
+import ContentMap from "./ContentMap";
+import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 interface Props {
   id: string;
 }
