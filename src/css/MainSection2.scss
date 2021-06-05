@@ -45,7 +45,14 @@
     align-items: center;
     height: 950px;
     overflow: hidden;
-    background-color: rgb(250, 246, 246);
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.7)
+      ),
+      url("../component/video/section2.png");
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: top;
   }
   .section2text {
     height: 300px;
@@ -73,7 +80,6 @@
     flex-direction: column;
     height: 812px;
     overflow: hidden;
-    background-color: rgb(250, 246, 246);
   }
   .section2text {
     height: 300px;

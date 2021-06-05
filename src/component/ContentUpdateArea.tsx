@@ -1,19 +1,18 @@
-import { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentWriteArea.scss";
 import ContentItemList from "./ContentItemList";
 import ContentSearch from "./ContentSearch";
 import ContentUpdateAreaHeader from "./ContentUpdateAreaHeader";
-import ContentUpdateCalendar from "./ContentUpdateCalendar";
 import MapModal from "./MapModal";
 import { createGlobalStyle } from "styled-components";
 import { DropResult } from "react-beautiful-dnd";
 import { reorder } from "./reorder";
 import { getPlanList } from "action/ContentWriteAction";
 import axios from "axios";
-import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router";
+import ContentUpdateCalendar from "./ContentUpdateCalendar";
 import ContentMap from "./ContentMap";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 interface Props {
@@ -22,7 +21,6 @@ interface Props {
 
 export default function ContentUpdateArea({ id }: Props): ReactElement {
   let token = localStorage.getItem("token");
-  const toast = useToast();
   const history = useHistory();
   const [totalCost, settotalCost] = useState(0);
   const state = useSelector((state: RootState) => state);
@@ -34,31 +32,48 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
   const region = useSelector((state: RootState) => state.regionReducer);
   const [contentData, setContentData] = useState<any>(null);
   const [contentUserData, setContentUserData] = useState<any>(null);
-  const [planList, setplanList] = useState<
-    Array<Array<{ price?: number; img?: string }>>
-  >([[{}]]);
+  const [planList, setplanList] = useState<Array<Array<{ price?: number }>>>([
+    [{}],
+  ]);
   const mapClickState = useSelector((state: RootState) => state.MapClick);
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
-  const schedule = useSelector((state: RootState) => state.planListReducer);
-  const [test, settest] = useState("");
-  const [openTotalMap, setOpenTotalMap] = useState<boolean>(false);
+  //params가 안된다.
+  // let params = useParams();
+  // const getId = () => {
+  //   for (const [key, value] of Object.entries(params)) {
+  //     console.log(`${key}: ${value}`);
+  //   }
+  // };
+  // getId();
+  // const { id } = useParams<{ id?: string }>();
 
+  // const params = new URL(window.location.href).searchParams;
+  // console.log("searchParams값" + params);
+  // let id = params.get("id");
   const dispatch = useDispatch();
 
   //컨텐츠 데이터 받기 (API 요청)
   useEffect(() => {
-    // console.log("패치데이터 시작");
+    console.log("패치데이터 시작");
     const fetchData = async () => {
-      // console.log(`패치데이터 id값+${id}`);
+      console.log(`패치데이터 id값+${id}`);
       await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         setContentData(res.data.contentInfo);
-        // console.log(contentData);
+        console.log(contentData);
         setContentUserData(res.data.userInfo);
         setplanList(res.data.itemArr);
       });
+      //   await fetch(`https://localhost:4000/content/${id}`)
+      //     .then((res) => res.json())
+      //     .then((res) => {
+      //       //console.log(res.data);
+      //       setContentData(res.data.contentInfo);
+      //       setContentUserData(res.data.userInfo);
+      //       setplanList(res.data.itemArr);
+      //     });
     };
     fetchData();
   });
@@ -82,7 +97,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
                 return cur.price !== undefined ? acc + cur.price : 0;
               }, 0);
         }) as number[];
-        // console.log("리절트테스트", result);
+        console.log("리절트테스트", result);
         if (result) {
           let sum = 0;
           for (let i = 0; i < result.length; i++) {
@@ -90,7 +105,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
               continue;
             } else sum = sum + result[i];
           }
-          // console.log("결과값", sum);
+          console.log("결과값", sum);
           settotalCost(sum);
         }
       }
@@ -123,12 +138,8 @@ body*{
           schedule: planList,
           title: title,
           touristRegion: region,
-          thumbnail: planList.map((el, idx) => {
-            return el.map((ele) => {
-              return ele.img;
-            });
-          }),
-          touristSpot: "없음",
+          thumbnail: "없음",
+          touristSpot: "홍대",
         },
         {
           headers: {
@@ -157,118 +168,46 @@ body*{
 
     setplanList(newItems);
   };
-  const openTotalMapHandler = () => {
-    if (openTotalMap) {
-      setOpenTotalMap(false);
-    } else {
-      setOpenTotalMap(true);
-    }
-  };
   return (
     <>
       {mapItemClickState ? <Bodytag /> : null}
       {mapItemClickState ? <div className="modal"></div> : null}
       {contentData ? <ContentUpdateCalendar props={contentData} /> : null}
-      {console.log(contentUserData)}
-      <ContentUpdateAreaHeader props={contentUserData} content={contentData} />
-      <div className="bigWriteArea">
-        <section className="contentWriteAreaBox">
-          {dayList !== null
-            ? Object.entries(dayList).map((el) => {
-                return currentDay === Number(el[0]) ? (
-                  <>
-                    <h1>DAY {currentDay + 1}</h1>
-                    <div className="tableOfplan">
-                      <ContentItemList
-                        planList={planList}
-                        onDragEnd={onDragEnd}
-                        setplanList={setplanList}
-                      />
-                    </div>
-                  </>
-                ) : null;
-              })
-            : null}
-          <div className="totalPriceBox">
-            {console.log("contentData입니다" + contentData)}
-            <div className="totalPrice">
-              총 예상 경비 금액 : {new Intl.NumberFormat().format(totalCost)} 원
-            </div>
-          </div>
-          <ContentSearch planList={planList} setplanList={setplanList} />
-          <button
-            className="writeCompletedButton"
-            onClick={() => {
-              if (token) {
-                if (title.length === 0) {
-                  toast({
-                    title: "저장 실패",
-                    description: "여행 제목을 입력해주세요!",
-                    position: "top-right",
-                    status: "error",
-                    duration: 5000,
-                    isClosable: true,
-                  });
-                } else if (region.length === 0) {
-                  toast({
-                    title: "저장 실패",
-                    description: "여행 지역을 선택해주세요!",
-                    position: "top-right",
-                    status: "error",
-                    duration: 5000,
-                    isClosable: true,
-                  });
-                } else if (Object.entries(planList[0][0]).length === 0) {
-                  toast({
-                    title: "저장 실패",
-                    description: "일정을 한개라도 작성해주세요!",
-                    position: "top-right",
-                    status: "error",
-                    duration: 5000,
-                    isClosable: true,
-                  });
-                } else {
-                  handleSendBtn();
-                }
-              } else {
-                toast({
-                  title: "저장 실패",
-                  description: "체험하기는 저장하실 수 없습니다.",
-                  position: "top-right",
-                  status: "error",
-                  duration: 5000,
-                  isClosable: true,
-                });
-              }
-            }}
-          >
-            작성완료
-          </button>
-        </section>
-        {mapClickState ? <MapModal planList={planList} /> : null}
-        <button className="openMapSectionBtn" onClick={openTotalMapHandler}>
-          {openTotalMap ? (
-            <ArrowRightIcon color="white" />
-          ) : (
-            <ArrowLeftIcon color="white" className="arrowLIcon" />
-          )}
+
+      <section className="contentWriteAreaBox">
+        {console.log(contentUserData)}
+        <ContentUpdateAreaHeader
+          props={contentUserData}
+          content={contentData}
+        />
+
+        {dayList !== null
+          ? Object.entries(dayList).map((el) => {
+              return currentDay === Number(el[0]) ? (
+                <>
+                  <h1>DAY {currentDay + 1}</h1>
+                  <div className="tableOfplan">
+                    <ContentItemList
+                      planList={planList}
+                      onDragEnd={onDragEnd}
+                      setplanList={setplanList}
+                    />
+                  </div>
+                </>
+              ) : null;
+            })
+          : null}
+        <div className="totalPriceBox">
+          {console.log("contentData입니다" + contentData)}
+          <div className="totalPrice">총 예상 경비 금액 : {totalCost} 원</div>
+        </div>
+        <ContentSearch planList={planList} setplanList={setplanList} />
+        <button className="writeCompletedButton" onClick={handleSendBtn}>
+          작성완료
         </button>
-        {openTotalMap ? (
-          <section className="mapSection">
-            <ContentMap planList={planList} />
-          </section>
-        ) : null}
-      </div>
+      </section>
+      {mapClickState ? <MapModal planList={planList} /> : null}
       {console.log(state, "스테이트 확인용")}
-      {console.log(
-        "이미지 필터 테스트용",
-        planList.map((el, idx) => {
-          return el.map((ele) => {
-            return ele;
-          });
-        })
-      )}
-      {console.log(planList, "라이트에어리아")}
     </>
   );
 }
