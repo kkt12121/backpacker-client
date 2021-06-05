@@ -12,7 +12,7 @@ import { reorder } from "./reorder";
 import { getPlanList } from "action/ContentWriteAction";
 import axios from "axios";
 import { useHistory } from "react-router";
-
+import ContentUpdateCalendar from "./ContentUpdateCalendar";
 interface Props {
   id: string;
 }
