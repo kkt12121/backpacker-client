@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentWriteArea.scss";
@@ -12,6 +12,7 @@ import { reorder } from "./reorder";
 import { getPlanList } from "action/ContentWriteAction";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { useToast } from "@chakra-ui/react";
 import ContentUpdateCalendar from "./ContentUpdateCalendar";
 import ContentMap from "./ContentMap";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
@@ -22,6 +23,7 @@ interface Props {
 export default function ContentUpdateArea({ id }: Props): ReactElement {
   let token = localStorage.getItem("token");
   const history = useHistory();
+  const toast = useToast();
   const [totalCost, settotalCost] = useState(0);
   const state = useSelector((state: RootState) => state);
   const dayList = useSelector((state: RootState) => state.dayListReducer);
@@ -32,9 +34,9 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
   const region = useSelector((state: RootState) => state.regionReducer);
   const [contentData, setContentData] = useState<any>(null);
   const [contentUserData, setContentUserData] = useState<any>(null);
-  const [planList, setplanList] = useState<Array<Array<{ price?: number }>>>([
-    [{}],
-  ]);
+  const [planList, setplanList] = useState<
+    Array<Array<{ price?: number; img?: string }>>
+  >([[{}]]);
   const mapClickState = useSelector((state: RootState) => state.MapClick);
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
@@ -126,8 +128,12 @@ body*{
           schedule: planList,
           title: title,
           touristRegion: region,
-          thumbnail: "없음",
-          touristSpot: "홍대",
+          thumbnail: planList.map((el, idx) => {
+            return el.map((ele) => {
+              return ele.img;
+            });
+          }),
+          touristSpot: "없음",
         },
         {
           headers: {
@@ -144,17 +150,28 @@ body*{
     window.location.reload();
   };
 
-  const onDragEnd = ({ destination, source }: DropResult) => {
-    if (!destination) return;
+  const onDragEnd = useCallback(
+    ({ destination, source }: DropResult) => {
+      if (!destination) return;
 
-    const newItems = reorder(
-      planList,
-      source.index,
-      destination.index,
-      currentDay
-    );
+      const newItems = reorder(
+        planList,
+        source.index,
+        destination.index,
+        currentDay
+      );
 
-    setplanList(newItems);
+      setplanList(newItems);
+    },
+    [planList]
+  );
+
+  const openTotalMapHandler = () => {
+    if (openTotalMap) {
+      setOpenTotalMap(false);
+    } else {
+      setOpenTotalMap(true);
+    }
   };
   return (
     <>
@@ -163,7 +180,6 @@ body*{
       {contentData ? <ContentUpdateCalendar props={contentData} /> : null}
       {console.log(contentUserData)}
       {contentData ? (
-
         <ContentUpdateAreaHeader
           props={contentUserData}
           content={contentData}
