@@ -1,19 +1,18 @@
-import { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentWriteArea.scss";
 import ContentItemList from "./ContentItemList";
 import ContentSearch from "./ContentSearch";
 import ContentUpdateAreaHeader from "./ContentUpdateAreaHeader";
-import ContentUpdateCalendar from "./ContentUpdateCalendar";
 import MapModal from "./MapModal";
 import { createGlobalStyle } from "styled-components";
 import { DropResult } from "react-beautiful-dnd";
 import { reorder } from "./reorder";
 import { getPlanList } from "action/ContentWriteAction";
 import axios from "axios";
-import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router";
+import ContentUpdateCalendar from "./ContentUpdateCalendar";
 import ContentMap from "./ContentMap";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 interface Props {
@@ -22,7 +21,6 @@ interface Props {
 
 export default function ContentUpdateArea({ id }: Props): ReactElement {
   let token = localStorage.getItem("token");
-  const toast = useToast();
   const history = useHistory();
   const [totalCost, settotalCost] = useState(0);
   const state = useSelector((state: RootState) => state);
@@ -34,16 +32,15 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
   const region = useSelector((state: RootState) => state.regionReducer);
   const [contentData, setContentData] = useState<any>(null);
   const [contentUserData, setContentUserData] = useState<any>(null);
-  const [planList, setplanList] = useState<
-    Array<Array<{ price?: number; img?: string }>>
-  >([[{}]]);
+  const [planList, setplanList] = useState<Array<Array<{ price?: number }>>>([
+    [{}],
+  ]);
   const mapClickState = useSelector((state: RootState) => state.MapClick);
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
   const schedule = useSelector((state: RootState) => state.planListReducer);
   const [openTotalMap, setOpenTotalMap] = useState<boolean>(false);
-
   const dispatch = useDispatch();
 
   const stateUpdate = (data: any) => {
@@ -61,6 +58,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
       });
     stateUpdate(result);
   };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -87,7 +85,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
                 return cur.price !== undefined ? acc + cur.price : 0;
               }, 0);
         }) as number[];
-        // console.log("리절트테스트", result);
+        console.log("리절트테스트", result);
         if (result) {
           let sum = 0;
           for (let i = 0; i < result.length; i++) {
@@ -95,7 +93,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
               continue;
             } else sum = sum + result[i];
           }
-          // console.log("결과값", sum);
+          console.log("결과값", sum);
           settotalCost(sum);
         }
       }
@@ -128,12 +126,8 @@ body*{
           schedule: planList,
           title: title,
           touristRegion: region,
-          thumbnail: planList.map((el, idx) => {
-            return el.map((ele) => {
-              return ele.img;
-            });
-          }),
-          touristSpot: "없음",
+          thumbnail: "없음",
+          touristSpot: "홍대",
         },
         {
           headers: {
@@ -162,13 +156,6 @@ body*{
 
     setplanList(newItems);
   };
-  const openTotalMapHandler = () => {
-    if (openTotalMap) {
-      setOpenTotalMap(false);
-    } else {
-      setOpenTotalMap(true);
-    }
-  };
   return (
     <>
       {mapItemClickState ? <Bodytag /> : null}
@@ -176,6 +163,7 @@ body*{
       {contentData ? <ContentUpdateCalendar props={contentData} /> : null}
       {console.log(contentUserData)}
       {contentData ? (
+
         <ContentUpdateAreaHeader
           props={contentUserData}
           content={contentData}

@@ -2,6 +2,14 @@
 
 .mainSection4 {
   @include mainSection3();
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url("../component/video/section4.png");
+  background-repeat: no-repeat;
+  background-size: 37%;
+  background-position: right bottom;
 }
 
 .mainSection4Image {
@@ -39,6 +47,14 @@
     @include mainSection3();
     flex-direction: column;
     align-items: center;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.7)
+      ),
+      url("../component/video/section4.png");
+    background-repeat: no-repeat;
+    background-size: 37%;
+    background-position: bottom;
   }
   .mainSection4Image {
     @include mainSection3Image();

@@ -38,6 +38,9 @@
   font-size: 30px;
   font-weight: bold;
 }
+.myContentTitle:hover {
+  cursor: pointer;
+}
 @media screen and (max-width: 810px) {
   .mypage {
     display: flex;
