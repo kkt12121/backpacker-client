@@ -1,4 +1,4 @@
-.contentDayFirstSection {
+@mixin contentDayFirstSection {
   font-weight: bold;
   text-align-last: center;
 }
@@ -9,4 +9,101 @@
 .ContentDayPlaceName {
   font-weight: bold;
   color: black;
+}
+@mixin contentDay {
+}
+@mixin tourListItemDayFirst {
+  font-weight: bold;
+  color: pink;
+
+  font-style: italic;
+}
+@mixin tourListItemDaySecond {
+  font-weight: bold;
+  color: gray;
+  font-style: italic;
+}
+@media screen and (min-width: 1025px) and (max-width: 2000px) {
+  .contentDay {
+    @include contentDay();
+    width: 800px;
+  }
+  .tourListItemDayFirst {
+    @include tourListItemDayFirst();
+    font-size: 4.5rem;
+    margin-right: 100px;
+  }
+  .tourListItemDaySecond {
+    @include tourListItemDaySecond();
+    font-size: 4.5rem;
+    margin-right: 100px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .contentDay {
+    @include contentDay();
+    width: 480px;
+  }
+  .tourListItemDayFirst {
+    @include tourListItemDayFirst();
+    font-size: 2rem;
+    margin-right: 30px;
+    margin-top: 25%;
+  }
+  .tourListItemDaySecond {
+    @include tourListItemDaySecond();
+    font-size: 2rem;
+    margin-right: 30px;
+    margin-top: 25%;
+  }
+  .contentDayFirstSection {
+    @include contentDayFirstSection();
+    width: 32%;
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 768px) {
+  .contentDay {
+    @include contentDay();
+    width: 430px;
+  }
+  .tourListItemDayFirst {
+    @include tourListItemDayFirst();
+    font-size: 1.5rem;
+    margin-right: 20px;
+    margin-top: 25%;
+  }
+  .tourListItemDaySecond {
+    @include tourListItemDaySecond();
+    font-size: 1.5rem;
+    margin-right: 20px;
+    margin-top: 25%;
+  }
+  .contentDayFirstSection {
+    @include contentDayFirstSection();
+    width: 15%;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 500px) {
+  .contentDay {
+    @include contentDay();
+    width: 430px;
+  }
+  .tourListItemDayFirst {
+    @include tourListItemDayFirst();
+    font-size: 1.5rem;
+    margin-right: 20px;
+    margin-top: 25%;
+  }
+  .tourListItemDaySecond {
+    @include tourListItemDaySecond();
+    font-size: 1.5rem;
+    margin-right: 20px;
+    margin-top: 25%;
+  }
+  .contentDayFirstSection {
+    @include contentDayFirstSection();
+    width: 15%;
+    text-align: center;
+  }
 }

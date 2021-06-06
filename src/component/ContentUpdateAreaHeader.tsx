@@ -30,8 +30,7 @@ export default function ContentUpdateAreaHeader({
 }: Props): ReactElement {
   let token = localStorage.getItem("token");
   const [divMouseOver, setdivMouseOver] = useState(false);
-  const [region, setregion] = useState("");
-
+  const [region, setregion] = useState(content?.touristRegion);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRegion(region));

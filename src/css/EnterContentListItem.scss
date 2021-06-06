@@ -1,3 +1,12 @@
+@mixin enterContentItemBox {
+  display: flex;
+  align-items: center;
+  transition: all 5s;
+}
+@mixin enterMapBtn {
+}
+@mixin contentPlace {
+}
 .contentNum {
   width: 100%;
   padding: 4%;
@@ -31,6 +40,27 @@
   display: flex;
   height: 130px;
 }
+@mixin enterDetailIcon {
+  color: lightskyblue;
+  display: inline-flex;
+  appearance: none;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  transition: all 250ms;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  width: auto;
+  line-height: 1.2;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  font-size: 30px;
+}
 .enterContentTextInfoBox {
   width: 100%;
   display: flex;
@@ -63,4 +93,54 @@
 .contentEnterImage {
   width: 6rem;
   height: 6.2rem;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 2000px) {
+  .enterContentItemBox {
+    @include enterContentItemBox();
+    width: 500px;
+    height: 100px;
+  }
+  .enterDetailIcon {
+    @include enterDetailIcon();
+    margin-left: 3.5rem;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .enterContentItemBox {
+    @include enterContentItemBox();
+    width: 330px;
+    height: 100px;
+  }
+  .enterDetailIcon {
+    @include enterDetailIcon();
+    margin-left: 3.5rem;
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 768px) {
+  .enterContentItemBox {
+    @include enterContentItemBox();
+    width: 300px;
+    height: 100px;
+  }
+  .enterDetailIcon {
+    @include enterDetailIcon();
+    margin-left: 1rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .enterContentItemBox {
+    @include enterContentItemBox();
+    width: 300px;
+    height: 100px;
+  }
+  .enterDetailIcon {
+    @include enterDetailIcon();
+    margin-left: 1rem;
+    display: none;
+  }
+  .enterMapBtn {
+    @include enterMapBtn();
+    display: none;
+  }
 }

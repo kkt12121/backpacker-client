@@ -3,7 +3,7 @@ import EnterContentDayList from "component/EnterContentDayList";
 import ContentItemMapModal from "../component/ContentItemMapModal";
 import InviteModal from "component/InviteModal";
 import "../css/EnterContentPage.scss";
-
+import { FaArrowCircleUp } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { RootState } from "reducer";
 import { useHistory } from "react-router";
@@ -37,6 +37,10 @@ import {
 } from "@chakra-ui/react";
 
 export default function EnterContentPage() {
+  const handleClick = () => {
+    window[`scrollTo`]({ top: 0, behavior: `smooth` });
+  };
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [contentData, setContentData] = useState<any>(null);
   const [contentUserData, setContentUserData] = useState<any>(null);
@@ -96,7 +100,6 @@ export default function EnterContentPage() {
     getUserData();
   }, []);
 
-  //console.log("로그인 유저 정보" + loginedUser);
   //게시물 삭제 함수
   const del = async () => {
     await axios
@@ -105,7 +108,6 @@ export default function EnterContentPage() {
           "content-type": "application/json",
           authorization: `bearer ${token}`,
         },
-
         withCredentials: true,
       })
       .then((res) => {
@@ -128,9 +130,6 @@ export default function EnterContentPage() {
             w="400px"
             p="7"
             maxW="full"
-            // borderWidth="5px"
-            // borderColor="pink"
-            // borderRadius="lg"
             className="contentCardBorder"
             overflow="hidden"
           >
@@ -278,7 +277,7 @@ export default function EnterContentPage() {
               </div>
             </Box>
           </Box>
-          <Box mt={8} ml={20}>
+          <Box>
             <section className="buttonList">
               <div>
                 <Button mr={3} variant="outline" colorScheme="pink">
@@ -312,6 +311,10 @@ export default function EnterContentPage() {
             />
           </div>
         </section>
+        <FaArrowCircleUp
+          className="enterScrollToTopButton"
+          onClick={handleClick}
+        ></FaArrowCircleUp>
       </div>
       {contentItemMapClickState ? (
         <ContentItemMapModal index={planList[itemOrder][index]} /> // 00 00 00

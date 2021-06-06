@@ -30,7 +30,7 @@ export default function EnterContentDayListItem({
       });
     };
     fetchData();
-  });
+  }, []);
   return (
     <>
       {/* 전체 리스트 */}
@@ -42,10 +42,8 @@ export default function EnterContentDayListItem({
           <div>
             {el.map((e: any, idx: number) => (
               <Box
-                w="850px"
                 p="5"
                 mb={10}
-                maxW="full"
                 padding={0}
                 borderBottomWidth="3px"
                 borderBottomStyle="solid"
@@ -55,35 +53,14 @@ export default function EnterContentDayListItem({
                 <div className="contentDay">
                   <div className="contentDayFirstSection">
                     {index % 2 === 0 ? (
-                      <Text
-                        fontSize="7xl"
-                        fontStyle="italic"
-                        mr="20"
-                        color="pink"
-                        fontWeight="bold"
-                      >
+                      <div className="tourListItemDayFirst">
                         Day{index + 1 + "."}
-                      </Text>
+                      </div>
                     ) : (
-                      <Text
-                        fontSize="7xl"
-                        fontStyle="italic"
-                        mr="20"
-                        color="gray.400"
-                        fontWeight="bold"
-                      >
+                      <div className="tourListItemDaySecond">
                         Day{index + 1 + "."}
-                      </Text>
+                      </div>
                     )}
-                    <Text
-                      fontSize="7xl"
-                      fontStyle="italic"
-                      mr="20"
-                      color="pink"
-                      fontWeight="bold"
-                    >
-                      Day{index + 1 + "."}
-                    </Text>
                   </div>
                   <div>
                     <div className="contentBodyList">

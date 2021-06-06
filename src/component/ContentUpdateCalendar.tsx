@@ -27,22 +27,6 @@ interface Props {
 
 registerLocale("ko", ko);
 export default function ContentUpdateCalendar({ props }: Props): ReactElement {
-  // function parse(str: any) {
-  //   var y = str?.substr(0, 4);
-  //   var m = str?.substr(4, 2);
-  //   var d = str?.substr(6, 2);
-  //   return new Date(y, m - 1, d);
-  // }
-  // let dateStart = parse(props?.startDate);
-  // let dateEnd = parse(props?.endDate);
-  // let dateStart = new Date(props?.startDate);
-  // let dateEnd = new Date(props?.endDate);
-  // let newStartDate = new Date(
-  //   dateStart.getTime() + dateStart.getTimezoneOffset() * 60000
-  // );
-  // console.log("startDate 초기값" + props?.startDate);
-  // console.log("endDate 초기값" + props?.endDate);
-
   const [startDate, setstartDate] = useState<Date | null>(null);
   const [endDate, setendDate] = useState<Date | null>(null);
   const [dayCount, setdayCount] = useState<number | null>(null);
@@ -52,11 +36,6 @@ export default function ContentUpdateCalendar({ props }: Props): ReactElement {
   const [divClick, setdivClick] = useState(false);
   const [divTitle, setdivTitle] = useState(props?.title);
 
-  // async function onLoad() {
-  //   setstartDate(dateStart);
-  //   etendDate(dateEnd);
-  // }
-  // onLoad();
   useEffect(() => {
     if (props?.startDate) {
       // console.log("props가 있다.");
@@ -66,7 +45,7 @@ export default function ContentUpdateCalendar({ props }: Props): ReactElement {
       // console.log("props가 없다.");
       // console.log("props 값" + props);
     }
-  });
+  }, []);
   useEffect(() => {
     // console.log("startDate" + newStartDate + "///// endDate" + dateEnd);
     setdayCount(
@@ -167,7 +146,8 @@ body*{
               }}
             />
             <Button
-              colorScheme="twitter"
+              bgColor="#ff1493"
+              color="white"
               variant="solid"
               size="lg"
               onClick={() => {
@@ -184,9 +164,14 @@ body*{
             <ReactDatePicker
               locale="ko"
               dateFormat="yyyy/MM/dd/eee요일"
-              // value={props?.startDate}
               selected={startDate}
+              popperModifiers={{
+                preventOverflow: {
+                  enabled: true,
+                },
+              }}
               onChange={(date: Date | null) => date && setstartDate(date)}
+              withPortal
             />
           </div>
           <div className="endDate">
@@ -194,10 +179,15 @@ body*{
             <ReactDatePicker
               locale="ko"
               dateFormat="yyyy/MM/dd/eee요일"
-              // value={props?.endDate}
               minDate={startDate}
               selected={endDate}
+              popperModifiers={{
+                preventOverflow: {
+                  enabled: true,
+                },
+              }}
               onChange={(date: Date | null) => date && setendDate(date)}
+              withPortal
             />
           </div>
         </div>

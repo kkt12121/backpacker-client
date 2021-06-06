@@ -41,6 +41,7 @@
 @media screen and (min-width: 768px) {
   #footerContainer {
     @include footerContainer();
+    height: 250px;
   }
   .footerTitle {
     @include footerTitle();

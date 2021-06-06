@@ -42,29 +42,34 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
     (state: RootState) => state.MapItemClick
   );
   const schedule = useSelector((state: RootState) => state.planListReducer);
-  const [test, settest] = useState("");
   const [openTotalMap, setOpenTotalMap] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
+  const stateUpdate = (data: any) => {
+    setContentData(data.contentInfo);
+    setContentUserData(data.userInfo);
+    setplanList(data.itemArr);
+  };
   //컨텐츠 데이터 받기 (API 요청)
-  useEffect(() => {
-    // console.log("패치데이터 시작");
-    const fetchData = async () => {
-      // console.log(`패치데이터 id값+${id}`);
-      await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
-        // console.log(res.data);
-        setContentData(res.data.contentInfo);
-        // console.log(contentData);
-        setContentUserData(res.data.userInfo);
-        setplanList(res.data.itemArr);
+  const fetchData = async () => {
+    console.log(`패치데이터 id값+${id}`);
+    let result = await axios
+      .get(`https://localhost:4000/content/${id}`)
+      .then((res) => {
+        return res.data;
       });
-    };
-    fetchData();
-  });
+    stateUpdate(result);
+  };
   useEffect(() => {
-    console.log("컨텐츠 데이터 확인 " + contentData);
-  }, [contentData]);
+    fetchData();
+  }, []);
+  // useEffect(
+  //   (이펙트 함수)
+  //   return {
+  //   (클린업 함수)
+  //   }
+  //   }, [의존값]);
   useEffect(() => {
     const handleCost = () => {
       let priceArray = planList.map((el) => {
@@ -170,14 +175,19 @@ body*{
       {mapItemClickState ? <div className="modal"></div> : null}
       {contentData ? <ContentUpdateCalendar props={contentData} /> : null}
       {console.log(contentUserData)}
-      <ContentUpdateAreaHeader props={contentUserData} content={contentData} />
+      {contentData ? (
+        <ContentUpdateAreaHeader
+          props={contentUserData}
+          content={contentData}
+        />
+      ) : null}
       <div className="bigWriteArea">
         <section className="contentWriteAreaBox">
           {dayList !== null
             ? Object.entries(dayList).map((el) => {
                 return currentDay === Number(el[0]) ? (
                   <>
-                    <h1>DAY {currentDay + 1}</h1>
+                    <h1 className="forWhen">DAY {currentDay + 1}</h1>
                     <div className="tableOfplan">
                       <ContentItemList
                         planList={planList}
@@ -190,7 +200,6 @@ body*{
               })
             : null}
           <div className="totalPriceBox">
-            {console.log("contentData입니다" + contentData)}
             <div className="totalPrice">
               총 예상 경비 금액 : {new Intl.NumberFormat().format(totalCost)} 원
             </div>
@@ -259,16 +268,6 @@ body*{
           </section>
         ) : null}
       </div>
-      {console.log(state, "스테이트 확인용")}
-      {console.log(
-        "이미지 필터 테스트용",
-        planList.map((el, idx) => {
-          return el.map((ele) => {
-            return ele;
-          });
-        })
-      )}
-      {console.log(planList, "라이트에어리아")}
     </>
   );
 }
