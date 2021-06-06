@@ -39,47 +39,35 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
-  //params가 안된다.
-  // let params = useParams();
-  // const getId = () => {
-  //   for (const [key, value] of Object.entries(params)) {
-  //     console.log(`${key}: ${value}`);
-  //   }
-  // };
-  // getId();
-  // const { id } = useParams<{ id?: string }>();
-
-  // const params = new URL(window.location.href).searchParams;
-  // console.log("searchParams값" + params);
-  // let id = params.get("id");
+  const schedule = useSelector((state: RootState) => state.planListReducer);
+  const [openTotalMap, setOpenTotalMap] = useState<boolean>(false);
   const dispatch = useDispatch();
 
+  const stateUpdate = (data: any) => {
+    setContentData(data.contentInfo);
+    setContentUserData(data.userInfo);
+    setplanList(data.itemArr);
+  };
   //컨텐츠 데이터 받기 (API 요청)
-  useEffect(() => {
-    console.log("패치데이터 시작");
-    const fetchData = async () => {
-      console.log(`패치데이터 id값+${id}`);
-      await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
-        console.log(res.data);
-        setContentData(res.data.contentInfo);
-        console.log(contentData);
-        setContentUserData(res.data.userInfo);
-        setplanList(res.data.itemArr);
+  const fetchData = async () => {
+    console.log(`패치데이터 id값+${id}`);
+    let result = await axios
+      .get(`https://localhost:4000/content/${id}`)
+      .then((res) => {
+        return res.data;
       });
-      //   await fetch(`https://localhost:4000/content/${id}`)
-      //     .then((res) => res.json())
-      //     .then((res) => {
-      //       //console.log(res.data);
-      //       setContentData(res.data.contentInfo);
-      //       setContentUserData(res.data.userInfo);
-      //       setplanList(res.data.itemArr);
-      //     });
-    };
-    fetchData();
-  });
+    stateUpdate(result);
+  };
+
   useEffect(() => {
-    console.log("컨텐츠 데이터 확인 " + contentData);
-  }, [contentData]);
+    fetchData();
+  }, []);
+  // useEffect(
+  //   (이펙트 함수)
+  //   return {
+  //   (클린업 함수)
+  //   }
+  //   }, [의존값]);
   useEffect(() => {
     const handleCost = () => {
       let priceArray = planList.map((el) => {
@@ -173,41 +161,101 @@ body*{
       {mapItemClickState ? <Bodytag /> : null}
       {mapItemClickState ? <div className="modal"></div> : null}
       {contentData ? <ContentUpdateCalendar props={contentData} /> : null}
+      {console.log(contentUserData)}
+      {contentData ? (
 
-      <section className="contentWriteAreaBox">
-        {console.log(contentUserData)}
         <ContentUpdateAreaHeader
           props={contentUserData}
           content={contentData}
         />
-
-        {dayList !== null
-          ? Object.entries(dayList).map((el) => {
-              return currentDay === Number(el[0]) ? (
-                <>
-                  <h1>DAY {currentDay + 1}</h1>
-                  <div className="tableOfplan">
-                    <ContentItemList
-                      planList={planList}
-                      onDragEnd={onDragEnd}
-                      setplanList={setplanList}
-                    />
-                  </div>
-                </>
-              ) : null;
-            })
-          : null}
-        <div className="totalPriceBox">
-          {console.log("contentData입니다" + contentData)}
-          <div className="totalPrice">총 예상 경비 금액 : {totalCost} 원</div>
-        </div>
-        <ContentSearch planList={planList} setplanList={setplanList} />
-        <button className="writeCompletedButton" onClick={handleSendBtn}>
-          작성완료
+      ) : null}
+      <div className="bigWriteArea">
+        <section className="contentWriteAreaBox">
+          {dayList !== null
+            ? Object.entries(dayList).map((el) => {
+                return currentDay === Number(el[0]) ? (
+                  <>
+                    <h1 className="forWhen">DAY {currentDay + 1}</h1>
+                    <div className="tableOfplan">
+                      <ContentItemList
+                        planList={planList}
+                        onDragEnd={onDragEnd}
+                        setplanList={setplanList}
+                      />
+                    </div>
+                  </>
+                ) : null;
+              })
+            : null}
+          <div className="totalPriceBox">
+            <div className="totalPrice">
+              총 예상 경비 금액 : {new Intl.NumberFormat().format(totalCost)} 원
+            </div>
+          </div>
+          <ContentSearch planList={planList} setplanList={setplanList} />
+          <button
+            className="writeCompletedButton"
+            onClick={() => {
+              if (token) {
+                if (title.length === 0) {
+                  toast({
+                    title: "저장 실패",
+                    description: "여행 제목을 입력해주세요!",
+                    position: "top-right",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                  });
+                } else if (region.length === 0) {
+                  toast({
+                    title: "저장 실패",
+                    description: "여행 지역을 선택해주세요!",
+                    position: "top-right",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                  });
+                } else if (Object.entries(planList[0][0]).length === 0) {
+                  toast({
+                    title: "저장 실패",
+                    description: "일정을 한개라도 작성해주세요!",
+                    position: "top-right",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                  });
+                } else {
+                  handleSendBtn();
+                }
+              } else {
+                toast({
+                  title: "저장 실패",
+                  description: "체험하기는 저장하실 수 없습니다.",
+                  position: "top-right",
+                  status: "error",
+                  duration: 5000,
+                  isClosable: true,
+                });
+              }
+            }}
+          >
+            작성완료
+          </button>
+        </section>
+        {mapClickState ? <MapModal planList={planList} /> : null}
+        <button className="openMapSectionBtn" onClick={openTotalMapHandler}>
+          {openTotalMap ? (
+            <ArrowRightIcon color="white" />
+          ) : (
+            <ArrowLeftIcon color="white" className="arrowLIcon" />
+          )}
         </button>
-      </section>
-      {mapClickState ? <MapModal planList={planList} /> : null}
-      {console.log(state, "스테이트 확인용")}
+        {openTotalMap ? (
+          <section className="mapSection">
+            <ContentMap planList={planList} />
+          </section>
+        ) : null}
+      </div>
     </>
   );
 }

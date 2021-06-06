@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getSignup } from "action/SignupAction";
 import { useDispatch } from "react-redux";
 import { FcCheckmark } from "react-icons/fc";
 import { FcHighPriority } from "react-icons/fc";
 import "../css/SignUp.scss";
+import axios from "axios";
 import { Text, Button, Image } from "@chakra-ui/react";
-
+import { useHistory } from "react-router-dom";
 function UserSignup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,26 +15,56 @@ function UserSignup() {
   const [nickname, setNickname] = useState("");
   const [phone, setPhone] = useState("");
   const [emailSwitch, setemailSwitch] = useState(true);
+  const [checkEmailSwitch, setCheckEmailSwitch] = useState(true);
+  const [checkNicknameSwitch, setCheckNicknameSwitch] = useState(true);
   const [pwdSwitch, setpwdSwitch] = useState(true);
   const [pwdCheckSwitch, setpwdCheckSwitch] = useState(true);
   const [nameSwitch, setnameSwitch] = useState(true);
   const [nicknameSwitch, setnicknameSwitch] = useState(true);
   const [phoneSwitch, setphoneSwitch] = useState(true);
+  const [userData, setUserData] = useState([]);
   const dispatch = useDispatch();
-
+  const history = useHistory();
+  //기존 회원 정보 가져오기
+  useEffect(() => {
+    const getData = async () => {
+      await axios
+        .get("https://localhost:4000/user/total", {
+          headers: {},
+        })
+        .then((res) => {
+          setUserData(res.data.userList);
+          console.log(res.data);
+          console.log("db에 저장된 userList" + userData);
+        });
+    };
+    getData();
+  }, []);
   const inputEmailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newEmail: string = email;
     var regExp =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     newEmail = e.target.value;
+    let checkEmailResult = false;
+    userData.filter((el: any) => {
+      if (el.email === newEmail) {
+        checkEmailResult = true;
+        console.log(checkEmailResult);
+      }
+    });
+    //형식이 잘못 됐을 때
     if (!regExp.test(newEmail)) {
-      // console.log("이메일을 형식에 맞춰 올바르게 입력해주세요");
       setemailSwitch(false);
+      return;
+    }
+    //오류 났을 때 (이메일 중복)
+    if (checkEmailResult) {
+      setCheckEmailSwitch(false);
     } else {
+      setCheckEmailSwitch(true);
       setemailSwitch(true);
       setEmail(newEmail);
     }
-    // console.log(newEmail);
   };
   const inputPwHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newPw: string = password;
@@ -78,11 +109,23 @@ function UserSignup() {
     let newNickname: string = nickname;
     var regExp = /^[가-힣]{2,6}$/;
     newNickname = e.target.value;
+    let checkNickNameResult = false;
+    userData.filter((el: any) => {
+      if (el.nickname === newNickname) {
+        checkNickNameResult = true;
+        console.log(checkNickNameResult);
+      }
+    });
     if (!regExp.test(newNickname)) {
       // console.log("닉네임을 한글 2~6자로 사용해주세요");
       setnicknameSwitch(false);
+      return;
+    }
+    if (checkNickNameResult) {
+      setCheckNicknameSwitch(false);
     } else {
       setnicknameSwitch(true);
+      setCheckNicknameSwitch(true);
       setNickname(newNickname);
     }
     // console.log(newNickname);
@@ -92,13 +135,11 @@ function UserSignup() {
     var regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
     newPhone = e.target.value;
     if (!regExp.test(newPhone)) {
-      // console.log("전화번호 형식에 맞지 않습니다.");
       setphoneSwitch(false);
     } else {
       setphoneSwitch(true);
       setPhone(newPhone);
     }
-    // console.log(newPhone);
   };
   return (
     <div className="body">
@@ -122,13 +163,19 @@ function UserSignup() {
               Email
             </label>
           </div>
+          {checkEmailSwitch ? null : (
+            <div className="errMessage">
+              <FcHighPriority />
+              이미 존재하는 이메일 입니다.
+            </div>
+          )}
           {emailSwitch ? null : (
             <div className="errMessage">
               <FcHighPriority />
               이메일을 올바르게 입력해주세요.
             </div>
           )}
-          {emailSwitch && email ? (
+          {emailSwitch && email && checkEmailSwitch ? (
             <div className="message">
               <FcCheckmark size="15" />
               알맞은 형식입니다.
@@ -218,13 +265,19 @@ function UserSignup() {
               Nickname
             </label>
           </div>
+          {checkNicknameSwitch ? null : (
+            <div className="errMessage">
+              <FcHighPriority />
+              이미 사용중인 닉네임입니다.
+            </div>
+          )}
           {nicknameSwitch ? null : (
             <div className="errMessage">
               <FcHighPriority />
               닉네임을 한글 2~6자로 사용해주세요
             </div>
           )}
-          {nicknameSwitch && nickname ? (
+          {nicknameSwitch && nickname && checkNicknameSwitch ? (
             <div className="message">
               <FcCheckmark size="15" />
               알맞은 형식입니다.
@@ -258,9 +311,28 @@ function UserSignup() {
             colorScheme="blue"
             ml="40%"
             className="signUpBtn"
-            onClick={() =>
-              dispatch(getSignup(email, password, name, nickname, phone))
-            }
+            onClick={() => {
+              if (
+                emailSwitch &&
+                email &&
+                checkEmailSwitch &&
+                pwdSwitch &&
+                password &&
+                pwdCheckSwitch &&
+                passwordCheck &&
+                nameSwitch &&
+                name &&
+                nicknameSwitch &&
+                nickname &&
+                checkNicknameSwitch &&
+                phoneSwitch &&
+                phone
+              ) {
+                dispatch(getSignup(email, password, name, nickname, phone));
+              } else {
+                alert("양식에 맞게 회원가입 작성을 해주세요.");
+              }
+            }}
           >
             등록
           </Button>

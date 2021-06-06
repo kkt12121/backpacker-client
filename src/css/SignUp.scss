@@ -19,14 +19,13 @@
   margin: 0;
   margin-bottom: 6%;
 }
-.signUpForm {
+@mixin signUpForm {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-.form {
+@mixin form {
   margin-top: 3%;
   width: 450px;
   padding: 3rem 2rem;
@@ -103,4 +102,75 @@
   display: flex;
   color: green;
   margin-bottom: 1rem;
+}
+@mixin formLabel {
+  font-size: medium;
+}
+@media screen and (min-width: 1025px) and (max-width: 2000px) {
+  .signUpForm {
+    @include signUpForm();
+    height: 105vh;
+  }
+  .form {
+    @include form();
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .signUpForm {
+    @include signUpForm();
+    height: 120vh;
+  }
+  .form {
+    @include form();
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 768px) {
+  .signUpForm {
+    @include signUpForm();
+    height: 120vh;
+  }
+  .form {
+    @include form();
+  }
+}
+@media screen and (max-width: 500px) {
+  .signUpForm {
+    @include signUpForm();
+    height: 130vh;
+  }
+  .form {
+    @include form();
+    width: 300px;
+    margin-bottom: 60%;
+  }
+  .formLabel {
+    @include formLabel();
+    font-size: small;
+  }
+  .errMessage {
+    display: flex;
+    color: red;
+    margin-bottom: 1rem;
+    font-size: small;
+  }
+  .message {
+    display: flex;
+    color: green;
+    margin-bottom: 1rem;
+    font-size: small;
+  }
+  .signUpBtn {
+    display: block;
+    margin: auto;
+    padding: 0.75rem 2rem;
+    outline: none;
+    border: none;
+    background-color: var(--first-color);
+    color: #fff;
+    font-size: var(--normal-font-size);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    align-items: center;
+  }
 }

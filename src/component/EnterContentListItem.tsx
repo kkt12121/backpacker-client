@@ -60,7 +60,7 @@ export default function EnterContentListItem({
   return (
     <>
       <div>
-        <div className="contentItemBox">
+        <div className="enterContentItemBox">
           <div className="contentEnterImage">
             <img className="ImageContentPlace" src={props.img}></img>
           </div>
@@ -75,18 +75,14 @@ export default function EnterContentListItem({
                 </Text>
               </div>
             </div>
-            <IconButton
-              ml={14}
-              variant="ghost"
-              color="lightskyblue"
-              aria-label="detailInfo"
-              fontSize="30px"
-              className="detailIcon"
-              icon={<InfoOutlineIcon />}
+            <button
+              className="enterDetailIcon"
               onClick={() => {
                 window.open(`${props.detail}`, "_blank");
               }}
-            />
+            >
+              <InfoOutlineIcon />
+            </button>
             <IconButton
               id={idNum}
               ml={3}
@@ -102,7 +98,7 @@ export default function EnterContentListItem({
             >
               <FaMapMarkerAlt
                 color="#db7070"
-                className="mapBtn"
+                className="enterMapBtn"
                 onClick={() => {
                   contentMapClickState
                     ? dispatch(contentItemMapClose())
