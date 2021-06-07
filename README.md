@@ -2,7 +2,6 @@
 
 # Backpacker 서비스 소개
 ![qweqweqwe](https://user-images.githubusercontent.com/76761615/120923140-f3910c80-c707-11eb-9d7e-df1d3315943b.gif)
-:construction:
 
 
 # Overview
