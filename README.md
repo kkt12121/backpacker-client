@@ -4,6 +4,40 @@
 ![qweqweqwe](https://user-images.githubusercontent.com/76761615/120923140-f3910c80-c707-11eb-9d7e-df1d3315943b.gif)
 
 
+## 회원가입 페이지
+![reSignUp](https://user-images.githubusercontent.com/76761615/121054313-31b92980-c7f7-11eb-80ae-f4d7706eaccf.gif)
+
+## 이메일 및 패스워드 찾기
+![reFindUser](https://user-images.githubusercontent.com/76761615/121054652-878dd180-c7f7-11eb-8410-cb66921b4919.gif)
+
+## 마이 페이지
+![reMypage](https://user-images.githubusercontent.com/76761615/121054020-e868da00-c7f6-11eb-858c-01fe4ba3e814.gif)
+
+## 컨텐츠 작성 페이지
+![reContentCreate](https://user-images.githubusercontent.com/76761615/121054985-d63b6b80-c7f7-11eb-9700-a5a251687352.gif)
+
+## 리스트 페이지
+![re리스트페이지](https://user-images.githubusercontent.com/76761615/121052684-92dffd80-c7f5-11eb-9023-7319e491bf60.gif)
+
+## 컨텐츠 페이지
+![reContentPage](https://user-images.githubusercontent.com/76761615/121053258-20235200-c7f6-11eb-982c-e7927427822b.gif)
+
+## 친구 초대 
+![reInvite2](https://user-images.githubusercontent.com/76761615/121053760-a5a70200-c7f6-11eb-8ad3-309610e2d5a7.gif)
+
+## 마이 페이지
+![reMypage](https://user-images.githubusercontent.com/76761615/121054020-e868da00-c7f6-11eb-858c-01fe4ba3e814.gif)
+
+
+
+
+
+
+
+
+
+
+
 # Overview
 
 ### Project
