@@ -1,0 +1,129 @@
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  margin: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .mainsection1 {
+    display: flex;
+    flex-direction: column;
+    height: 950px;
+    align-items: center;
+    // background-image: url("https://source.unsplash.com/6Mxb_mZ_Q8E");
+    // background-size: cover;
+    // background-position: center;
+    // background-attachment: fixed;
+  }
+  .section1text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    margin-top: 400px;
+    animation: appear 3s 1;
+  }
+  .title1 {
+    font-size: 50px;
+  }
+  .startBtn {
+    font-size: 20px;
+    font-weight: bold;
+    border: solid;
+    width: fit-content;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.3s;
+    &:hover {
+      color: #ff1493;
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 1023px) {
+  .mainsection1 {
+    display: flex;
+    flex-direction: column;
+    height: 950px;
+    align-items: center;
+  }
+  .section1text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    margin-top: 400px;
+    animation: appear 3s 1;
+  }
+  .title1 {
+    font-size: 26px;
+  }
+  .startBtn {
+    border: solid;
+    width: fit-content;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.3s;
+    &:hover {
+      color: #ff1493;
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .mainsection1 {
+    display: flex;
+    flex-direction: column;
+    height: 812px;
+    align-items: center;
+  }
+  .section1text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    margin-top: 200px;
+    animation: appear 3s 1;
+  }
+  .title1 {
+    font-size: 18px;
+  }
+  .startBtn {
+    font-size: 15px;
+    border: solid;
+    width: fit-content;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.3s;
+    &:hover {
+      color: #ff1493;
+      cursor: pointer;
+    }
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    margin-top: 20%;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,228 @@
+@mixin enterContentItemBox {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+@mixin enterMapBtn {
+}
+@mixin contentPlaceName {
+}
+.contentNum {
+  width: 100%;
+  padding: 4%;
+}
+.contentImg {
+  width: 100%;
+}
+@mixin btnContentItemMap {
+  font-weight: bold;
+  // background-color: white;
+  cursor: pointer;
+}
+.listItem {
+  display: flex;
+  align-items: center;
+  border: solid 1px;
+  width: 100%;
+  height: 100px;
+  transition: all 5s;
+  margin: 0 auto;
+}
+.contentPlaceImage {
+  width: 11.5rem;
+  height: 6.2rem;
+}
+.contentDay {
+  display: flex;
+  height: 130px;
+}
+@mixin enterDetailIcon {
+  color: lightskyblue;
+  display: inline-flex;
+  appearance: none;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  transition: all 250ms;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  width: auto;
+  line-height: 1.2;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  font-size: 30px;
+}
+@mixin enterContentTextInfoBox {
+  width: 100%;
+  display: flex;
+  flex-direction: unset;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.placeAndPrice {
+  width: 280px;
+}
+@mixin contentPrice {
+}
+.btnContentItemMap:hover {
+  color: #ff1493;
+}
+@mixin ImageContentPlace {
+  border-radius: 10px;
+  margin-top: 17px;
+}
+.contentEnterItemBox {
+  display: flex;
+  align-items: center;
+  border: solid 1px;
+  width: 500px;
+  height: 100px;
+  transition: all 5s;
+}
+.contentEnterImage {
+  width: 6rem;
+  height: 6.2rem;
+}
+@mixin btnInfoMap {
+  display: flex;
+}
+@media screen and (min-width: 1025px) {
+  .enterContentItemBox {
+    @include enterContentItemBox();
+    width: 500px;
+    height: 100px;
+  }
+  .enterDetailIcon {
+    @include enterDetailIcon();
+    // margin-left: 3.5rem;
+  }
+  .contentPlaceName {
+    @include contentPlaceName();
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .contentPrice {
+    @include contentPrice();
+    text-align: center;
+  }
+  .ImageContentPlace {
+    @include ImageContentPlace();
+  }
+  .enterContentTextInfoBox {
+    @include enterContentTextInfoBox();
+  }
+  .btnInfoMap {
+    @include btnInfoMap();
+  }
+  .btnContentItemMap {
+    @include btnContentItemMap();
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .enterContentItemBox {
+    @include enterContentItemBox();
+    width: 330px;
+    height: 100px;
+  }
+  .enterDetailIcon {
+    @include enterDetailIcon();
+    // margin-left: 3.5rem;
+  }
+  .contentPlaceName {
+    @include contentPlaceName();
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  .contentPrice {
+    @include contentPrice();
+    text-align: center;
+  }
+  .ImageContentPlace {
+    @include ImageContentPlace();
+  }
+  .enterContentTextInfoBox {
+    @include enterContentTextInfoBox();
+  }
+  .btnInfoMap {
+    @include btnInfoMap();
+  }
+  .btnContentItemMap {
+    @include btnContentItemMap();
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 768px) {
+  .enterContentItemBox {
+    @include enterContentItemBox();
+    width: 300px;
+    height: 100px;
+  }
+  .enterDetailIcon {
+    @include enterDetailIcon();
+    margin-left: 1rem;
+  }
+  .contentPlaceName {
+    @include contentPlaceName();
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .contentPrice {
+    @include contentPrice();
+    text-align: center;
+  }
+  .ImageContentPlace {
+    @include ImageContentPlace();
+  }
+  .enterContentTextInfoBox {
+    @include enterContentTextInfoBox();
+  }
+  .btnInfoMap {
+    @include btnInfoMap();
+  }
+  .btnContentItemMap {
+    @include btnContentItemMap();
+  }
+}
+@media screen and (max-width: 500px) {
+  .enterContentItemBox {
+    @include enterContentItemBox();
+    width: 300px;
+    height: 100px;
+  }
+  .contentPlaceName {
+    @include contentPlaceName();
+    font-size: 1.2rem;
+  }
+  .contentPrice {
+    @include contentPrice();
+  }
+  .ImageContentPlace {
+    @include ImageContentPlace();
+    margin-left: 4%;
+  }
+  .enterContentTextInfoBox {
+    @include enterContentTextInfoBox();
+    display: block;
+    margin-left: 6%;
+  }
+  .enterDetailIcon {
+    @include enterDetailIcon();
+    margin-top: 0.7rem;
+    margin-left: 0.5rem;
+  }
+  .enterMapBtn {
+    @include enterMapBtn();
+  }
+  .btnInfoMap {
+    @include btnInfoMap();
+  }
+  .btnContentItemMap {
+    @include btnContentItemMap();
+    margin-top: 0.6rem;
+  }
+}

@@ -1,0 +1,27 @@
+.inviteModalOn {
+  width: 400px;
+  height: 200px;
+  border-radius: 10%;
+  position: fixed;
+  left: 35%;
+  top: 20%;
+  z-index: 2;
+  background-color: rgb(236, 232, 232);
+  transition: all 0.5s;
+}
+.inviteModal {
+  @extend .inviteModalOn;
+  width: 30%;
+  height: 0%;
+  top: 20%;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.inviteModalClose {
+  margin-top: 3%;
+  margin-left: 87%;
+  cursor: pointer;
+}
+.inviteModalClose :hover {
+  color: red;
+}

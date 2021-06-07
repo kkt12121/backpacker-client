@@ -1,0 +1,43 @@
+.userInfoSection {
+  // border: solid;
+  padding-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userInfoCard {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 370px;
+  height: 300px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+}
+.userInfoName,
+.userInfoNickName,
+.userInfoEmail,
+.userInfoPhone {
+  border-bottom: solid 2px rgb(230, 230, 230);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.userInfoName span,
+.userInfoNickName span,
+.userInfoEmail span,
+.userInfoPhone span,
+.userInfoName div,
+.userInfoNickName div,
+.userInfoEmail div,
+.userInfoPhone div {
+  flex-grow: 1;
+}
+.userInfoName span,
+.userInfoNickName span,
+.userInfoEmail span,
+.userInfoPhone span {
+  font-weight: bold;
+}

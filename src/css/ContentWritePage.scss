@@ -1,0 +1,580 @@
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  margin: 0;
+}
+// Content write page header start
+.CalendarBox {
+  //   border: solid;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 100px;
+  font-weight: bold;
+  background-color: black;
+}
+.tripTitleOff,
+.tripTitle {
+  text-align: center;
+  color: white;
+  &:hover {
+    color: #ff1493;
+    background-color: black;
+  }
+}
+.titleInputBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 21.44px;
+  margin-bottom: 21.44px;
+}
+// .titleInputBox button {
+//   background-color: blue;
+//   border: none;
+//   border-bottom-right-radius: 30px;
+//   border-top-right-radius: 30px;
+//   font-weight: bold;
+//   color: white;
+//   width: 60px;
+//   &:hover {
+//     background-color: rgb(139, 203, 255);
+//   }
+// }
+.titleInput {
+  border: solid 1px #ff1493;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  font-size: 32px;
+  text-align: center;
+  width: 80%;
+  height: 50px;
+}
+.dateBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.startDate,
+.endDate {
+  margin: 10px;
+  border: none;
+  padding: 1px;
+  padding-left: 20px;
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 30px;
+  background-color: #ff1493;
+  color: white;
+}
+.startDate input {
+  padding: 10px;
+  margin-left: 10px;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border: solid 1px #ff1493;
+  color: black;
+  border-radius: 20px;
+  position: relative;
+  top: -0.1em;
+  &:hover {
+    color: #ff1493;
+    cursor: pointer;
+  }
+}
+.endDate input {
+  padding: 10px;
+  margin-left: 10px;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border: solid 1px #ff1493;
+  color: black;
+  border-radius: 20px;
+  position: relative;
+  top: -0.1em;
+  &:hover {
+    color: #ff1493;
+    cursor: pointer;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .totalMapBtn {
+    display: none;
+  }
+}
+.totalMapBtn {
+  background-color: #ff1493;
+  width: 50px;
+  height: 50px;
+  border: none;
+  font-weight: bold;
+  border-radius: 100%;
+  color: white;
+  position: absolute;
+  right: 5%;
+  bottom: 55%;
+  &:hover {
+    background-color: pink;
+    cursor: pointer;
+  }
+}
+// Content write page header end
+
+// Write area header start
+.dayBox {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 150px;
+  background-color: black;
+  button {
+    border: 3px solid #ff1493;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 0.2em 0.5em;
+    color: #ff1493;
+    text-transform: uppercase;
+    margin: 5px;
+    &:hover {
+      border: 3px solid white;
+      background-color: white;
+      color: #ff1493;
+
+      cursor: pointer;
+    }
+  }
+}
+
+.contentWriteAreaBox {
+  font-weight: bold;
+  padding: 0;
+  height: fit-content;
+  flex-grow: 1;
+}
+.contentWriteAreaHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  background-color: black;
+}
+.writerListBox {
+  width: 150px;
+  color: white;
+  background-color: #ff1493;
+  border-radius: 10px;
+  border: none;
+  padding: 0px;
+  padding-top: 5px;
+  font-weight: bold;
+}
+.writerList {
+  color: black;
+  margin-top: 5px;
+  padding: 5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+.regionChoice {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  color: white;
+  animation: move 1s infinite alternate;
+  background-color: black;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+.regionUdateChoice {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  color: white;
+  animation: move 1s infinite alternate;
+  background-color: black;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.CompletedRegion {
+  position: relative;
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+    // top: 0px;
+  }
+
+  100% {
+    opacity: 1;
+    // top: -15px;
+  }
+}
+.regionList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.regionList li {
+  font-size: 1rem;
+  margin: 5px;
+  &:hover {
+    color: #ff1493;
+  }
+}
+// Write area header end
+
+// Write area body start
+.bigWriteArea {
+  display: flex;
+  height: 100%;
+}
+.openMapSectionBtn {
+  width: 50px;
+  height: 60px;
+  background-color: hotpink;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+  position: relative;
+  top: 20%;
+  right: 0%;
+}
+.arrowLIcon {
+  animation: plzClick 0.5s infinite alternate;
+}
+@keyframes plzClick {
+  0% {
+    position: relative;
+    right: 10%;
+  }
+  100% {
+    position: relative;
+    right: -10%;
+  }
+}
+.mapSection {
+  width: 40%;
+  height: 100%;
+  border-left: solid 5px hotpink;
+  border-bottom: solid 5px hotpink;
+}
+.forWhen {
+  padding: 40px;
+  font-size: 30px;
+}
+.tableOfplan {
+  width: 100%;
+}
+.planItemTable {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.droppableList,
+.planitem {
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: white;
+  width: 70%;
+  height: 130px;
+  margin: 20px;
+  box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+}
+.contentItemBox {
+  border: none;
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+}
+.contentImage {
+  width: 130px;
+  height: 130px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.contentTextInfoBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.contentPlaceBox {
+  display: flex;
+}
+.contentPlace {
+  flex-grow: 1;
+}
+.contentPriceBox {
+  margin-right: 10px;
+}
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  #addressAndTel {
+    display: none;
+  }
+  .contentPlace {
+    font-size: 20px;
+  }
+  .contentPriceBox {
+    margin-right: 10px;
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 1023px) {
+  // .contentImage {
+  //   display: none;
+  // }
+  .totalMapBtn {
+    background-color: #ff1493;
+    width: 50px;
+    height: 50px;
+    border: none;
+    font-weight: bold;
+    border-radius: 100%;
+    color: white;
+    position: absolute;
+    right: 5%;
+    bottom: 65%;
+    &:hover {
+      background-color: pink;
+      cursor: pointer;
+    }
+  }
+  .contentPlace {
+    flex-grow: 1;
+    font-size: 20px;
+  }
+  .contentPriceBox {
+    width: 400px;
+  }
+  #addressAndTel {
+    display: none;
+  }
+  .mapSection {
+    display: none;
+  }
+  .openMapSectionBtn {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .contentImage {
+    display: none;
+  }
+  .contentPlace {
+    flex-grow: 1;
+    font-size: 18px;
+    line-height: 40px;
+  }
+  .mapSection {
+    display: none;
+  }
+  #addressAndTel {
+    display: none;
+  }
+  .openMapSectionBtn {
+    display: none;
+  }
+}
+// .contentPlaceBox button {
+//   width: 20px;
+//   height: 20px;
+//   margin: 20px;
+//   margin-left: 50px;
+//   font-weight: bold;
+//   padding: 0;
+//   border: solid 2px black;
+//   border-radius: 100%;
+//   background-color: white;
+//   &:hover {
+//     background-color: black;
+//     color: white;
+//     cursor: pointer;
+//   }
+// }
+.contentPriceBox {
+  display: flex;
+  width: 90%;
+  border: none;
+}
+.contentPriceInput {
+  border: solid 1px #ff1493;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+}
+// .contentPriceBox button {
+//   border: solid 1px blue;
+//   border-top-right-radius: 30px;
+//   border-bottom-right-radius: 30px;
+//   width: 80px;
+//   color: white;
+//   font-weight: bold;
+//   background-color: blue;
+// }
+.totalPrice {
+  color: white;
+  border-radius: 30px;
+  padding: 13px;
+  margin-bottom: 30px;
+  background-color: #ff1493;
+  box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+}
+// Write area body end
+
+// Search area start
+.contentSearchBox {
+  //   border: solid;
+  display: flex;
+  width: 70%;
+}
+.searchAndAuto {
+  flex-grow: 1;
+}
+// .contentSearchInput {
+//   width: 100%;
+//   height: 50px;
+//   border: solid 3px blue;
+//   padding-left: 30px;
+//   border-bottom-left-radius: 20px;
+//   border-top-left-radius: 20px;
+//   //   box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+// }
+.autoList {
+  margin: 0;
+  box-shadow: 1px 1px 1px #a1a1a1, 0px 0px 10px #b8b8b8;
+  list-style: none;
+  height: 200px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-left: 10px;
+  padding-left: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.autoList::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+.autoList::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+.autoList::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #ff1493;
+}
+.autoItem {
+  border-top: solid 1px rgb(220, 220, 220);
+  padding-left: 10px;
+  &:hover {
+    background-color: rgb(250, 226, 237);
+    cursor: pointer;
+  }
+}
+.autoItemPlaceName {
+  font-size: 15px;
+  font-weight: 450;
+  margin: 2px;
+}
+.autoItemAddress {
+  font-weight: lighter;
+  font-size: 13px;
+  margin: 2px;
+  color: rgb(145, 145, 145);
+}
+// .contentSearchButton {
+//   border: solid 3px blue;
+//   border-bottom-right-radius: 20px;
+//   border-top-right-radius: 20px;
+//   background-color: blue;
+//   color: white;
+//   font-weight: bold;
+//   font-size: 18px;
+//   height: 50px;
+//   &:hover {
+//     border: rgb(0, 0, 182);
+//     background-color: rgb(0, 0, 182);
+//     cursor: pointer;
+//   }
+// }
+.writeCompletedButton {
+  border: none;
+  width: 300px;
+  height: 60px;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 20px;
+  margin-bottom: 100px;
+  color: white;
+  background-color: #ff1493;
+  transition-duration: 0.5s;
+  &:hover {
+    cursor: pointer;
+    animation: MainBtn 2s infinite alternate;
+  }
+}
+@keyframes MainBtn {
+  0% {
+    background: rgb(255, 0, 140);
+    position: relative;
+    top: 0.3em;
+  }
+  25% {
+    background: rgb(174, 0, 255);
+    position: relative;
+    top: -0.3em;
+  }
+  50% {
+    background: rgb(0, 255, 170);
+    position: relative;
+    top: 0.3em;
+  }
+  75% {
+    background: rgb(255, 230, 0);
+    position: relative;
+    top: -0.3em;
+  }
+  100% {
+    background: rgb(255, 0, 0);
+    position: relative;
+    top: 0.3em;
+  }
+}

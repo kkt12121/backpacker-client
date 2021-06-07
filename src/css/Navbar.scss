@@ -1,0 +1,347 @@
+.nav {
+  display: flex;
+  height: 70px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  padding-right: 1%;
+  align-items: center;
+  z-index: 5;
+}
+
+.hamburgerStick1 {
+  width: 2rem;
+  height: 0.3rem;
+  margin-bottom: 20%;
+  background-color: #ff1493;
+  z-index: 2;
+}
+
+.hamburgerStick2 {
+  width: 2rem;
+  height: 0.3rem;
+  margin-bottom: 20%;
+  background-color: #ff1493;
+  transition: all 0.5s;
+  z-index: 2;
+}
+.hamburgerStick3 {
+  width: 2rem;
+  height: 0.3rem;
+  margin-bottom: 20%;
+  background-color: #ff1493;
+  z-index: 2;
+}
+
+.logoBox {
+  height: 70px;
+  flex-grow: 1;
+}
+.navLogo {
+  width: 100%;
+  display: flex;
+  height: 70px;
+  line-height: 70px;
+  margin-left: 5%;
+  cursor: pointer;
+}
+.logoImg {
+  // width: 50px;
+  // height: 50px;
+  // margin: 10px;
+}
+.logoName {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 680px) {
+}
+
+.hamburgerMenu {
+  display: flex;
+  margin-left: 30%;
+  flex-direction: column;
+  cursor: pointer;
+}
+.hamburgerMenuOn {
+  margin-left: 30%;
+  .hamburgerStick1 {
+    @extend .hamburgerStick1;
+    background-color: #ff1493;
+    z-index: 2;
+    position: absolute;
+    transition: all 0.5s;
+    transform: rotate(45deg);
+  }
+  .hamburgerStick2 {
+    @extend .hamburgerStick2;
+    background-color: #ff1493;
+    z-index: 2;
+    transition: all 0.5s;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .hamburgerStick3 {
+    @extend .hamburgerStick3;
+    background-color: #ff1493;
+    z-index: 2;
+    position: absolute;
+    transition: all 0.5s;
+    transform: rotate(-45deg);
+  }
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.mobileOl {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  ul {
+    position: relative;
+    width: 120px;
+    transition: all 1s;
+    right: -2000px;
+    font-weight: bold;
+  }
+  ul:hover {
+    color: #ff1493;
+  }
+}
+
+.mobileLine {
+  width: 0;
+  height: 0;
+  border: solid 0px;
+}
+@media screen and (max-width: 1100px) {
+  .hamburgerMenu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .mobileOl {
+    display: flex;
+    flex-direction: row;
+    justify-self: start;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    ul {
+      position: relative;
+      right: 0;
+      width: 30%;
+      transition: all 1s;
+    }
+    ul:hover {
+      .logoutLine {
+        width: 50%;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .mypageLine {
+        width: 68px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .listLine {
+        width: 85px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .planLine {
+        width: 105px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .loginLine {
+        width: 40px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .signupLine {
+        width: 55px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+    }
+  }
+
+  .navLogo {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 652px) and (max-width: 1099px) {
+  .logoBox {
+    display: flex;
+    width: 100%;
+  }
+  .logoImg {
+    height: auto;
+    margin-left: 0px;
+  }
+  .logoName {
+    font-size: 20px;
+  }
+
+  .mobileOl {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    ul {
+      font-size: 0.9rem;
+      display: block;
+      width: max-content;
+      padding-right: 10%;
+    }
+    ul:hover {
+      .logoutLine {
+        width: 38px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .mypageLine {
+        width: 48px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .listLine {
+        width: 60px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .planLine {
+        width: 75px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .loginLine {
+        width: 30px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .signupLine {
+        width: 40px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+    }
+  }
+  .navLogo {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+  .logoBox {
+    display: flex;
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 275px) and (max-width: 651px) {
+  .logoImg {
+    // width: 25px;
+    // height: 25px;
+    // margin: 20px;
+    margin-left: 0px;
+    margin-right: 5px;
+  }
+  .logoName {
+    font-size: 15px;
+  }
+
+  .mobileOl {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    ul {
+      font-size: 0.2rem;
+      display: block;
+      width: max-content;
+      padding-right: 6%;
+    }
+    ul:hover {
+      .logoutLine {
+        width: 38px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .mypageLine {
+        width: 48px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .listLine {
+        width: 60px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .planLine {
+        width: 75px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .loginLine {
+        width: 30px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+      .signupLine {
+        width: 40px;
+        height: 0;
+        border: solid 1px;
+        transition: all 0.3s;
+        color: #ff1493;
+      }
+    }
+  }
+  .navLogo {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+  .logoBox {
+    display: flex;
+    width: 50%;
+  }
+}

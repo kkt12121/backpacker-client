@@ -1,0 +1,29 @@
+.mapItemModalOn {
+  width: 50%;
+  height: 50%;
+  border-radius: 10%;
+  position: fixed;
+  left: 25%;
+  top: 20%;
+  z-index: 2;
+  background-color: white;
+  transition: all 0.5s;
+}
+.mapItemModal {
+  @extend .mapItemModalOn;
+  width: 30%;
+  height: 0%;
+  top: 20%;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.mapItemModalClose {
+  margin-top: 6%;
+  margin-left: 87%;
+  cursor: pointer;
+}
+
+.mapItemModalClose :hover {
+  color: red;
+}

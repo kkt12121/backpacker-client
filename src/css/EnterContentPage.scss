@@ -1,0 +1,283 @@
+@mixin contentDate {
+  justify-content: center;
+  -webkit-box-pack: center;
+  font-size: larger;
+}
+@mixin contentHeader {
+}
+@mixin contentBodyTitle {
+  display: flex;
+}
+@mixin listItem {
+  display: flex;
+}
+
+@mixin buttonList {
+  display: flex;
+}
+@mixin btnInvite {
+  cursor: pointer;
+}
+@mixin writeParticipant {
+  display: flex;
+  margin: 2% auto;
+}
+
+@mixin page {
+  height: 100%;
+}
+@mixin contentPage {
+  display: flex;
+  flex-direction: unset;
+  align-content: center;
+}
+@mixin contentBody {
+  width: 100%;
+}
+@mixin contentCardBorder {
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(65, 63, 64, 0.2);
+}
+@mixin enterScrollToTopButton {
+  z-index: 2;
+  height: 5%;
+  position: fixed;
+  color: #ff1493;
+  &:hover {
+    transition: 0.3s;
+    color: #397ba6;
+  }
+}
+@mixin contentDataTitle {
+}
+@mixin contentDataContent {
+}
+@media screen and (min-width: 1025px) {
+  .contentDataTitle {
+    @include contentDataTitle();
+    font-size: 2.25rem;
+  }
+  .contentDataContent {
+    @include contentDataContent();
+    font-size: 1.3rem;
+  }
+  .contentDate {
+    @include contentDate();
+  }
+  .contentBodyTitle {
+    @include contentBodyTitle();
+  }
+  .listItem {
+    @include listItem();
+  }
+  .buttonList {
+    @include buttonList();
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .btnInvite {
+    @include btnInvite();
+  }
+  .writeParticipant {
+    @include writeParticipant();
+  }
+  .page {
+    @include page();
+  }
+  .contentPage {
+    @include contentPage();
+    margin-left: 6%;
+    padding: 7.2%;
+  }
+  .contentBody {
+    @include contentBody();
+    margin-left: 15%;
+    width: 55%;
+  }
+  .contentCardBorder {
+    @include contentCardBorder();
+  }
+  .enterScrollToTopButton {
+    @include enterScrollToTopButton();
+    right: 2%;
+    bottom: 10vh;
+    width: 6%;
+    &:hover {
+      transition: 0.3s;
+      color: #397ba6;
+    }
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .contentDataTitle {
+    @include contentDataTitle();
+    font-size: 2rem;
+  }
+  .contentDataContent {
+    @include contentDataContent();
+    font-size: 1rem;
+  }
+  .contentDate {
+    @include contentDate();
+  }
+  .contentBodyTitle {
+    @include contentBodyTitle();
+  }
+  .listItem {
+    @include listItem();
+  }
+  .buttonList {
+    @include buttonList();
+    width: 300px;
+    margin-top: 2rem;
+  }
+  .btnInvite {
+    @include btnInvite();
+  }
+  .writeParticipant {
+    @include writeParticipant();
+  }
+  .page {
+    @include page();
+  }
+  .contentPage {
+    @include contentPage();
+    padding: 7%;
+    width: 100%;
+  }
+  .contentBody {
+    @include contentBody();
+    margin-left: 9%;
+    width: 100%;
+  }
+  .contentHeader {
+    @include contentHeader();
+    width: 35%;
+  }
+  .contentCardBorder {
+    @include contentCardBorder();
+  }
+  .enterScrollToTopButton {
+    @include enterScrollToTopButton();
+    right: 4%;
+    bottom: 10vh;
+    width: 5%;
+  }
+}
+
+@media screen and (min-width: 501px) and (max-width: 768px) {
+  .contentDataTitle {
+    @include contentDataTitle();
+    font-size: 1.2rem;
+  }
+  .contentDataContent {
+    @include contentDataContent();
+    font-size: 0.8rem;
+  }
+  .contentDate {
+    @include contentDate();
+  }
+  .contentBodyTitle {
+    @include contentBodyTitle();
+  }
+  .listItem {
+    @include listItem();
+  }
+  .buttonList {
+    @include buttonList();
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .btnInvite {
+    @include btnInvite();
+  }
+  .writeParticipant {
+    @include writeParticipant();
+  }
+  .page {
+    @include page();
+  }
+  .contentPage {
+    @include contentPage();
+    padding-top: 10%;
+    padding-left: 3%;
+    width: 100%;
+  }
+  .contentBody {
+    @include contentBody();
+    margin-left: 5%;
+    width: 100%;
+  }
+  .contentHeader {
+    @include contentHeader();
+    width: 35%;
+  }
+  .contentCardBorder {
+    @include contentCardBorder();
+  }
+  .enterScrollToTopButton {
+    @include enterScrollToTopButton();
+    right: 2%;
+    bottom: 10vh;
+    width: 5%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .contentDataTitle {
+    @include contentDataTitle();
+    font-size: 1.4rem;
+  }
+  .contentDataContent {
+    @include contentDataContent();
+    font-size: 1rem;
+  }
+  .contentDate {
+    @include contentDate();
+  }
+  .contentBodyTitle {
+    @include contentBodyTitle();
+  }
+  .listItem {
+    @include listItem();
+  }
+  .buttonList {
+    @include buttonList();
+    display: flex;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .btnInvite {
+    @include btnInvite();
+  }
+  .writeParticipant {
+    @include writeParticipant();
+  }
+  .page {
+    @include page();
+  }
+  .contentPage {
+    @include contentPage();
+    display: block;
+    padding: 11%;
+    width: 100%;
+  }
+  .contentBody {
+    @include contentBody();
+    margin-top: 10%;
+    width: 100%;
+  }
+  .contentHeader {
+    @include contentHeader();
+    width: 100%;
+    text-align: center;
+  }
+  .contentCardBorder {
+    @include contentCardBorder();
+  }
+  .enterScrollToTopButton {
+    @include enterScrollToTopButton();
+    right: 6%;
+    bottom: 5vh;
+    width: 8%;
+  }
+}

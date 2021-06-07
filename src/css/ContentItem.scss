@@ -1,0 +1,43 @@
+.contentItemBox {
+  display: flex;
+  align-items: center;
+  border: solid 1px;
+  width: 500px;
+  height: 100px;
+  transition: all 5s;
+}
+
+.droppableList {
+  animation: fadein 1s;
+}
+
+.contentImage {
+  width: 6rem;
+  height: 6.2rem;
+}
+
+.contentPlace {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.contentPlaceBox {
+  width: 100%;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.mapIcon:hover {
+  color: #ff1493;
+}
+
+.detailIcon:hover {
+  color: #ff1493;
+}

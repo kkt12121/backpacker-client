@@ -1,0 +1,55 @@
+@mixin invitePageModalOn {
+  height: 200px;
+  position: fixed;
+  background-color: rgb(236, 232, 232);
+  transition: all 0.5s;
+  box-shadow: 1px 1px 1px grey;
+}
+.inviteModal {
+  @extend .invitePageModalOn;
+  width: 30%;
+  height: 0%;
+  top: 20%;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.invitePageModalClose {
+  margin-top: 3%;
+  margin-left: 87%;
+  cursor: pointer;
+}
+.invitePageModalClose :hover {
+  color: red;
+}
+@media screen and (min-width: 1025px) {
+  .invitePageModalOn {
+    @include invitePageModalOn();
+    margin-top: 18%;
+    margin-left: 40%;
+    width: 400px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .invitePageModalOn {
+    @include invitePageModalOn();
+    margin-top: 28%;
+    margin-left: 30%;
+    width: 400px;
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 768px) {
+  .invitePageModalOn {
+    @include invitePageModalOn();
+    margin-top: 38%;
+    margin-left: 24%;
+    width: 400px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .invitePageModalOn {
+    @include invitePageModalOn();
+    margin-top: 75%;
+    margin-left: 9%;
+    width: 300px;
+  }
+}

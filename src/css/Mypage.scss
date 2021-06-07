@@ -1,0 +1,59 @@
+.mypage {
+  display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.btnBox {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btnBox button {
+  width: 360px;
+  height: 70px;
+  margin: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff1493;
+  &:hover {
+    background-color: pink;
+    cursor: pointer;
+  }
+}
+.myContentSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.nameOfSection {
+  font-size: 30px;
+  font-weight: bold;
+}
+.myContentTitle:hover {
+  cursor: pointer;
+}
+@media screen and (max-width: 810px) {
+  .mypage {
+    display: flex;
+    padding-top: 600px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .myContentSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+}

@@ -1,0 +1,81 @@
+.menuCategory {
+  width: 16%;
+  height: 100%;
+  background: black;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 1;
+  font-weight: bold;
+  transition: all 0.5s;
+}
+
+.menuCategoryOn {
+  @extend .menuCategory;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  margin-top: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.loginMenu {
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.loginMenu:hover {
+  color: #ff1493;
+}
+
+.signupMenu {
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.listMenu {
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.signupBtn {
+  text-decoration-line: none;
+  color: white;
+}
+.signupBtn:hover {
+  color: #ff1493;
+}
+
+.listBtn {
+  text-decoration-line: none;
+  color: white;
+}
+.listBtn:hover {
+  color: #ff1493;
+}
+
+@media screen and (max-width: 1000px) {
+  .menuCategory {
+    display: none;
+  }
+
+  .menuCategoryOn {
+    display: none;
+  }
+}

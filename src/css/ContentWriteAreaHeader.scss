@@ -1,0 +1,30 @@
+.contentWriteAreaHeader {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+.writerListBox {
+  span {
+    margin-left: 1%;
+  }
+  display: flex;
+  flex-direction: column;
+  border: solid 1px;
+  width: 200px;
+  text-align: center;
+}
+
+.dayBox {
+  button {
+    margin-left: 3%;
+  }
+  width: 400px;
+  margin-left: 15%;
+}
+
+.regionList {
+  li {
+    cursor: pointer;
+  }
+}

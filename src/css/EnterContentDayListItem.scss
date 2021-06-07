@@ -1,0 +1,128 @@
+@mixin contentDayFirstSection {
+  font-weight: bold;
+  text-align-last: center;
+}
+.contentDaySecondSection {
+  padding: 2%;
+  color: gray;
+}
+.ContentDayPlaceName {
+  font-weight: bold;
+  color: black;
+}
+@mixin contentDay {
+}
+@mixin tourListItemDayFirst {
+  font-weight: bold;
+  color: pink;
+
+  font-style: italic;
+}
+@mixin tourListItemDaySecond {
+  font-weight: bold;
+  color: gray;
+  font-style: italic;
+}
+@mixin contentBodyList {
+  width: 100%;
+}
+@media screen and (min-width: 1025px) {
+  .contentDay {
+    @include contentDay();
+    width: 800px;
+  }
+  .tourListItemDayFirst {
+    @include tourListItemDayFirst();
+    font-size: 4.5rem;
+    margin-right: 100px;
+  }
+  .tourListItemDaySecond {
+    @include tourListItemDaySecond();
+    font-size: 4.5rem;
+    margin-right: 100px;
+  }
+  .contentBodyList {
+    @include contentBodyList();
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .contentDay {
+    @include contentDay();
+    width: 130%;
+  }
+  .tourListItemDayFirst {
+    @include tourListItemDayFirst();
+    font-size: 1.7rem;
+    margin-right: 30px;
+    margin-top: 10%;
+  }
+  .tourListItemDaySecond {
+    @include tourListItemDaySecond();
+    font-size: 1.7rem;
+    margin-right: 30px;
+    margin-top: 10%;
+  }
+  .contentDayFirstSection {
+    @include contentDayFirstSection();
+    width: 22%;
+    text-align: center;
+    padding-top: 2%;
+  }
+  .contentBodyList {
+    @include contentBodyList();
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 768px) {
+  .contentDay {
+    @include contentDay();
+    width: 430px;
+  }
+  .tourListItemDayFirst {
+    @include tourListItemDayFirst();
+    font-size: 1.5rem;
+    margin-right: 20px;
+    margin-top: 25%;
+  }
+  .tourListItemDaySecond {
+    @include tourListItemDaySecond();
+    font-size: 1.5rem;
+    margin-right: 20px;
+    margin-top: 25%;
+  }
+  .contentDayFirstSection {
+    @include contentDayFirstSection();
+    width: 20%;
+    padding-top: 3%;
+    text-align: center;
+  }
+  .contentBodyList {
+    @include contentBodyList();
+  }
+}
+@media screen and (max-width: 500px) {
+  .contentDay {
+    @include contentDay();
+    width: 430px;
+  }
+  .tourListItemDayFirst {
+    @include tourListItemDayFirst();
+    font-size: 1.3rem;
+    margin-right: 12%;
+    margin-top: 25%;
+  }
+  .tourListItemDaySecond {
+    @include tourListItemDaySecond();
+    font-size: 1.3rem;
+    margin-right: 20px;
+    margin-top: 25%;
+  }
+  .contentDayFirstSection {
+    @include contentDayFirstSection();
+    width: 18%;
+    padding-top: 4%;
+    text-align: center;
+  }
+  .contentBodyList {
+    @include contentBodyList();
+  }
+}
