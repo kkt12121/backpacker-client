@@ -1,3 +1,5 @@
+<p align="center"><img src="https://images.velog.io/images/altanis7/post/002874b6-45cc-4b51-8058-a1160fa7685c/%EB%B0%B1%ED%8C%A9%EC%BB%A4%EB%A1%9C%EA%B3%A0.png" /></p>
+
 # Backpacker 서비스 소개
 ![qweqweqwe](https://user-images.githubusercontent.com/76761615/120923140-f3910c80-c707-11eb-9d7e-df1d3315943b.gif)
 :construction:
