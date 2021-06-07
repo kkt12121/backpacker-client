@@ -2,7 +2,7 @@ import { getLoginToken } from "action/LoginAction";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import "../css/InviteLogin.scss";
-
+import { Text } from "@chakra-ui/react";
 function InviteLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,9 +24,14 @@ function InviteLogin() {
 
   return (
     <>
-      <div className="bodyLogin">
-        <div className="loginForm">
+      <div className="bodyInviteLogin">
+        <div className="loginInviteForm">
           <div className="formInviteLogin">
+            <h1 className="formTitle">
+              <Text fontWeight="bold" fontSize="2xl" fontStyle="italic">
+                로그인
+              </Text>
+            </h1>
             <div className="formLoginDiv">
               <input
                 className="formLoginInput"

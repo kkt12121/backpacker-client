@@ -23,7 +23,10 @@
   color: gray;
   font-style: italic;
 }
-@media screen and (min-width: 1025px) and (max-width: 2000px) {
+@mixin contentBodyList {
+  width: 100%;
+}
+@media screen and (min-width: 1025px) and (max-width: 2300px) {
   .contentDay {
     @include contentDay();
     width: 800px;
@@ -38,27 +41,35 @@
     font-size: 4.5rem;
     margin-right: 100px;
   }
+  .contentBodyList {
+    @include contentBodyList();
+  }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .contentDay {
     @include contentDay();
-    width: 480px;
+    width: 130%;
   }
   .tourListItemDayFirst {
     @include tourListItemDayFirst();
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin-right: 30px;
-    margin-top: 25%;
+    margin-top: 10%;
   }
   .tourListItemDaySecond {
     @include tourListItemDaySecond();
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin-right: 30px;
-    margin-top: 25%;
+    margin-top: 10%;
   }
   .contentDayFirstSection {
     @include contentDayFirstSection();
-    width: 32%;
+    width: 22%;
+    text-align: center;
+    padding-top: 2%;
+  }
+  .contentBodyList {
+    @include contentBodyList();
   }
 }
 @media screen and (min-width: 501px) and (max-width: 768px) {
@@ -80,8 +91,12 @@
   }
   .contentDayFirstSection {
     @include contentDayFirstSection();
-    width: 15%;
+    width: 20%;
+    padding-top: 3%;
     text-align: center;
+  }
+  .contentBodyList {
+    @include contentBodyList();
   }
 }
 @media screen and (max-width: 500px) {
@@ -91,19 +106,23 @@
   }
   .tourListItemDayFirst {
     @include tourListItemDayFirst();
-    font-size: 1.5rem;
-    margin-right: 20px;
+    font-size: 1.3rem;
+    margin-right: 12%;
     margin-top: 25%;
   }
   .tourListItemDaySecond {
     @include tourListItemDaySecond();
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-right: 20px;
     margin-top: 25%;
   }
   .contentDayFirstSection {
     @include contentDayFirstSection();
-    width: 15%;
+    width: 18%;
+    padding-top: 4%;
     text-align: center;
+  }
+  .contentBodyList {
+    @include contentBodyList();
   }
 }

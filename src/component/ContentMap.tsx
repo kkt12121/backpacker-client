@@ -2,7 +2,7 @@ import { ReactElement, useEffect } from "react";
 import { CloseButton } from "@chakra-ui/react";
 import { mapClose } from "action/ModalClickAction";
 import { useDispatch } from "react-redux";
-
+import "../css/MapModal.scss";
 interface Props {
   planList: any[][];
 }

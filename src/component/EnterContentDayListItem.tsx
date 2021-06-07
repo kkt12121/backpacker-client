@@ -62,8 +62,8 @@ export default function EnterContentDayListItem({
                       </div>
                     )}
                   </div>
-                  <div>
-                    <div className="contentBodyList">
+                  <div className="contentBodyList">
+                    <div>
                       {/* 아이템 하나  */}
                       <EnterContentListItem
                         props={e}

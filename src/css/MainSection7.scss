@@ -12,8 +12,7 @@
   background-size: 40%;
   background-position: right bottom;
 }
-.reviewProfile {
-  width: 30px;
+@mixin reviewProfile {
   margin-right: 5px;
 }
 
@@ -68,6 +67,10 @@
     font-weight: bold;
     font-size: 40px;
     text-align: center;
+  }
+  .reviewProfile {
+    @include reviewProfile();
+    width: 40%;
   }
 }
 @media screen and (min-width: 501px) and (max-width: 1023px) {
@@ -127,6 +130,10 @@
     text-align: center;
     padding: 1%;
   }
+  .reviewProfile {
+    @include reviewProfile();
+    width: 30px;
+  }
 }
 @media screen and (max-width: 500px) {
   .mainSection7 {
@@ -138,12 +145,6 @@
     text-align: center;
     font-weight: bold;
   }
-
-  .reviewProfile {
-    width: 17px;
-    margin-right: 5px;
-  }
-
   .reviewStar {
     width: 20px;
   }
@@ -185,5 +186,9 @@
     font-size: 0.5rem;
     text-align: center;
     padding: 1%;
+  }
+  .reviewProfile {
+    @include reviewProfile();
+    width: 30px;
   }
 }

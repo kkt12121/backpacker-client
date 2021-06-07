@@ -66,8 +66,8 @@ export default function EnterContentListItem({
           </div>
           <div className="enterContentTextInfoBox">
             <div className="placeAndPrice">
-              <div className="contentPlace">
-                <Text fontSize="x-large">{props.place}</Text>
+              <div>
+                <Text className="contentPlaceName">{props.place}</Text>
               </div>
               <div className="contentPrice">
                 <Text>
@@ -75,37 +75,39 @@ export default function EnterContentListItem({
                 </Text>
               </div>
             </div>
-            <button
-              className="enterDetailIcon"
-              onClick={() => {
-                window.open(`${props.detail}`, "_blank");
-              }}
-            >
-              <InfoOutlineIcon />
-            </button>
-            <IconButton
-              id={idNum}
-              ml={3}
-              colorScheme="white"
-              aria-label="mapInfo"
-              fontSize="30px"
-              className="btnContentItemMap"
-              onClick={() => {
-                contentMapClickState
-                  ? dispatch(contentItemMapClose())
-                  : clickHandler();
-              }}
-            >
-              <FaMapMarkerAlt
-                color="#db7070"
-                className="enterMapBtn"
+            <div className="btnInfoMap">
+              <button
+                className="enterDetailIcon"
+                onClick={() => {
+                  window.open(`${props.detail}`, "_blank");
+                }}
+              >
+                <InfoOutlineIcon />
+              </button>
+              <IconButton
+                id={idNum}
+                ml={3}
+                colorScheme="white"
+                aria-label="mapInfo"
+                fontSize="30px"
+                className="btnContentItemMap"
                 onClick={() => {
                   contentMapClickState
                     ? dispatch(contentItemMapClose())
                     : clickHandler();
                 }}
-              ></FaMapMarkerAlt>
-            </IconButton>
+              >
+                <FaMapMarkerAlt
+                  color="#db7070"
+                  className="enterMapBtn"
+                  onClick={() => {
+                    contentMapClickState
+                      ? dispatch(contentItemMapClose())
+                      : clickHandler();
+                  }}
+                ></FaMapMarkerAlt>
+              </IconButton>
+            </div>
           </div>
         </div>
         <div className="sectionLine"></div>
