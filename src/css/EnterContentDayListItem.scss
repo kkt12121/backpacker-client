@@ -26,7 +26,7 @@
 @mixin contentBodyList {
   width: 100%;
 }
-@media screen and (min-width: 1025px) and (max-width: 2300px) {
+@media screen and (min-width: 1025px) {
   .contentDay {
     @include contentDay();
     width: 800px;

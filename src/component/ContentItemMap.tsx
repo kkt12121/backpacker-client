@@ -14,7 +14,7 @@ declare global {
 function ContentItemMap({ index }: Props): ReactElement {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(index);
+    // console.log(index);
     const container = document.getElementById("enterMyMap");
     const options = {
       center: new window.kakao.maps.LatLng(index.mapy, index.mapx),
