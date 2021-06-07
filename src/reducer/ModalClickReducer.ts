@@ -15,6 +15,8 @@ import {
   modalloginAction,
   mapAction,
   mapItemAction,
+  OPEN_TOTAL_MAP,
+  OPEN_TOTAL_MAP_CLOSE,
 } from "action/ModalClickAction";
 
 let isClick = false;
@@ -28,6 +30,8 @@ let mapItemClick = false;
 let inviteClick = false;
 
 let contentItemMapClick = false;
+
+let openTotalMapClick = false;
 export const ModalClickReducer = (
   state = isClick,
   action: modalClickAction
@@ -94,6 +98,20 @@ export const ContentItemMapClick = (
     case CONTENT_ITEM_MAP_OPEN:
       return true;
     case CONTENT_ITEM_MAP_CLOSE:
+      return false;
+    default:
+      return state;
+  }
+};
+
+export const openTotalMapClickReducer = (
+  state = openTotalMapClick,
+  action: any
+) => {
+  switch (action.type) {
+    case OPEN_TOTAL_MAP:
+      return true;
+    case OPEN_TOTAL_MAP_CLOSE:
       return false;
     default:
       return state;

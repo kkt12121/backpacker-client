@@ -16,6 +16,7 @@ import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import ContentMap from "./ContentMap";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
+import { openTotalMap, openTotalMapClose } from "action/ModalClickAction";
 
 export default function ContentWriteArea(): ReactElement {
   let token = localStorage.getItem("token");
@@ -35,7 +36,9 @@ export default function ContentWriteArea(): ReactElement {
   const mapItemClickState = useSelector(
     (state: RootState) => state.MapItemClick
   );
-  const [openTotalMap, setOpenTotalMap] = useState<boolean>(false);
+  const openTotalMapState = useSelector(
+    (state: RootState) => state.openTotalMapClickReducer
+  );
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -156,10 +159,10 @@ body*{
   );
 
   const openTotalMapHandler = () => {
-    if (openTotalMap) {
-      setOpenTotalMap(false);
+    if (openTotalMapState) {
+      dispatch(openTotalMapClose());
     } else {
-      setOpenTotalMap(true);
+      dispatch(openTotalMap());
     }
   };
   return (
@@ -245,13 +248,13 @@ body*{
         </section>
         {mapClickState ? <MapModal planList={planList} /> : null}
         <button className="openMapSectionBtn" onClick={openTotalMapHandler}>
-          {openTotalMap ? (
+          {openTotalMapState ? (
             <ArrowRightIcon color="white" />
           ) : (
             <ArrowLeftIcon color="white" className="arrowLIcon" />
           )}
         </button>
-        {openTotalMap ? (
+        {openTotalMapState ? (
           <section className="mapSection">
             <ContentMap planList={planList} />
           </section>

@@ -10,6 +10,8 @@ export const INVITE_OPEN = "INVITE_OPEN";
 export const INVITE_CLOSE = "INVITE_CLOSE";
 export const CONTENT_ITEM_MAP_OPEN = "CONTENT_ITEM_MAP_OPEN";
 export const CONTENT_ITEM_MAP_CLOSE = "CONTENT_ITEM_MAP_CLOSE";
+export const OPEN_TOTAL_MAP = "OPEN_TOTAL_MAP";
+export const OPEN_TOTAL_MAP_CLOSE = "OPEN_TOTAL_MAP_CLOSE";
 export const isClickAction = () => {
   return {
     type: IS_CLICK,
@@ -73,6 +75,16 @@ export const contentItemMapOpen = () => {
 export const contentItemMapClose = () => {
   return {
     type: CONTENT_ITEM_MAP_CLOSE,
+  };
+};
+export const openTotalMap = () => {
+  return {
+    type: OPEN_TOTAL_MAP,
+  };
+};
+export const openTotalMapClose = () => {
+  return {
+    type: OPEN_TOTAL_MAP_CLOSE,
   };
 };
 type clickOpenAction = ReturnType<typeof isClickAction>;

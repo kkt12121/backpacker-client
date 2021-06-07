@@ -1,8 +1,9 @@
 import { ReactElement, useEffect } from "react";
 import { CloseButton } from "@chakra-ui/react";
 import { mapClose } from "action/ModalClickAction";
-import { useDispatch } from "react-redux";
-import "../css/MapModal.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "reducer";
+
 interface Props {
   planList: any[][];
 }
@@ -13,6 +14,9 @@ declare global {
 }
 export default function ContentMap({ planList }: Props): ReactElement {
   const dispatch = useDispatch();
+  const openTotalMapState = useSelector(
+    (state: RootState) => state.openTotalMapClickReducer
+  );
 
   useEffect(() => {
     const container = document.getElementById("myMap");
@@ -60,12 +64,14 @@ export default function ContentMap({ planList }: Props): ReactElement {
         borderRadius: "10px",
       }}
     >
-      <CloseButton
-        style={{ position: "relative", zIndex: 3 }}
-        onClick={() => {
-          dispatch(mapClose());
-        }}
-      />
+      {openTotalMapState ? null : (
+        <CloseButton
+          style={{ position: "relative", zIndex: 3 }}
+          onClick={() => {
+            dispatch(mapClose());
+          }}
+        />
+      )}
     </div>
   );
 }
