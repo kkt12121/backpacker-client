@@ -136,6 +136,13 @@ export default function ContentPrice({
                     <br />
                     아직 없습니다! 😂
                   </>
+                ) : averageCost - planList[currentDay][index].price === 0 ? (
+                  <>
+                    <ColorBlue>{planList[currentDay][index].place}</ColorBlue>의
+                    <br />
+                    평균 경비에<ColorGreen> 알맞은 금액</ColorGreen>
+                    입니다!😆
+                  </>
                 ) : (
                   <>
                     <ColorBlue>{planList[currentDay][index].place}</ColorBlue>에

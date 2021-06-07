@@ -6,6 +6,7 @@ import {
   MapItemClick,
   InviteClick,
   ContentItemMapClick,
+  openTotalMapClickReducer,
 } from "./ModalClickReducer";
 import TestReducer from "./TestReducer";
 import loginReducer from "./LoginReducer";
@@ -56,8 +57,8 @@ const RootReducer = combineReducers({
   titleReducer,
   ContentReducer,
   ModalContentReducer,
+  openTotalMapClickReducer,
 });
-
 export default RootReducer;
 
 export type RootState = ReturnType<typeof RootReducer>;

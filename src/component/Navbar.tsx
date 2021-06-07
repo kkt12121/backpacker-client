@@ -29,15 +29,6 @@ export default function Navbar(): ReactElement {
       <Link className="logoBox" to="/">
         <div className="navLogo">
           <img className="logoImg" src={logo} />
-          <Text
-            className="logoName"
-            bgGradient="linear(to-l, #7928CA,#FF0080)"
-            bgClip="text"
-            fontWeight="bold"
-            fontFamily="monospace"
-          >
-            BACKPACKER
-          </Text>
         </div>
       </Link>
       <ol className="mobileOl">
