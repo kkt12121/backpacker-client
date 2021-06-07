@@ -1,6 +1,10 @@
 import Aos from "aos";
 import { useEffect } from "react";
 import "../css/MainSection7.scss";
+import guest1 from "./video/guest1.png";
+import guest2 from "./video/guest2.png";
+import guest3 from "./video/guest4.png";
+
 function MainSection7() {
   useEffect(() => {
     Aos.init({ duration: 3000 });
@@ -12,12 +16,7 @@ function MainSection7() {
         <div className="reviewContainer">
           <div className="reviewCard">
             <div className="reviewHeader">
-              <img
-                className="reviewProfile"
-                src={
-                  "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
-                }
-              />
+              <img className="reviewProfile" src={guest2} />
               대전 불주먹
             </div>
             <div className="reviewRating">
@@ -60,12 +59,7 @@ function MainSection7() {
           </div>
           <div className="reviewCard">
             <div className="reviewHeader">
-              <img
-                className="reviewProfile"
-                src={
-                  "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
-                }
-              />
+              <img className="reviewProfile" src={guest1} />
               강원도 피바라기
             </div>
             <div className="reviewRating">
@@ -109,12 +103,7 @@ function MainSection7() {
           </div>
           <div className="reviewCard">
             <div className="reviewHeader">
-              <img
-                className="reviewProfile"
-                src={
-                  "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
-                }
-              />
+              <img className="reviewProfile" src={guest3} />
               서울 깍쟁이
             </div>
             <div className="reviewRating">

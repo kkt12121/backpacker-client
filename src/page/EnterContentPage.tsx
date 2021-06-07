@@ -1,5 +1,4 @@
 import EnterContentDayList from "component/EnterContentDayList";
-
 import ContentItemMapModal from "../component/ContentItemMapModal";
 import InviteModal from "component/InviteModal";
 import "../css/EnterContentPage.scss";
@@ -52,7 +51,7 @@ export default function EnterContentPage() {
   const toast = useToast();
   const test = () => {
     for (const [key, value] of Object.entries(params)) {
-      console.log(`${key}: ${value}`);
+      // console.log(`${key}: ${value}`);
     }
   };
   test();
@@ -74,10 +73,10 @@ export default function EnterContentPage() {
     title: "",
   };
   useEffect(() => {
-    console.log("axios 시작");
+    //console.log("axios 시작");
     const fetchData = async () => {
       await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         setContentData(res.data.contentInfo);
         setContentUserData(res.data.userInfo);
         setplanList(res.data.itemArr);
@@ -92,7 +91,7 @@ export default function EnterContentPage() {
           },
         })
         .then((res) => {
-          console.log("로그인된 유저" + res.data.userFind.nickname);
+          // console.log("로그인된 유저" + res.data.userFind.nickname);
           setLoginedUser(res.data.userFind);
         });
     };
@@ -146,20 +145,20 @@ export default function EnterContentPage() {
                 lineHeight="tight"
                 isTruncated
               >
-                <Text fontSize="4xl">{contentData?.title}</Text>
+                <Text className="contentDataTitle">{contentData?.title}</Text>
               </Box>
               <Box mt={5}>
-                <Text fontWeight="bold" fontSize="large">
+                <Text className="contentDataContent" fontWeight="bold">
                   여행 지역 : {contentData?.touristRegion}
                 </Text>
               </Box>
               <Box mt={5}>
-                <Text fontWeight="bold" fontSize="large">
+                <Text className="contentDataContent" fontWeight="bold">
                   여행 기간 : {contentData?.startDate} ~{contentData?.endDate}
                 </Text>
               </Box>
               <Box mt={5} mb={5}>
-                <Text fontWeight="bold" fontSize="large">
+                <Text className="contentDataContent" fontWeight="bold">
                   총 여행 경비 :{" "}
                   {new Intl.NumberFormat().format(contentData?.totalCost)}원
                 </Text>
@@ -225,7 +224,7 @@ export default function EnterContentPage() {
                                   colorScheme="pink"
                                   variant="outline"
                                   onClick={() => {
-                                    console.log("read 버튼");
+                                    // console.log("read 버튼");
                                     setInputText(
                                       `http://localhost:3000/content/${id}`
                                     );
@@ -239,7 +238,7 @@ export default function EnterContentPage() {
                                   colorScheme="pink"
                                   variant="outline"
                                   onClick={() => {
-                                    console.log("readWrite 버튼");
+                                    // console.log("readWrite 버튼");
                                     setInputText(
                                       `http://localhost:3000/invite/${id}`
                                     );

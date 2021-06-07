@@ -15,7 +15,7 @@ function ContentItemMap({ index }: Props): ReactElement {
   const dispatch = useDispatch();
   useEffect(() => {
     console.log(index);
-    const container = document.getElementById("myMap");
+    const container = document.getElementById("enterMyMap");
     const options = {
       center: new window.kakao.maps.LatLng(index.mapy, index.mapx),
       level: 3,
@@ -33,15 +33,7 @@ function ContentItemMap({ index }: Props): ReactElement {
     marker.setMap(map);
   });
   return (
-    <div
-      id="myMap"
-      style={{
-        width: "500px",
-        height: "500px",
-        marginLeft: "50px",
-        borderRadius: "10px",
-      }}
-    >
+    <div id="enterMyMap">
       <CloseButton
         style={{ position: "relative", zIndex: 3 }}
         onClick={() => {

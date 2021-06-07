@@ -134,8 +134,8 @@ body*{
           <div className="titleInputBox">
             <Input
               className="titleInput"
-              variant="filled"
               size="lg"
+              bgColor="white"
               width="50%"
               value={divTitle.length === 0 || "" ? props?.title : divTitle}
               onChange={(e) => handleDivTitle(e)}

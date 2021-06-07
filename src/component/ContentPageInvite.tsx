@@ -69,7 +69,7 @@ function ContentPageInvite(): ReactElement {
     <>
       <div className="invitePageModal">
         <div className="invitePageHeader">
-          {contentUserData?.map((el: any) => el.nickname + "님 ")}께서 게시물에
+          {contentUserData?.map((el: any) => el.nickname + "/")}께서 게시물에
           초대하셨습니다
         </div>
         <div className="sectionButton">

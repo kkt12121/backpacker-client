@@ -1,7 +1,3 @@
-@mixin contentTitle {
-  font-size: xx-large;
-}
-
 @mixin contentDate {
   justify-content: center;
   -webkit-box-pack: center;
@@ -52,9 +48,18 @@
     color: #397ba6;
   }
 }
-@media screen and (min-width: 1025px) and (max-width: 2000px) {
-  .contentTitle {
-    @include contentTitle();
+@mixin contentDataTitle {
+}
+@mixin contentDataContent {
+}
+@media screen and (min-width: 1025px) and (max-width: 2300px) {
+  .contentDataTitle {
+    @include contentDataTitle();
+    font-size: 2.25rem;
+  }
+  .contentDataContent {
+    @include contentDataContent();
+    font-size: 1.3rem;
   }
   .contentDate {
     @include contentDate();
@@ -62,16 +67,12 @@
   .contentBodyTitle {
     @include contentBodyTitle();
   }
-  .contentTitle {
-    @include contentTitle();
-  }
   .listItem {
     @include listItem();
   }
   .buttonList {
     @include buttonList();
     width: 100%;
-    margin-left: 80px;
     margin-top: 2rem;
   }
   .btnInvite {
@@ -91,7 +92,7 @@
   .contentBody {
     @include contentBody();
     margin-left: 10%;
-    width: 60%;
+    width: 55%;
   }
   .contentCardBorder {
     @include contentCardBorder();
@@ -100,7 +101,7 @@
     @include enterScrollToTopButton();
     right: 2%;
     bottom: 10vh;
-    width: 5%;
+    width: 6%;
     &:hover {
       transition: 0.3s;
       color: #397ba6;
@@ -108,8 +109,13 @@
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  .contentTitle {
-    @include contentTitle();
+  .contentDataTitle {
+    @include contentDataTitle();
+    font-size: 2rem;
+  }
+  .contentDataContent {
+    @include contentDataContent();
+    font-size: 1rem;
   }
   .contentDate {
     @include contentDate();
@@ -117,16 +123,12 @@
   .contentBodyTitle {
     @include contentBodyTitle();
   }
-  .contentTitle {
-    @include contentTitle();
-  }
   .listItem {
     @include listItem();
   }
   .buttonList {
     @include buttonList();
     width: 300px;
-    margin-left: 30px;
     margin-top: 2rem;
   }
   .btnInvite {
@@ -145,8 +147,8 @@
   }
   .contentBody {
     @include contentBody();
-    margin-left: 7%;
-    width: 55%;
+    margin-left: 9%;
+    width: 100%;
   }
   .contentHeader {
     @include contentHeader();
@@ -157,15 +159,20 @@
   }
   .enterScrollToTopButton {
     @include enterScrollToTopButton();
-    right: 5%;
+    right: 4%;
     bottom: 10vh;
     width: 5%;
   }
 }
 
 @media screen and (min-width: 501px) and (max-width: 768px) {
-  .contentTitle {
-    @include contentTitle();
+  .contentDataTitle {
+    @include contentDataTitle();
+    font-size: 1.2rem;
+  }
+  .contentDataContent {
+    @include contentDataContent();
+    font-size: 0.8rem;
   }
   .contentDate {
     @include contentDate();
@@ -173,18 +180,13 @@
   .contentBodyTitle {
     @include contentBodyTitle();
   }
-  .contentTitle {
-    @include contentTitle();
-  }
   .listItem {
     @include listItem();
   }
   .buttonList {
     @include buttonList();
-    display: block;
-    width: 10%;
+    width: 100%;
     margin-top: 1rem;
-    margin-left: 2.3rem;
   }
   .btnInvite {
     @include btnInvite();
@@ -197,13 +199,14 @@
   }
   .contentPage {
     @include contentPage();
-    padding: 11%;
+    padding-top: 10%;
+    padding-left: 3%;
     width: 100%;
   }
   .contentBody {
     @include contentBody();
-    margin-left: 7%;
-    width: 60%;
+    margin-left: 5%;
+    width: 100%;
   }
   .contentHeader {
     @include contentHeader();
@@ -220,17 +223,19 @@
   }
 }
 @media screen and (max-width: 500px) {
-  .contentTitle {
-    @include contentTitle();
+  .contentDataTitle {
+    @include contentDataTitle();
+    font-size: 1.4rem;
+  }
+  .contentDataContent {
+    @include contentDataContent();
+    font-size: 1rem;
   }
   .contentDate {
     @include contentDate();
   }
   .contentBodyTitle {
     @include contentBodyTitle();
-  }
-  .contentTitle {
-    @include contentTitle();
   }
   .listItem {
     @include listItem();
@@ -240,7 +245,6 @@
     display: flex;
     width: 100%;
     margin-top: 1rem;
-    margin-left: 1rem;
   }
   .btnInvite {
     @include btnInvite();
@@ -260,8 +264,7 @@
   .contentBody {
     @include contentBody();
     margin-top: 10%;
-    margin-left: 2%;
-    width: 95%;
+    width: 100%;
   }
   .contentHeader {
     @include contentHeader();
@@ -273,7 +276,7 @@
   }
   .enterScrollToTopButton {
     @include enterScrollToTopButton();
-    right: 4%;
+    right: 6%;
     bottom: 5vh;
     width: 8%;
   }

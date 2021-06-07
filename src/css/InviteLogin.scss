@@ -12,25 +12,21 @@
 ::after {
   box-sizing: border-box;
 }
-.bodyLogin {
-  margin: 0;
-  padding: 0;
+.bodyInviteLogin {
+  padding: 17%;
+
+  width: 100%;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
 }
-.formTitle {
-  margin: 0;
-  margin-bottom: 6%;
-}
-.loginForm {
+.loginInviteForm {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 29vh;
 }
 
-.formInviteLogin {
-  margin-top: 30%;
+@mixin formInviteLogin {
   width: 450px;
   padding: 3rem 2rem;
   border-radius: 1rem;
@@ -143,12 +139,50 @@ span.icon {
   width: 42px;
   height: 42px;
 }
-span.buttonTextInvite {
+@mixin buttonTextInvite {
   display: inline-block;
   vertical-align: middle;
-  padding-left: 130px;
   padding-right: 42px;
   font-size: 14px;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
+}
+@media screen and (min-width: 1025px) and (max-width: 2300px) {
+  .formInviteLogin {
+    @include formInviteLogin();
+  }
+  .buttonTextInvite {
+    @include buttonTextInvite();
+    padding-left: 130px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .formInviteLogin {
+    @include formInviteLogin();
+    margin-top: 40%;
+  }
+  .buttonTextInvite {
+    @include buttonTextInvite();
+    padding-left: 130px;
+  }
+}
+@media screen and (min-width: 501px) and (max-width: 768px) {
+  .formInviteLogin {
+    @include formInviteLogin();
+    margin-top: 60%;
+  }
+  .buttonTextInvite {
+    @include buttonTextInvite();
+    padding-left: 130px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .formInviteLogin {
+    @include formInviteLogin();
+    margin-top: 160%;
+  }
+  .buttonTextInvite {
+    @include buttonTextInvite();
+    padding-left: 100px;
+  }
 }
