@@ -15,7 +15,7 @@ import {
   SliderThumb,
 } from "@chakra-ui/react";
 function RangeSliderContent() {
-  const [range, setRange] = React.useState(1000000);
+  const [range, setRange] = React.useState(5000000);
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(listBudgetFind(range));
@@ -32,7 +32,7 @@ function RangeSliderContent() {
       <label className="maxBudget">최대 예산</label>
       <NumberInput
         maxW="135px"
-        step={50000}
+        step={100000}
         mr="2rem"
         border="pink"
         color="rgb(255, 153, 170)"
@@ -47,8 +47,8 @@ function RangeSliderContent() {
       </NumberInput>
       <Slider
         maxW="300px"
-        max={1000000}
-        step={50000}
+        max={5000000}
+        step={100000}
         flex="1"
         focusThumbOnChange={false}
         value={range}
