@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "reducer";
+import "dotenv/config";
 
 import "../css/ContentPrice.scss";
 import {
@@ -84,7 +85,7 @@ export default function ContentPrice({
   useEffect(() => {
     if (planList[currentDay][index].place !== undefined) {
       axios
-        .post("https://localhost:4000/content/itemAc", {
+        .post(`${process.env.REACT_APP_SERVER_URL}/content/itemAc`, {
           place: planList[currentDay][index].place,
         })
         .then((res) => setaverageCost(res.data.averageCost));

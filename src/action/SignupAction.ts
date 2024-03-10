@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "redux";
+import "dotenv/config";
 
 export const SignUp = "SignUp";
 export const SignUp_FAIL = "SignUp_FAIL";
@@ -15,7 +16,7 @@ export const getSignup =
   async (dispatch: Dispatch) => {
     try {
       const res = await axios.post(
-        "https://localhost:4000/user/signup",
+        `${process.env.REACT_APP_SERVER_URL}/user/signup`,
         {
           email: email,
           password: password,

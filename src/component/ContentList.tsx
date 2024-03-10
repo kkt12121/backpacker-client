@@ -4,6 +4,7 @@ import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "reducer";
 import "../css/ContentList.scss";
+import "dotenv/config";
 
 const ContentList = () => {
   const stateData = useSelector((state: RootState) => state);
@@ -43,7 +44,7 @@ const ContentList = () => {
               className="contentCard"
               onClick={() => {
                 window.location.assign(
-                  `http://localhost:3000/content/${el._id}`
+                  `${process.env.REACT_APP_CLIENT_URL}/content/${el._id}`
                 );
               }}
             >

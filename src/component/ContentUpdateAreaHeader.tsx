@@ -4,6 +4,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "../css/ContentWriteAreaHeader.scss";
 import styled from "styled-components";
+import "dotenv/config";
 
 const UlContainer = styled.div`
   padding-bottom: 10px;
@@ -41,7 +42,7 @@ export default function ContentUpdateAreaHeader({
   useEffect(() => {
     const getData = async () => {
       await axios
-        .get("https://localhost:4000/mypage/userInfo", {
+        .get(`${process.env.REACT_APP_SERVER_URL}/mypage/userInfo`, {
           headers: {
             authorization: `bearer ${token}`,
           },

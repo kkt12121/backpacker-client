@@ -16,6 +16,8 @@ import { useToast } from "@chakra-ui/react";
 import ContentUpdateCalendar from "./ContentUpdateCalendar";
 import ContentMap from "./ContentMap";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
+import "dotenv/config";
+
 interface Props {
   id: string;
 }
@@ -54,7 +56,7 @@ export default function ContentUpdateArea({ id }: Props): ReactElement {
   const fetchData = async () => {
     console.log(`패치데이터 id값+${id}`);
     let result = await axios
-      .get(`https://localhost:4000/content/${id}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/content/${id}`)
       .then((res) => {
         return res.data;
       });
@@ -120,7 +122,7 @@ body*{
   const handleSendBtn = () => {
     axios
       .put(
-        `https://localhost:4000/content/${id}/update`,
+        `${process.env.REACT_APP_SERVER_URL}/content/${id}/update`,
         {
           startDate: startDate,
           endDate: endDate,

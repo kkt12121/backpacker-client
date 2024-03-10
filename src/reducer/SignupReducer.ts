@@ -1,4 +1,5 @@
 import { SignUp, SignUp_FAIL } from "action/SignupAction";
+import "dotenv/config";
 import { useHistory } from "react-router-dom";
 let signUpState: {
   email?: string;
@@ -23,7 +24,7 @@ const SignupReducer = (state = signUpState, action: signUpAct) => {
   switch (action.type) {
     case SignUp:
       alert("회원가입에 성공하였습니다.");
-      window.location.assign(`http://localhost:3000/`);
+      window.location.assign(`${process.env.REACT_APP_CLIENT_URL}`);
       return {
         ...state,
         email: action.email,

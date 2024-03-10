@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "../css/ModifyUserInfo.scss";
 import { useToast } from "@chakra-ui/react";
+import "dotenv/config";
 
 function ModifyUserInfo() {
   let token = localStorage.getItem("token");
@@ -17,7 +18,7 @@ function ModifyUserInfo() {
   useEffect(() => {
     const getData = async () => {
       await axios
-        .get("https://localhost:4000/mypage/userInfo", {
+        .get(`${process.env.REACT_APP_SERVER_URL}/mypage/userInfo`, {
           headers: {
             authorization: `bearer ${token}`,
           },
@@ -86,7 +87,7 @@ function ModifyUserInfo() {
               onClick={() => {
                 axios
                   .put(
-                    "https://localhost:4000/mypage/userUpdate",
+                    `${process.env.REACT_APP_SERVER_URL}/mypage/userUpdate`,
                     {
                       nickname: nickName,
                     },
@@ -165,7 +166,7 @@ function ModifyUserInfo() {
               pwdSwitch && phoneSwitch
                 ? axios
                     .put(
-                      "https://localhost:4000/mypage/userUpdate",
+                      `${process.env.REACT_APP_SERVER_URL}/mypage/userUpdate`,
                       {
                         name: name,
                         password: pw,
@@ -179,7 +180,7 @@ function ModifyUserInfo() {
                     )
                     .then((res) => {
                       // alert(res.data.message);
-                      window.location.assign("http://localhost:3000/mypage");
+                      window.location.assign(`${process.env.REACT_APP_CLIENT_URL}/mypage`);
                     })
                     .catch((err) => {
                       // alert("입력을 확인해주세요");

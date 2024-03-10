@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { Table, Thead, Tbody, Tfoot, Tr, Th, Td } from "@chakra-ui/react";
+import "dotenv/config";
 
 const MyContent = () => {
   let token = localStorage.getItem("token");
@@ -15,7 +16,7 @@ const MyContent = () => {
 
   useEffect(() => {
     axios
-      .get("https://localhost:4000/mypage/userContent", {
+      .get(`${process.env.REACT_APP_SERVER_URL}/mypage/userContent`, {
         headers: {
           "content-type": "application/json",
           authorization: `bearer ${token}`,
@@ -49,7 +50,7 @@ const MyContent = () => {
                   className="myContentTitle"
                   onClick={() => {
                     window.location.assign(
-                      `http://localhost:3000/content/${el._id}`
+                      `${process.env.REACT_APP_CLIENT_URL}/content/${el._id}`
                     );
                   }}
                 >

@@ -11,6 +11,8 @@ import axios from "axios";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IconButton, Text } from "@chakra-ui/react";
+import "dotenv/config";
+
 interface Props {
   day?: any;
   firstindex?: any;
@@ -51,7 +53,7 @@ export default function EnterContentListItem({
   const { id } = useParams<{ id?: string }>();
   useEffect(() => {
     const fetchData = async () => {
-      await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
+      await axios.get(`${process.env.REACT_APP_SERVER_URL}/content/${id}`).then((res) => {
         setContentItemData(res.data.itemArr);
       });
     };

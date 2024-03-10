@@ -3,6 +3,7 @@ import Carousel from "component/Carousel";
 import Footer from "component/Footer";
 import MainSection1 from "component/MainSection1";
 import MainSection2 from "component/MainSection2";
+import "dotenv/config";
 
 import MainSection6 from "component/MainSection6";
 import MainSection7 from "component/MainSection7";
@@ -27,7 +28,7 @@ const authorizationCode = url.searchParams.get("code");
 if (authorizationCode) {
   axios
     .post(
-      "https://localhost:4000/user/oauth",
+      `${process.env.REACT_APP_SERVER_URL}/user/oauth`,
       { authorizationCode: authorizationCode },
       { headers: { accept: "application/json" }, withCredentials: true }
     )

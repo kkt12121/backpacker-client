@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "redux";
+import "dotenv/config";
 
 export const FIND_EMAIL = "FIND_EMAIL";
 export const FIND_PASSWORD = "FIND_PASSWORD";
@@ -9,7 +10,7 @@ export const emailFinder =
   (name: string, phone: string) => async (dispatch: Dispatch) => {
     try {
       const res = await axios.post(
-        "https://localhost:4000/user/findEmail",
+        `${process.env.REACT_APP_SERVER_URL}/user/findEmail`,
         {
           name: name,
           phone: phone,
@@ -33,7 +34,7 @@ export const emailFinder =
 export const pwFinder = (email: string) => async (dispatch: Dispatch) => {
   try {
     const res = await axios.post(
-      "https://localhost:4000/user/findPw",
+      `${process.env.REACT_APP_SERVER_URL}/user/findPw`,
       {
         email: email,
       },

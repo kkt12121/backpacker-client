@@ -12,6 +12,7 @@ import {
   Portal,
   Button,
 } from "@chakra-ui/react";
+import "dotenv/config";
 
 function UserDelete() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -21,7 +22,7 @@ function UserDelete() {
 
   const deleteBtnHandler = () => {
     axios
-      .delete("https://localhost:4000/mypage/userDelete", {
+      .delete(`${process.env.REACT_APP_SERVER_URL}/mypage/userDelete`, {
         headers: {
           "content-type": "application/json",
           authorization: `bearer ${token}`,
@@ -30,7 +31,7 @@ function UserDelete() {
       })
       .then((res) => {
         localStorage.clear();
-        window.location.assign("http://localhost:3000");
+        window.location.assign(`${process.env.REACT_APP_CLIENT_URL}`);
       });
   };
   return (

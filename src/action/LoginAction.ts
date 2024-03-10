@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "redux";
+import "dotenv/config";
 
 export const GET_LOGIN_TOKEN = "GET_LOGIN_TOKEN";
 export const LOGIN_FAIL = "LOGIN_FAIL";
@@ -8,7 +9,7 @@ export const getLoginToken =
   (email: string, password: string) => async (dispatch: Dispatch) => {
     try {
       const res = await axios.post(
-        "https://localhost:4000/user/login",
+        `${process.env.REACT_APP_SERVER_URL}/user/login`,
         {
           email: email,
           password: password,

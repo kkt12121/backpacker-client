@@ -1,10 +1,11 @@
 import axios from "axios";
+import "dotenv/config";
 
 const logout = () => {
   let token = localStorage.getItem("token");
   axios
     .post(
-      "https://localhost:4000/mypage/logout",
+      `${process.env.REACT_APP_SERVER_URL}/mypage/logout`,
       {},
       {
         headers: {
@@ -16,7 +17,7 @@ const logout = () => {
     )
     .then(() => {
       localStorage.clear();
-      window.location.assign("http://localhost:3000/");
+      window.location.assign(`${process.env.REACT_APP_CLIENT_URL}`);
     });
 };
 

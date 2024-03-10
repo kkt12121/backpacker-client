@@ -5,6 +5,8 @@ import { listCityFind } from "action/ListFindAction";
 import "../css/ContentCarousel.scss";
 import { useParams } from "react-router";
 import axios from "axios";
+import "dotenv/config";
+
 const ContentCarousel = () => {
   let dispatch = useDispatch();
   const [cityIdx, setCityIdx] = useState(0);
@@ -23,7 +25,7 @@ const ContentCarousel = () => {
   }, [cityIdx]);
   useEffect(() => {
     const fetchData = async () => {
-      await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
+      await axios.get(`${process.env.REACT_APP_SERVER_URL}/content/${id}`).then((res) => {
         setContentItemData(res.data.itemArr);
       });
     };

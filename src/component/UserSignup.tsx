@@ -7,6 +7,8 @@ import "../css/SignUp.scss";
 import axios from "axios";
 import { Text, Button, Image } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import "dotenv/config";
+
 function UserSignup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +31,7 @@ function UserSignup() {
   useEffect(() => {
     const getData = async () => {
       await axios
-        .get("https://localhost:4000/user/total", {
+        .get(`${process.env.REACT_APP_SERVER_URL}/user/total`, {
           headers: {},
         })
         .then((res) => {

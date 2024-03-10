@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import { useParams } from "react-router";
 import "../css/ContentInvite.scss";
 import { useClipboard, Button, Flex, Input } from "@chakra-ui/react";
+import "dotenv/config";
 
 function ContentInvite(): ReactElement {
   const [inputText, setInputText] = useState<any>(null);
@@ -21,7 +22,7 @@ function ContentInvite(): ReactElement {
             className="read"
             onClick={() => {
               // console.log("read 버튼");
-              setInputText(`http://localhost:3000/content/${id}`);
+              setInputText(`${process.env.REACT_APP_CLIENT_URL}/content/${id}`);
             }}
           >
             공유
@@ -30,7 +31,7 @@ function ContentInvite(): ReactElement {
             className="readWrite"
             onClick={() => {
               // console.log("readWrite 버튼");
-              setInputText(`http://localhost:3000/invite/${id}`);
+              setInputText(`${process.env.REACT_APP_CLIENT_URL}/invite/${id}`);
             }}
           >
             작성 공유

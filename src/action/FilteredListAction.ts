@@ -1,12 +1,13 @@
 import axios from "axios";
 import { Dispatch } from "redux";
+import "dotenv/config";
 
 export const FILTER_CHANGE = "FILTER_CHANGE";
 
 export const FilteredListAction =
   (city: string, budget: number) => async (dispatch: Dispatch) => {
     const res = await axios.post(
-      "https://localhost:4000/content/list",
+      `${process.env.REACT_APP_SERVER_URL}/content/list`,
       {},
       {
         headers: { withCredential: true },

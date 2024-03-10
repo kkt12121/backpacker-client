@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../css/UserInfo.scss";
+import "dotenv/config";
+
 function UserInfo() {
   let token = localStorage.getItem("token");
   const [userData, setUserData] = useState<any>();
@@ -8,7 +10,7 @@ function UserInfo() {
   useEffect(() => {
     const getData = async () => {
       await axios
-        .get("https://localhost:4000/mypage/userInfo", {
+        .get(`${process.env.REACT_APP_SERVER_URL}/mypage/userInfo`, {
           headers: {
             authorization: `bearer ${token}`,
           },

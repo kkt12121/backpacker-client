@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import "../css/ContentPageInvite.scss";
 import { useHistory, useParams } from "react-router-dom";
+import "dotenv/config";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -21,7 +22,7 @@ function ContentPageInvite(): ReactElement {
     console.log("axios 시작");
     const fetchData = async () => {
       await axios
-        .get(`https://localhost:4000/content/${id}`, {
+        .get(`${process.env.REACT_APP_SERVER_URL}/content/${id}`, {
           headers: {
             "content-type": "application/json",
             authorization: `bearer ${token}`,
@@ -40,7 +41,7 @@ function ContentPageInvite(): ReactElement {
     console.log("서버로 넘어가는 토큰" + token);
     console.log(`${id}`);
     axios.put(
-      `https://localhost:4000/content/${id}/invite`,
+      `${process.env.REACT_APP_SERVER_URL}/content/${id}/invite`,
       {}, //request.body를 넣어야한다.
       {
         headers: {

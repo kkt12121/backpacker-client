@@ -34,6 +34,7 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
+import "dotenv/config";
 
 export default function EnterContentPage() {
   const handleClick = () => {
@@ -75,7 +76,7 @@ export default function EnterContentPage() {
   useEffect(() => {
     //console.log("axios 시작");
     const fetchData = async () => {
-      await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
+      await axios.get(`${process.env.REACT_APP_SERVER_URL}/content/${id}`).then((res) => {
         //console.log(res.data);
         setContentData(res.data.contentInfo);
         setContentUserData(res.data.userInfo);
@@ -85,7 +86,7 @@ export default function EnterContentPage() {
     //로그인된 유저 파악하기
     const getUserData = async () => {
       await axios
-        .get("https://localhost:4000/mypage/userInfo", {
+        .get(`${process.env.REACT_APP_SERVER_URL}/mypage/userInfo`, {
           headers: {
             authorization: `bearer ${token}`,
           },
@@ -102,7 +103,7 @@ export default function EnterContentPage() {
   //게시물 삭제 함수
   const del = async () => {
     await axios
-      .delete(`https://localhost:4000/content/${id}/delete`, {
+      .delete(`${process.env.REACT_APP_SERVER_URL}/content/${id}/delete`, {
         headers: {
           "content-type": "application/json",
           authorization: `bearer ${token}`,
@@ -226,7 +227,7 @@ export default function EnterContentPage() {
                                   onClick={() => {
                                     // console.log("read 버튼");
                                     setInputText(
-                                      `http://localhost:3000/content/${id}`
+                                      `${process.env.REACT_APP_CLIENT_URL}/content/${id}`
                                     );
                                   }}
                                 >
@@ -240,7 +241,7 @@ export default function EnterContentPage() {
                                   onClick={() => {
                                     // console.log("readWrite 버튼");
                                     setInputText(
-                                      `http://localhost:3000/invite/${id}`
+                                      `${process.env.REACT_APP_CLIENT_URL}/invite/${id}`
                                     );
                                   }}
                                 >

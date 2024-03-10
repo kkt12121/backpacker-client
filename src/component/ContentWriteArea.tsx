@@ -17,6 +17,7 @@ import { useHistory } from "react-router-dom";
 import ContentMap from "./ContentMap";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { openTotalMap, openTotalMapClose } from "action/ModalClickAction";
+import "dotenv/config";
 
 export default function ContentWriteArea(): ReactElement {
   let token = localStorage.getItem("token");
@@ -110,7 +111,7 @@ body*{
     // axios.defaults.headers.post["Content-Type"] = "application/json";
     await axios
       .post(
-        "https://localhost:4000/content/create",
+        `${process.env.REACT_APP_SERVER_URL}/content/create`,
         {
           startDate: startDate,
           endDate: endDate,

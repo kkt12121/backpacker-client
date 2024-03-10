@@ -4,6 +4,8 @@ import "../css/EnterContentDayListItem.scss";
 import axios from "axios";
 import { useParams } from "react-router";
 import { Box, Text } from "@chakra-ui/react";
+import "dotenv/config";
+
 interface Props {
   setindex?: any;
   setitemorder?: any;
@@ -25,7 +27,7 @@ export default function EnterContentDayListItem({
   const { id } = useParams<{ id?: string }>();
   useEffect(() => {
     const fetchData = async () => {
-      await axios.get(`https://localhost:4000/content/${id}`).then((res) => {
+      await axios.get(`${process.env.REACT_APP_SERVER_URL}/content/${id}`).then((res) => {
         setContentItemData(res.data.itemArr);
       });
     };

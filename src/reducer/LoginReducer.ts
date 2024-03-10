@@ -1,4 +1,5 @@
 import { GET_LOGIN_TOKEN, LOGIN_FAIL } from "action/LoginAction";
+import "dotenv/config";
 
 let loginState: {
   email?: string;
@@ -18,7 +19,7 @@ interface loginAct {
 const loginReducer = (state = loginState, action: loginAct) => {
   switch (action.type) {
     case GET_LOGIN_TOKEN:
-      window.location.assign("http://localhost:3000/");
+      window.location.assign(`${process.env.REACT_APP_CLIENT_URL}`);
       return {
         ...state,
         email: action.email,
